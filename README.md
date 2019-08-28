@@ -1,3 +1,7 @@
-# nedellcona-com
+# Phalcon Website
 
-Nedellcona.com parking page
+Official Phalcon Website source code. Feel free to improve it or use the code in your own projects.
+
+We are using [Crowdin](https://crowdin.com/), to handle all the words or sentences that need to be translated for this site.
+The project repository is located [here](https://crowdin.com/project/phalcon-website).
+

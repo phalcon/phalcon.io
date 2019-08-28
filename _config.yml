@@ -1,15 +1,23 @@
 app:
-  title: 'Phalcon Website'
+  title: 'Phalcon Framework'
   name: 'Phalcon Website'
   author: 'Phalcon Team'
   description: 'Official Phalcon Documentation'
   keywords: 'php, phalcon, phalcon php, php framework, faster php framework, php extension, next generation framework, docs, documentation'
   email: 'team@phalcon.io'
+  generator: 'Phalcon Team'
+  version: '3.4.4'
+  analytics: 'UA-133802124-3'
 
+url: https://phalcon.io
 kramdown:
   input: GFM
   syntax_highlighter_opts:
     disable: true
+
+include:
+  - _pages
+  - _redirects
 
 exclude:
   - vendor
@@ -18,6 +26,7 @@ exclude:
   - LICENSE
   - README.md
   - serve
+  - boxfile.yml
 
 
 
