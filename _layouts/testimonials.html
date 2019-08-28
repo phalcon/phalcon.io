@@ -1,0 +1,77 @@
+---
+layout: page
+---
+
+<section class="team">
+    <div class="container">
+        <div class="row">
+            <ul class="nav nav-pills">
+                <li>
+                    <a href="/{{ page.language }}/about">
+                        <span class="span-ul">
+                            {{ site.data.languages[page.language]['about'] }}
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/{{ page.language }}/team">
+                        <span class="span-ul">
+                            {{ site.data.languages[page.language]['team'] }}
+                        </span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/{{ page.language }}/testimonials">
+                        <span class="span-ul">
+                            {{ site.data.languages[page.language]['testimonials'] }}
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <p>
+                    {{ site.data.languages[page.language]['testimonials_description'] | replace: ':1:', 'team@phalcon.io' | replace: ':2:', 'team@phalcon.io' }}
+                </p>
+            </div>
+        </div>
+
+        <blockquote class="blockquote-reverse">
+            <p>
+                &rsaquo;&rsaquo; {{ site.data.languages[page.language]['testimonials_2'] | replace: ':1:', 'http://kolesa.kz' | replace: ':2:', 'http://kolesa.kz' | replace: ':3:', 'http://krisha.kz' | replace: ':4:', 'http://krisha.kz' }}
+            </p>
+        </blockquote>
+
+        <blockquote>
+            <p>
+                &rsaquo;&rsaquo; {{ site.data.languages[page.language]['testimonials_3'] }}
+            </p>
+        </blockquote>
+
+        <blockquote class="blockquote-reverse">
+            <p>
+                &rsaquo;&rsaquo; {{ site.data.languages[page.language]['testimonials_4'] }}
+            </p>
+        </blockquote>
+
+        <blockquote>
+            <p>
+                &rsaquo;&rsaquo; {{ site.data.languages[page.language]['testimonials_5'] | replace: ':1:', 'https://github.com/blackbunny/Url-Shortener' | replace: ':2:', 'https://github.com/blackbunny/Url-Shortener' | replace: ':3:', 'http://u.dolap.co' | replace: ':4:', 'http://u.dolap.co' }}
+            </p>
+        </blockquote>
+
+        <blockquote class="blockquote-reverse">
+            <p>
+                &rsaquo;&rsaquo; {{ site.data.languages[page.language]['testimonials_6'] | replace: ':1:', 'http://bezbykow.pl' | replace: ':2:', 'http://bezbykow.pl' }}
+            </p>
+        </blockquote>
+
+        <blockquote>
+            <p>
+                &rsaquo;&rsaquo; {{ site.data.languages[page.language]['testimonials_7'] | replace: ':1:', 'https://delete.im' | replace: ':2:', 'https://delete.im' }}
+            </p>
+        </blockquote>
+    </div>
+</section>

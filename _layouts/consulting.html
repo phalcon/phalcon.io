@@ -1,0 +1,30 @@
+---
+layout: page
+---
+
+<section class="consulting">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                {{ site.data.languages[page.language]['consulting_mctekk_header'] }}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-2">
+                <img src='/assets/images/consulting/mctekk.png' title='MCTEKK' alt='MCTEKK' />
+            </div>
+            <div class="col-lg-10">
+                <p>
+                    {{ site.data.languages[page.language]['consulting_mctekk_1'] }}
+                </p>
+                <p>
+                    {{ site.data.languages[page.language]['consulting_mctekk_2'] }}
+                </p>
+                <p>
+                    {{ site.data.languages[page.language]['consulting_mctekk_3'] | replace: ':1:', 'https://mctekk.com/phalcon' }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

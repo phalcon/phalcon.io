@@ -1,0 +1,61 @@
+---
+layout: page
+---
+
+<section class="team">
+    <div class="container">
+        {% include menu-download.html %}
+
+        <h2>
+            {{ site.data.languages[page.language]['download_developer_tools'] }}
+        </h2>
+        <p>
+            {{ site.data.languages[page.language]['download_devtools_1'] }}
+        </p>
+        <p>
+            {{ site.data.languages[page.language]['download_developer_dpcs'] | replace: ':1:', 'https://docs.phalcon.io/3.4/en/devtools-installation' }}
+        </p>
+
+        <br />
+        <h3>
+            {{ site.data.languages[page.language]['download_devtools_composer'] }}
+        </h3>
+        <p>
+            {{ site.data.languages[page.language]['download_devtools_composer_1'] }}
+        </p>
+
+        <pre><code>curl -s http://getcomposer.org/installer | php</code></pre>
+
+        <p>
+            {{ site.data.languages[page.language]['download_devtools_composer_2'] }}
+        </p>
+
+        <pre><code>{
+    "require": {
+        "phalcon/devtools": "dev-master"
+    }
+}
+</code></pre>
+
+        <p>
+            {{ site.data.languages[page.language]['download_devtools_composer_3'] }}
+        </p>
+
+        <pre><code>php composer.phar install</code></pre>
+
+        <p>
+            {{ site.data.languages[page.language]['download_devtools_composer_4'] }}
+        </p>
+
+        <pre><code>ln -s ~/devtools/phalcon.php /usr/bin/phalcon
+chmod ugo+x /usr/bin/phalcon</code></pre>
+
+        <br />
+        <h3>
+            {{ site.data.languages[page.language]['download'] }}
+        </h3>
+        <p>
+            {{ site.data.languages[page.language]['download_devtools_download'] | replace: ':1:', 'https://github.com/phalcon/phalcon-devtools' }}
+        </p>
+    </div>
+</section>

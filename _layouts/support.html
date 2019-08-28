@@ -1,0 +1,105 @@
+---
+layout: page
+---
+
+<section class="support">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>
+                    {{ site.data.languages[page.language]['documentation'] }}
+                </h3>
+            </div>
+            <div class="col-lg-12">
+                <p>
+                    {{ site.data.languages[page.language]['support_documentation_1'] | replace: ':1:', 'https://phalcon.link/docs' }}
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <p>
+                    {{ site.data.languages[page.language]['support_note_1'] }}
+                </p>
+                <ul>
+                    <li>
+                        {{ site.data.languages[page.language]['support_phalcon_forum'] | replace: ':1:', 'https://phalcon.link/forum' }}
+                    </li>
+                    <li>
+                        {{ site.data.languages[page.language]['support_phalcon_forum'] | replace: ':1:', 'https://phalcon.link/forum' }}
+                    </li>
+                    <li>
+                        {{ site.data.languages[page.language]['support_stack_overflow'] | replace: ':1:', 'https://stackoverflow.com' | replace: ':2:', 'https://stackoverflow.com/questions/tagged/phalcon' }}
+                    </li>
+                    <li>
+                        {{ site.data.languages[page.language]['support_discord'] | replace: ':1:', 'https://phalcon.link/discord' }}
+                    </li>
+                    <li>
+                        {{ site.data.languages[page.language]['support_social_network_accounts'] }}
+                        <a href="https://phalcon.link/telegram" target="_blank">Telegram</a>,
+                        <a href="https://phalcon.link/gab" target="_blank">Gab</a>,
+                        <a href="https://phalcon.link/parler" target="_blank">Parler</a>,
+                        <a href="https://phalcon.link/mewe" target="_blank">MeWe</a>,
+                        <a href="https://phalcon.link/fb" target="_blank">Facebook</a>,
+                        <a href="https://phalcon.link/t" target="_blank">Twitter</a>
+                    </li>
+                    <li>If you still believe that what you found is a bug, please <a href='https://github.com/phalcon/cphalcon/issues/new'>open an issue</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-12">
+                <div class="alert alert-danger">
+                    <span>
+                        {% assign downloadLink = '/' | append: page.language | append: '/download' %}
+                        {{ site.data.languages[page.language]['support_note_2'] | replace: ':1:', downloadLink }}}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Stack Overflow</h3>
+            </div>
+            <div class="col-lg-12">
+                <p>
+                    {{ site.data.languages[page.language]['support_please_note'] }}
+                </p>
+                <ul>
+                    <li>
+                        {{ site.data.languages[page.language]['support_please_note_1'] }}
+                    </li>
+                    <li>
+                        {{ site.data.languages[page.language]['support_please_note_2'] | replace: ':1:', 'https://github.com/phalcon/cphalcon/issues' }}
+                    </li>
+                    <li>
+                        {{ site.data.languages[page.language]['support_please_note_3'] | replace: ':1:', 'https://github.com/phalcon/cphalcon/issues' }}
+                    </li>
+                    <li>
+                        {{ site.data.languages[page.language]['support_please_note_4'] }}
+                    </li>
+                    <li>
+                        {{ site.data.languages[page.language]['support_please_note_5'] }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>
+                    {{ site.data.languages[page.language]['support_reporting_a_bug'] }}
+                </h3>
+            </div>
+            <div class="col-lg-12">
+                <p>
+                    {{ site.data.languages[page.language]['support_reporting_a_bug_1'] | replace: ':1:', 'https://github.com/phalcon/cphalcon/issues/new' }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

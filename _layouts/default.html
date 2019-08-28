@@ -1,48 +1,35 @@
 <!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description"
-          content="{{ site.app.description }}">
-    <meta name="author" content="{{ site.app.author }}">
-    <meta name="generator" content="Netlify - Jekyll">
-
-    <title>{{ site.app.title }}</title>
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE="
-          crossorigin="anonymous" />
-    <link rel="stylesheet"
-          href="/assets/css/site.css" />
-</head>
-
+<!--[if IE 8]>
+<html lang="{{ page.language }}" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="{{ page.language }}" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="{{ page.language }}" class="no-js">
+<!--<![endif]-->
+{% include head.html %}
 <body>
-    <div class="container">
-        <div class="text-center">
-            <img class="logo" src="https://assets.phalconphp.com/phalcon/images/phalcon-logo.png"
-                 title="{{ site.app.title }}"
-                 alt="{{ site.app.title }}" />
-        </div>
-        <div class="text-center">
-            To get in touch, please email us at
-            <a href="mailto:{{ site.app.email }}">{{ site.app.email }}</a>
-        </div>
-    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"
-            integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/esm/popper.min.js"
-            integrity="sha256-T0gPN+ySsI9ixTd/1ciLl2gjdLJLfECKvkQjJn98lOs="
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"
-            integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ="
-            crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.6.1/js/all.js"
-            integrity="sha384-R5JkiUweZpJjELPWqttAYmYM1P3SNEJRM6ecTQF05pFFtxmCO+Y1CiUhvuDzgSVZ"
-            crossorigin="anonymous"></script>
+<ul class="bg-slideshow">
+    <li><span></span></li>
+    <li><span></span></li>
+    <li><span></span></li>
+    <li><span></span></li>
+    <li><span></span></li>
+    <li><span></span></li>
+</ul>
+
+{% include header.html %}
+{% include advertised.html %}
+{% include sponsors.html %}
+{% include features1.html %}
+{% include features2.html %}
+{% include features3.html %}
+{% include features4.html %}
+{% include design.html %}
+{% include contributors.html %}
+{% include contributors-ribbon.html %}
+{% include footer.html %}
+{% include footer-js.html %}
+
 </body>
 </html>
