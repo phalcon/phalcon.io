@@ -1,0 +1,134 @@
+[
+  {
+    "code": "ar",
+    "flag": "ar"
+  },
+  {
+    "code": "bg",
+    "flag": "bg"
+  },
+  {
+    "code": "ca",
+    "flag": "ca"
+  },
+  {
+    "code": "cs",
+    "flag": "cs"
+  },
+  {
+    "code": "da",
+    "flag": "dk"
+  },
+  {
+    "code": "de",
+    "flag": "de"
+  },
+  {
+    "code": "el",
+    "flag": "el"
+  },
+  {
+    "code": "en",
+    "flag": "en"
+  },
+  {
+    "code": "es",
+    "flag": "es"
+  },
+  {
+    "code": "fr",
+    "flag": "fr"
+  },
+  {
+    "code": "hu",
+    "flag": "hu"
+  },
+  {
+    "code": "hy",
+    "flag": "am"
+  },
+  {
+    "code": "id",
+    "flag": "id"
+  },
+  {
+    "code": "it",
+    "flag": "it"
+  },
+  {
+    "code": "ja",
+    "flag": "ja"
+  },
+  {
+    "code": "kk",
+    "flag": "kz"
+  },
+  {
+    "code": "km",
+    "flag": "km"
+  },
+  {
+    "code": "ko",
+    "flag": "ko"
+  },
+  {
+    "code": "lt",
+    "flag": "lt"
+  },
+  {
+    "code": "lv",
+    "flag": "lv"
+  },
+  {
+    "code": "nl",
+    "flag": "nl"
+  },
+  {
+    "code": "no",
+    "flag": "no"
+  },
+  {
+    "code": "pl",
+    "flag": "pl"
+  },
+  {
+    "code": "pt",
+    "flag": "pt"
+  },
+  {
+    "code": "ro",
+    "flag": "ro"
+  },
+  {
+    "code": "ru",
+    "flag": "ru"
+  },
+  {
+    "code": "sk",
+    "flag": "sk"
+  },
+  {
+    "code": "sv",
+    "flag": "se"
+  },
+  {
+    "code": "th",
+    "flag": "th"
+  },
+  {
+    "code": "tr",
+    "flag": "tr"
+  },
+  {
+    "code": "uk",
+    "flag": "ua"
+  },
+  {
+    "code": "vi",
+    "flag": "vn"
+  },
+  {
+    "code": "zh",
+    "flag": "zh"
+  }
+]

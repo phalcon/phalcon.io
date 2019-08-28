@@ -1,0 +1,32 @@
+        <div class="row">
+            <ul class="nav nav-pills">
+                <li{% if page.title == 'download_linux' %} class="active"{% endif %}>
+                    <a href="/{{ page.language }}/download/linux">
+                        <span class="span-ul">
+                            {{ site.data.languages[page.language]['download_linux'] }}
+                        </span>
+                    </a>
+                </li>
+                <li{% if page.title == 'download_windows' %} class="active"{% endif %}>
+                    <a href="/{{ page.language }}/download/windows">
+                        <span class="span-ul">
+                            {{ site.data.languages[page.language]['download_windows'] }}
+                        </span>
+                    </a>
+                </li>
+                <li{% if page.title == 'download_tools' %} class="active"{% endif %}>
+                    <a href="/{{ page.language }}/download/tools">
+                        <span class="span-ul">
+                            {{ site.data.languages[page.language]['download_developer_tools'] }}
+                        </span>
+                    </a>
+                </li>
+                <li{% if page.title == 'download_ide_stubs' %} class="active"{% endif %}>
+                    <a href="/{{ page.language }}/download/stubs">
+                        <span class="span-ul">
+                            {{ site.data.languages[page.language]['download_ide_stubs'] }}
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>

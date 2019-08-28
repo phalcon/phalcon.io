@@ -1,0 +1,132 @@
+<head>
+    {% for lang in site.data.langs %}
+    <link rel="alternate" href="https://phalcon.io/{{ lang['code'] }}" hreflang="{{ lang['code'] }}" />{% endfor %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="generator" content="{{ site.app.team }}">
+    <meta name="application-name" content="{{ site.app.name }}">
+    <meta name="description" content="{{ site.app.description }}">
+    <meta name="keyword" content="{{ site.app.keywords }}">
+    <meta name="publisher" content="{{ site.app.team }}">
+
+    <meta http-equiv="x-dns-prefetch-control" content="off">
+
+    <meta property="og:url" content="{{ site.url }}">
+    <meta property="og:locale" content="{{ page.language }}">
+    <meta property="og:type" content="object">
+    <meta property="og:title" content="{{ site.data.languages[page.language][page.title] }} - {{ site.app.title }}">
+    <meta property="og:description" content="{{ site.app.description }}">
+    <meta property="og:site_name" content="{{ site.app.name }}">
+    <meta property="og:image" content="https://phalcon.io/assets/images/logo.png">
+
+    <meta name="twitter:image:alt" content="{{ site.app.name }}">
+    <meta name="twitter:title" content="{{ site.data.languages[page.language][page.title] }} - {{ site.app.title }}">
+    <meta name="twitter:description" content="{{ site.app.description }}">
+    <meta name="twitter:image" content="https://phalcon.io/assets/images/logo.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@phalconphp">
+    <meta name="twitter:creator" content="@phalconphp">
+
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-square70x70logo"
+          content="https://assets.phalcon.io/phalcon/favicons/mstile-70x70.png">
+    <meta name="msapplication-TileImage"
+          content="https://assets.phalcon.io/phalcon/favicons/mstile-144x144.png">
+    <meta name="msapplication-square150x150logo"
+          content="https://assets.phalcon.io/phalcon/favicons/mstile-150x150.png">
+    <meta name="msapplication-wide310x150logo"
+          content="https://assets.phalcon.io/phalcon/favicons/mstile-310x150.png">
+    <meta name="msapplication-square310x310logo"
+          content="https://assets.phalcon.io/phalcon/favicons/mstile-310x310.png">
+
+    <link rel="apple-touch-icon"
+          href="https://assets.phalcon.io/phalcon/favicons/apple-touch-icon.png">
+
+    <link rel="apple-touch-icon-precomposed"
+          sizes="57x57"
+          href="https://assets.phalcon.io/phalcon/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon-precomposed"
+          sizes="60x60"
+          href="https://assets.phalcon.io/phalcon/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon-precomposed"
+          sizes="72x72"
+          href="https://assets.phalcon.io/phalcon/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed"
+          sizes="76x76"
+          href="https://assets.phalcon.io/phalcon/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed"
+          sizes="114x114"
+          href="https://assets.phalcon.io/phalcon/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed"
+          sizes="120x120"
+          href="https://assets.phalcon.io/phalcon/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon-precomposed"
+          sizes="144x144"
+          href="https://assets.phalcon.io/phalcon/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed"
+          sizes="152x152"
+          href="https://assets.phalcon.io/phalcon/favicons/apple-touch-icon-152x152.png">
+
+    <link rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="https://assets.phalcon.io/phalcon/favicons/favicon-16x16.png">
+    <link rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="https://assets.phalcon.io/phalcon/favicons/favicon-32x32.png">
+    <link rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href="https://assets.phalcon.io/phalcon/favicons/favicon-96x96.png">
+    <link rel="icon"
+          type="image/png"
+          sizes="128x128"
+          href="https://assets.phalcon.io/phalcon/favicons/favicon-128x128.png">
+    <link rel="icon"
+          type="image/png"
+          sizes="196x196"
+          href="https://assets.phalcon.io/phalcon/favicons/favicon-196x196.png">
+    <link rel="shortcut icon"
+          type="image/png"
+          href="https://assets.phalcon.io/phalcon/favicons/favicon.ico"/>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-133802124-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', '{{ site.app.analytics }}');
+    </script>
+    <!-- End Google Analytics -->
+
+
+    <link rel="stylesheet" type="text/css"
+          href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Open+Sans:700,400"/>
+    {% if page.title != 'high_performance_php_framework' %}
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/css/phalconPage.css"/>
+    {% else %}
+    <link rel="stylesheet" type="text/css" href="/assets/css/flags.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/css/highlight.js.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/css/phalcon.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
+    {% endif %}
+    <title>
+        {{ site.data.languages[page.language][page.title] }} - {{ site.app.title }}
+    </title>
+</head>

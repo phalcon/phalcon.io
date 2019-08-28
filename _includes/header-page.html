@@ -1,0 +1,159 @@
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button"
+                        class="navbar-toggle collapsed"
+                        data-toggle="collapse"
+                        data-target="#main-menu-container">
+                    <span class="sr-only">
+                        {{ site.data.languages[page.language]['toggle_navigation'] }}
+                    </span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/">
+                    <span itemprop="name"
+                          class="sr-only">{{ site.app.title }}</span>
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right"
+                 id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                    <li class="first">
+                        <a href="/{{ page.language }}/download/linux" class="header-nav-link">
+                            {{ site.data.languages[page.language]['download'] }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://phalcon.link/docs"
+                           class="header-nav-link" target="_blank">
+                            {{ site.data.languages[page.language]['docs'] }}
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:;"
+                           class="dropdown-toggle"
+                           data-toggle="dropdown"
+                           role="button"
+                           aria-haspopup="true"
+                           aria-expanded="false">
+                            {{ site.data.languages[page.language]['community'] }} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-menu-title">
+                                {{ site.data.languages[page.language]['social'] }}
+                            </li>
+                            <li>
+                                <a href="https://phalcon.link/blog"
+                                   target="_blank">
+                                    {{ site.data.languages[page.language]['blog'] }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://phalcon.link/telegram"
+                                   target="_blank">
+                                    Telegram
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://phalcon.link/gab"
+                                   target="_blank">
+                                    Gab
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://phalcon.link/parler"
+                                   target="_blank">
+                                    Parler
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://phalcon.link/mewe"
+                                   target="_blank">
+                                    MeWe
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://phalcon.link/fb"
+                                   target="_blank">
+                                    Facebook
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://phalcon.link/t"
+                                   target="_blank">
+                                    Twitter
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-menu-title">
+                                {{ site.data.languages[page.language]['help'] }}
+                            </li>
+                            <li>
+                                <a href="https://phalcon.link/forum"
+                                   target="_blank">
+                                    {{ site.data.languages[page.language]['forum'] }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://phalcon.link/api"
+                                   target="_blank">
+                                    {{ site.data.languages[page.language]['api'] }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://phalcon.link/discord"
+                                   target="_blank">
+                                    Discord
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://phalcon.link/so"
+                                   target="_blank">
+                                    Stack Overflow
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/{{ page.language }}/about" class="header-nav-link">
+                            {{ site.data.languages[page.language]['contribute'] }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/{{ page.language }}/sponsors" class="header-nav-link">
+                            {{ site.data.languages[page.language]['sponsors'] }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://phalcon.link/fund"
+                           class="header-nav-link">
+                            {{ site.data.languages[page.language]['support_us'] }}
+                        </a>
+                    </li>
+                    <li class="dropdown lang-wrapper">
+                        <a href="#" class="dropdown-toggle"
+                           data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">
+                            <img src="/assets/images/flags/{{ page.language }}.gif" alt="{{ page.language }}">
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu lang-dropdown" role="menu">
+                            <li role="presentation" class="dropdown-link">
+                                {% for lang in site.data.langs %}
+                                <a href="https://phalcon.io/{{ lang['code'] }}/"
+                                   class="flag-item flag-{{ lang['flag'] }}" tabindex="-1"
+                                   role="menuitem">
+                                    {{ site.data.languages[lang['code']]['language_text'] }}
+                                </a>
+                                {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

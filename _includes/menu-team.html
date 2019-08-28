@@ -1,0 +1,25 @@
+        <div class="row">
+            <ul class="nav nav-pills">
+                <li{% if page.title == 'about' %} class="active"{% endif %}>
+                    <a href="/{{ page.language }}/about">
+                        <span class="span-ul">
+                            {{ site.data.languages[page.language]['about'] }}
+                        </span>
+                    </a>
+                </li>
+                <li{% if page.title == 'team' %} class="active"{% endif %}>
+                    <a href="/{{ page.language }}/team">
+                        <span class="span-ul">
+                            {{ site.data.languages[page.language]['team'] }}
+                        </span>
+                    </a>
+                </li>
+                <li{% if page.title == 'testimonials' %} class="active"{% endif %}>
+                    <a href="/{{ page.language }}/testimonials">
+                        <span class="span-ul">
+                            {{ site.data.languages[page.language]['testimonials'] }}
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
