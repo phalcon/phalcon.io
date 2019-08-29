@@ -13,7 +13,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand phalcon-logo" href="/">
+                <a class="navbar-brand phalcon-logo" href="/{{ page.language }}">
                     <span itemprop="name"
                           class="sr-only">{{ site.app.title }}</span>
                 </a>
@@ -134,24 +134,7 @@
                             {{ site.data.languages[page.language]['support_us'] }}
                         </a>
                     </li>
-                    <li class="dropdown lang-wrapper">
-                        <a href="#" class="dropdown-toggle"
-                           data-toggle="dropdown" role="button"
-                           aria-haspopup="true" aria-expanded="false">
-                            <img src="/assets/images/flags/{{ page.language }}.gif" alt="{{ page.language }}">
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu lang-dropdown" role="menu">
-                            <li role="presentation" class="dropdown-link">
-                                {% for lang in site.data.langs %}
-                                <a href="https://phalcon.io/{{ lang['code'] }}/"
-                                   class="flag-item flag-{{ lang['flag'] }}" tabindex="-1"
-                                   role="menuitem">
-                                    {{ site.data.languages[lang['code']]['language_text'] }}
-                                </a>
-                                {% endfor %}
-                        </ul>
-                    </li>
+                    {% include menu-language.html %}
                 </ul>
             </div>
         </div>

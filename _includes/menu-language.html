@@ -1,0 +1,20 @@
+
+                    <li class="dropdown lang-wrapper">
+                        <a href="#" class="dropdown-toggle"
+                           data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">
+                            <img src="/assets/images/flags/{{ page.language }}.gif" alt="{{ page.language }}">
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu lang-dropdown" role="menu">
+                            <li role="presentation" class="dropdown-link">
+                                {% assign fromLink = '/' | append: page.language %}
+                                {% for lang in site.data.langs %}
+                                {% assign menuPage = page.permalink | replace: fromLink, '' %}
+                                <a href="https://phalcon.io/{{ lang['code'] }}{{ menuPage }}"
+                                   class="flag-item flag-{{ lang['flag'] }}" tabindex="-1"
+                                   role="menuitem">
+                                    {{ site.data.languages[lang['code']]['language_text'] }}
+                                </a>{% endfor %}
+                        </ul>
+                    </li>
