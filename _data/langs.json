@@ -1,134 +1,138 @@
 [
   {
-    "code": "ar",
+    "code": "ar-sa",
     "flag": "ar"
   },
   {
-    "code": "bg",
+    "code": "bg-bg",
     "flag": "bg"
   },
   {
-    "code": "ca",
+    "code": "ca-es",
     "flag": "ca"
   },
   {
-    "code": "cs",
+    "code": "cs-cz",
     "flag": "cs"
   },
   {
-    "code": "da",
+    "code": "da-dk",
     "flag": "da"
   },
   {
-    "code": "de",
+    "code": "de-de",
     "flag": "de"
   },
   {
-    "code": "el",
+    "code": "el-gr",
     "flag": "el"
   },
   {
-    "code": "en",
+    "code": "en-us",
     "flag": "en"
   },
   {
-    "code": "es",
+    "code": "es-es",
     "flag": "es"
   },
   {
-    "code": "fr",
+    "code": "fr-ir",
     "flag": "fr"
   },
   {
-    "code": "hu",
+    "code": "hu-hu",
     "flag": "hu"
   },
   {
-    "code": "hy",
+    "code": "hy-am",
     "flag": "hy"
   },
   {
-    "code": "id",
+    "code": "id-id",
     "flag": "id"
   },
   {
-    "code": "it",
+    "code": "it-it",
     "flag": "it"
   },
   {
-    "code": "ja",
+    "code": "ja-jp",
     "flag": "ja"
   },
   {
-    "code": "kk",
+    "code": "kk-kz",
     "flag": "kk"
   },
   {
-    "code": "km",
+    "code": "km-kh",
     "flag": "km"
   },
   {
-    "code": "ko",
+    "code": "ko-kr",
     "flag": "ko"
   },
   {
-    "code": "lt",
+    "code": "lt-lt",
     "flag": "lt"
   },
   {
-    "code": "lv",
+    "code": "lv-lv",
     "flag": "lv"
   },
   {
-    "code": "nl",
+    "code": "nl-nl",
     "flag": "nl"
   },
   {
-    "code": "no",
+    "code": "no-no",
     "flag": "no"
   },
   {
-    "code": "pl",
+    "code": "pl-pl",
     "flag": "pl"
   },
   {
-    "code": "pt",
+    "code": "pt-br",
     "flag": "pt"
   },
   {
-    "code": "ro",
+    "code": "pt-pt",
+    "flag": "pt"
+  },
+  {
+    "code": "ro-ro",
     "flag": "ro"
   },
   {
-    "code": "ru",
+    "code": "ru-ru",
     "flag": "ru"
   },
   {
-    "code": "sk",
+    "code": "sk-sk",
     "flag": "sk"
   },
   {
-    "code": "sv",
+    "code": "sv-se",
     "flag": "sv"
   },
   {
-    "code": "th",
+    "code": "th-th",
     "flag": "th"
   },
   {
-    "code": "tr",
+    "code": "tr-tr",
     "flag": "tr"
   },
   {
-    "code": "uk",
+    "code": "uk-ua",
     "flag": "uk"
   },
   {
-    "code": "vi",
+    "code": "vi-vn",
     "flag": "vi"
   },
   {
-    "code": "zh",
+    "code": "zh-cn",
     "flag": "zh-CN"
-  }
+  },
 ]
