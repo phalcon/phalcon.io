@@ -11,7 +11,7 @@
                                 {% assign fromLink = '/' | append: page.language %}
                                 {% for lang in site.data.langs %}
                                 {% assign menuPage = page.permalink | replace: fromLink, '' %}
-                                <a href="https://phalcon.io/{{ lang['code'] }}{{ menuPage }}"
+                                <a href="/{{ lang['code'] }}{{ menuPage }}"
                                    class="flag-item flag-{{ lang['flag'] }}" tabindex="-1"
                                    role="menuitem">
                                     {{ site.data.languages[lang['code']]['language_text'] }}
