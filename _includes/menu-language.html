@@ -3,19 +3,21 @@
                         <a href="#" class="dropdown-toggle"
                            data-toggle="dropdown" role="button"
                            aria-haspopup="true" aria-expanded="false">
-                            <img src="/assets/images/flags/{{ page.language }}.png"
+                            <img class="flag-item"
+                                 src="/assets/images/flags/{{ page.language }}.png"
                                  alt="{{ page.language }}">
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu lang-dropdown" role="menu">
                             <li role="presentation" class="dropdown-link">
                                 {% assign fromLink = '/' | append: page.language %}
-                                {% for lang in site.data.langs %}
+                                {% assign languageData = site.data.languages | sort %}
+                                {% for lang in languageData %}
                                 {% assign menuPage = page.permalink | replace: fromLink, '' %}
-                                <a href="/{{ lang['code'] }}{{ menuPage }}"
-                                   class="flag-item flag-{{ lang['flag'] }}" tabindex="-1"
+                                <a href="/{{ lang[0] }}{{ menuPage }}"
+                                   class="flag-item flag-{{ lang[0] }}" tabindex="-1"
                                    role="menuitem">
-                                    {{ site.data.languages[lang['code']]['language_text'] }}
+                                    {{ lang[1]['language_text'] }}
                                 </a>{% endfor %}
                         </ul>
                     </li>
