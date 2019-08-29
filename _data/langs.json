@@ -9,7 +9,7 @@
   },
   {
     "code": "ca",
-    "flag": "es"
+    "flag": "ca"
   },
   {
     "code": "cs",
@@ -17,7 +17,7 @@
   },
   {
     "code": "da",
-    "flag": "dk"
+    "flag": "da"
   },
   {
     "code": "de",
@@ -45,7 +45,7 @@
   },
   {
     "code": "hy",
-    "flag": "am"
+    "flag": "hy"
   },
   {
     "code": "id",
@@ -61,7 +61,7 @@
   },
   {
     "code": "kk",
-    "flag": "kz"
+    "flag": "kk"
   },
   {
     "code": "km",
@@ -109,7 +109,7 @@
   },
   {
     "code": "sv",
-    "flag": "se"
+    "flag": "sv"
   },
   {
     "code": "th",
@@ -121,14 +121,14 @@
   },
   {
     "code": "uk",
-    "flag": "ua"
+    "flag": "uk"
   },
   {
     "code": "vi",
-    "flag": "vn"
+    "flag": "vi"
   },
   {
     "code": "zh",
-    "flag": "zh"
+    "flag": "zh-CN"
   }
 ]
