@@ -1299,3 +1299,18 @@ ul.footer-links-list {
     padding: 3px 15px 3px 20px;
 }
 
+.dropdown-menu {
+    width: 185px;
+}
+
+div.menu-phalcon ul>li.dropdown>ul>li>a {
+    width: 100%;
+    padding: 2px 22px 2px 38px;
+}
+
+.flag-item {
+    background-size: contain;
+    background-position-y: 1px;
+    background-position-x: 6px;
+}
+
