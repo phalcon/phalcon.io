@@ -1314,3 +1314,9 @@ div.menu-phalcon ul>li.dropdown>ul>li>a {
     background-position-x: 6px;
 }
 
+li.dropdown.lang-wrapper > ul > li > a {
+    width: 100%;
+    padding: 2px 22px 2px 38px;
+    background-position: 6px 1px;
+}
+
