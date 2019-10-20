@@ -81,7 +81,7 @@
     "download_compilation": "Compilation",
     "download_compilation_1": "Στο Linux μπορείτε εύκολα να εγκαταστήσετε την επέκταση από τον πηγαίο κώδικα.",
     "download_compilation_11": "1. Για να δημιουργήσετε την επέκταση από τον πηγαίο κώδικα C ακολουθήστε τα εξής βήματα: ",
-    "download_compilation_12": "2. Προσθέστε την επέκταση στο φάκελο php.ini: ",
+    "download_compilation_12": "2. Add the extension to your php.ini. The actual path can be found at the end of the previous step output (look for the \"Installing shared extensions\"): ",
     "download_compilation_13": "3. Επανεκκινείστε τον webserver",
     "download_cpanel": "cPanel",
     "download_cpanel_1": "Μετά από αιτήματα από την κοινότητα, οι προγραμματιστές του cPanel κυκλοφόρησαν μια προσαρμοσμένη λειτουργική μονάδα που επιτρέπει την εγκατάσταση του Phalcon στις σελίδες φιλοξενείας που διαχειρίζονται με το cPanel. Πληροφορίες μπορούν να βρεθούν <a href=':1:'>εδώ</a>. Η λειτουργική μονάδα διατηρείται στο <a href=':2:'>Github</a>.",
