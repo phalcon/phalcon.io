@@ -81,7 +81,7 @@
     "download_compilation": "Compilation",
     "download_compilation_1": "On Linux you can easily compile and install the extension from source code.",
     "download_compilation_11": "1. To create the extension from C source follow these steps: ",
-    "download_compilation_12": "2. Add the extension to your php.ini: ",
+    "download_compilation_12": "2. Add the extension to your php.ini. The actual path can be found at the end of the previous step output (look for the \"Installing shared extensions\"): ",
     "download_compilation_13": "3. Finally, restart the webserver",
     "download_cpanel": "cPanel",
     "download_cpanel_1": "After requests from the community, the cPanel developers released a custom module that allows for installation of Phalcon in cPanel hosted sites. Information can be found <a href=':1:'>here</a>. The module is maintained in <a href=':2:'>Github</a>.",
