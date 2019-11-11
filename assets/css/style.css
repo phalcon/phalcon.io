@@ -1320,3 +1320,13 @@ li.dropdown.lang-wrapper > ul > li > a {
     background-position: 6px 1px;
 }
 
+.dropdown--community .dropdown-menu{
+    width: 160px;
+}
+
+.dropdown--community .dropdown-menu a{
+    padding: 2px 22px 2px 10px !important;
+}
+
+
+
