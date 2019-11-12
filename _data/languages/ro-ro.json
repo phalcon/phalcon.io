@@ -264,6 +264,7 @@
     "router_3": "Define a route",
     "router_description": "Phalcon\\Mvc\\Router provides advanced routing capabilities.",
     "see_for_yourself": "See for yourself...",
+    "search": "Search...",
     "sharding": "Sharding",
     "sharding_1": "Attach models to different databases",
     "sharding_2": "This service returns a MySQL database",
