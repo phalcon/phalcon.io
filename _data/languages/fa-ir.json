@@ -264,6 +264,7 @@
     "router_3": "تعریف یک مسیر",
     "router_description": "Phalcon\\Mvc\\Router قابلیت‌های پیشرفته مسیریابی را فراهم می‌کند.",
     "see_for_yourself": "خودتان ببینید...",
+    "search": "Search...",
     "sharding": "همگام‌سازی",
     "sharding_1": "اتصال مدل‌ها به پایگاه‌داده‌های مختلف",
     "sharding_2": "این سرویس یک پایگاه‌داده MySQL را باز می‌گرداند",
