@@ -96,31 +96,7 @@ layout: default
 
             <hr>
 
-            <div class="info-block">
-
-                <div class="info-block__content">
-                    <h2 class="info-block__title">
-                        {{ site.data.languages[page.language]['contributors'] }}
-                    </h2>
-
-                    <p>
-                        {{ site.data.languages[page.language]['contributors_description'] }}
-                    </p>
-
-                    <div class="contributors__list-wrap">
-                        <div class="contributors__list">
-                            {% for username in site.data.contributors %}
-                            <a title="{{ username }}"
-                               class="contributors__list-item"
-                               href="https://github.com/{{ username }}">
-                                <img src="/assets/images/contributors/{{ username }}.jpg"
-                                     alt="{{ username }}"/>
-                            </a>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include contributors.html %}
 
         </div>
     </div>
