@@ -295,7 +295,6 @@
     "support_reporting_a_bug": "Αναφορά Σφάλματος",
     "support_reporting_a_bug_0": "Αν εξακολουθείτε να πιστεύετε ότι αυτό που βρήκατε είναι ένα σφάλμα, παρακαλούμε <a href=':1:'>ανοίξτε ένα ζήτημα</a>",
     "support_reporting_a_bug_1": "Παρακαλούμε αναφέρετε bugs όταν έχετε εξαντλήσει όλες τις παραπάνω επιλογές, χρησιμοποιώντας την <a href=':1:'>αναφορά προβλημάτων</a> στο Github.",
-    "support_slack": "There is a less active but still functioning community on <a href=':1:'>Slack</a>",
     "support_stack_overflow": "Ένας άλλος τρόπος για ερωτήσεις είναι το <a href=':1:' target='_blank'>Stack Overflow</a> και προσθέστε το tag <a href=':2:'><code>phalcon</code></a>",
     "support_social_network_accounts": "Οι λογαριασμοί μας στο κοινωνικό δίκτυο είναι:",
     "support_us": "Υποστηρήξτε μας",
