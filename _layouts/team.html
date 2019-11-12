@@ -97,6 +97,7 @@ layout: default
             <hr>
 
             <div class="info-block">
+
                 <div class="info-block__content">
                     <h2 class="info-block__title">
                         {{ site.data.languages[page.language]['contributors'] }}
@@ -114,7 +115,8 @@ layout: default
                                href="https://github.com/{{ username }}">
                                 <img src="/assets/images/contributors/{{ username }}.jpg"
                                      alt="{{ username }}"/>
-                                {% endfor %}
+                            </a>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
