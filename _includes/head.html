@@ -4,7 +4,10 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width">
+    <meta name="MobileOptimized" content="320"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport min-width=320px" content="min-width=320, initial-scale=1.0" />
 
     <meta name="generator" content="{{ site.app.team }}">
     <meta name="application-name" content="{{ site.app.name }}">
@@ -110,22 +113,22 @@
     </script>
     <!-- End Google Analytics -->
 
+    <link rel="stylesheet" type="text/css" href="https://assets.phalcon.io/phalcon/css/core.css?v=123">
+    <script type="text/javascript" src="https://assets.phalcon.io/phalcon/js/core.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flexibility/2.0.1/flexibility.js"
+            integrity="sha256-ETXu4iIohKzvSucuk6Bv0DCdqiqaTTGeMsjZ72szPzM="
+            crossorigin="anonymous"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flexie/1.0.3/flexie.min.js"
+            integrity="sha256-cHhZibZLigFoz7MewE+8Rbv2lajCgQXd46dcUVBXYJI="
+            crossorigin="anonymous"></script>
+    <![endif]-->
 
-    <link rel="stylesheet" type="text/css"
-          href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" type="text/css"
-          href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css"
-          href="//fonts.googleapis.com/css?family=Open+Sans:700,400"/>
-    <link rel="stylesheet" type="text/css" href="/assets/css/flags.css"/>
-    {% if page.title != 'high_performance_php_framework' %}
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="/assets/css/phalconPage.css"/>
-    {% else %}
-    <link rel="stylesheet" type="text/css" href="/assets/css/highlight.js.css"/>
-    <link rel="stylesheet" type="text/css" href="/assets/css/phalcon.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
-    {% endif %}
     <title>
         {{ site.data.languages[page.language][page.title] }} - {{ site.app.title }}
     </title>

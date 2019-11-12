@@ -1,0 +1,211 @@
+        <div class="features__content">
+            <ul class="features-list">
+                <li class="features-list__item active">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['acl'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['acl_description'] }}
+                    </div>
+                </li>
+
+                <li class="features-list__item">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['sharding'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['sharding_description'] }}
+                    </div>
+                </li>
+
+                <li class="features-list__item">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['crypt'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['crypt_description'] }}
+                    </div>
+                </li>
+
+                <li class="features-list__item">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['events'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['events_description'] }}
+                    </div>
+                </li>
+            </ul>
+
+            <div class="feature active">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['acl'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['acl_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+use Phalcon\Acl;
+use Phalcon\Acl\Enum;
+use Phalcon\Acl\Role;
+use Phalcon\Acl\Adapter\Memory;
+
+// {{ site.data.languages[page.language]['acl_2'] }}
+$acl = new Memory();
+
+// {{ site.data.languages[page.language]['acl_3'] }}
+$acl->setDefaultAction(Enum::DENY);
+
+// {{ site.data.languages[page.language]['acl_4'] }}
+// {{ site.data.languages[page.language]['acl_5'] }}
+$roles = array(
+    'users'  => new Role('Users'),
+    'guests' => new Role('Guests')
+);
+
+foreach ($roles as $role) {
+    $acl->addRole($role);
+}
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+
+            <div class="feature">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['sharding'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['sharding_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+use Phalcon\Db\Adapter\Pdo\Mysql;
+use Phalcon\Db\Adapter\Pdo\PostgreSQL;
+
+// {{ site.data.languages[page.language]['sharding_2'] }}
+$container->set(
+    'dbMysql',
+    function () {
+        return new Mysql(
+            [
+                'host'     => 'localhost',
+                'username' => 'root',
+                'password' => 'secret',
+                'dbname'   => 'tutorial',
+            ]
+        );
+    }
+);
+
+// {{ site.data.languages[page.language]['sharding_3'] }}
+$container->set(
+    'dbPostgres',
+    function () {
+        return new PostgreSQL(
+            [
+                'host'     => 'localhost',
+                'username' => 'postgres',
+                'password' => '',
+                'dbname'   => 'invo',
+            ]
+        );
+    }
+);
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['encryption'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['encryption_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+use Phalcon\Crypt;
+
+$crypt = new Crypt();
+
+$key  = '{{ site.data.languages[page.language]['encryption_2'] }}';
+$text = '{{ site.data.languages[page.language]['encryption_3'] }}';
+
+$encrypted = $crypt->encrypt($text, $key);
+
+echo $crypt->decrypt($encrypted, $key);
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['events_management'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['events_management_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Events\Manager;
+
+$container->set(
+    'dispatcher',
+    function () {
+        // {{ site.data.languages[page.language]['events_management_2'] }}
+        $manager = new Manager();
+
+        // {{ site.data.languages[page.language]['events_management_3'] }}
+        // {{ site.data.languages[page.language]['events_management_6'] }}
+        $manager->attach(
+            'dispatch:beforeExecuteRoute',
+            new SecurityPlugin
+        );
+
+        // {{ site.data.languages[page.language]['events_management_4'] }}
+        // {{ site.data.languages[page.language]['events_management_7'] }}
+        $manager->attach(
+            'dispatch:beforeException',
+            new NotFoundPlugin
+        );
+
+        $dispatcher = new Dispatcher();
+
+        // {{ site.data.languages[page.language]['events_management_5'] }}
+        // {{ site.data.languages[page.language]['events_management_8'] }}
+        $dispatcher
+            ->setEventsManager($manager);
+
+        return $dispatcher;
+    }
+);
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+
+

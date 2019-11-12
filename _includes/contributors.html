@@ -1,65 +1,39 @@
-<section>
-    <div class="container">
-        <div class="white-bg">
+<section class="contributors">
+    <div class="contributors__top">
+        <div>
+            <div class="contibutors__title">
+                {{ site.data.languages[page.language]['contributors'] }}
+            </div>
 
-            <!-- Section Heading -->
-            <h2>
-                {{ site.data.languages[page.language]['join_our_community'] }}
-            </h2>
-            <p>
-                {{ site.data.languages[page.language]['join_our_community_description'] }}
-            </p>
-            <br>
-            <div class="clearfix">
-
-                <!-- Benefit1 -->
-                <div class="col-md-4 community">
-                    <a href="https://phalcon.link/forum">
-                        <div class="benifit-icon">
-                            <img alt=""
-                                 src="/assets/images/chat.png"
-                                 width="60"
-                                 height="60">
-                        </div>
-                        <h3>
-                            {{ site.data.languages[page.language]['forum'] }}
-                        </h3>
-                    </a>
-                </div>
-
-                <div class="col-md-4 community">
-                    <a href="https://phalcon.link/github">
-                        <div class="benifit-icon">
-                            <img alt=""
-                                 src="/assets/images/github_black.png"
-                                 width="60"
-                                 height="60"
-                                 style="border-radius: 25px;">
-                        </div>
-                        <h3>
-                            GitHub
-                        </h3>
-                    </a>
-                </div>
-                <!-- /End Benefit1 -->
-
-                <!-- Benefit2 -->
-                <div class="col-md-4 community">
-                    <a href="https://stackoverflow.com/questions/tagged/phalcon">
-                        <div class="benifit-icon">
-                            <img alt=""
-                                 src="/assets/images/stackoverflow.png"
-                                 width="60"
-                                 height="60"
-                                 style="border-radius: 25px;">
-                        </div>
-                        <h3>
-                            Stack Overflow
-                        </h3>
-                    </a>
-                </div>
-                <!-- /End Benefit2 -->
+            <div class="contibutors__descr">
+                {{ site.data.languages[page.language]['contributors_description'] }}
             </div>
         </div>
+
+        <a href="/about" class="green-button-light">
+            {{ site.data.languages[page.language]['contribute'] }}
+        </a>
+    </div>
+
+    <div class="contributors__list-wrap">
+        <div class="contributors__list">
+            {% for username in site.data.contributors %}
+            <a title="{{ username }}"
+               class="contributors__list-item"
+               href="https://github.com/{{ username }}">
+                <img src="/assets/images/contributors/{{ username }}.jpg"
+                     alt="{{ username }}"/>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="contributors__mobile">
+        <a href="https://github.com/phalcon/cphalcon/graphs/contributors" class="black-button">
+            {{ site.data.languages[page.language]['contributors'] }}
+        </a>
+
+        <a href="/about" class="black-button">
+            {{ site.data.languages[page.language]['contribute'] }}
+        </a>
     </div>
 </section>

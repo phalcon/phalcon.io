@@ -1,0 +1,262 @@
+        <div class="features__content active">
+            <ul class="features-list">
+                <li class="features-list__item active">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['low_overhead'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['low_overhead_description'] }}
+                    </div>
+                </li>
+
+                <li class="features-list__item">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['mvc_hmvc'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['mvc_hmvc_description'] }}
+                    </div>
+                </li>
+
+                <li class="features-list__item">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['dependency_injection'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['dependency_injection_description'] }}
+                    </div>
+                </li>
+
+                <li class="features-list__item">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['rest'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['rest_description'] }}
+                    </div>
+                </li>
+
+                <li class="features-list__item">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['autoloader'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['autoloader_description'] }}
+                    </div>
+                </li>
+
+                <li class="features-list__item">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['router'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['router_description'] }}
+                    </div>
+                </li>
+            </ul>
+
+            <div class="feature active">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['low_overhead'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['low_overhead_title'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <ul>
+                        <li>
+                            {{ site.data.languages[page.language]['low_overhead_1'] }}
+                        </li>
+                        <li>
+                            {{ site.data.languages[page.language]['low_overhead_2'] }}
+                        </li>
+                        <li>
+                            {{ site.data.languages[page.language]['low_overhead_3'] }}
+                        </li>
+                        <li>
+                            {{ site.data.languages[page.language]['low_overhead_4'] }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['mvc'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['mvc_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+single/
+    app/
+        controllers/
+        models/
+        views/
+    public/
+        css/
+        img/
+        js/
+
+                        </code>
+                    </pre>
+
+                    <pre>
+                        <code class="php hljs">
+multiple/
+     apps/
+       frontend/
+          controllers/
+          models/
+          views/
+          Module.php
+       backend/
+          controllers/
+          models/
+          views/
+          Module.php
+       public/
+       ../
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+
+            <div class="feature">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['dependency_injection'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['dependency_injection_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+// {{ site.data.languages[page.language]['dependency_injection_2'] }}
+$di = new Phalcon\DI();
+
+// {{ site.data.languages[page.language]['dependency_injection_3'] }}
+$di->set("request", new Phalcon\Http\Request());
+
+..
+
+// {{ site.data.languages[page.language]['dependency_injection_4'] }}
+$request = $di->getShared('request');
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['restful_services'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['restful_services_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+use Phalcon\Mvc\Micro;
+
+$app = new Micro();
+
+// {{ site.data.languages[page.language]['restful_services_2'] }}
+$app->get(
+    '/check/status',
+    function () {
+        return $this
+            ->response
+            ->setJsonContent(
+                [
+                    'status' => 'important',
+                ]
+            )
+        ;
+    }
+);
+
+$app->handle();
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['auto_loader'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['auto_loader_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+use Phalcon\Loader;
+
+// {{ site.data.languages[page.language]['auto_loader_2'] }}
+$loader = new Loader();
+
+// {{ site.data.languages[page.language]['auto_loader_3'] }}
+$loader->registerNamespaces(
+    [
+       'Example\Base'    => 'vendor/example/base/',
+       'Example\Adapter' => 'vendor/example/adapter/',
+       'Example'         => 'vendor/example/',
+    ]
+);
+
+// {{ site.data.languages[page.language]['auto_loader_4'] }}
+$loader->register();
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['router'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['router_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+// {{ site.data.languages[page.language]['router_2'] }}
+$router = new \Phalcon\Mvc\Router();
+
+// {{ site.data.languages[page.language]['router_3'] }}
+$router->add(
+   '/admin/users/my-profile',
+   [
+       'controller' => 'users',
+       'action'     => 'profile',
+   ]
+);
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,33 @@
+        <nav class="features-nav">
+            <div class="container container--short">
+                <ul class="features-nav__list">
+                    <li class="active">
+                        <span>
+                            {{ site.data.languages[page.language]['basic_features'] }}
+                        </span>
+                        <hr>
+                    </li>
+                    <li>
+                        <span>
+                            {{ site.data.languages[page.language]['data_and_storage'] }}
+                        </span>
+                        <hr>
+                    </li>
+                    <li>
+                        <span>
+                            {{ site.data.languages[page.language]['views_and_frontend'] }}
+                        </span>
+                        <hr>
+                    </li>
+                    <li>
+                        <span>
+                            {{ site.data.languages[page.language]['more'] }}
+                        </span>
+                        <hr>
+                    </li>
+                </ul>
+                <a href="/about" class="green-button-light">
+                    {{ site.data.languages[page.language]['contribute'] }}
+                </a>
+            </div>
+        </nav>

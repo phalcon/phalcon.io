@@ -27,6 +27,7 @@ exclude:
   - README.md
   - serve
   - boxfile.yml
+  - gen-contributors.php
 
 
 

@@ -1,44 +1,49 @@
 ---
-layout: page
+layout: default
 ---
 
-<section class="download">
-    <div class="container">
-        {% include menu-download.html %}
+<div class="wrapper">
+    <div class="info info--about">
+        <div class="container">
+            {% include menu-download.html %}
+            <hr>
 
-        <div class="alert alert-warning">
-            {{ site.data.languages[page.language]['download_windows_note'] }}
+            <div class="alert alert-warning">
+                {{ site.data.languages[page.language]['download_windows_note'] }}
+            </div>
+
+            <h3>{{ site.data.languages[page.language]['download_windows_download'] }}</h3>
+
+            <p>
+                {{ site.data.languages[page.language]['download_windows_dlls'] | replace: ':1:', 'https://github.com/phalcon/cphalcon/releases/latest' }}
+            </p>
+
+            <br>
+
+            <h3>{{ site.data.languages[page.language]['download_windows_installation'] }}</h3>
+
+            <p>{{ site.data.languages[page.language]['download_windows_installation_1'] | replace: ':1:', 'https://docs.phalcon.io/3.4/en/installation#windows' }}</p>
+            <div class="feature__code">
+                <pre><code class="ini hljs">extension=php_phalcon.dll</code></pre>
+            </div>
+
+            <br/><br/>
+
+            <h3>{{ site.data.languages[page.language]['download_windows_guides'] }}</h3>
+
+            <p>
+            <ul class="dash-list">
+                <li>
+                    <a href="https://docs.phalcon.io/en/3.4/webserver-xampp">
+                        {{ site.data.languages[page.language]['download_windows_guides_xampp'] }}
+                    </a>
+                </li>
+                <li>
+                    <a href="https://docs.phalcon.io/en/3.4/webserver-wamp">
+                        {{ site.data.languages[page.language]['download_windows_guides_wamp'] }}
+                    </a>
+                </li>
+            </ul>
         </div>
-
-        <h3>{{ site.data.languages[page.language]['download_windows_download'] }}</h3>
-
-        <p>
-            {{ site.data.languages[page.language]['download_windows_dlls'] | replace: ':1:', 'https://github.com/phalcon/cphalcon/releases/latest' }}
-        </p>
-
-        <br>
-
-        <h3>{{ site.data.languages[page.language]['download_windows_installation'] }}</h3>
-
-        <p>{{ site.data.languages[page.language]['download_windows_installation_1'] | replace: ':1:', 'https://docs.phalcon.io/3.4/en/installation#windows' }}</p>
-        <pre class="language-ini"><code>extension=php_phalcon.dll</code></pre>
-
-        <br/><br/>
-
-        <h3>{{ site.data.languages[page.language]['download_windows_guides'] }}</h3>
-
-        <p>
-        <ul class="dash-list">
-            <li>
-                <a href="https://docs.phalcon.io/en/3.4/webserver-xampp">
-                    {{ site.data.languages[page.language]['download_windows_guides_xampp'] }}
-                </a>
-            </li>
-            <li>
-                <a href="https://docs.phalcon.io/en/3.4/webserver-wamp">
-                    {{ site.data.languages[page.language]['download_windows_guides_wamp'] }}
-                </a>
-            </li>
-        </ul>
     </div>
-</section>
+</div>

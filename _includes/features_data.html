@@ -1,0 +1,204 @@
+        <div class="features__content">
+            <ul class="features-list">
+                <li class="features-list__item active">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['orm'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['orm_description'] }}
+                    </div>
+                </li>
+
+                <li class="features-list__item">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['phql'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['phql_description'] }}
+                    </div>
+                </li>
+
+                <li class="features-list__item">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['transactions'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['transactions_description'] }}
+                    </div>
+                </li>
+
+                <li class="features-list__item">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['cache'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['cache_description'] }}
+                    </div>
+                </li>
+            </ul>
+
+            <div class="feature active">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['orm'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['orm_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+use Invoices;
+use Phalcon\Mvc\Model;
+
+class Customers extends Model
+{
+    public $cst_id;
+
+    public $cst_name;
+
+    public function initialize()
+    {
+        $this->hasMany(
+            'cst_id',
+            Invoices::class,
+            'inv_cst_id'
+        );
+    }
+}
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+
+            <div class="feature">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['phql'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['phql_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+$phql  = 'SELECT * '
+       . 'FROM Formula\Cars '
+       . 'ORDER BY Formula\Cars.name';
+$query = $manager->createQuery($phql);
+
+$phql  = 'SELECT Formula\Cars.name '
+       . 'FROM Formula\Cars '
+       . 'ORDER BY Formula\Cars.name';
+$query = $manager->createQuery($phql);
+
+$phql  = 'SELECT c.name '
+       . 'FROM Formula\Cars c '
+       . 'ORDER BY c.name';
+$query = $manager->createQuery($phql);
+
+$phql = 'SELECT c.* '
+      . 'FROM Cars AS c '
+      . 'ORDER BY c.name';
+$cars = $manager->executeQuery($phql);
+
+foreach ($cars as $car) {
+    echo "Name: ", $car->name, "\n";
+}
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['transactions'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['transactions_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+use Phalcon\Mvc\Model\Transaction\Failed;
+use Phalcon\Mvc\Model\Transaction\Manager;
+
+try {
+
+    // {{ site.data.languages[page.language]['transactions_2'] }}
+    $manager = new Manager();
+
+    // {{ site.data.languages[page.language]['transactions_3'] }}
+    $transaction = $manager->get();
+
+    // {{ site.data.languages[page.language]['transactions_4'] }}
+    $invoices = Invoices::find(
+        'inv_cst_id = 123'
+    );
+
+    foreach ($invoices as $invoice) {
+        $invoice->setTransaction($transaction);
+        if ($invoice->delete() == false) {
+            // {{ site.data.languages[page.language]['transactions_5'] }}
+            foreach ($invoice->getMessages() as $message) {
+                $transaction
+                    ->rollback($message->getMessage());
+            }
+        }
+    }
+
+    // {{ site.data.languages[page.language]['transactions_6'] }}
+    $transaction->commit();
+
+    echo "{{ site.data.languages[page.language]['transactions_7'] }}";
+
+} catch (Failed $e) {
+    echo "{{ site.data.languages[page.language]['transactions_8'] }} ", $e->getMessage();
+}
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['cache'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['cache_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+use Phalcon\Cache;
+use Phalcon\Cache\AdapterFactory;
+use Phalcon\Storage\Serializer\SerializerFactory;
+
+$serializerFactory = new SerializerFactory();
+$adapterFactory    = new AdapterFactory($serializerFactory);
+
+$options = [
+    'defaultSerializer' => 'Json',
+    'lifetime'          => 7200
+];
+
+$adapter = $adapterFactory
+    ->newInstance('apcu', $options);
+
+$cache = new Cache($adapter);
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </div>

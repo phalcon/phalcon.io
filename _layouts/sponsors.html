@@ -1,29 +1,31 @@
 ---
-layout: page
+layout: default
 ---
 
-<section class="hosting">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10">
+<div class="wrapper">
+    <div class="info">
+        <div class="container">
+            <div>
                 <p>
                     {{ site.data.languages[page.language]['sponsors_description_1'] }}
                 </p>
-            </div>
-            <div class="col-lg-2">
-                <a href="https://phalcon.link/fund">
+                <a href="https://phalcon.io/fund">
                     <button class="btn button-small btn-danger">
                         {{ site.data.languages[page.language]['support_us'] }}
                     </button>
                 </a>
             </div>
-        </div>
-        <hr/>
-        <div class="row" id="sponsors-page">
-            <div class="col-lg-12">
+
+            <hr>
+
+            <div class="info-block__content">
                 <h3>
                     {{ site.data.languages[page.language]['sponsors_and_supporters_upper'] }}
                 </h3>
+                <a href="https://www.pdffiller.com/" target="_blank">
+                    <img width="240px"
+                         src="https://assets.phalcon.io/phalcon/images/backers/pdffiller-164x34.svg" alt="Pdffiller">
+                </a>
                 <a href="https://mctekk.com/phalcon" target="_blank">
                     <img width="240px"
                          src="https://assets.phalcon.io/phalcon/images/backers/mctekk-149x34.svg"  alt="Mctekk">
@@ -48,12 +50,7 @@ layout: page
                 <a href="https://crowdin.com/" target="_blank">
                     <img width="240px" src="https://assets.phalcon.io/phalcon/images/backers/crowdin.png" alt="Crowdin">
                 </a>
-                <a href="https://www.uptrends.com" target="_blank" title="Uptrends Web Application Monitoring">
-                    <img width="240px" src="https://assets.phalcon.io/phalcon/images/backers/uptrends-200x60.svg" alt="Uptrends Web Application Monitoring">
-                </a>
             </div>
         </div>
-
-        <div class="hr"></div>
     </div>
-</section>
+</div>

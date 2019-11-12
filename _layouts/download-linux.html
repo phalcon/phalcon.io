@@ -1,70 +1,73 @@
 ---
-layout: page
+layout: default
 ---
 
-<section class="team">
-    <div class="container">
-        {% include menu-download.html %}
+<div class="wrapper">
+    <div class="info info--about">
+        <div class="container">
+            {% include menu-download.html %}
+            <hr>
 
-        <div class="note">
-            {{ site.data.languages[page.language]['download_note'] }}
-        </div>
-        <h2>
-            {{ site.data.languages[page.language]['download_ubuntu_or_debian'] }}
-        </h2>
-        <p>
-            {{ site.data.languages[page.language]['download_ubuntu'] }}
-        </p>
+            <p>
+                {{ site.data.languages[page.language]['download_note'] }}
+            </p>
 
-        <div class="highlight1">
-            <pre><code class="bash">curl -s "https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh" | sudo bash
+            <h2>
+                {{ site.data.languages[page.language]['download_ubuntu_or_debian'] }}
+            </h2>
+            <p>
+                {{ site.data.languages[page.language]['download_ubuntu'] }}
+            </p>
+
+            <div class="feature__code">
+                <pre><code class="bash hljs">curl -s "https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh" | sudo bash
 
 sudo apt-get install php5-phalcon
 
 # Ubuntu 16.04+, Debian 9+
 sudo apt-get install php7.0-phalcon</code></pre>
-        </div>
+            </div>
 
-        <p>
-            {{ site.data.languages[page.language]['download_ubuntu_2'] }}
-        </p>
-        <div class="highlight1">
-            <pre><code class="bash">sudo apt-add-repository ppa:phalcon/legacy</code></pre>
-        </div>
-        <p>
-            {{ site.data.languages[page.language]['download_ubuntu_1'] }}
-        </p>
-        <div class="highlight1">
-            <pre><code class="bash"># Ubuntu 14.04+
+            <p>
+                {{ site.data.languages[page.language]['download_ubuntu_2'] }}
+            </p>
+            <div class="feature__code">
+                <pre><code class="bash hljs">sudo apt-add-repository ppa:phalcon/legacy</code></pre>
+            </div>
+            <p>
+                {{ site.data.languages[page.language]['download_ubuntu_1'] }}
+            </p>
+            <div class="feature__code">
+                <pre><code class="bash hljs"># Ubuntu 14.04+
 sudo apt-get install software-properties-common
 
 # Ubuntu 12.04
 sudo apt-get install python-software-properties</code></pre>
-        </div>
+            </div>
 
-        <h2>
-            {{ site.data.languages[page.language]['download_compilation'] }}
-        </h2>
+            <h2>
+                {{ site.data.languages[page.language]['download_compilation'] }}
+            </h2>
 
-        <p>
-            {{ site.data.languages[page.language]['download_compilation_1'] }}
-        </p>
+            <p>
+                {{ site.data.languages[page.language]['download_compilation_1'] }}
+            </p>
 
-        <h3>
-            {{ site.data.languages[page.language]['download_requirements'] }}
-        </h3>
+            <h3>
+                {{ site.data.languages[page.language]['download_requirements'] }}
+            </h3>
 
-        <p class="strong">
-            {{ site.data.languages[page.language]['download_requirements_1'] }}
-        </p>
+            <p class="strong">
+                {{ site.data.languages[page.language]['download_requirements_1'] }}
+            </p>
 
-        <ul>
-            <li>{{ site.data.languages[page.language]['download_requirements_2'] }}</li>
-            <li>{{ site.data.languages[page.language]['download_requirements_3'] }}</li>
-        </ul>
+            <ul>
+                <li>{{ site.data.languages[page.language]['download_requirements_2'] }}</li>
+                <li>{{ site.data.languages[page.language]['download_requirements_3'] }}</li>
+            </ul>
 
-        <div class="highlight1">
-            <pre><code class="bash"># Ubuntu
+            <div class="feature__code">
+                <pre><code class="bash hljs"># Ubuntu
 sudo apt-get install php5-dev php5-mysql gcc libpcre3-dev
 
 # Fedora
@@ -84,92 +87,102 @@ brew install php5x php5x-phalcon # php55, php56, ...
 
 # macOS (MacPorts)
 sudo port install php73-phalcon # php72, php71, php56, ...</code></pre>
-        </div>
+            </div>
 
-        <h3>
-            {{ site.data.languages[page.language]['download_compilation'] }}
-        </h3>
+            <h3>
+                {{ site.data.languages[page.language]['download_compilation'] }}
+            </h3>
 
-        <p>
-            {{ site.data.languages[page.language]['download_compilation_11'] }}
-        </p>
+            <p>
+                {{ site.data.languages[page.language]['download_compilation_11'] }}
+            </p>
 
-        <p>
-        <pre><code class="bash">git clone --depth=1 "git://github.com/phalcon/cphalcon.git"
+            <div class="feature__code">
+                <pre><code class="bash hljs">git clone --depth=1 "git://github.com/phalcon/cphalcon.git"
 cd cphalcon/build
 sudo ./install</code></pre>
-        </p>
+            </div>
 
-        <p>
-            {{ site.data.languages[page.language]['download_compilation_12'] }}
-        </p>
-        <pre><code class="ini">extension=phalcon.so</code></pre>
-        <p>
-            {{ site.data.languages[page.language]['download_compilation_13'] }}
-        </p>
+            <p>
+                {{ site.data.languages[page.language]['download_compilation_12'] }}
+            </p>
+            <div class="feature__code">
+                <pre><code class="ini">extension=phalcon.so</code></pre>
+            </div>
+            <p>
+                {{ site.data.languages[page.language]['download_compilation_13'] }}
+            </p>
 
-        <h2>
-            {{ site.data.languages[page.language]['download_arch'] }}
-        </h2>
+            <h2>
+                {{ site.data.languages[page.language]['download_arch'] }}
+            </h2>
 
-        <p>
-            {{ site.data.languages[page.language]['download_arch_1'] | replace: ':1:', 'https://aur.archlinux.org/packages/php-phalcon/' }}
-        </p>
+            <p>
+                {{ site.data.languages[page.language]['download_arch_1'] | replace: ':1:', 'https://aur.archlinux.org/packages/php-phalcon/' }}
+            </p>
 
-        <h2>{{ site.data.languages[page.language]['download_opensuse'] }}</h2>
+            <h2>{{ site.data.languages[page.language]['download_opensuse'] }}</h2>
 
-        <p>
-            {{ site.data.languages[page.language]['download_opensuse_1'] | replace: ':1:', 'https://software.opensuse.org/package/php5-phalcon' | replace: ':2:', 'https://github.com/mruz' }}
-        </p>
+            <p>
+                {{ site.data.languages[page.language]['download_opensuse_1'] | replace: ':1:', 'https://software.opensuse.org/package/php5-phalcon' | replace: ':2:', 'https://github.com/mruz' }}
+            </p>
 
-        <h2>
-            {{ site.data.languages[page.language]['download_freebsd'] }}
-        </h2>
+            <h2>
+                {{ site.data.languages[page.language]['download_freebsd'] }}
+            </h2>
 
-        <p>
-            {{ site.data.languages[page.language]['download_freebsd_1'] }}
-        </p>
-        <pre><code class="bash">pkg_add -r phalcon</code></pre>
-        <p>{{ site.data.languages[page.language]['or'] }}</p>
-        <pre><code class="bash">cd /usr/ports/www/phalcon && make install clean</code></pre>
+            <p>
+                {{ site.data.languages[page.language]['download_freebsd_1'] }}
+            </p>
+            <div class="feature__code">
+                <pre><code class="bash hljs">pkg_add -r phalcon</code></pre>
+            </div>
 
-        <h2>
-            {{ site.data.languages[page.language]['download_cpanel'] }}
-        </h2>
+            <p>{{ site.data.languages[page.language]['or'] }}</p>
+            <div class="feature__code">
+                <pre><code class="bash hljs">cd /usr/ports/www/phalcon && make install clean</code></pre>
+            </div>
 
-        <p>
-            {{ site.data.languages[page.language]['download_cpanel_1'] | replace: ':1:', 'https://documentation.cpanel.net/display/EA/Custom+Modules' | replace: ':2:', 'https://github.com/thecpaneladmin/EA-PhalconPHP' }}
-        </p>
+            <h2>
+                {{ site.data.languages[page.language]['download_cpanel'] }}
+            </h2>
 
-        <h2>
-            {{ site.data.languages[page.language]['download_dependencies'] }}
-        </h2>
+            <p>
+                {{ site.data.languages[page.language]['download_cpanel_1'] | replace: ':1:', 'https://documentation.cpanel.net/display/EA/Custom+Modules' | replace: ':2:', 'https://github.com/thecpaneladmin/EA-PhalconPHP' }}
+            </p>
 
-        <p>
-            {{ site.data.languages[page.language]['download_dependencies_1'] }}
-        </p>
-        <ul>
-            <li>mbstring</li>
-            <li>mcrypt</li>
-            <li>openssl</li>
-            <li>PDO</li>
-            <li>PDO/Mysql</li>
-            <li>PDO/Postgresql</li>
-            <li>PDO/Sqlite</li>
-            <li>PDO/Oracle</li>
-            <li>Mongo</li>
-        </ul>
-        <p>
-            {{ site.data.languages[page.language]['download_dependencies_2'] }}
-        </p>
+            <h2>
+                {{ site.data.languages[page.language]['download_dependencies'] }}
+            </h2>
 
-        <h2>
-            {{ site.data.languages[page.language]['download_need_helo'] }}
-        </h2>
+            <p>
+                {{ site.data.languages[page.language]['download_dependencies_1'] }}
+            </p>
+            <ul>
+                <li>mbstring</li>
+                <li>mcrypt</li>
+                <li>openssl</li>
+                <li>PDO</li>
+                <li>PDO/Mysql</li>
+                <li>PDO/Postgresql</li>
+                <li>PDO/Sqlite</li>
+                <li>PDO/Oracle</li>
+                <li>Mongo</li>
+            </ul>
+            <p>
+                {{ site.data.languages[page.language]['download_dependencies_2'] }}
+            </p>
 
-        <p>
-            {% assign link = '/' | append: page.language | append: '/support' %}
-            {{ site.data.languages[page.language]['download_need_help_1'] | replace: ':1:', link }}
-        </p>
+            <h2>
+                {{ site.data.languages[page.language]['download_need_helo'] }}
+            </h2>
+
+            <p>
+                {% assign link = '/' | append: page.language | append: '/support' %}
+                {{ site.data.languages[page.language]['download_need_help_1'] | replace: ':1:', link }}
+            </p>
+
+        </div>
     </div>
-</section>
+</div>
+

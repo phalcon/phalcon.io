@@ -1,0 +1,260 @@
+        <div class="features__content">
+            <ul class="features-list">
+                <li class="features-list__item active">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['template_engines'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['template_engines_description'] }}
+                    </div>
+                </li>
+
+                <li class="features-list__item">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['template_engine_volt'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['template_engine_volt_description'] }}
+                    </div>
+                </li>
+
+                <li class="features-list__item">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['i18n'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['i18n_description'] }}
+                    </div>
+                </li>
+
+                <li class="features-list__item">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['forms_builder'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['forms_builder_description'] }}
+                    </div>
+                </li>
+
+                <li class="features-list__item">
+                    <div class="features-list__item-title">
+                        {{ site.data.languages[page.language]['flash_messages'] }}
+                    </div>
+
+                    <div class="features-list__item-descr">
+                        {{ site.data.languages[page.language]['flash_messages_description'] }}
+                    </div>
+                </li>
+            </ul>
+
+            <div class="feature active">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['template_engines'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['template_engines_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre>
+                        <code class="html hljs">
+&lt;html&gt;
+    &lt;body&gt;
+    &lt;div class=&#039;top&#039;&gt;
+        &lt;?php $this-&gt;partial(&#039;shared/ad_banner&#039;); ?&gt;
+    &lt;/div&gt;
+    &lt;div class=&#039;content&#039;&gt;
+        &lt;h1&gt;Robots&lt;/h1&gt;
+        &lt;p&gt;
+            Check out our specials for robots:
+        &lt;/p&gt;
+        ...
+    &lt;/div&gt;
+    &lt;div class=&#039;footer&#039;&gt;
+        &lt;?php $this-&gt;partial(&#039;shared/footer&#039;); ?&gt;
+    &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+
+            <div class="feature">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['template_engine_volt'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['template_engine_volt_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+{% raw %}{# app/views/products/show.volt #}
+{% block last_products %}
+{% for prod in products %}
+    * Name: {{ prod.name|e }}
+    {% if prod.status == &#039;Active&#039; %}
+       Price: {{ prod.price + prod.taxes/100}}
+    {% endif  %}
+{% endfor  %}
+{% endblock %}{% endraw %}
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['i18n'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['i18n_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre><code class="php hljs">// app/messages/en.php
+$messages = [
+    'hi'      => 'Hello',
+    'bye'     => 'Good Bye',
+    'hi-name' => 'Hello %name%',
+    'song'    => 'This song is %song%'
+];
+
+// app/messages/es.php
+$messages = [
+    'hi'      => 'Hola',
+    'bye'     => 'Adiós',
+    'hi-name' => 'Hola %name%',
+    'song'    => 'Esta canción es %song%'
+];
+
+use Phalcon\Mvc\Controller;
+use Phalcon\Translate\Adapter\NativeArray;
+
+// UserController.php
+class UserController extends Controller
+{
+    protected function getTranslation()
+    {
+        // {{ site.data.languages[page.language]['i18n_2'] }}
+        $language = $this
+            ->request
+            ->getBestLanguage();
+
+        // {{ site.data.languages[page.language]['i18n_3'] }}
+        $fileName = 'app/messages/'
+                  . $language
+                  . '.php';
+        if (file_exists($fileName) {
+            require $fileName;
+        } else {
+            // {{ site.data.languages[page.language]['i18n_4'] }}
+            require 'app/messages/en.php';
+        }
+
+        // {{ site.data.languages[page.language]['i18n_5'] }}
+        return new NativeArray(
+            array(
+                'content' => $messages
+            )
+        );
+    }
+
+    public function indexAction()
+    {
+        $this->view->name = 'Mike';
+
+        $this->view->t = $this
+            ->getTranslation();
+    }
+}
+// user.volt
+&lt;p&gt;&lt;?php echo $t->_('hi'), ' ', $name; ?&gt;&lt;/p&gt;
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['forms_builder'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['forms_builder_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+use Phalcon\Forms\Form;
+use Phalcon\Forms\Element\Text;
+use Phalcon\Forms\Element\Select;
+
+$form = new Form();
+
+$form->add(new Text('name'));
+
+$form->add(new Text('telephone'));
+
+$form->add(
+    new Select(
+        'telephoneType',
+        array(
+            'H' => 'Home',
+            'C' => 'Cellphone'
+        )
+    )
+);
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature__title">
+                    {{ site.data.languages[page.language]['flash_messages'] }}
+                </div>
+
+                <div class="feature__descr">
+                    {{ site.data.languages[page.language]['flash_messages_1'] }}
+                </div>
+
+                <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+use Phalcon\Mvc\Controller;
+
+class PostsController extends Controller
+{
+    public function saveAction()
+    {
+        $this->flash->error(
+            '{{ site.data.languages[page.language]['flash_messages_2'] }}'
+        );
+        $this->flash->success(
+            '{{ site.data.languages[page.language]['flash_messages_3'] }}'
+        );
+        $this->flash->notice(
+            '{{ site.data.languages[page.language]['flash_messages_4'] }}'
+        );
+        $this->flash->warning(
+            '{{ site.data.languages[page.language]['flash_messages_5'] }}'
+        );
+    }
+}
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </div>

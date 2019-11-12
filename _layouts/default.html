@@ -1,35 +1,15 @@
-<!doctype html>
-<!--[if IE 8]>
-<html lang="{{ page.language }}" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]>
-<html lang="{{ page.language }}" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="{{ page.language }}" class="no-js">
-<!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IE 6]>		<html id="section-reco_main" class="nojs ie6 ieb7 ieb8 ieb9 ieb10 split1 nosplit5 platform-PC platform-notouch"><![endif]-->
+<!--[if IE 7]>		<html id="section-reco_main" class="nojs iea6 ie7 ieb8 ieb9 ieb10 split1 nosplit5 platform-PC platform-notouch"><![endif]-->
+<!--[if IE 8]>		<html id="section-reco_main" class="nojs iea6 iea7 ie8 ieb9 ieb10 split1 nosplit5 platform-PC platform-notouch"><![endif]-->
+<!--[if IE 9]>		<html id="section-reco_main" class="nojs iea6 iea7 iea8 ie9 ieb10 split1 nosplit5 platform-PC platform-notouch"><![endif]-->
+
 {% include head.html %}
+
 <body>
-
-<ul class="bg-slideshow">
-    <li><span></span></li>
-    <li><span></span></li>
-    <li><span></span></li>
-    <li><span></span></li>
-    <li><span></span></li>
-    <li><span></span></li>
-</ul>
-
 {% include header.html %}
-{% include advertised.html %}
-{% include sponsors.html %}
-{% include features1.html %}
-{% include features2.html %}
-{% include features3.html %}
-{% include features4.html %}
-{% include design.html %}
-{% include contributors.html %}
-{% include contributors-ribbon.html %}
+{{ content }}
 {% include footer.html %}
 {% include footer-js.html %}
-
 </body>
 </html>

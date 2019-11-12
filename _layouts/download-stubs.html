@@ -1,22 +1,25 @@
 ---
-layout: page
+layout: default
 ---
 
-<section class="team">
-    <div class="container">
-        {% include menu-download.html %}
+<div class="wrapper">
+    <div class="info info--about">
+        <div class="container">
+            {% include menu-download.html %}
+            <hr>
 
-        <h2>
-            {{ site.data.languages[page.language]['download_ide_stubs'] }}
-        </h2>
-        <p>
-            {{ site.data.languages[page.language]['download_ide_stubs_1'] }}
-        </p>
-        <div align="center">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h2>
+                {{ site.data.languages[page.language]['download_ide_stubs'] }}
+            </h2>
+            <p>
+                {{ site.data.languages[page.language]['download_ide_stubs_1'] }}
+            </p>
+            <div align="center">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
-</section>
+</div>
 
 
 

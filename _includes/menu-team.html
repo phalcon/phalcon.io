@@ -1,25 +1,21 @@
-        <div class="row">
-            <ul class="nav nav-pills">
+            <ul class="buildwith-nav__list">
                 <li{% if page.title == 'about' %} class="active"{% endif %}>
                     <a href="/{{ page.language }}/about">
-                        <span class="span-ul">
-                            {{ site.data.languages[page.language]['about'] }}
-                        </span>
+                        {{ site.data.languages[page.language]['about'] }}
                     </a>
+                    <hr>
                 </li>
                 <li{% if page.title == 'team' %} class="active"{% endif %}>
                     <a href="/{{ page.language }}/team">
-                        <span class="span-ul">
-                            {{ site.data.languages[page.language]['team'] }}
-                        </span>
+                        {{ site.data.languages[page.language]['team'] }}
                     </a>
+                    <hr>
                 </li>
+
                 <li{% if page.title == 'testimonials' %} class="active"{% endif %}>
                     <a href="/{{ page.language }}/testimonials">
-                        <span class="span-ul">
-                            {{ site.data.languages[page.language]['testimonials'] }}
-                        </span>
+                        {{ site.data.languages[page.language]['testimonials'] }}
                     </a>
+                    <hr>
                 </li>
             </ul>
-        </div>

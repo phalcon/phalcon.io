@@ -1,0 +1,81 @@
+<section class="base-info">
+    <div class="container">
+        <div class="base-info__left">
+            <h1 class="base-info__title">
+                {{ site.data.languages[page.language]['header_tagline'] }}
+            </h1>
+
+            <div class="base-info-descr">
+                <div class="base-info-descr__first">
+                    {{ site.data.languages[page.language]['header_slogan'] }}
+                </div>
+
+                <hr class="base-info-descr__devider">
+
+                <div class="base-info-descr__second">
+                    {{ site.data.languages[page.language]['header_description'] }}
+                </div>
+            </div>
+
+            <div class="base-info__buttons">
+                <a href="/download/linus" class="green-button">
+                    {{ site.data.languages[page.language]['get_phalcon'] }}
+                </a>
+                <a href="https://phalcon.io/fund" class="green-button">
+                    {{ site.data.languages[page.language]['support_us'] }}
+                </a>
+            </div>
+        </div>
+
+        <div class="base-info__right">
+            <div class="base-info-features">
+                <div class="base-info-features__list-wrap">
+                    <div class="base-info-features__title">
+                        {{ site.data.languages[page.language]['features'] }}
+                        Feautures
+                    </div>
+                    <ul class="base-info-features__list">
+                        <li>
+                            {{ site.data.languages[page.language]['low_overhead'] }}
+                        </li>
+                        <li>
+                            {{ site.data.languages[page.language]['orm'] }}
+                        </li>
+                        <li>
+                            {{ site.data.languages[page.language]['phql'] }}
+                        </li>
+                        <li>
+                            {{ site.data.languages[page.language]['transactions'] }}
+                        </li>
+                        <li>
+                            {{ site.data.languages[page.language]['cache'] }}
+                        </li>
+                        <li>
+                            {{ site.data.languages[page.language]['views_and_frontend'] }}
+                        </li>
+                        <li>
+                            {{ site.data.languages[page.language]['template_engines'] }}
+                        </li>
+                        <li>
+                            {{ site.data.languages[page.language]['template_engine_volt'] }}
+                        </li>
+                        <li>
+                            {{ site.data.languages[page.language]['i18n'] }}
+                        </li>
+                        <li>
+                            {{ site.data.languages[page.language]['forms_builder'] }}
+                        </li>
+                        <li>
+                            {{ site.data.languages[page.language]['flash_messages'] }}
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="base-info-features__img">
+                    <img src="https://assets.phalcon.io/phalcon/images/features.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

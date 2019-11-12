@@ -31,20 +31,20 @@ A big thank you to [our Backers](https://github.com/phalcon/cphalcon/blob/master
 * [Contributing to Phalcon](CONTRIBUTING.md) 
 * [Official Documentation](https://docs.phalconphp.com/)
 * [Zephir](https://zephir-lang.com/) - The language Phalcon is written on
-* [Incubator](https://phalcon.link/incubator) - Community driven plugins and classes extending the framework (written in PHP)
+* [Incubator](https://phalcon.io/incubator) - Community driven plugins and classes extending the framework (written in PHP)
 
 ### Support
-* [Forum](https://phalcon.link/forum)
-* [Discord](https://phalcon.link/discord)
-* [Stack Overflow](https://phalcon.link/so)
+* [Forum](https://phalcon.io/forum)
+* [Discord](https://phalcon.io/discord)
+* [Stack Overflow](https://phalcon.io/so)
 
 ### Social Media
-* [Telegram](https://phalcon.link/telegram)
-* [Gab](https://phalcon.link/gab)
-* [Parler](https://phalcon.link/parler)
-* [MeWe](https://phalcon.link/mewe)
-* [Facebook](https://phalcon.link/fb)
-* [Twitter](https://phalcon.link/t)
+* [Telegram](https://phalcon.io/telegram)
+* [Gab](https://phalcon.io/gab)
+* [Parler](https://phalcon.io/parler)
+* [MeWe](https://phalcon.io/mewe)
+* [Facebook](https://phalcon.io/fb)
+* [Twitter](https://phalcon.io/t)
 
 
 ## Sponsors

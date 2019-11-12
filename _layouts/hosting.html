@@ -1,276 +1,289 @@
 ---
-layout: page
+layout: default
 ---
 
-<section class="hosting">
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-12">
+<div class="wrapper">
+    <div class="info">
+        <div class="container">
+            <p>
                 {{ site.data.languages[page.language]['hosting_description'] }}
+            </p>
+            <hr>
+
+            <div class="info-block">
+                <div class="info-block__img">
+                    <img src='/assets/images/hosting/amazon-gray.png'
+                         title="{{ site.data.languages[page.language]['hosting_amazon_ec2_title'] }}"
+                         alt="{{ site.data.languages[page.language]['hosting_amazon_ec2_title'] }}"/>
+                </div>
+                <div class="info-block__content">
+                    <h2 class="info-block__title">
+                        <a target="_blank" href="https://aws.amazon.com/">
+                            {{ site.data.languages[page.language]['hosting_amazon_ec2_title'] }}
+                        </a>
+                    </h2>
+
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_amazon_ec2_1'] }}
+                    </p>
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_amazon_ec2_2'] | replace: ':1:', 'https://aws.amazon.com/ec2/' }}
+                    </p>
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_install_instructions'] }}
+                    </p>
+                </div>
             </div>
-        </div>
-        <hr/>
-        <!-- Amazon EC2 -->
-        <div class="row">
-            <div class="col-lg-3">
-                <img src='/assets/images/hosting/amazon-gray.png'
-                     title="{{ site.data.languages[page.language]['hosting_amazon_ec2_title'] }}"
-                     alt="{{ site.data.languages[page.language]['hosting_amazon_ec2_title'] }}"/>
+
+            <div class="info-block">
+                <div class="info-block__img">
+                    <img src='/assets/images/hosting/aspnix-logo.png'
+                         title="{{ site.data.languages[page.language]['hosting_aspnix_title'] }}"
+                         alt="{{ site.data.languages[page.language]['hosting_aspnix_title'] }}"/>
+                </div>
+                <div class="info-block__content">
+                    <h2 class="info-block__title">
+                        <a target="_blank" href="https://www.aspnix.com/">
+                            {{ site.data.languages[page.language]['hosting_aspnix_title'] }}
+                        </a>
+                    </h2>
+
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_aspnix_1'] | replace: ':1:', 'https://www.aspnix.com/' }}
+                    </p>
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_aspnix_2'] | replace: ':1:', 'https://www.aspnix.com/kb/sales-kb/what-php-extensions-are-supported-on-windows-shared-hosting' }}
+                    </p>
+                </div>
             </div>
-            <div class="col-lg-9">
-                <h4>
-                    <a target="_blank" href="https://aws.amazon.com/">
-                        {{ site.data.languages[page.language]['hosting_amazon_ec2_title'] }}
-                    </a>
-                </h4>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_amazon_ec2_1'] }}
-                </p>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_amazon_ec2_2'] | replace: ':1:', 'https://aws.amazon.com/ec2/' }}
-                </p>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_install_instructions'] }}
-                </p>
+
+            <div class="info-block">
+                <div class="info-block__img">
+                    <img src='/assets/images/hosting/digital-ocean-gray.png'
+                         title="{{ site.data.languages[page.language]['hosting_digital_ocean_title'] }}"
+                         alt="{{ site.data.languages[page.language]['hosting_digital_ocean_title'] }}"/>
+                </div>
+                <div class="info-block__content">
+                    <h2 class="info-block__title">
+                        <a target="_blank" href="https://www.digitalocean.com/">
+                            {{ site.data.languages[page.language]['hosting_digital_ocean_title'] }}
+                        </a>
+                    </h2>
+
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_digital_ocean_1']  | replace: ':1:', 'https://www.digitalocean.com/' }}
+                    </p>
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_install_instructions'] }}
+                    </p>
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_digital_ocean_2']  | replace: ':1:', 'https://www.digitalocean.com/community/articles/how-to-install-and-get-started-with-phalcon-on-an-ubuntu-12-04-vps' }}
+                    </p>
+                </div>
             </div>
-        </div>
-        <!-- ASPnix -->
-        <div class="row">
-            <div class="col-lg-3">
-                <img src='/assets/images/hosting/aspnix-logo.png'
-                     title="{{ site.data.languages[page.language]['hosting_aspnix_title'] }}"
-                     alt="{{ site.data.languages[page.language]['hosting_aspnix_title'] }}"/>
+
+            <div class="info-block">
+                <div class="info-block__img">
+                    <img src='/assets/images/hosting/dct-host.png'
+                         title="{{ site.data.languages[page.language]['hosting_dcthost_title'] }}"
+                         alt="{{ site.data.languages[page.language]['hosting_dcthost_title'] }}"
+                         width='220px'/>
+                </div>
+                <div class="info-block__content">
+                    <h2 class="info-block__title">
+                        <a target="_blank"
+                           href='https://dct.host/website-hosting?utm_source=phalcon&utm_medium=image&utm_campaign=image'>
+                            {{ site.data.languages[page.language]['hosting_dcthost_title'] }}
+                        </a>
+                    </h2>
+
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_dcthost_1'] | replace: ':1:', 'https://dct.host/website-hosting?utm_source=phalcon&utm_medium=image&utm_campaign=image' }}
+                    </p>
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_dcthost_2'] }}
+                    </p>
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_install_instructions'] }}
+                    </p>
+                </div>
             </div>
-            <div class="col-lg-9">
-                <h4>
-                    <a target="_blank" href='https://www.aspnix.com/'>
-                        {{ site.data.languages[page.language]['hosting_aspnix_title'] }}
-                    </a>
-                </h4>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_aspnix_1'] | replace: ':1:', 'https://www.aspnix.com/' }}
-                </p>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_aspnix_2'] | replace: ':1:', 'https://www.aspnix.com/kb/sales-kb/what-php-extensions-are-supported-on-windows-shared-hosting' }}
-                </p>
+
+            <div class="info-block">
+                <div class="info-block__img">
+                    <img src='/assets/images/hosting/fortrabbit-gray.png'
+                         title="{{ site.data.languages[page.language]['hosting_fortrabbit_title'] }}"
+                         alt="{{ site.data.languages[page.language]['hosting_fortrabbit_title'] }}"/>
+                </div>
+                <div class="info-block__content">
+                    <h2 class="info-block__title">
+                        <a target="_blank" href="http://fortrabbit.com/">
+                            {{ site.data.languages[page.language]['hosting_fortrabbit_title'] }}
+                        </a>
+                    </h2>
+
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_fortrabbit_1'] }}
+                    </p>
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_fortrabbit_title'] | replace: ':1:', 'http://fortrabbit.com/docs/how-to/php/available-php-extensions' }}
+                    </p>
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_fortrabbit_3'] }}
+                    </p>
+                </div>
             </div>
-        </div>
-        <!-- Digital Ocean -->
-        <div class="row">
-            <div class="col-lg-3">
-                <img src='/assets/images/hosting/digital-ocean-gray.png'
-                     title="{{ site.data.languages[page.language]['hosting_digital_ocean_title'] }}"
-                     alt="{{ site.data.languages[page.language]['hosting_digital_ocean_title'] }}"/>
+
+            <div class="info-block">
+                <div class="info-block__img">
+                    <img src='/assets/images/hosting/kinghost-gray.png'
+                         title="{{ site.data.languages[page.language]['hosting_kinghost_title'] }}"
+                         alt="{{ site.data.languages[page.language]['hosting_kinghost_title'] }}" />
+                </div>
+                <div class="info-block__content">
+                    <h2 class="info-block__title">
+                        <a target="_blank" href='http://kingho.st/phalcon-kinghost'>
+                            {{ site.data.languages[page.language]['hosting_kinghost_title'] }}
+                        </a>
+                    </h2>
+
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_kinghost_1'] }}
+                    </p>
+                </div>
             </div>
-            <div class="col-lg-9">
-                <h4>
-                    <a target="_blank" href='https://www.digitalocean.com/'>
-                        {{ site.data.languages[page.language]['hosting_digital_ocean_title'] }}
-                    </a>
-                </h4>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_digital_ocean_1']  | replace: ':1:', 'https://www.digitalocean.com/' }}
-                </p>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_install_instructions'] }}
-                </p>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_digital_ocean_2']  | replace: ':1:', 'https://www.digitalocean.com/community/articles/how-to-install-and-get-started-with-phalcon-on-an-ubuntu-12-04-vps' }}
-                </p>
+
+            <div class="info-block">
+                <div class="info-block__img">
+                    <img src='/assets/images/hosting/layershift-gray.png'
+                         title="{{ site.data.languages[page.language]['hosting_layershift_title'] }}"
+                         alt="{{ site.data.languages[page.language]['hosting_layershift_title'] }}"/>
+                </div>
+                <div class="info-block__content">
+                    <h2 class="info-block__title">
+                        <a target="_blank" href='http://www.layershift.com'>
+                            {{ site.data.languages[page.language]['hosting_layershift_title'] }}
+                        </a>
+                    </h2>
+
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_layershift_1'] }}
+                    </p>
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_layershift_2'] | replace: ':1:', 'http://kb.layershift.com/jelastic-install-phalcon-php-framework' }}
+                    </p>
+                </div>
             </div>
-        </div>
-        <!-- DCT Host -->
-        <div class="row">
-            <div class="col-lg-3">
-                <img src='/assets/images/hosting/dct-host.png'
-                     title="{{ site.data.languages[page.language]['hosting_dcthost_title'] }}"
-                     alt="{{ site.data.languages[page.language]['hosting_dcthost_title'] }}"
-                     width='220px'/>
+
+            <div class="info-block">
+                <div class="info-block__img">
+                    <img src='/assets/images/hosting/linode-gray.png'
+                         title="{{ site.data.languages[page.language]['hosting_linode_title'] }}"
+                         alt="{{ site.data.languages[page.language]['hosting_linode_title'] }}"/>
+                </div>
+                <div class="info-block__content">
+                    <h2 class="info-block__title">
+                        <a target="_blank" href='https://www.linode.com/'>
+                            {{ site.data.languages[page.language]['hosting_linode_title'] }}
+                        </a>
+                    </h2>
+
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_linode_title'] | replace: ':1:', 'https://www.linode.com/' }}
+                    </p>
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_install_instructions'] }}
+                    </p>
+                </div>
             </div>
-            <div class="col-lg-9">
-                <h4>
-                    <a target="_blank"
-                       href='https://dct.host/website-hosting?utm_source=phalcon&utm_medium=image&utm_campaign=image'>
-                        {{ site.data.languages[page.language]['hosting_dcthost_title'] }}
-                    </a>
-                </h4>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_dcthost_1'] | replace: ':1:', 'https://dct.host/website-hosting?utm_source=phalcon&utm_medium=image&utm_campaign=image' }}
-                </p>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_dcthost_2'] }}
-                </p>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_install_instructions'] }}
-                </p>
+
+            <div class="info-block">
+                <div class="info-block__img">
+                    <img src='/assets/images/hosting/mediasecure-gray.png'
+                         title="{{ site.data.languages[page.language]['hosting_mediasecure_title'] }}"
+                         alt="{{ site.data.languages[page.language]['hosting_mediasecure_title'] }}" style='margin-top: 13px'/>
+
+                </div>
+                <div class="info-block__content">
+                    <h2 class="info-block__title">
+                        <a target="_blank" href='https://www.mediasecure.org/'>
+                            {{ site.data.languages[page.language]['hosting_mediasecure_title'] }}
+                        </a>
+                    </h2>
+
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_mediasecure_1'] | replace: ':1:', 'https://www.mediasecure.org/' }}
+                    </p>
+                </div>
             </div>
-        </div>
-        <!-- Fortrabbit -->
-        <div class="row">
-            <div class="col-lg-3">
-                <img src='/assets/images/hosting/fortrabbit-gray.png'
-                     title="{{ site.data.languages[page.language]['hosting_fortrabbit_title'] }}"
-                     alt="{{ site.data.languages[page.language]['hosting_fortrabbit_title'] }}"/>
+
+            <div class="info-block">
+                <div class="info-block__img">
+                    <img src='/assets/images/hosting/rackspace-gray.png'
+                         title="{{ site.data.languages[page.language]['hosting_rackspace_title'] }}"
+                         alt="{{ site.data.languages[page.language]['hosting_rackspace_title'] }}"/>
+                </div>
+                <div class="info-block__content">
+                    <h2 class="info-block__title">
+                        <a target="_blank"
+                           href='http://www.rackspace.com/cloud/servers/'>
+                            {{ site.data.languages[page.language]['hosting_rackspace_title'] }}
+                        </a>
+                    </h2>
+
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_rackspace_1'] | replace: ':1:', 'http://www.rackspace.com/cloud/servers/' }}
+                    </p>
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_install_instructions'] }}
+                    </p>
+                </div>
             </div>
-            <div class="col-lg-9">
-                <h4>
-                    <a target="_blank" href='http://fortrabbit.com/'>
-                        {{ site.data.languages[page.language]['hosting_fortrabbit_title'] }}
-                    </a>
-                </h4>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_fortrabbit_1'] }}
-                </p>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_fortrabbit_title'] | replace: ':1:', 'http://fortrabbit.com/docs/how-to/php/available-php-extensions' }}
-                </p>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_fortrabbit_3'] }}
-                </p>
+
+            <div class="info-block">
+                <div class="info-block__img">
+                    <img src='/assets/images/hosting/webfaction-gray.png'
+                         title="{{ site.data.languages[page.language]['hosting_webfaction_title'] }}"
+                         alt="{{ site.data.languages[page.language]['hosting_webfaction_title'] }}"/>
+
+                </div>
+                <div class="info-block__content">
+                    <h2 class="info-block__title">
+                        <a target="_blank" href="https://webfaction.com/">
+                            {{ site.data.languages[page.language]['hosting_webfaction_title'] }}
+                        </a>
+                    </h2>
+
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_webfaction_1'] }}
+                    </p>
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_webfaction_2'] | replace: ':1:', 'http://community.webfaction.com/questions/13689/phalcon-php' }}
+                    </p>
+                </div>
             </div>
-        </div>
-        <!-- KingHost -->
-        <div class="row">
-            <div class="col-lg-3">
-                <img src='/assets/images/hosting/kinghost-gray.png'
-                     title="{{ site.data.languages[page.language]['hosting_kinghost_title'] }}"
-                     alt="{{ site.data.languages[page.language]['hosting_kinghost_title'] }}" />
-            </div>
-            <div class="col-lg-9">
-                <h4>
-                    <a target="_blank" href='http://kingho.st/phalcon-kinghost'>
-                        {{ site.data.languages[page.language]['hosting_kinghost_title'] }}
-                    </a>
-                </h4>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_kinghost_1'] }}
-                </p>
-            </div>
-        </div>
-        <!-- Layershift -->
-        <div class="row">
-            <div class="col-lg-3">
-                <img src='/assets/images/hosting/layershift-gray.png'
-                     title="{{ site.data.languages[page.language]['hosting_layershift_title'] }}"
-                     alt="{{ site.data.languages[page.language]['hosting_layershift_title'] }}"/>
-            </div>
-            <div class="col-lg-9">
-                <h4>
-                    <a target="_blank" href='http://www.layershift.com'>
-                        {{ site.data.languages[page.language]['hosting_layershift_title'] }}
-                    </a>
-                </h4>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_layershift_1'] }}
-                </p>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_layershift_2'] | replace: ':1:', 'http://kb.layershift.com/jelastic-install-phalcon-php-framework' }}
-                </p>
-            </div>
-        </div>
-        <!-- Linode -->
-        <div class="row">
-            <div class="col-lg-3">
-                <img src='/assets/images/hosting/linode-gray.png'
-                     title="{{ site.data.languages[page.language]['hosting_linode_title'] }}"
-                     alt="{{ site.data.languages[page.language]['hosting_linode_title'] }}"/>
-            </div>
-            <div class="col-lg-9">
-                <h4>
-                    <a target="_blank" href='https://www.linode.com/'>
-                        {{ site.data.languages[page.language]['hosting_linode_title'] }}
-                    </a>
-                </h4>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_linode_title'] | replace: ':1:', 'https://www.linode.com/' }}
-                </p>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_install_instructions'] }}
-                </p>
-            </div>
-        </div>
-        <!-- Mediasecure -->
-        <div class="row">
-            <div class="col-lg-3">
-                <img src='/assets/images/hosting/mediasecure-gray.png'
-                     title="{{ site.data.languages[page.language]['hosting_mediasecure_title'] }}"
-                     alt="{{ site.data.languages[page.language]['hosting_mediasecure_title'] }}" style='margin-top: 13px'/>
-            </div>
-            <div class="col-lg-9">
-                <h4>
-                    <a target="_blank" href='https://www.mediasecure.org/'>
-                        {{ site.data.languages[page.language]['hosting_mediasecure_title'] }}
-                    </a>
-                </h4>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_mediasecure_1'] | replace: ':1:', 'https://www.mediasecure.org/' }}
-                </p>
-            </div>
-        </div>
-        <!-- Rackspace -->
-        <div class="row">
-            <div class="col-lg-3">
-                <img src='/assets/images/hosting/rackspace-gray.png'
-                     title="{{ site.data.languages[page.language]['hosting_rackspace_title'] }}"
-                     alt="{{ site.data.languages[page.language]['hosting_rackspace_title'] }}"/>
-            </div>
-            <div class="col-lg-9">
-                <h4>
-                    <a target="_blank"
-                       href='http://www.rackspace.com/cloud/servers/'>
-                        {{ site.data.languages[page.language]['hosting_rackspace_title'] }}
-                    </a>
-                </h4>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_rackspace_1'] | replace: ':1:', 'http://www.rackspace.com/cloud/servers/' }}
-                </p>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_install_instructions'] }}
-                </p>
-            </div>
-        </div>
-        <!-- WebFaction -->
-        <div class="row">
-            <div class="col-lg-3">
-                <img src='/assets/images/hosting/webfaction-gray.png'
-                     title="{{ site.data.languages[page.language]['hosting_webfaction_title'] }}"
-                     alt="{{ site.data.languages[page.language]['hosting_webfaction_title'] }}"/>
-            </div>
-            <div class="col-lg-9">
-                <h4>
-                    <a target="_blank" href="https://webfaction.com/">
-                        {{ site.data.languages[page.language]['hosting_webfaction_title'] }}
-                    </a>
-                </h4>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_webfaction_1'] }}
-                </p>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_webfaction_2'] | replace: ':1:', 'http://community.webfaction.com/questions/13689/phalcon-php' }}
-                </p>
-            </div>
-        </div>
-        <!-- Windows Azure -->
-        <div class="row">
-            <div class="col-lg-3">
-                <img src='/assets/images/hosting/azure-gray.jpg'
-                     title="{{ site.data.languages[page.language]['hosting_azure_title'] }}"
-                     alt="{{ site.data.languages[page.language]['hosting_azure_title'] }}"/>
-            </div>
-            <div class="col-lg-9">
-                <h4>
-                    <a target="_blank" href="https://www.windowsazure.com">
-                        {{ site.data.languages[page.language]['hosting_azure_title'] }}
-                    </a>
-                </h4>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_azure_1'] | replace: ':1:', 'https://www.windowsazure.com' }}
-                </p>
-                <p>
-                    {{ site.data.languages[page.language]['hosting_azure_2'] | replace: ':1:', 'http://www.sitepoint.com/phalcon-windows-azure/' }}
-                </p>
+
+            <div class="info-block">
+                <div class="info-block__img">
+                    <img src='/assets/images/hosting/azure-gray.jpg'
+                         title="{{ site.data.languages[page.language]['hosting_azure_title'] }}"
+                         alt="{{ site.data.languages[page.language]['hosting_azure_title'] }}"/>
+                </div>
+                <div class="info-block__content">
+                    <h2 class="info-block__title">
+                        <a target="_blank" href="https://www.windowsazure.com">
+                            {{ site.data.languages[page.language]['hosting_azure_title'] }}
+                        </a>
+                    </h2>
+
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_azure_1'] | replace: ':1:', 'https://www.windowsazure.com' }}
+                    </p>
+                    <p>
+                        {{ site.data.languages[page.language]['hosting_azure_2'] | replace: ':1:', 'http://www.sitepoint.com/phalcon-windows-azure/' }}
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-</section>
+</div>

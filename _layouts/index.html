@@ -1,0 +1,115 @@
+---
+layout: default
+---
+
+{% include jumbo.html %}
+{% include sponsors.html %}
+
+<section class="features">
+    {% include features_base.html %}
+
+    <div class="features__mobile">
+        <ul class="features-accordion">
+            <li class="active">
+                <div class="features-accordion__trigger">Basic feautures</div>
+
+                <div class="features-accordion__content">
+                    <div class="features-slider">
+                        <div class="features-slider__nav">
+                            <div class="features-slider__nav-item">
+                                Low overhead
+                            </div>
+
+                            <div class="features-slider__nav-item">
+                                MVC & HMVC
+                            </div>
+
+                            <div class="features-slider__nav-item">
+                                Dependency Injection
+                            </div>
+
+                            <div class="features-slider__nav-item">
+                                Rest
+                            </div>
+
+                            <div class="features-slider__nav-item">
+                                Autoloader
+                            </div>
+
+                            <div class="features-slider__nav-item">
+                                Router
+                            </div>
+                        </div>
+                        <div class="features-slider__content">
+                            <div>
+                                <div class="features-slider__descr">
+                                    Register namespaces, prefixes, directories or classes. Take advantage of the autoloader events and maintain full control over what files are loaded and from where.
+                                </div>
+                                <div class="features-slider__example feature__code">
+<pre><code class="php hljs"><span class="hljs-keyword">use</span> <span class="hljs-title">Phalcon</span>\<span class="hljs-title">Loader</span>;
+
+<span class="hljs-comment">// Creates the autoloader</span>
+<span class="hljs-variable">$loader</span> = <span class="hljs-keyword">new</span> Loader();
+
+<span class="hljs-comment">// Register some namespaces</span>
+<span class="hljs-variable">$loader</span>-&gt;registerNamespaces(
+[
+   <span class="hljs-string">'Example\Base'</span>    =&gt; <span class="hljs-string">'vendor/example/base/'</span>,
+   <span class="hljs-string">'Example\Adapter'</span> =&gt; <span class="hljs-string">'vendor/example/adapter/'</span>,
+   <span class="hljs-string">'Example'</span>         =&gt; <span class="hljs-string">'vendor/example/'</span>,
+]
+);
+
+<span class="hljs-comment">// Register autoloader</span>
+<span class="hljs-variable">$loader</span>-&gt;register();
+</code>
+</pre>
+                                </div>
+                            </div>
+
+                            <div>Some content...</div>
+
+                            <div>Some content...</div>
+
+                            <div>Some content...</div>
+
+                            <div>Some content...</div>
+
+                            <div>Some content...</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <div class="features-accordion__trigger">Data&Storage</div>
+
+                <div class="features-accordion__content">
+                    Some content...
+                </div>
+            </li>
+
+            <li>
+                <div class="features-accordion__trigger">Views&Frontend</div>
+
+                <div class="features-accordion__content">
+                    Some content...
+                </div>
+            </li>
+
+            <li>
+                <div class="features-accordion__trigger">Basic feautures</div>
+
+                <div class="features-accordion__content">
+                    Some content...
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<div class="container container--short">
+    {% include design.html %}
+    {% include join.html %}
+    {% include contributors.html %}
+</div>
