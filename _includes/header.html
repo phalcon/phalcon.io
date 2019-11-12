@@ -9,9 +9,6 @@
 
                 <div class="header__logo">
                     <a href="/{{ page.language }}"></a>
-<!--                    <div class="header__sitename">-->
-<!--                        Website-->
-<!--                    </div>-->
                 </div>
 
                 <ul class="header-nav">
@@ -154,7 +151,9 @@
                         </li>
 
                         <li>
-                            <a href="https://phalcon.io/fund">{{ site.data.languages[page.language]['support_us'] }}</a>
+                            <a href="https://phalcon.io/fund">
+                                {{ site.data.languages[page.language]['support_us'] }}
+                            </a>
                         </li>
 
                         <li class="extendable extended">
@@ -177,8 +176,9 @@
 
             <div class="header__right">
                 {% include menu-language.html %}
-
-                <input type="text" class="header__search" placeholder="Search...">
+                <input id="searchinput" type="text"
+                       class="header__search"
+                       placeholder="{{ site.data.languages[page.language]['search'] }}">
                 <div class="header__github">
                     <a href="#">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
