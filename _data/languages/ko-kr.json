@@ -264,6 +264,7 @@
     "router_3": "라우트 정의",
     "router_description": "Phalcon\\Mvc\\Router는 고급 라우팅 기능을 제공합니다.",
     "see_for_yourself": "직접 확인하세요...",
+    "search": "Search...",
     "sharding": "샤딩",
     "sharding_1": "모델을 다른 데이터베이스에 연결",
     "sharding_2": "이 서비스는 MySQL 데이터베이스를 반환합니다.",
