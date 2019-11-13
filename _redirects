@@ -43,6 +43,7 @@
 /vi/*                                    /vi-vn/:splat
 /zh/*                                    /zh-cn/:splat
 
+/:lang/download                          /:lang/download/linux
 
 /about                                   /en/about
 /api                                     https://docs.phalcon.io/latest/en/api
