@@ -9,16 +9,15 @@
     <meta name="HandheldFriendly" content="true"/>
     <meta name="viewport min-width=320px" content="min-width=320, initial-scale=1.0" />
 
-    <meta name="generator" content="{{ site.app.team }}">
+    <meta name="generator" content="Jekyll">
     <meta name="application-name" content="{{ site.app.name }}">
     <meta name="description" content="{{ site.app.description }}">
     <meta name="keyword" content="{{ site.app.keywords }}">
-    <meta name="publisher" content="{{ site.app.team }}">
 
     <meta http-equiv="x-dns-prefetch-control" content="off">
 
     <meta property="og:url" content="{{ site.url }}">
-    <meta property="og:locale" content="{{ page.language }}">
+    <meta property="og:locale" content="{{ page.language | replace: "-", "_" }}">
     <meta property="og:type" content="object">
     <meta property="og:title" content="{{ site.data.languages[page.language][page.title] }} - {{ site.app.title }}">
     <meta property="og:description" content="{{ site.app.description }}">
@@ -95,7 +94,6 @@
           sizes="196x196"
           href="https://assets.phalcon.io/phalcon/favicons/favicon-196x196.png">
     <link rel="shortcut icon"
-          type="image/png"
           href="https://assets.phalcon.io/phalcon/favicons/favicon.ico"/>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
@@ -108,7 +106,6 @@
         }
 
         gtag('js', new Date());
-
         gtag('config', '{{ site.app.analytics }}');
     </script>
     <!-- End Google Analytics -->
