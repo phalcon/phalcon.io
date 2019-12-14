@@ -23,16 +23,17 @@ algolia:
 include:
   - _pages
   - _redirects
-
+  
+# Exclude these files from your production _site
 exclude:
-  - vendor
   - Gemfile
   - Gemfile.lock
   - LICENSE
   - README.md
+  - vendor
   - serve
   - boxfile.yml
   - gen-contributors.php
-
+  - updateData.php
 
 

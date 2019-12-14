@@ -1,3 +1,3 @@
 [build]
-  command = "jekyll build && jekyll algolia"
+  command = "php updateData.php && jekyll build --incremental"
   publish = "_site/"
