@@ -6,7 +6,13 @@
         var algoliaConfig = {
             index_name: '{{ site.algolia.index_name }}',
             application_id: '{{ site.algolia.application_id }}',
-            search_only_api_key: '{{ site.algolia.search_only_api_key }}'
+            search_only_api_key: '{{ site.algolia.search_only_api_key }}',
+            algoliaOptions: {
+                'facetFilters': [
+                    "lang:{{ page.language | default: en }}"
+                ]
+            }
+            
         };
     </script>
     <script src="/assets/js/search.js"></script>
