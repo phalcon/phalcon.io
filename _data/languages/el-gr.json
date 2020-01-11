@@ -116,6 +116,7 @@
     "download_requirements_1": "Χρειάζεστε κάποια πακέτα να έχουν εγκατασταθεί προηγουμένως: ",
     "download_requirements_2": "PHP 5.x πόροι για την ανάπτυξη",
     "download_requirements_3": "Πρόγραμμα μεταγλώττισης GCC",
+    "download_psr": "The <a href=':1:'>PSR</a> extension is required to be loaded before Phalcon. Please ensure that it is available in your system",
     "download_source_code": "Πηγαίος Κώδικας: <a href=\":1:\" target=\"_download\" title=\"GitHub Repo\">github</a>",
     "download_source_code_switch": "Πηγαίος Κώδικας (παρακαλούμε επισκευτήτε το σχετικό κλάδο): <a href=\":1:\" target=\"_download\" title=\"GitHub Repo\">github</a>",
     "download_ubuntu": "Για να εγκαταστήσετε το Phalcon στο Ubuntu, χρειάζετε να ακολουθήσετε τα παρακάτω βήματα: ",
