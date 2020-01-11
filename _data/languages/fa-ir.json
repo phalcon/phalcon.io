@@ -116,6 +116,7 @@
     "download_requirements_1": "به چندین بسته از قبل نصب شده نیاز داریم: ",
     "download_requirements_2": "منابع توسعه PHP 5.x",
     "download_requirements_3": "کامپایلر GCC",
+    "download_psr": "The <a href=':1:'>PSR</a> extension is required to be loaded before Phalcon. Please ensure that it is available in your system",
     "download_source_code": "سورس کد: <a href=':1:' target='_download' title='GitHub Repo'>گیت‌هاب</a>",
     "download_source_code_switch": "سورس کد (لطفا شاخه مرتبط را انتخاب کنید): <a href=':1:' target='_download' title='GitHub Repo'>گیت‌هاب</a>",
     "download_ubuntu": "برای نصب فالکن در اوبونتو یا دبیان باید این گام‌ها را بردارید: ",
