@@ -116,6 +116,7 @@
     "download_requirements_1": "사전에 설치해야하는 패키지들: ",
     "download_requirements_2": "PHP 5.x 개발 환경",
     "download_requirements_3": "GCC 컴파일러",
+    "download_psr": "The <a href=':1:'>PSR</a> extension is required to be loaded before Phalcon. Please ensure that it is available in your system",
     "download_source_code": "소스코드: <a href=':1:' target='_download' title='GitHub Repo'>Github</a>",
     "download_source_code_switch": "소스코드 (관련된 브랜치로 전환해주세요): <a href=':1:' target='_download' title='GitHub Repo'>Github</a>",
     "download_ubuntu": "우분투나 데비안에 Phalcon을 설치하시려면 다음의 단계를 따라주세요: ",
