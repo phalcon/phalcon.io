@@ -17,6 +17,19 @@ layout: default
             </p>
 
             <h2>
+                {{ site.data.languages[page.language]['download_pecl'] }}
+            </h2>
+            <p>
+                {{ site.data.languages[page.language]['download_pecl_1'] }}
+                {{ site.data.languages[page.language]['download_pecl_2'] | replace: ':1:', 'https://pear.php.net/manual/en/installation.getting.php' }}
+            </p>
+
+            <div class="feature__code">
+                <pre><code class="bash hljs">pecl channel-update pecl.php.net
+pecl install phalcon</code></pre>
+            </div>
+
+            <h2>
                 {{ site.data.languages[page.language]['download_ubuntu_or_debian'] }}
             </h2>
             <p>

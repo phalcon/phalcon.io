@@ -8,6 +8,23 @@ layout: default
             {% include menu-download.html %}
             <hr>
 
+            <p class="alert alert-info">
+                {{ site.data.languages[page.language]['download_psr'] | replace: ':1:', 'https://pecl.php.net/package/psr' }}
+            </p>
+
+            <h2>
+                {{ site.data.languages[page.language]['download_pecl'] }}
+            </h2>
+            <p>
+                {{ site.data.languages[page.language]['download_pecl_1'] }}
+                {{ site.data.languages[page.language]['download_pecl_2'] | replace: ':1:', 'https://pear.php.net/manual/en/installation.getting.php' }}
+            </p>
+
+            <div class="feature__code">
+                <pre><code class="bash hljs">pecl channel-update pecl.php.net
+pecl install phalcon</code></pre>
+            </div>
+
             <div class="alert alert-warning">
                 {{ site.data.languages[page.language]['download_windows_note'] }}
             </div>
