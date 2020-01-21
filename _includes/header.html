@@ -156,16 +156,26 @@
                             </a>
                         </li>
 
-                        <li class="extendable extended">
-                            <a href="#">{{ page.language }}"</a>>
-
-                            <ul class="header-dropdown--mobile">
+                        <li class="extendable extend">
+                            <span class="mobile-menu-page-lang">
+                                <img class="lang-image"
+                                     src="/assets/images/flags/{{ page.language }}.png"
+                                     alt="{{ page.language }}">
+                            </span>
+                            <ul class="header-dropdown--mobile header-dropdown--mobile-lang">
                                 {% assign fromLink = '/' | append: page.language %}
                                 {% assign languageData = site.data.languages | sort %}
                                 {% for lang in languageData %}
                                 {% assign menuPage = page.permalink | replace: fromLink, '' %}
-                                <li>{{ lang[1]['language_text'] }}</li>
-                                {% endfor %}
+                                <li>
+                                    <a href="/{{ lang[0] }}{{ menuPage }}">
+                                        <img class="flag-item"
+                                             src="/assets/images/flags/{{ lang[0] }}.png"
+                                             alt="{{ lang[1]['language_text'] }}">
+                                        {{ lang[1]['language_text'] }}
+                                    </a>
+                                </li>
+                                {%- endfor -%}
                             </ul>
                         </li>
                     </ul>
