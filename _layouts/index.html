@@ -19,7 +19,7 @@ layout: default
                     <div class="features-slider">
                         <div class="features-slider__nav">
                             <div class="features-slider__nav-item">
-                                Low overhead
+                              {{ site.data.languages[page.language]['low_overhead'] }}
                             </div>
 
                             <div class="features-slider__nav-item">
@@ -45,27 +45,23 @@ layout: default
                         <div class="features-slider__content">
                             <div>
                                 <div class="features-slider__descr">
-                                    Register namespaces, prefixes, directories or classes. Take advantage of the autoloader events and maintain full control over what files are loaded and from where.
+                                  {{ site.data.languages[page.language]['low_overhead_description'] }}
                                 </div>
                                 <div class="features-slider__example feature__code">
-<pre><code class="php hljs"><span class="hljs-keyword">use</span> <span class="hljs-title">Phalcon</span>\<span class="hljs-title">Loader</span>;
-
-<span class="hljs-comment">// Creates the autoloader</span>
-<span class="hljs-variable">$loader</span> = <span class="hljs-keyword">new</span> Loader();
-
-<span class="hljs-comment">// Register some namespaces</span>
-<span class="hljs-variable">$loader</span>-&gt;registerNamespaces(
-[
-   <span class="hljs-string">'Example\Base'</span>    =&gt; <span class="hljs-string">'vendor/example/base/'</span>,
-   <span class="hljs-string">'Example\Adapter'</span> =&gt; <span class="hljs-string">'vendor/example/adapter/'</span>,
-   <span class="hljs-string">'Example'</span>         =&gt; <span class="hljs-string">'vendor/example/'</span>,
-]
-);
-
-<span class="hljs-comment">// Register autoloader</span>
-<span class="hljs-variable">$loader</span>-&gt;register();
-</code>
-</pre>
+                                  <ul>
+                                    <li>
+                                      {{ site.data.languages[page.language]['low_overhead_1'] }}
+                                    </li>
+                                    <li>
+                                      {{ site.data.languages[page.language]['low_overhead_2'] }}
+                                    </li>
+                                    <li>
+                                      {{ site.data.languages[page.language]['low_overhead_3'] }}
+                                    </li>
+                                    <li>
+                                      {{ site.data.languages[page.language]['low_overhead_4'] }}
+                                    </li>
+                                  </ul>
                                 </div>
                             </div>
 
