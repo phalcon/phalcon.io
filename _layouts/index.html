@@ -105,7 +105,27 @@ layout: default
                                 </div>
                             </div>
 
-                            <div>Dependency Injection</div>
+                            <div>
+                              <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['dependency_injection_1'] }}
+                              </div>
+                              <div class="feature__example feature__code">
+                                <pre>
+                                    <code class="php hljs">
+                                      // {{ site.data.languages[page.language]['dependency_injection_2'] }}
+                                      $di = new Phalcon\DI();
+
+                                      // {{ site.data.languages[page.language]['dependency_injection_3'] }}
+                                      $di->set("request", new Phalcon\Http\Request());
+
+                                      ..
+
+                                      // {{ site.data.languages[page.language]['dependency_injection_4'] }}
+                                      $request = $di->getShared('request');
+                                    </code>
+                                </pre>
+                              </div>
+                            </div>
 
                             <div>Rest</div>
 
