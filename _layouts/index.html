@@ -127,7 +127,37 @@ layout: default
                               </div>
                             </div>
 
-                            <div>Rest</div>
+                            <div>
+                              <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['dependency_injection_1'] }}
+                              </div>
+                              <div class="feature__example feature__code">
+                                <pre>
+                                    <code class="php hljs">
+                                      use Phalcon\Mvc\Micro;
+
+                                      $app = new Micro();
+
+                                      // {{ site.data.languages[page.language]['restful_services_2'] }}
+                                      $app->get(
+                                          '/check/status',
+                                          function () {
+                                              return $this
+                                                  ->response
+                                                  ->setJsonContent(
+                                                      [
+                                                          'status' => 'important',
+                                                      ]
+                                                  )
+                                              ;
+                                          }
+                                      );
+
+                                      $app->handle();
+                                    </code>
+                                </pre>
+                              </div>
+                            </div>
 
                             <div>Autoloader.</div>
 
