@@ -159,7 +159,33 @@ layout: default
                               </div>
                             </div>
 
-                            <div>Autoloader.</div>
+                            <div>
+                              <div class="feature__descr">
+                                {{ site.data.languages[page.language]['auto_loader_1'] }}
+                              </div>
+                              <div class="feature__example feature__code">
+                                <pre>
+                                    <code class="php hljs">
+                                      use Phalcon\Loader;
+
+                                      // {{ site.data.languages[page.language]['auto_loader_2'] }}
+                                      $loader = new Loader();
+
+                                      // {{ site.data.languages[page.language]['auto_loader_3'] }}
+                                      $loader->registerNamespaces(
+                                          [
+                                             'Example\Base'    => 'vendor/example/base/',
+                                             'Example\Adapter' => 'vendor/example/adapter/',
+                                             'Example'         => 'vendor/example/',
+                                          ]
+                                      );
+
+                                      // {{ site.data.languages[page.language]['auto_loader_4'] }}
+                                      $loader->register();
+                                    </code>
+                                </pre>
+                              </div>
+                            </div>
 
                             <div>Router</div>
                         </div>
