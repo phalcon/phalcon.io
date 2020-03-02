@@ -187,7 +187,28 @@ layout: default
                               </div>
                             </div>
 
-                            <div>Router</div>
+                            <div>
+                              <div class="feature__descr">
+                                {{ site.data.languages[page.language]['router_1'] }}
+                              </div>
+                              <div class="feature__example feature__code">
+                                <pre>
+                                    <code class="php hljs">
+                                      // {{ site.data.languages[page.language]['router_2'] }}
+                                      $router = new \Phalcon\Mvc\Router();
+
+                                      // {{ site.data.languages[page.language]['router_3'] }}
+                                      $router->add(
+                                         '/admin/users/my-profile',
+                                         [
+                                             'controller' => 'users',
+                                             'action'     => 'profile',
+                                         ]
+                                      );
+                                    </code>
+                                </pre>
+                              </div>
+                            </div>
                         </div>
                     </div>
                 </div>
