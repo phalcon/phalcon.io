@@ -1,0 +1,756 @@
+<div class="features__mobile">
+    <ul class="features-accordion">
+        <li class="active">
+            <div class="features-accordion__trigger">Basic feautures</div>
+
+            <div class="features-accordion__content">
+                <div class="features-slider">
+                    <div class="features-slider__nav">
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['low_overhead'] }}
+                        </div>
+
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['mvc_hmvc'] }}
+                        </div>
+
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['dependency_injection'] }}
+                        </div>
+
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['rest'] }}
+                        </div>
+
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['auto_loader'] }}
+                        </div>
+
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['router'] }}
+                        </div>
+                    </div>
+                    <div class="features-slider__content">
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['low_overhead_description'] }}
+                            </div>
+                            <div class="features-slider__example feature__code">
+                                <ul>
+                                    <li>
+                                        {{ site.data.languages[page.language]['low_overhead_1'] }}
+                                    </li>
+                                    <li>
+                                        {{ site.data.languages[page.language]['low_overhead_2'] }}
+                                    </li>
+                                    <li>
+                                        {{ site.data.languages[page.language]['low_overhead_3'] }}
+                                    </li>
+                                    <li>
+                                        {{ site.data.languages[page.language]['low_overhead_4'] }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['mvc_1'] }}
+                            </div>
+                            <div class="features-slider__example feature__code">
+                                    <pre>
+                                        <code class="php hljs">
+single/
+    app/
+        controllers/
+        models/
+        views/
+    public/
+        css/
+        img/
+        js/
+                                        </code>
+                                    </pre>
+
+                                <pre>
+                                        <code class="php hljs">
+multiple/
+     apps/
+       frontend/
+          controllers/
+          models/
+          views/
+          Module.php
+       backend/
+          controllers/
+          models/
+          views/
+          Module.php
+       public/
+       ../
+                                        </code>
+                                    </pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['dependency_injection_1'] }}
+                            </div>
+                            <div class="feature__example feature__code">
+                                <pre>
+                                    <code class="php hljs">
+// {{ site.data.languages[page.language]['dependency_injection_2'] }}
+$di = new Phalcon\DI();
+
+// {{ site.data.languages[page.language]['dependency_injection_3'] }}
+$di->set("request", new Phalcon\Http\Request());
+
+..
+
+// {{ site.data.languages[page.language]['dependency_injection_4'] }}
+$request = $di->getShared('request');
+                                    </code>
+                                </pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="features-slider__descr">
+                              {{ site.data.languages[page.language]['rest_description'] }}
+                            </div>
+                            <div class="feature__example feature__code">
+                                <pre>
+                                    <code class="php hljs">
+use Phalcon\Mvc\Micro;
+
+$app = new Micro();
+
+// {{ site.data.languages[page.language]['restful_services_2'] }}
+$app->get(
+    '/check/status',
+    function () {
+        return $this
+            ->response
+            ->setJsonContent(
+                [
+                    'status' => 'important',
+                ]
+            )
+        ;
+    }
+);
+
+$app->handle();
+                                    </code>
+                                </pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['auto_loader_1'] }}
+                            </div>
+                            <div class="feature__example feature__code">
+                                <pre>
+                                    <code class="php hljs">
+use Phalcon\Loader;
+
+// {{ site.data.languages[page.language]['auto_loader_2'] }}
+$loader = new Loader();
+
+// {{ site.data.languages[page.language]['auto_loader_3'] }}
+$loader->registerNamespaces(
+    [
+       'Example\Base'    => 'vendor/example/base/',
+       'Example\Adapter' => 'vendor/example/adapter/',
+       'Example'         => 'vendor/example/',
+    ]
+);
+
+// {{ site.data.languages[page.language]['auto_loader_4'] }}
+$loader->register();
+                                    </code>
+                                </pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['router_1'] }}
+                            </div>
+                            <div class="feature__example feature__code">
+                                <pre>
+                                    <code class="php hljs">
+// {{ site.data.languages[page.language]['router_2'] }}
+$router = new \Phalcon\Mvc\Router();
+
+// {{ site.data.languages[page.language]['router_3'] }}
+$router->add(
+   '/admin/users/my-profile',
+   [
+       'controller' => 'users',
+       'action'     => 'profile',
+   ]
+);
+                                    </code>
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li>
+            <div class="features-accordion__trigger">Data&Storage</div>
+
+            <div class="features-accordion__content">
+                <div class="features-slider">
+                    <div class="features-slider__nav">
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['orm'] }}
+                        </div>
+
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['phql'] }}
+                        </div>
+
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['transactions'] }}
+                        </div>
+
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['cache'] }}
+                        </div>
+                    </div>
+                    <div class="features-slider__content">
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['orm_1'] }}
+                            </div>
+                            <div class="features-slider__example feature__code">
+                           <pre>
+                              <code class="php hljs">
+use Invoices;
+use Phalcon\Mvc\Model;
+
+class Customers extends Model
+{
+    public $cst_id;
+
+    public $cst_name;
+
+    public function initialize()
+    {
+        $this->hasMany(
+            'cst_id',
+            Invoices::class,
+            'inv_cst_id'
+        );
+    }
+}
+                              </code>
+                          </pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['phql_1'] }}
+                            </div>
+                            <div class="features-slider__example feature__code">
+                           <pre>
+                              <code class="php hljs">
+$phql  = 'SELECT * '
+       . 'FROM Formula\Cars '
+       . 'ORDER BY Formula\Cars.name';
+$query = $manager->createQuery($phql);
+
+$phql  = 'SELECT Formula\Cars.name '
+       . 'FROM Formula\Cars '
+       . 'ORDER BY Formula\Cars.name';
+$query = $manager->createQuery($phql);
+
+$phql  = 'SELECT c.name '
+       . 'FROM Formula\Cars c '
+       . 'ORDER BY c.name';
+$query = $manager->createQuery($phql);
+
+$phql = 'SELECT c.* '
+      . 'FROM Cars AS c '
+      . 'ORDER BY c.name';
+$cars = $manager->executeQuery($phql);
+
+foreach ($cars as $car) {
+    echo "Name: ", $car->name, "\n";
+}
+                              </code>
+                          </pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['transactions_1'] }}
+                            </div>
+                            <div class="feature__example feature__code">
+                            <pre>
+                              <code class="php hljs">
+use Phalcon\Mvc\Model\Transaction\Failed;
+use Phalcon\Mvc\Model\Transaction\Manager;
+
+try {
+
+    // {{ site.data.languages[page.language]['transactions_2'] }}
+    $manager = new Manager();
+
+    // {{ site.data.languages[page.language]['transactions_3'] }}
+    $transaction = $manager->get();
+
+    // {{ site.data.languages[page.language]['transactions_4'] }}
+    $invoices = Invoices::find(
+        'inv_cst_id = 123'
+    );
+
+    foreach ($invoices as $invoice) {
+        $invoice->setTransaction($transaction);
+        if ($invoice->delete() == false) {
+            // {{ site.data.languages[page.language]['transactions_5'] }}
+            foreach ($invoice->getMessages() as $message) {
+                $transaction
+                    ->rollback($message->getMessage());
+            }
+        }
+    }
+
+    // {{ site.data.languages[page.language]['transactions_6'] }}
+    $transaction->commit();
+
+    echo "{{ site.data.languages[page.language]['transactions_7'] }}";
+
+} catch (Failed $e) {
+    echo "{{ site.data.languages[page.language]['transactions_8'] }} ", $e->getMessage();
+}
+                            </code>
+                          </pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['cache_1'] }}
+                            </div>
+                            <div class="feature__example feature__code">
+                           <pre>
+                              <code class="php hljs">
+use Phalcon\Cache;
+use Phalcon\Cache\AdapterFactory;
+use Phalcon\Storage\Serializer\SerializerFactory;
+
+$serializerFactory = new SerializerFactory();
+$adapterFactory    = new AdapterFactory($serializerFactory);
+
+$options = [
+    'defaultSerializer' => 'Json',
+    'lifetime'          => 7200
+];
+
+$adapter = $adapterFactory
+    ->newInstance('apcu', $options);
+
+$cache = new Cache($adapter);
+                              </code>
+                          </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li>
+            <div class="features-accordion__trigger">Views&Frontend</div>
+
+            <div class="features-accordion__content">
+                <div class="features-slider">
+                    <div class="features-slider__nav">
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['template_engines'] }}
+                        </div>
+
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['template_engine_volt'] }}
+                        </div>
+
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['i18n'] }}
+                        </div>
+
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['forms_builder'] }}
+                        </div>
+
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['flash_messages'] }}
+                        </div>
+                    </div>
+                    <div class="features-slider__content">
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['template_engines_1'] }}
+                            </div>
+                            <div class="feature__example feature__code">
+                    <pre>
+                        <code class="html hljs">
+&lt;html&gt;
+    &lt;body&gt;
+    &lt;div class=&#039;top&#039;&gt;
+        &lt;?php $this-&gt;partial(&#039;shared/ad_banner&#039;); ?&gt;
+    &lt;/div&gt;
+    &lt;div class=&#039;content&#039;&gt;
+        &lt;h1&gt;Robots&lt;/h1&gt;
+        &lt;p&gt;
+            Check out our specials for robots:
+        &lt;/p&gt;
+        ...
+    &lt;/div&gt;
+    &lt;div class=&#039;footer&#039;&gt;
+        &lt;?php $this-&gt;partial(&#039;shared/footer&#039;); ?&gt;
+    &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                        </code>
+                    </pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['template_engine_volt_1'] }}
+                            </div>
+                            <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+{% raw %}{# app/views/products/show.volt #}
+{% block last_products %}
+{% for prod in products %}
+    * Name: {{ prod.name|e }}
+    {% if prod.status == &#039;Active&#039; %}
+       Price: {{ prod.price + prod.taxes/100}}
+    {% endif  %}
+{% endfor  %}
+{% endblock %}{% endraw %}
+                        </code>
+                    </pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['i18n_1'] }}
+                            </div>
+                            <div class="feature__example feature__code">
+                    <pre><code class="php hljs">// app/messages/en.php
+$messages = [
+    'hi'      => 'Hello',
+    'bye'     => 'Good Bye',
+    'hi-name' => 'Hello %name%',
+    'song'    => 'This song is %song%'
+];
+
+// app/messages/es.php
+$messages = [
+    'hi'      => 'Hola',
+    'bye'     => 'Adiós',
+    'hi-name' => 'Hola %name%',
+    'song'    => 'Esta canción es %song%'
+];
+
+use Phalcon\Mvc\Controller;
+use Phalcon\Translate\Adapter\NativeArray;
+
+// UserController.php
+class UserController extends Controller
+{
+    protected function getTranslation()
+    {
+        // {{ site.data.languages[page.language]['i18n_2'] }}
+        $language = $this
+            ->request
+            ->getBestLanguage();
+
+        // {{ site.data.languages[page.language]['i18n_3'] }}
+        $fileName = 'app/messages/'
+                  . $language
+                  . '.php';
+        if (file_exists($fileName) {
+            require $fileName;
+        } else {
+            // {{ site.data.languages[page.language]['i18n_4'] }}
+            require 'app/messages/en.php';
+        }
+
+        // {{ site.data.languages[page.language]['i18n_5'] }}
+        return new NativeArray(
+            array(
+                'content' => $messages
+            )
+        );
+    }
+
+    public function indexAction()
+    {
+        $this->view->name = 'Mike';
+
+        $this->view->t = $this
+            ->getTranslation();
+    }
+}
+// user.volt
+&lt;p&gt;&lt;?php echo $t->_('hi'), ' ', $name; ?&gt;&lt;/p&gt;
+                        </code>
+                    </pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['forms_builder_1'] }}
+                            </div>
+                            <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+use Phalcon\Forms\Form;
+use Phalcon\Forms\Element\Text;
+use Phalcon\Forms\Element\Select;
+
+$form = new Form();
+
+$form->add(new Text('name'));
+
+$form->add(new Text('telephone'));
+
+$form->add(
+    new Select(
+        'telephoneType',
+        array(
+            'H' => 'Home',
+            'C' => 'Cellphone'
+        )
+    )
+);
+                        </code>
+                    </pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['flash_messages_1'] }}
+                            </div>
+                            <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+use Phalcon\Mvc\Controller;
+
+class PostsController extends Controller
+{
+    public function saveAction()
+    {
+        $this->flash->error(
+            '{{ site.data.languages[page.language]['flash_messages_2'] }}'
+        );
+        $this->flash->success(
+            '{{ site.data.languages[page.language]['flash_messages_3'] }}'
+        );
+        $this->flash->notice(
+            '{{ site.data.languages[page.language]['flash_messages_4'] }}'
+        );
+        $this->flash->warning(
+            '{{ site.data.languages[page.language]['flash_messages_5'] }}'
+        );
+    }
+}
+                        </code>
+                    </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li>
+            <div class="features-accordion__trigger">More...</div>
+
+            <div class="features-accordion__content">
+                <div class="features-slider">
+                    <div class="features-slider__nav">
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['acl'] }}
+                        </div>
+
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['sharding'] }}
+                        </div>
+
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['crypt'] }}
+                        </div>
+
+                        <div class="features-slider__nav-item">
+                            {{ site.data.languages[page.language]['events'] }}
+                        </div>
+                    </div>
+                    <div class="features-slider__content">
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['acl_1'] }}
+                            </div>
+                            <div class="feature__example feature__code">
+                     <pre>
+                        <code class="php hljs">
+use Phalcon\Acl;
+use Phalcon\Acl\Enum;
+use Phalcon\Acl\Role;
+use Phalcon\Acl\Adapter\Memory;
+
+// {{ site.data.languages[page.language]['acl_2'] }}
+$acl = new Memory();
+
+// {{ site.data.languages[page.language]['acl_3'] }}
+$acl->setDefaultAction(Enum::DENY);
+
+// {{ site.data.languages[page.language]['acl_4'] }}
+// {{ site.data.languages[page.language]['acl_5'] }}
+$roles = array(
+    'users'  => new Role('Users'),
+    'guests' => new Role('Guests')
+);
+
+foreach ($roles as $role) {
+    $acl->addRole($role);
+}
+                        </code>
+                    </pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['sharding_1'] }}
+                            </div>
+                            <div class="feature__example feature__code">
+                     <pre>
+                        <code class="php hljs">
+use Phalcon\Db\Adapter\Pdo\Mysql;
+use Phalcon\Db\Adapter\Pdo\PostgreSQL;
+
+// {{ site.data.languages[page.language]['sharding_2'] }}
+$container->set(
+    'dbMysql',
+    function () {
+        return new Mysql(
+            [
+                'host'     => 'localhost',
+                'username' => 'root',
+                'password' => 'secret',
+                'dbname'   => 'tutorial',
+            ]
+        );
+    }
+);
+
+// {{ site.data.languages[page.language]['sharding_3'] }}
+$container->set(
+    'dbPostgres',
+    function () {
+        return new PostgreSQL(
+            [
+                'host'     => 'localhost',
+                'username' => 'postgres',
+                'password' => '',
+                'dbname'   => 'invo',
+            ]
+        );
+    }
+);
+                        </code>
+                    </pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['encryption_1'] }}
+                            </div>
+                            <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+use Phalcon\Crypt;
+
+$crypt = new Crypt();
+
+$key  = '{{ site.data.languages[page.language]['encryption_2'] }}';
+$text = '{{ site.data.languages[page.language]['encryption_3'] }}';
+
+$encrypted = $crypt->encrypt($text, $key);
+
+echo $crypt->decrypt($encrypted, $key);
+                        </code>
+                    </pre>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="features-slider__descr">
+                                {{ site.data.languages[page.language]['events_management_1'] }}
+                            </div>
+                            <div class="feature__example feature__code">
+                    <pre>
+                        <code class="php hljs">
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Events\Manager;
+
+$container->set(
+    'dispatcher',
+    function () {
+        // {{ site.data.languages[page.language]['events_management_2'] }}
+        $manager = new Manager();
+
+        // {{ site.data.languages[page.language]['events_management_3'] }}
+        // {{ site.data.languages[page.language]['events_management_6'] }}
+        $manager->attach(
+            'dispatch:beforeExecuteRoute',
+            new SecurityPlugin
+        );
+
+        // {{ site.data.languages[page.language]['events_management_4'] }}
+        // {{ site.data.languages[page.language]['events_management_7'] }}
+        $manager->attach(
+            'dispatch:beforeException',
+            new NotFoundPlugin
+        );
+
+        $dispatcher = new Dispatcher();
+
+        // {{ site.data.languages[page.language]['events_management_5'] }}
+        // {{ site.data.languages[page.language]['events_management_8'] }}
+        $dispatcher
+            ->setEventsManager($manager);
+
+        return $dispatcher;
+    }
+);
+                        </code>
+                    </pre>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
