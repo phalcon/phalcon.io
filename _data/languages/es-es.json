@@ -248,7 +248,7 @@
     "phql_1": "PHQL es un dialecto SQL orientado a objetos de alto nivel, que permite para escribir consultas utilizando un lenguaje estándar SQL. PHQL se implementa como un analizador (escrito en C) que traduce la sintaxis que corresponde al RDBMS utilizado. Para lograr el mayor rendimiento posible, Phalcon proporciona un analizador que utiliza la misma tecnología que SQLite. Esta tecnología proporciona un pequeño analizador que reside en memoria con un uso de recursos muy bajo y que también usa sub procesos seguros.",
     "phql_2": "Nombre",
     "phql_description": "El potente y seguro lenguaje de consultas de Phalcon, PHQL",
-    "polling_app": "A polling app built from scratch in &lt; 15 min",
+    "polling_app": "Una aplicación de encuestas desde cero en menos de 15 minutos",
     "queueing": "Colas - proceso en segundo plano",
     "queueing_1": "Las actividades como el procesamiento de vídeos, redimensionamiento de imágenes o enviar correos electrónicos no son adecuados para ser ejecutados en línea o en tiempo real porque puede disminuir el tiempo de carga de páginas y afectan seriamente la experiencia de usuario. Aquí la mejor solución es implementar trabajos en segundo plano. La aplicación web pone trabajos en una cola, los cuales se procesarán de forma separada.",
     "queueing_2": "Conectar a la cola",
