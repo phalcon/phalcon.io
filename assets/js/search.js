@@ -24,3 +24,9 @@ autocomplete('#searchinputmobile', { hint: false }, [{
 }]).on('autocomplete:selected', function (event, suggestion, dataset) {
     window.location = suggestion.url;
 });
+
+var notFoundPage = $('.not-found-page');
+var body = $('body');
+if(notFoundPage.length) {
+    body.addClass('notFound')
+}
