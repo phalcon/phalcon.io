@@ -350,5 +350,9 @@
     "try_phalcon": "فالکن را امتحان کنید",
     "tutorial": "آموزش گام به گام",
     "views_and_frontend": "ویو و رابط کاربری",
-    "watch_demo": "ویدیو دمو را مشاهده کنید"
+    "watch_demo": "ویدیو دمو را مشاهده کنید",
+    "404-title": "404",
+    "404-about": "Ooops! Something went wrong.",
+    "404-button": "Back To Home",
+    "404-team": "<3 Phalcon Team"
 }

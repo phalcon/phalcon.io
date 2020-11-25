@@ -350,5 +350,9 @@
     "try_phalcon": "Δοκιμάστε το Phalcon",
     "tutorial": "Εκπαιδευτικό",
     "views_and_frontend": "Απόψεις και frontend",
-    "watch_demo": "Παρακολουθήστε το βίντεο επίδειξης"
+    "watch_demo": "Παρακολουθήστε το βίντεο επίδειξης",
+    "404-title": "404",
+    "404-about": "Ooops! Something went wrong.",
+    "404-button": "Back To Home",
+    "404-team": "<3 Phalcon Team"
 }

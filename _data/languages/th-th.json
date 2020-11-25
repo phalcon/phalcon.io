@@ -350,5 +350,9 @@
     "try_phalcon": "Try Phalcon",
     "tutorial": "Tutorial",
     "views_and_frontend": "Views & frontend",
-    "watch_demo": "Watch the demo video"
+    "watch_demo": "Watch the demo video",
+    "404-title": "404",
+    "404-about": "Ooops! Something went wrong.",
+    "404-button": "Back To Home",
+    "404-team": "<3 Phalcon Team"
 }

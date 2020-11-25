@@ -350,5 +350,9 @@
     "try_phalcon": "Phalcon 사용해보기",
     "tutorial": "튜토리얼",
     "views_and_frontend": "뷰 & 프론트엔드",
-    "watch_demo": "데모 비디오 보기"
+    "watch_demo": "데모 비디오 보기",
+    "404-title": "404",
+    "404-about": "Ooops! Something went wrong.",
+    "404-button": "Back To Home",
+    "404-team": "<3 Phalcon Team"
 }
