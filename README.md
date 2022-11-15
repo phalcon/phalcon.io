@@ -34,14 +34,13 @@ A big thank you to [our Backers](https://github.com/phalcon/cphalcon/blob/master
 * [Incubator](https://phalcon.io/incubator) - Community driven plugins and classes extending the framework (written in PHP)
 
 ### Support
-* [Forum](https://phalcon.io/forum)
+* [Discussions](https://phalcon.io/discussions)
 * [Discord](https://phalcon.io/discord)
 * [Stack Overflow](https://phalcon.io/so)
 
 ### Social Media
 * [Telegram](https://phalcon.io/telegram)
 * [Gab](https://phalcon.io/gab)
-* [Parler](https://phalcon.io/parler)
 * [MeWe](https://phalcon.io/mewe)
 * [Facebook](https://phalcon.io/fb)
 * [Twitter](https://phalcon.io/t)
