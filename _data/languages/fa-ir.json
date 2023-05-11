@@ -219,7 +219,7 @@
     "join_our_community_description": "مشارکت جامعه کاربری در افزونه‌ها، پلاگین‌ها، آداپتورها، ماشین‌های مجازی، نمونه کدها و بسیاری موارد دیگر",
     "language_text": "Persian",
     "learn": "آموزش",
-    "license_new_bsd": "فالکن یک چارچوب نرم‌افزاری PHP است <br />که به عنوان یک افزونه C ساخته شده است. <br />تحت <a href='http://opensource.org/licenses/BSD-3-Clause' target='_blank'>مجوز جدید BSD</a> قرار دارد.",
+    "license_new_bsd": "فالکن یک چارچوب نرم‌افزاری PHP است <br />که به عنوان یک افزونه C ساخته شده است. <br />تحت <a href='https://opensource.org/licenses/BSD-3-Clause' target='_blank'>مجوز جدید BSD</a> قرار دارد.",
     "low_overhead": "بسیار سبک",
     "low_overhead_1": "افزونه‌های Zephir/C هنگام شروع فرآیند پس‌زمینه وب سرور یکبار همراه با PHP بارگیری می‌شوند",
     "low_overhead_2": "کلاس‌ها و توابع فراهم شده توسط افزونه قابل استفاده برای هر برنامه‌ای هستند",

@@ -219,7 +219,7 @@
     "join_our_community_description": "Conozca las contribuciones de la comunidad: extensiones, complementos, adaptadores, VM, ejemplos, código fuente... y más",
     "language_text": "Spanish",
     "learn": "Aprender",
-    "license_new_bsd": "Phalcon es un framework de código abierto PHP<br />construido como una extensión de C. Está disponible bajo la<br/><a href='http://opensource.org/licenses/BSD-3-Clause' target='_blank'>Nueva licencia BSD</a>.",
+    "license_new_bsd": "Phalcon es un framework de código abierto PHP<br />construido como una extensión de C. Está disponible bajo la<br/><a href='https://opensource.org/licenses/BSD-3-Clause' target='_blank'>Nueva licencia BSD</a>.",
     "low_overhead": "Baja sobrecarga",
     "low_overhead_1": "Las extensiones en Zephir/C son cargadas con PHP una sola vez cuando inicia el servidor web",
     "low_overhead_2": "Las clases y funciones proporcionadas por la extensión están listas para usarse en cualquier aplicación",
