@@ -218,8 +218,9 @@
     "join_our_community": "우리의 활기찬 개발자 커뮤니티에 가입하세요!",
     "join_our_community_description": "익스텐션, 플러그인, 어댑터, VM, 예제, 소스코드 등에 대한 커뮤니티의 기여",
     "language_text": "Korean",
-    "learn": "학습",
+    "learn": "학습"
     "license_new_bsd": "Phalcon is an open-source PHP framework <br />built as a C-extension. It is available under the <br /><a href='https://opensource.org/licenses/BSD-3-Clause' target='_blank'>new BSD License</a>.",
+
     "low_overhead": "낮은 오버헤드",
     "low_overhead_1": "Zephir/C 익스텐션은 웹서버의 데몬 시작 과정에서 PHP와 함께 최초 단 한번 로드 됩니다.",
     "low_overhead_2": "익스텐션에서 제공되는 클래스와 함수는 어떤 어플리케이션에서나 사용가능합니다.",
