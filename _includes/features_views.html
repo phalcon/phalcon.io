@@ -1,66 +1,66 @@
-        <div class="features__content">
-            <ul class="features-list">
-                <li class="features-list__item active">
-                    <div class="features-list__item-title">
-                        {{ site.data.languages[page.language]['template_engines'] }}
-                    </div>
+<div class="features__content">
+    <ul class="features-list">
+        <li class="features-list__item active">
+            <div class="features-list__item-title">
+                {{ site.data.languages[page.language]['template_engines'] }}
+            </div>
 
-                    <div class="features-list__item-descr">
-                        {{ site.data.languages[page.language]['template_engines_description'] }}
-                    </div>
-                </li>
+            <div class="features-list__item-descr">
+                {{ site.data.languages[page.language]['template_engines_description'] }}
+            </div>
+        </li>
 
-                <li class="features-list__item">
-                    <div class="features-list__item-title">
-                        {{ site.data.languages[page.language]['template_engine_volt'] }}
-                    </div>
+        <li class="features-list__item">
+            <div class="features-list__item-title">
+                {{ site.data.languages[page.language]['template_engine_volt'] }}
+            </div>
 
-                    <div class="features-list__item-descr">
-                        {{ site.data.languages[page.language]['template_engine_volt_description'] }}
-                    </div>
-                </li>
+            <div class="features-list__item-descr">
+                {{ site.data.languages[page.language]['template_engine_volt_description'] }}
+            </div>
+        </li>
 
-                <li class="features-list__item">
-                    <div class="features-list__item-title">
-                        {{ site.data.languages[page.language]['i18n'] }}
-                    </div>
+        <li class="features-list__item">
+            <div class="features-list__item-title">
+                {{ site.data.languages[page.language]['i18n'] }}
+            </div>
 
-                    <div class="features-list__item-descr">
-                        {{ site.data.languages[page.language]['i18n_description'] }}
-                    </div>
-                </li>
+            <div class="features-list__item-descr">
+                {{ site.data.languages[page.language]['i18n_description'] }}
+            </div>
+        </li>
 
-                <li class="features-list__item">
-                    <div class="features-list__item-title">
-                        {{ site.data.languages[page.language]['forms_builder'] }}
-                    </div>
+        <li class="features-list__item">
+            <div class="features-list__item-title">
+                {{ site.data.languages[page.language]['forms_builder'] }}
+            </div>
 
-                    <div class="features-list__item-descr">
-                        {{ site.data.languages[page.language]['forms_builder_description'] }}
-                    </div>
-                </li>
+            <div class="features-list__item-descr">
+                {{ site.data.languages[page.language]['forms_builder_description'] }}
+            </div>
+        </li>
 
-                <li class="features-list__item">
-                    <div class="features-list__item-title">
-                        {{ site.data.languages[page.language]['flash_messages'] }}
-                    </div>
+        <li class="features-list__item">
+            <div class="features-list__item-title">
+                {{ site.data.languages[page.language]['flash_messages'] }}
+            </div>
 
-                    <div class="features-list__item-descr">
-                        {{ site.data.languages[page.language]['flash_messages_description'] }}
-                    </div>
-                </li>
-            </ul>
+            <div class="features-list__item-descr">
+                {{ site.data.languages[page.language]['flash_messages_description'] }}
+            </div>
+        </li>
+    </ul>
 
-            <div class="feature active">
-                <div class="feature__title">
-                    {{ site.data.languages[page.language]['template_engines'] }}
-                </div>
+    <div class="feature active">
+        <div class="feature__title">
+            {{ site.data.languages[page.language]['template_engines'] }}
+        </div>
 
-                <div class="feature__descr">
-                    {{ site.data.languages[page.language]['template_engines_1'] }}
-                </div>
+        <div class="feature__descr">
+            {{ site.data.languages[page.language]['template_engines_1'] }}
+        </div>
 
-                <div class="feature__example feature__code">
+        <div class="feature__example feature__code">
                     <pre>
                         <code class="html hljs">
 &lt;html&gt;
@@ -82,20 +82,20 @@
 &lt;/html&gt;
                         </code>
                     </pre>
-                </div>
-            </div>
+        </div>
+    </div>
 
 
-            <div class="feature">
-                <div class="feature__title">
-                    {{ site.data.languages[page.language]['template_engine_volt'] }}
-                </div>
+    <div class="feature">
+        <div class="feature__title">
+            {{ site.data.languages[page.language]['template_engine_volt'] }}
+        </div>
 
-                <div class="feature__descr">
-                    {{ site.data.languages[page.language]['template_engine_volt_1'] }}
-                </div>
+        <div class="feature__descr">
+            {{ site.data.languages[page.language]['template_engine_volt_1'] }}
+        </div>
 
-                <div class="feature__example feature__code">
+        <div class="feature__example feature__code">
                     <pre>
                         <code class="php hljs">
 {% raw %}{# app/views/products/show.volt #}
@@ -109,19 +109,19 @@
 {% endblock %}{% endraw %}
                         </code>
                     </pre>
-                </div>
-            </div>
+        </div>
+    </div>
 
-            <div class="feature">
-                <div class="feature__title">
-                    {{ site.data.languages[page.language]['i18n'] }}
-                </div>
+    <div class="feature">
+        <div class="feature__title">
+            {{ site.data.languages[page.language]['i18n'] }}
+        </div>
 
-                <div class="feature__descr">
-                    {{ site.data.languages[page.language]['i18n_1'] }}
-                </div>
+        <div class="feature__descr">
+            {{ site.data.languages[page.language]['i18n_1'] }}
+        </div>
 
-                <div class="feature__example feature__code">
+        <div class="feature__example feature__code">
                     <pre><code class="php hljs">// app/messages/en.php
 $messages = [
     'hi'      => 'Hello',
@@ -182,19 +182,19 @@ class UserController extends Controller
 &lt;p&gt;&lt;?php echo $t->_('hi'), ' ', $name; ?&gt;&lt;/p&gt;
                         </code>
                     </pre>
-                </div>
-            </div>
+        </div>
+    </div>
 
-            <div class="feature">
-                <div class="feature__title">
-                    {{ site.data.languages[page.language]['forms_builder'] }}
-                </div>
+    <div class="feature">
+        <div class="feature__title">
+            {{ site.data.languages[page.language]['forms_builder'] }}
+        </div>
 
-                <div class="feature__descr">
-                    {{ site.data.languages[page.language]['forms_builder_1'] }}
-                </div>
+        <div class="feature__descr">
+            {{ site.data.languages[page.language]['forms_builder_1'] }}
+        </div>
 
-                <div class="feature__example feature__code">
+        <div class="feature__example feature__code">
                     <pre>
                         <code class="php hljs">
 use Phalcon\Forms\Form;
@@ -218,19 +218,19 @@ $form->add(
 );
                         </code>
                     </pre>
-                </div>
-            </div>
+        </div>
+    </div>
 
-            <div class="feature">
-                <div class="feature__title">
-                    {{ site.data.languages[page.language]['flash_messages'] }}
-                </div>
+    <div class="feature">
+        <div class="feature__title">
+            {{ site.data.languages[page.language]['flash_messages'] }}
+        </div>
 
-                <div class="feature__descr">
-                    {{ site.data.languages[page.language]['flash_messages_1'] }}
-                </div>
+        <div class="feature__descr">
+            {{ site.data.languages[page.language]['flash_messages_1'] }}
+        </div>
 
-                <div class="feature__example feature__code">
+        <div class="feature__example feature__code">
                     <pre>
                         <code class="php hljs">
 use Phalcon\Mvc\Controller;
@@ -255,6 +255,6 @@ class PostsController extends Controller
 }
                         </code>
                     </pre>
-                </div>
-            </div>
         </div>
+    </div>
+</div>
