@@ -1,13 +1,14 @@
 <head>
     {% for lang in site.data.langs %}
-    <link rel="alternate" href="/{{ lang['code'] }}" hreflang="{{ lang['code'] }}" />{% endfor %}
+    <link rel="alternate" href="/{{ lang['code'] }}" hreflang="{{ lang['code'] }}"/>
+    {% endfor %}
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
     <meta name="MobileOptimized" content="320"/>
     <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport min-width=320px" content="min-width=320, initial-scale=1.0" />
+    <meta name="viewport min-width=320px" content="min-width=320, initial-scale=1.0"/>
 
     <meta name="generator" content="Jekyll">
     <meta name="application-name" content="{{ site.app.name }}">
@@ -15,7 +16,8 @@
     <meta name="keyword" content="{{ site.app.keywords }}">
 
     <meta property="og:url" content="{{ site.url }}">
-    <meta property="og:locale" content="{{ page.language | replace: "-", "_" }}">
+    <meta property="og:locale" content="{{ page.language | replace: " -
+    ", "_" }}">
     <meta property="og:type" content="object">
     <meta property="og:title" content="{{ site.data.languages[page.language][page.title] }} - {{ site.app.title }}">
     <meta property="og:description" content="{{ site.app.description }}">
@@ -39,7 +41,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://assets.phalcon.io/phalcon/favicons/favicon.ico"/>
     <link rel="manifest" href="/assets/favicons/site.webmanifest">
     <link rel="mask-icon" href="https://assets.phalcon.io/phalcon/favicons/safari-pinned-tab.svg" color="#273646">
-    <meta name="msapplication-config" content="https://assets.phalcon.io/phalcon/favicons/browserconfig.xml" />
+    <meta name="msapplication-config" content="https://assets.phalcon.io/phalcon/favicons/browserconfig.xml"/>
     <meta name="msapplication-TileColor" content="#273646">
     <meta name="theme-color" content="#273646">
     <!-- Global site tag (gtag.js) - Google Analytics -->
