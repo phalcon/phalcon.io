@@ -1,208 +1,258 @@
-    <header class="header">
-        <div class="container">
-            <div class="header__left">
-                <button class="header-nav__burger" aria-label="burger button" onclick="o2.header.openMobileNav(this);">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+<header class="header">
+    <div class="container">
+        <div class="header__left">
+            <button class="header-nav__burger" aria-label="burger button" onclick="o2.header.openMobileNav(this);">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-                <div class="header__logo">
-                    <a href="/{{ page.language }}" aria-label="logo"></a>
-                </div>
+            <div class="header__logo">
+                <a href="/{{ page.language }}" aria-label="logo"></a>
+            </div>
 
-                <ul class="header-nav">
+            <ul class="header-nav">
+                <li>
+                    <a href="/{{ page.language }}/download/linux">{{ site.data.languages[page.language]['download']
+                        }}</a>
+                </li>
+                <li>
+                    <a href="https://phalcon.io/docs">{{ site.data.languages[page.language]['docs'] }}</a>
+                </li>
+                <li class="expand">
+                    <a href="#">{{ site.data.languages[page.language]['site'] }}</a>
+                    <div class="header-dropdown-wrapper">
+                        <ul class="header-dropdown header-dropdown--eco">
+                            <li class="header-dropdown__title">{{ site.data.languages[page.language]['download'] }}</li>
+                            <li>
+                                <ul>
+                                    <li><a href="/{{ page.language }}/download/linux">{{
+                                        site.data.languages[page.language]['download_linux'] }}</a></li>
+                                    <li><a href="/{{ page.language }}/download/windows">{{
+                                        site.data.languages[page.language]['download_windows'] }}</a></li>
+                                    <li><a href="/{{ page.language }}/download/tools">{{
+                                        site.data.languages[page.language]['download_developer_tools'] }}</a></li>
+                                    <li><a href="/{{ page.language }}/download/stubs">{{
+                                        site.data.languages[page.language]['download_ide_stubs'] }}</a></li>
+                                </ul>
+                            </li>
+                            <li class="header-dropdown__title">{{ site.data.languages[page.language]['about'] }}</li>
+                            <li>
+                                <ul>
+                                    <li><a href="/{{ page.language }}/about">{{
+                                        site.data.languages[page.language]['about'] }}</a></li>
+                                    <li><a href="https://builtwith.phalcon.io/">{{
+                                        site.data.languages[page.language]['built_with_phalcon'] }}</a></li>
+                                    <li><a href="/{{ page.language }}/team">{{
+                                        site.data.languages[page.language]['team'] }}</a></li>
+                                    <li><a href="/{{ page.language }}/testimonials">{{
+                                        site.data.languages[page.language]['testimonials'] }}</a></li>
+                                    <li><a href="/{{ page.language }}/hosting">{{
+                                        site.data.languages[page.language]['hosting'] }}</a></li>
+                                    <li><a href="/{{ page.language }}/support">{{
+                                        site.data.languages[page.language]['support'] }}</a></li>
+                                    <li><a href="/{{ page.language }}/sponsors">{{
+                                        site.data.languages[page.language]['sponsors'] }}</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="expand">
+                    <a href="#">{{ site.data.languages[page.language]['community'] }}</a>
+                    <div class="header-dropdown-wrapper">
+                        <ul class="header-dropdown header-dropdown--eco">
+                            <li class="header-dropdown__title">{{ site.data.languages[page.language]['social'] }}</li>
+                            <li>
+                                <ul>
+                                    <li><a href="https://phalcon.io/blog">{{ site.data.languages[page.language]['blog']
+                                        }}</a></li>
+                                    <li><a href="https://phalcon.io/telegram">Telegram</a></li>
+                                    <li><a href="https://phalcon.io/gab">Gab</a></li>
+                                    <li><a href="https://phalcon.io/mewe">MeWe</a></li>
+                                    <li><a href="https://phalcon.io/fb">Facebook</a></li>
+                                    <li><a href="https://phalcon.io/t">Twitter</a></li>
+                                    <li><a href="https://phalcon.io/bitchute">Bitchute</a></li>
+                                    <li><a href="https://phalcon.io/lbry">LBRY</a></li>
+                                    <li><a href="https://phalcon.io/youtube">YouTube</a></li>
+                                    <li><a href="https://phalcon.io/linkedin">LinkedIn</a></li>
+                                </ul>
+                            </li>
+                            <li class="header-dropdown__title">{{ site.data.languages[page.language]['help'] }}</li>
+                            <li>
+                                <ul>
+                                    <li><a href="https://phalcon.io/docs">{{
+                                        site.data.languages[page.language]['documentation'] }}</a></li>
+                                    <li><a href="https://phalcon.io/discord">Discord</a></li>
+                                    <li><a href="https://github.com/phalcon/cphalcon/discussions">Github discussions
+                                        (v3/v4/v5)</a></li>
+                                    <li><a href="https://github.com/phalcon/phalcon/discussions">Github discussions
+                                        (v6)</a></li>
+                                    <li><a href="https://phalcon.io/so">Stack Overflow</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="https://phalcon.io/fund">{{ site.data.languages[page.language]['support_us'] }}</a>
+                </li>
+
+            </ul>
+
+            <nav class="header-nav--mobile _navToggle" onclick="event.stopPropagation();">
+                <input type="text" class="header__search" placeholder="Search...">
+                <ul>
                     <li>
-                        <a href="/{{ page.language }}/download/linux">{{ site.data.languages[page.language]['download'] }}</a>
+                        <a href="https://phalcon.io/docs">{{ site.data.languages[page.language]['download'] }}</a>
                     </li>
                     <li>
                         <a href="https://phalcon.io/docs">{{ site.data.languages[page.language]['docs'] }}</a>
                     </li>
-                    <li class="expand">
+
+                    <li class="extendable extended">
                         <a href="#">{{ site.data.languages[page.language]['site'] }}</a>
-                        <div class="header-dropdown-wrapper">
-                            <ul class="header-dropdown header-dropdown--eco">
-                                <li class="header-dropdown__title">{{ site.data.languages[page.language]['download'] }}</li>
-                                <li>
-                                    <ul>
-                                        <li><a href="/{{ page.language }}/download/linux">{{ site.data.languages[page.language]['download_linux'] }}</a></li>
-                                        <li><a href="/{{ page.language }}/download/windows">{{ site.data.languages[page.language]['download_windows'] }}</a></li>
-                                        <li><a href="/{{ page.language }}/download/tools">{{ site.data.languages[page.language]['download_developer_tools'] }}</a></li>
-                                        <li><a href="/{{ page.language }}/download/stubs">{{ site.data.languages[page.language]['download_ide_stubs'] }}</a></li>
-                                    </ul>
-                                </li>
-                                <li class="header-dropdown__title">{{ site.data.languages[page.language]['about'] }}</li>
-                                <li>
-                                    <ul>
-                                        <li><a href="/{{ page.language }}/about">{{ site.data.languages[page.language]['about'] }}</a></li>
-                                        <li><a href="https://builtwith.phalcon.io/">{{ site.data.languages[page.language]['built_with_phalcon'] }}</a></li>
-                                        <li><a href="/{{ page.language }}/team">{{ site.data.languages[page.language]['team'] }}</a></li>
-                                        <li><a href="/{{ page.language }}/testimonials">{{ site.data.languages[page.language]['testimonials'] }}</a></li>
-                                        <li><a href="/{{ page.language }}/hosting">{{ site.data.languages[page.language]['hosting'] }}</a></li>
-                                        <li><a href="/{{ page.language }}/support">{{ site.data.languages[page.language]['support'] }}</a></li>
-                                        <li><a href="/{{ page.language }}/sponsors">{{ site.data.languages[page.language]['sponsors'] }}</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                        <ul class="header-dropdown--mobile">
+                            <li class="header-dropdown--mobile__title">{{ site.data.languages[page.language]['download']
+                                }}
+                            </li>
+                            <li>
+                                <ul>
+                                    <li><a href="/{{ page.language }}/download/linux">{{
+                                        site.data.languages[page.language]['download_linux'] }}</a></li>
+                                    <li><a href="/{{ page.language }}/download/windows">{{
+                                        site.data.languages[page.language]['download_windows'] }}</a></li>
+                                    <li><a href="/{{ page.language }}/download/tools">{{
+                                        site.data.languages[page.language]['download_developer_tools'] }}</a></li>
+                                    <li><a href="/{{ page.language }}/download/stubs">{{
+                                        site.data.languages[page.language]['download_ide_stubs'] }}</a></li>
+                                </ul>
+                            </li>
+                            <li class="header-dropdown--mobile__title">{{ site.data.languages[page.language]['about']
+                                }}
+                            </li>
+                            <li>
+                                <ul>
+                                    <li><a href="/{{ page.language }}/about">{{
+                                        site.data.languages[page.language]['about'] }}</a></li>
+                                    <li><a href="https://builtwith.phalcon.io/">{{
+                                        site.data.languages[page.language]['built_with_phalcon'] }}</a></li>
+                                    <li><a href="/{{ page.language }}/team">{{
+                                        site.data.languages[page.language]['team'] }}</a></li>
+                                    <li><a href="/{{ page.language }}/testimonials">{{
+                                        site.data.languages[page.language]['testimonials'] }}</a></li>
+                                    <li><a href="/{{ page.language }}/hosting">{{
+                                        site.data.languages[page.language]['hosting'] }}</a></li>
+                                    <li><a href="/{{ page.language }}/support">{{
+                                        site.data.languages[page.language]['support'] }}</a></li>
+                                    <li><a href="/{{ page.language }}/sponsors">{{
+                                        site.data.languages[page.language]['sponsors'] }}</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
 
-                    <li class="expand">
+                    <li class="extendable extended">
                         <a href="#">{{ site.data.languages[page.language]['community'] }}</a>
-                        <div class="header-dropdown-wrapper">
-                            <ul class="header-dropdown header-dropdown--eco">
-                                <li class="header-dropdown__title">{{ site.data.languages[page.language]['social'] }}</li>
-                                <li>
-                                    <ul>
-                                        <li><a href="https://phalcon.io/blog">{{ site.data.languages[page.language]['blog'] }}</a></li>
-                                        <li><a href="https://phalcon.io/telegram">Telegram</a></li>
-                                        <li><a href="https://phalcon.io/gab">Gab</a></li>
-                                        <li><a href="https://phalcon.io/mewe">MeWe</a></li>
-                                        <li><a href="https://phalcon.io/fb">Facebook</a></li>
-                                        <li><a href="https://phalcon.io/t">Twitter</a></li>
-                                        <li><a href="https://phalcon.io/bitchute">Bitchute</a></li>
-                                        <li><a href="https://phalcon.io/lbry">LBRY</a></li>
-                                        <li><a href="https://phalcon.io/youtube">YouTube</a></li>
-                                        <li><a href="https://phalcon.io/linkedin">LinkedIn</a></li>
-                                    </ul>
-                                </li>
-                                <li class="header-dropdown__title">{{ site.data.languages[page.language]['help'] }}</li>
-                                <li>
-                                    <ul>
-                                        <li><a href="https://phalcon.io/docs">{{ site.data.languages[page.language]['documentation'] }}</a></li>
-                                        <li><a href="https://phalcon.io/discord">Discord</a></li>
-                                        <li><a href="https://github.com/phalcon/cphalcon/discussions">Github discussions (v3/v4/v5)</a></li>
-                                        <li><a href="https://github.com/phalcon/phalcon/discussions">Github discussions (v6)</a></li>
-                                        <li><a href="https://phalcon.io/so">Stack Overflow</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                        <ul class="header-dropdown--mobile">
+                            <li class="header-dropdown--mobile__title">{{ site.data.languages[page.language]['social']
+                                }}
+                            </li>
+                            <li>
+                                <ul>
+                                    <li><a href="https://phalcon.io/blog">{{ site.data.languages[page.language]['blog']
+                                        }}</a></li>
+                                    <li><a href="https://phalcon.io/telegram">Telegram</a></li>
+                                    <li><a href="https://phalcon.io/gab">Gab</a></li>
+                                    <li><a href="https://phalcon.io/mewe">MeWe</a></li>
+                                    <li><a href="https://phalcon.io/fb">Facebook</a></li>
+                                    <li><a href="https://phalcon.io/t">Twitter</a></li>
+                                    <li><a href="https://phalcon.io/bitchute">Bitchute</a></li>
+                                    <li><a href="https://phalcon.io/lbry">LBRY</a></li>
+                                    <li><a href="https://phalcon.io/youtube">YouTube</a></li>
+                                    <li><a href="https://phalcon.io/linkedin">LinkedIn</a></li>
+                                </ul>
+                            </li>
+                            <li class="header-dropdown--mobile__title">{{ site.data.languages[page.language]['help']
+                                }}
+                            </li>
+                            <li>
+                                <ul>
+                                    <li><a href="https://phalcon.io/docs">{{
+                                        site.data.languages[page.language]['documentation'] }}</a></li>
+                                    <li><a href="https://phalcon.io/discord">Discord</a></li>
+                                    <li><a href="https://github.com/phalcon/cphalcon/discussions">Github discussions
+                                        (v3/v4/v5)</a></li>
+                                    <li><a href="https://github.com/phalcon/phalcon/discussions">Github discussions
+                                        (v6)</a></li>
+                                    <li><a href="https://phalcon.io/so">Stack Overflow</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
 
                     <li>
-                        <a href="https://phalcon.io/fund">{{ site.data.languages[page.language]['support_us'] }}</a>
+                        <a href="https://phalcon.io/fund">
+                            {{ site.data.languages[page.language]['support_us'] }}
+                        </a>
                     </li>
 
-                </ul>
-
-                <nav class="header-nav--mobile _navToggle" onclick="event.stopPropagation();">
-                    <input type="text" class="header__search" placeholder="Search...">
-                    <ul>
-                        <li>
-                            <a href="https://phalcon.io/docs">{{ site.data.languages[page.language]['download'] }}</a>
-                        </li>
-                        <li>
-                            <a href="https://phalcon.io/docs">{{ site.data.languages[page.language]['docs'] }}</a>
-                        </li>
-
-                        <li class="extendable extended">
-                            <a href="#">{{ site.data.languages[page.language]['site'] }}</a>
-                            <ul class="header-dropdown--mobile">
-                                <li class="header-dropdown--mobile__title">{{ site.data.languages[page.language]['download'] }}</li>
-                                <li>
-                                    <ul>
-                                        <li><a href="/{{ page.language }}/download/linux">{{ site.data.languages[page.language]['download_linux'] }}</a></li>
-                                        <li><a href="/{{ page.language }}/download/windows">{{ site.data.languages[page.language]['download_windows'] }}</a></li>
-                                        <li><a href="/{{ page.language }}/download/tools">{{ site.data.languages[page.language]['download_developer_tools'] }}</a></li>
-                                        <li><a href="/{{ page.language }}/download/stubs">{{ site.data.languages[page.language]['download_ide_stubs'] }}</a></li>
-                                    </ul>
-                                </li>
-                                <li class="header-dropdown--mobile__title">{{ site.data.languages[page.language]['about'] }}</li>
-                                <li>
-                                    <ul>
-                                        <li><a href="/{{ page.language }}/about">{{ site.data.languages[page.language]['about'] }}</a></li>
-                                        <li><a href="https://builtwith.phalcon.io/">{{ site.data.languages[page.language]['built_with_phalcon'] }}</a></li>
-                                        <li><a href="/{{ page.language }}/team">{{ site.data.languages[page.language]['team'] }}</a></li>
-                                        <li><a href="/{{ page.language }}/testimonials">{{ site.data.languages[page.language]['testimonials'] }}</a></li>
-                                        <li><a href="/{{ page.language }}/hosting">{{ site.data.languages[page.language]['hosting'] }}</a></li>
-                                        <li><a href="/{{ page.language }}/support">{{ site.data.languages[page.language]['support'] }}</a></li>
-                                        <li><a href="/{{ page.language }}/sponsors">{{ site.data.languages[page.language]['sponsors'] }}</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="extendable extended">
-                            <a href="#">{{ site.data.languages[page.language]['community'] }}</a>
-                            <ul class="header-dropdown--mobile">
-                                <li class="header-dropdown--mobile__title">{{ site.data.languages[page.language]['social'] }}</li>
-                                <li>
-                                    <ul>
-                                        <li><a href="https://phalcon.io/blog">{{ site.data.languages[page.language]['blog'] }}</a></li>
-                                        <li><a href="https://phalcon.io/telegram">Telegram</a></li>
-                                        <li><a href="https://phalcon.io/gab">Gab</a></li>
-                                        <li><a href="https://phalcon.io/mewe">MeWe</a></li>
-                                        <li><a href="https://phalcon.io/fb">Facebook</a></li>
-                                        <li><a href="https://phalcon.io/t">Twitter</a></li>
-                                        <li><a href="https://phalcon.io/bitchute">Bitchute</a></li>
-                                        <li><a href="https://phalcon.io/lbry">LBRY</a></li>
-                                        <li><a href="https://phalcon.io/youtube">YouTube</a></li>
-                                        <li><a href="https://phalcon.io/linkedin">LinkedIn</a></li>
-                                    </ul>
-                                </li>
-                                <li class="header-dropdown--mobile__title">{{ site.data.languages[page.language]['help'] }}</li>
-                                <li>
-                                    <ul>
-                                        <li><a href="https://phalcon.io/docs">{{ site.data.languages[page.language]['documentation'] }}</a></li>
-                                        <li><a href="https://phalcon.io/discord">Discord</a></li>
-                                        <li><a href="https://github.com/phalcon/cphalcon/discussions">Github discussions (v3/v4/v5)</a></li>
-                                        <li><a href="https://github.com/phalcon/phalcon/discussions">Github discussions (v6)</a></li>
-                                        <li><a href="https://phalcon.io/so">Stack Overflow</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="https://phalcon.io/fund">
-                                {{ site.data.languages[page.language]['support_us'] }}
-                            </a>
-                        </li>
-
-                        <li class="extendable extend">
+                    <li class="extendable extend">
                             <span class="mobile-menu-page-lang">
                                 <img class="lang-image"
                                      src="/assets/images/flags/{{ page.language }}.png"
                                      alt="{{ page.language }}">
                             </span>
-                            <ul class="header-dropdown--mobile header-dropdown--mobile-lang">
-                                {% assign fromLink = '/' | append: page.language %}
-                                {% assign languageData = site.data.languages | sort %}
-                                {% for lang in languageData %}
-                                {% assign menuPage = page.permalink | replace: fromLink, '' %}
-                                <li>
-                                    <a href="/{{ lang[0] }}{{ menuPage }}">
-                                        <img class="lang-image"
-                                             src="/assets/images/flags/{{ lang[0] }}.png"
-                                             alt="{{ lang[1]['language_text'] }}">
-                                        {{ lang[1]['language_text'] }}
-                                    </a>
-                                </li>
-                                {%- endfor -%}
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
+                        <ul class="header-dropdown--mobile header-dropdown--mobile-lang">
+                            {% assign fromLink = '/' | append: page.language %}
+                            {% assign languageData = site.data.languages | sort %}
+                            {% for lang in languageData %}
+                            {% assign menuPage = page.permalink | replace: fromLink, '' %}
+                            <li>
+                                <a href="/{{ lang[0] }}{{ menuPage }}">
+                                    <img class="lang-image"
+                                         src="/assets/images/flags/{{ lang[0] }}.png"
+                                         alt="{{ lang[1]['language_text'] }}">
+                                    {{ lang[1]['language_text'] }}
+                                </a>
+                            </li>
+                            {%- endfor -%}
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
 
-                <!-- <input type="text" class="header__search" placeholder="Search..."> -->
+            <!-- <input type="text" class="header__search" placeholder="Search..."> -->
+        </div>
+
+        <div class="header__right">
+            {% include menu-language.html %}
+            <input id="searchinput" type="text"
+                   class="header__search"
+                   placeholder="{{ site.data.languages[page.language]['search'] }}">
+            <div class="header__github">
+                <a href="https://phalcon.io/github" aria-label="github">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+                        <path fill="#fff"
+                              d="M13.456 11.424c-.78 0-1.414.875-1.414 1.955s.633 1.956 1.414 1.956c.78 0 1.412-.875 1.412-1.956 0-1.08-.632-1.955-1.412-1.955Zm4.92-5.091c.16-.397.168-2.652-.69-4.811 0 0-1.969.216-4.947 2.26-.625-.173-1.682-.259-2.739-.259s-2.114.086-2.739.259c-2.979-2.044-4.947-2.26-4.947-2.26-.858 2.159-.85 4.414-.69 4.811C.617 7.428 0 8.743 0 10.54c0 7.811 6.48 7.936 8.116 7.936l1.884.002 1.884-.002c1.636 0 8.116-.125 8.116-7.936 0-1.797-.616-3.112-1.625-4.207ZM10.03 17.516H9.97c-4.1 0-7.293-.49-7.293-4.474 0-.954.337-1.84 1.137-2.575C5.149 9.242 7.407 9.89 9.97 9.89h.06c2.564 0 4.822-.648 6.156.577.8.735 1.137 1.621 1.137 2.575 0 3.984-3.193 4.474-7.292 4.474Zm-3.487-6.092c-.78 0-1.412.875-1.412 1.955s.632 1.956 1.412 1.956c.781 0 1.414-.875 1.414-1.956 0-1.08-.633-1.955-1.414-1.955Z"/>
+                    </svg>
+                </a>
             </div>
-
-            <div class="header__right">
-                {% include menu-language.html %}
-                <input id="searchinput" type="text"
-                       class="header__search"
-                       placeholder="{{ site.data.languages[page.language]['search'] }}">
-                <div class="header__github">
-                    <a href="https://phalcon.io/github" aria-label="github">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path fill="#fff" d="M13.456 11.424c-.78 0-1.414.875-1.414 1.955s.633 1.956 1.414 1.956c.78 0 1.412-.875 1.412-1.956 0-1.08-.632-1.955-1.412-1.955Zm4.92-5.091c.16-.397.168-2.652-.69-4.811 0 0-1.969.216-4.947 2.26-.625-.173-1.682-.259-2.739-.259s-2.114.086-2.739.259c-2.979-2.044-4.947-2.26-4.947-2.26-.858 2.159-.85 4.414-.69 4.811C.617 7.428 0 8.743 0 10.54c0 7.811 6.48 7.936 8.116 7.936l1.884.002 1.884-.002c1.636 0 8.116-.125 8.116-7.936 0-1.797-.616-3.112-1.625-4.207ZM10.03 17.516H9.97c-4.1 0-7.293-.49-7.293-4.474 0-.954.337-1.84 1.137-2.575C5.149 9.242 7.407 9.89 9.97 9.89h.06c2.564 0 4.822-.648 6.156.577.8.735 1.137 1.621 1.137 2.575 0 3.984-3.193 4.474-7.292 4.474Zm-3.487-6.092c-.78 0-1.412.875-1.412 1.955s.632 1.956 1.412 1.956c.781 0 1.414-.875 1.414-1.956 0-1.08-.633-1.955-1.414-1.955Z"/></svg>
-                    </a>
-                </div>
-                <div class="header__discord">
-                    <a href="https://phalcon.io/discord" aria-label="discord">
-                        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" width="22" height="22" viewBox="0 0 245 240"><style>.st0{fill:#fff}</style><path d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zm36.5 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1z" class="st0"/><path d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2 21.5 19V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z" class="st0"/></svg>
-                    </a>
-                </div>
+            <div class="header__discord">
+                <a href="https://phalcon.io/discord" aria-label="discord">
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" width="22" height="22" viewBox="0 0 245 240">
+                        <style>.st0 {
+                            fill: #fff
+                        }</style>
+                        <path d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zm36.5 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1z"
+                              class="st0"/>
+                        <path d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2 21.5 19V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"
+                              class="st0"/>
+                    </svg>
+                </a>
             </div>
         </div>
+    </div>
 </header>
