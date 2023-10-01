@@ -1,26 +1,30 @@
-            <ul class="buildwith-nav__list">
-                <li{% if page.title == 'download_linux' %} class="active"{% endif %}>
-                    <a href="/{{ page.language }}/download/linux">
-                        {{ site.data.languages[page.language]['download_linux'] }}
-                    </a>
-                    <hr>
-                </li>
-                <li{% if page.title == 'download_windows' %} class="active"{% endif %}>
-                    <a href="/{{ page.language }}/download/windows">
-                        {{ site.data.languages[page.language]['download_windows'] }}
-                    </a>
-                    <hr>
-                </li>
-                <li{% if page.title == 'download_tools' %} class="active"{% endif %}>
-                    <a href="/{{ page.language }}/download/tools">
-                        {{ site.data.languages[page.language]['download_developer_tools'] }}
-                    </a>
-                    <hr>
-                </li>
-                <li{% if page.title == 'download_ide_stubs' %} class="active"{% endif %}>
-                    <a href="/{{ page.language }}/download/stubs">
-                        {{ site.data.languages[page.language]['download_ide_stubs'] }}
-                    </a>
-                    <hr>
-                </li>
-            </ul>
+<ul class="buildwith-nav__list">
+    <li
+    {% if page.title == 'download_linux' %} class="active"{% endif %}>
+    <a href="/{{ page.language }}/download/linux">
+        {{ site.data.languages[page.language]['download_linux'] }}
+    </a>
+    <hr>
+    </li>
+    <li
+    {% if page.title == 'download_windows' %} class="active"{% endif %}>
+    <a href="/{{ page.language }}/download/windows">
+        {{ site.data.languages[page.language]['download_windows'] }}
+    </a>
+    <hr>
+    </li>
+    <li
+    {% if page.title == 'download_tools' %} class="active"{% endif %}>
+    <a href="/{{ page.language }}/download/tools">
+        {{ site.data.languages[page.language]['download_developer_tools'] }}
+    </a>
+    <hr>
+    </li>
+    <li
+    {% if page.title == 'download_ide_stubs' %} class="active"{% endif %}>
+    <a href="/{{ page.language }}/download/stubs">
+        {{ site.data.languages[page.language]['download_ide_stubs'] }}
+    </a>
+    <hr>
+    </li>
+</ul>
