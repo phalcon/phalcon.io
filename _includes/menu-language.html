@@ -1,21 +1,22 @@
-                    <div class="header__lang expand">
-                        <img class="flag-item"
-                             src="/assets/images/flags/{{ page.language }}.png"
-                             alt="{{ page.language }}">
-                        <div class="header-dropdown-wrapper">
-                            <ul class="header-dropdown header-dropdown--lang">
-                                {% assign fromLink = '/' | append: page.language %}
-                                {% assign languageData = site.data.languages | sort %}
-                                {% for lang in languageData %}
-                                {% assign menuPage = page.permalink | replace: fromLink, '' %}
-                                <li>
-                                    <a href="/{{ lang[0] }}{{ menuPage }}">
-                                        <img class="flag-item"
-                                             src="/assets/images/flags/{{ lang[0] }}.png"
-                                             alt="{{ lang[1]['language_text'] }}">
-                                        {{ lang[1]['language_text'] }}
-                                    </a>
-                                </li>{% endfor %}
-                            </ul>
-                        </div>
-                    </div>
+<div class="header__lang expand">
+    <img class="flag-item"
+         src="/assets/images/flags/{{ page.language }}.png"
+         alt="{{ page.language }}">
+    <div class="header-dropdown-wrapper">
+        <ul class="header-dropdown header-dropdown--lang">
+            {% assign fromLink = '/' | append: page.language %}
+            {% assign languageData = site.data.languages | sort %}
+            {% for lang in languageData %}
+            {% assign menuPage = page.permalink | replace: fromLink, '' %}
+            <li>
+                <a href="/{{ lang[0] }}{{ menuPage }}">
+                    <img class="flag-item"
+                         src="/assets/images/flags/{{ lang[0] }}.png"
+                         alt="{{ lang[1]['language_text'] }}">
+                    {{ lang[1]['language_text'] }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
