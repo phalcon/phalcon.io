@@ -1,21 +1,24 @@
-            <ul class="buildwith-nav__list">
-                <li{% if page.title == 'about' %} class="active"{% endif %}>
-                    <a href="/{{ page.language }}/about">
-                        {{ site.data.languages[page.language]['about'] }}
-                    </a>
-                    <hr>
-                </li>
-                <li{% if page.title == 'team' %} class="active"{% endif %}>
-                    <a href="/{{ page.language }}/team">
-                        {{ site.data.languages[page.language]['team'] }}
-                    </a>
-                    <hr>
-                </li>
+<ul class="buildwith-nav__list">
+    <li
+    {% if page.title == 'about' %} class="active"{% endif %}>
+    <a href="/{{ page.language }}/about">
+        {{ site.data.languages[page.language]['about'] }}
+    </a>
+    <hr>
+    </li>
+    <li
+    {% if page.title == 'team' %} class="active"{% endif %}>
+    <a href="/{{ page.language }}/team">
+        {{ site.data.languages[page.language]['team'] }}
+    </a>
+    <hr>
+    </li>
 
-                <li{% if page.title == 'testimonials' %} class="active"{% endif %}>
-                    <a href="/{{ page.language }}/testimonials">
-                        {{ site.data.languages[page.language]['testimonials'] }}
-                    </a>
-                    <hr>
-                </li>
-            </ul>
+    <li
+    {% if page.title == 'testimonials' %} class="active"{% endif %}>
+    <a href="/{{ page.language }}/testimonials">
+        {{ site.data.languages[page.language]['testimonials'] }}
+    </a>
+    <hr>
+    </li>
+</ul>
