@@ -9,7 +9,8 @@ layout: default
             <hr>
 
             <p class="alert alert-info">
-                {{ site.data.languages[page.language]['download_psr'] | replace: ':1:', 'https://pecl.php.net/package/psr' }}
+                {{ site.data.languages[page.language]['download_psr'] | replace: ':1:',
+                'https://pecl.php.net/package/psr' }}
             </p>
 
             <h2>
@@ -17,7 +18,8 @@ layout: default
             </h2>
             <p>
                 {{ site.data.languages[page.language]['download_pecl_1'] }}
-                {{ site.data.languages[page.language]['download_pecl_2'] | replace: ':1:', 'https://pear.php.net/manual/en/installation.getting.php' }}
+                {{ site.data.languages[page.language]['download_pecl_2'] | replace: ':1:',
+                'https://pear.php.net/manual/en/installation.getting.php' }}
             </p>
 
             <div class="feature__code">
@@ -34,14 +36,16 @@ pecl install phalcon</code></pre>
             <h3>{{ site.data.languages[page.language]['download_windows_download'] }}</h3>
 
             <p>
-                {{ site.data.languages[page.language]['download_windows_dlls'] | replace: ':1:', 'https://github.com/phalcon/cphalcon/releases/latest' }}
+                {{ site.data.languages[page.language]['download_windows_dlls'] | replace: ':1:',
+                'https://github.com/phalcon/cphalcon/releases/latest' }}
             </p>
 
             <br>
 
             <h3>{{ site.data.languages[page.language]['download_windows_installation'] }}</h3>
 
-            <p>{{ site.data.languages[page.language]['download_windows_installation_1'] | replace: ':1:', 'https://docs.phalcon.io/3.4/en/installation#windows' }}</p>
+            <p>{{ site.data.languages[page.language]['download_windows_installation_1'] | replace: ':1:',
+                'https://docs.phalcon.io/3.4/en/installation#windows' }}</p>
             <div class="feature__code">
                 <pre><code class="ini hljs">extension=php_phalcon.dll</code></pre>
             </div>
