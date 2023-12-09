@@ -7,6 +7,8 @@ app:
   email: 'team@phalcon.io'
   generator: 'Phalcon Team'
   analytics: 'G-CR3DKB9Q7P'
+  cloudflare:
+    analytics: '7020539e0758411d96463117ab271426'
 
 url: https://phalcon.io
 kramdown:
