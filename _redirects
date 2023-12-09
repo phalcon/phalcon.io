@@ -6,45 +6,7 @@
 /performing-a-route-redirection-in-phalconphp                         https://blog.phalcon.io/post/performing-a-route-redirection-in-phalconphp                            301
 /http://phalcon.io/setting-up-phalconphp-with-environment-variables   https://blog.phalcon.io/post/http://phalcon.io/setting-up-phalconphp-with-environment-variables      301
 
-/                                        /en-us                                                                         301
-/ar/*                                    /ar-sa/:splat                                                                  301
-/bg/*                                    /bg-bg/:splat                                                                  301
-/ca/*                                    /ca-es/:splat                                                                  301
-/cs/*                                    /cs-cz/:splat                                                                  301
-/da/*                                    /da-dk/:splat                                                                  301
-/de/*                                    /de-de/:splat                                                                  301
-/el/*                                    /el-gr/:splat                                                                  301
-/en/*                                    /en-us/:splat                                                                  301
-/es/*                                    /es-es/:splat                                                                  301
-/fa/*                                    /fa-ir/:splat                                                                  301
-/fr/*                                    /fr-fr/:splat                                                                  301
-/hu/*                                    /hu-hu/:splat                                                                  301
-/hy/*                                    /hy-am/:splat                                                                  301
-/id/*                                    /id-id/:splat                                                                  301
-/it/*                                    /it-it/:splat                                                                  301
-/ja/*                                    /ja-jp/:splat                                                                  301
-/kk/*                                    /kk-kz/:splat                                                                  301
-/km/*                                    /km-kh/:splat                                                                  301
-/ko/*                                    /ko-kr/:splat                                                                  301
-/lt/*                                    /lt-lt/:splat                                                                  301
-/lv/*                                    /lv-lv/:splat                                                                  301
-/nl/*                                    /nl-nl/:splat                                                                  301
-/no/*                                    /no-no/:splat                                                                  301
-/pl/*                                    /pl-pl/:splat                                                                  301
-/pt/*                                    /pt-pt/:splat                                                                  301
-/ro/*                                    /ro-ro/:splat                                                                  301
-/ru/*                                    /ru-ru/:splat                                                                  301
-/sk/*                                    /sk-sk/:splat                                                                  301
-/sv/*                                    /sv-se/:splat                                                                  301
-/th/*                                    /th-th/:splat                                                                  301
-/tl/*                                    /tl-ph/:splat                                                                  301
-/tr/*                                    /tr-tr/:splat                                                                  301
-/uk/*                                    /uk-ua/:splat                                                                  301
-/vi/*                                    /vi-vn/:splat                                                                  301
-/zh/*                                    /zh-cn/:splat                                                                  301
-
-/:lang/download                          /:lang/download/linux                                                          301
-
+# URL Shortener
 /about                                   /en/about                                                                      301
 /api                                     https://docs.phalcon.io/latest/en/api                                          301
 /bitchute                                https://www.bitchute.com/channel/phalcon/                                      301
@@ -93,6 +55,7 @@
 /yt                                      https://www.youtube.com/c/PhalconPHP                                           301
 /youtube                                 https://www.youtube.com/c/PhalconPHP                                           301
 
+# Downloads
 /download/linux                          https://packagecloud.io/phalcon/stable                                         301
 /download/windows/latest/x86-73          https://github.com/phalcon/cphalcon/releases/latest                            301
 /download/windows/latest/x86-73-nts      https://github.com/phalcon/cphalcon/releases/latest                            301
@@ -120,4 +83,44 @@
 /download/windows/previous/x64-56-nts    https://github.com/phalcon/cphalcon/releases/tag/v3.4.4                        301
 /download/windows/previous/x64-55        https://github.com/phalcon/cphalcon/releases/tag/v3.4.4                        301
 /download/windows/previous/x64-55-nts    https://github.com/phalcon/cphalcon/releases/tag/v3.4.4                        301
+
+# Language specific
+/                                        /en-us                                                                         301
+/ar/*                                    /ar-sa/:splat                                                                  301
+/bg/*                                    /bg-bg/:splat                                                                  301
+/ca/*                                    /ca-es/:splat                                                                  301
+/cs/*                                    /cs-cz/:splat                                                                  301
+/da/*                                    /da-dk/:splat                                                                  301
+/de/*                                    /de-de/:splat                                                                  301
+/el/*                                    /el-gr/:splat                                                                  301
+/en/*                                    /en-us/:splat                                                                  301
+/es/*                                    /es-es/:splat                                                                  301
+/fa/*                                    /fa-ir/:splat                                                                  301
+/fr/*                                    /fr-fr/:splat                                                                  301
+/hu/*                                    /hu-hu/:splat                                                                  301
+/hy/*                                    /hy-am/:splat                                                                  301
+/id/*                                    /id-id/:splat                                                                  301
+/it/*                                    /it-it/:splat                                                                  301
+/ja/*                                    /ja-jp/:splat                                                                  301
+/kk/*                                    /kk-kz/:splat                                                                  301
+/km/*                                    /km-kh/:splat                                                                  301
+/ko/*                                    /ko-kr/:splat                                                                  301
+/lt/*                                    /lt-lt/:splat                                                                  301
+/lv/*                                    /lv-lv/:splat                                                                  301
+/nl/*                                    /nl-nl/:splat                                                                  301
+/no/*                                    /no-no/:splat                                                                  301
+/pl/*                                    /pl-pl/:splat                                                                  301
+/pt/*                                    /pt-pt/:splat                                                                  301
+/ro/*                                    /ro-ro/:splat                                                                  301
+/ru/*                                    /ru-ru/:splat                                                                  301
+/sk/*                                    /sk-sk/:splat                                                                  301
+/sv/*                                    /sv-se/:splat                                                                  301
+/th/*                                    /th-th/:splat                                                                  301
+/tl/*                                    /tl-ph/:splat                                                                  301
+/tr/*                                    /tr-tr/:splat                                                                  301
+/uk/*                                    /uk-ua/:splat                                                                  301
+/vi/*                                    /vi-vn/:splat                                                                  301
+/zh/*                                    /zh-cn/:splat                                                                  301
+
+/:lang/download                          /:lang/download/linux                                                          301
 
