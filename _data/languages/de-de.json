@@ -80,6 +80,8 @@
     "documentation": "Dokumentation",
     "donate": "Spenden",
     "download": "Download",
+    "download_amazon": "Amazon Linux",
+    "download_amazon_1": "Using PECL should work right out of the box. However, if it does not, there is a Stack Overflow answer <a href=':1:'>here</a> that might help.",
     "download_arch": "Arch Linux",
     "download_arch_1": "Für ArchLinux ist ein <a href=':1:'>PKGBUILD</a> verfügbar.",
     "download_compilation": "Kompilieren",
@@ -103,7 +105,7 @@
     "download_devtools_download": "Du kannst ein Cross-Plattform-Paket mit den Entwicklertools von <a href=':1:'> Github</a> herunterladen oder Klonen.",
     "download_examples": "Vorinstallierte Beispiele",
     "download_examples_1": "Die folgenden Beispiele sind auf allen Vagrant-Containern vorinstalliert:",
-    "download_freebsd": "FreeBSD",
+    "download_freebsd": "FreeBSD/GhostBSD",
     "download_freebsd_1": "Eine Version für FreeBSD ist vorhanden. Du musst lediglich die folgenden Befehle ausführen um sie zu installieren:",
     "download_ide_stubs": "IDE-Integration",
     "download_ide_stubs_1": "Das Video unten beschreibt, wie IDE Stubs für PhpStorm aktiviert werden",
@@ -219,9 +221,7 @@
     "join_our_community_description": "Community-Beiträge in Erweiterungen, Plugins, Adaptern, VM, Beispielen, Quellcode... und mehr",
     "language_text": "Deutsch",
     "learn": "Lernen",
-
-    "license_new_bsd": "Phalcon ist ein Open-Source-PHP-Framework <br />, das als C-Erweiterung gebaut wurde. Es ist unter der <br /><a href='https://opensource.org/licenses/BSD-3-Clause' target='_blank'>neuen BSD-Lizenz</a> verfügbar.",
-
+    "license_new_bsd": "Phalcon is an open-source PHP framework <br />built as a C-extension. It is available under the <br /><a href='https://opensource.org/licenses/BSD-3-Clause' target='_blank'>new BSD License</a>.",
     "low_overhead": "Niedriger Overhead",
     "low_overhead_1": "Zephir/C Erweiterungen werden einmalig zusammen mit PHP bei dem Web-Server Daemon Startprozess geladen",
     "low_overhead_2": "Die von der Erweiterung zur Verfügung gestellten Klassen und Funktionen sind bereit in jeder Anwendung verwendet zu werden",
