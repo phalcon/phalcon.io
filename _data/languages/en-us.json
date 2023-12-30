@@ -81,7 +81,7 @@
     "donate": "Donate",
     "download": "Download",
     "download_amazon": "Amazon Linux",
-    "download_amazon_1": "Using `pecl` should work right out of the box. However, if it does not, there is a Stack Overflow answer <a href=':1:'>here</a> that might help.",
+    "download_amazon_1": "Using PECL should work right out of the box. However, if it does not, there is a Stack Overflow answer <a href=':1:'>here</a> that might help.",
     "download_arch": "Arch Linux",
     "download_arch_1": "There is a PKGBUILD for ArchLinux, available <a href=':1:'>here</a>",
     "download_compilation": "Compilation",
