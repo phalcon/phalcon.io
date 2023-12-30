@@ -80,6 +80,8 @@
     "documentation": "문서",
     "donate": "후원하기",
     "download": "다운로드",
+    "download_amazon": "Amazon Linux",
+    "download_amazon_1": "Using PECL should work right out of the box. However, if it does not, there is a Stack Overflow answer <a href=':1:'>here</a> that might help.",
     "download_arch": "Arch 리눅스",
     "download_arch_1": "ArchLinux를 위한 PKGBUILD는 <a href=':1:'>여기</a>에서 확인 할 수 있습니다.",
     "download_compilation": "컴파일",
@@ -103,7 +105,7 @@
     "download_devtools_download": "크로스플랫폼 개발자 도구를 <a href=':1:'>Github</a>에서 다운로드 하거나 클론 할수 있습니다.",
     "download_examples": "사전 설치된 예제들",
     "download_examples_1": "다음의 예제는 각 vagrant box에 사전 설치되어 있습니다. ",
-    "download_freebsd": "FreeBSD",
+    "download_freebsd": "FreeBSD/GhostBSD",
     "download_freebsd_1": "FreeBSD 용의 포팅이 존재합니다. 간단한 명령어 몇개로 설치하실 수 있습니다. ",
     "download_ide_stubs": "IDE 스텁코드",
     "download_ide_stubs_1": "아래 동영상은 PhpStorm용 IDE스텁코드를 활성화하는 방법을 간략히 설명합니다.",
@@ -218,9 +220,8 @@
     "join_our_community": "우리의 활기찬 개발자 커뮤니티에 가입하세요!",
     "join_our_community_description": "익스텐션, 플러그인, 어댑터, VM, 예제, 소스코드 등에 대한 커뮤니티의 기여",
     "language_text": "Korean",
-    "learn": "학습"
+    "learn": "학습",
     "license_new_bsd": "Phalcon is an open-source PHP framework <br />built as a C-extension. It is available under the <br /><a href='https://opensource.org/licenses/BSD-3-Clause' target='_blank'>new BSD License</a>.",
-
     "low_overhead": "낮은 오버헤드",
     "low_overhead_1": "Zephir/C 익스텐션은 웹서버의 데몬 시작 과정에서 PHP와 함께 최초 단 한번 로드 됩니다.",
     "low_overhead_2": "익스텐션에서 제공되는 클래스와 함수는 어떤 어플리케이션에서나 사용가능합니다.",
