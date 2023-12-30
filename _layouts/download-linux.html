@@ -123,13 +123,22 @@ sudo ./install</code></pre>
                 {{ site.data.languages[page.language]['download_freebsd_1'] }}
             </p>
             <div class="feature__code">
-                <pre><code class="bash hljs">pkg_add -r phalcon</code></pre>
+                <pre><code class="bash hljs">pkg install -r phalcon</code></pre>
             </div>
 
             <p>{{ site.data.languages[page.language]['or'] }}</p>
             <div class="feature__code">
                 <pre><code class="bash hljs">cd /usr/ports/www/phalcon && make install clean</code></pre>
             </div>
+
+            <h2>
+                {{ site.data.languages[page.language]['download_amazon'] }}
+            </h2>
+
+            <p>
+                {{ site.data.languages[page.language]['download_amazon_1'] | replace: ':1:',
+                'https://archive.is/M7aU9' }}
+            </p>
 
             <h2>
                 {{ site.data.languages[page.language]['download_cpanel'] }}
