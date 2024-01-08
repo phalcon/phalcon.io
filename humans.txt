@@ -10,5 +10,5 @@ From: Charles Town, WV, USA
 Last update: 2019/01/06
 Doctype: HTML5
 Standards: HTML5, CSS3
-Components: Jekyll, Twitter Bootstrap, jQuery, Netlify
+Components: Jekyll, Twitter Bootstrap, jQuery
 
