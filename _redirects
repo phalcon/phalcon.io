@@ -8,7 +8,7 @@
 
 # URL Shortener
 /about                                   /en/about                                                                      301
-/api                                     https://docs.phalcon.io/latest/en/api                                          301
+/api                                     https://docs.phalcon.io/latest/api/                                         301
 /bitchute                                https://www.bitchute.com/channel/phalcon/                                      301
 /blog                                    https://blog.phalcon.io                                                        301
 /brighteon                               https://www.brighteon.com/channel/phalcon                                      301
@@ -50,7 +50,7 @@
 /team/nikos                              https://github.com/niden                                                       301
 /team/serghei                            https://github.com/sergeyklay                                                  301
 /team/ruud                               https://github.com/ruudboon                                                    301
-/tutorial                                https://docs.phalcon.io/latest/en/tutorial-basic                               301
+/tutorial                                https://docs.phalcon.io/latest/tutorial-basic/                             301
 /yt                                      https://www.youtube.com/c/PhalconPHP                                           301
 /youtube                                 https://www.youtube.com/c/PhalconPHP                                           301
 
