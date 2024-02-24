@@ -103,7 +103,6 @@
             </ul>
 
             <nav class="header-nav--mobile _navToggle" onclick="event.stopPropagation();">
-                <input type="text" class="header__search" placeholder="Search...">
                 <ul>
                     <li>
                         <a href="https://docs.phalcon.io/">{{ site.data.languages[page.language]['download'] }}</a>
@@ -229,9 +228,6 @@
 
         <div class="header__right">
             {% include menu-language.html %}
-            <input id="searchinput" type="text"
-                   class="header__search"
-                   placeholder="{{ site.data.languages[page.language]['search'] }}">
             <div class="header__github">
                 <a href="https://phalcon.io/github" aria-label="github">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
