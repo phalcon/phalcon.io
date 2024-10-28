@@ -7,7 +7,7 @@
     "about_documentation": "문서",
     "about_documentation_1": "이 웹사이트의 저장소는 <a href=':1:'>github</a>에 있습니다. 저장소는 영어 문서에 대한 소스로만 사용하고 있습니다!",
     "about_documentation_2": "문서에 대한 교정, 추가 및 향상은 언제나 환영입니다. 저장소를 클론하신 후 해당 내용에 대해 PR 만 요청해주시면 됩니다!",
-    "about_documentation_3": "컨텐츠 일부를 다른 언어로 번역해서 비영어권 개발자들을 도와주실 수 있다면, 정말 멋질것 같아요! 번역을 위해 저희는 <a href=':2:'>:3:</a>을(를) 사용하고 있으며, 프로젝트는 <a href=':4:'>여기</a>에 있습니다.",
+    "about_documentation_3": "If you can help non English speaking developers by translating some of the content to another language, that would be great! We are using <a href=':2:'>:3:</a> for our translations.",
     "about_donations_sponsoring": "기부 / 후원",
     "about_evangelism": "주변에 알리기",
     "about_evangelism_1": "Phalcon이 뭔지, 정말 동작하는지 전혀 알지 못하는 사람들이 아직 너무나 많습니다. 많은 개발자들이 Phalcon이 도대체 뭐하는 건지, Phalcon이 어떻게 도움을 줄 수 있는지에 대해서 듣게되면 좋아하게 될것이라고 확신합니다. 만약 당신이 PHP 관련 행사나 미팅에서 Phalcon에 대해 이야기하고자 한다면 저희가 전력으로 지원하겠습니다. PHP 개발을 혁신시킬 수 있는 도구에 대해 누구든 알고싶지 않을까요?",
