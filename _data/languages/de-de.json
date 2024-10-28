@@ -7,7 +7,7 @@
     "about_documentation": "DOKUMENTATION",
     "about_documentation_1": "Das Repository dieser Website ist auf <a href=':1:'>github</a>verfügbar. Wir verwenden dieses Repository als Quelle für unsere Dokumentation nur für die englische Sprache!",
     "about_documentation_2": "Wir freuen uns immer über Korrekturen, Ergänzungen und Verbesserungen in unserer Dokumentation, so dass Sie nur das Projektarchiv klonen und eine Pull-Request!",
-    "about_documentation_3": "Wenn Sie nicht-englisch sprechenden Entwicklern helfen können, indem Sie einige der Inhalte in eine andere Sprache übersetzen, wäre das großartig! Wir verwenden <a href=':2:'>:3:</a> </a> für unsere Übersetzungen, und Sie finden unser Projekt <a href=':4:'>hier</a>",
+    "about_documentation_3": "If you can help non English speaking developers by translating some of the content to another language, that would be great! We are using <a href=':2:'>:3:</a> for our translations.",
     "about_donations_sponsoring": "SPENDEN / SPONSORING",
     "about_evangelism": "EVANGELISMUS",
     "about_evangelism_1": "Es gibt eine Menge Leute, die noch nicht wissen, dass es Phalcon gibt oder dass es wirklich funktioniert. Wir sind sicher, dass viele Entwickler davon profitieren, wenn sie hören, was Phalcon alles kann und wie sie es unterstützen können. Wenn Du eine PHP-Veranstaltung oder ein Treffen kennst und gerne einen Vortrag über das Projekt halten möchtest, hast Du unsere volle Unterstützung. Wer möchte nicht das Tool kennen, dass die PHP-Entwicklung revolutioniert?",
