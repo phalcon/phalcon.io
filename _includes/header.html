@@ -1,7 +1,7 @@
 <header class="header">
     <div class="container">
         <div class="header__left">
-            <button class="header-nav__burger" aria-label="burger button" onclick="o2.header.openMobileNav(this);">
+            <button class="header-nav__burger" aria-label="burger button">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -102,7 +102,14 @@
 
             </ul>
 
-            <nav class="header-nav--mobile _navToggle" onclick="event.stopPropagation();">
+            <nav class="header-nav--mobile _navToggle">
+
+                <div class="light-dark-auto-switcher">
+                    <a id="light-mode-button" href="#" class="light-dark-auto-button">Light</a>
+                    <a id="dark-mode-button" href="#" class="light-dark-auto-button">Dark</a>
+                    <a id="auto-mode-button" href="#" class="light-dark-auto-button">Auto</a>
+                </div>
+
                 <ul>
                     <li>
                         <a href="https://docs.phalcon.io/">{{ site.data.languages[page.language]['download'] }}</a>
@@ -227,6 +234,13 @@
         </div>
 
         <div class="header__right">
+
+            <div class="light-dark-auto-switcher">
+                <a id="light-mode-button" href="#" class="light-dark-auto-button">Light</a>
+                <a id="dark-mode-button" href="#" class="light-dark-auto-button">Dark</a>
+                <a id="auto-mode-button" href="#" class="light-dark-auto-button">Auto</a>
+            </div>
+
             {% include menu-language.html %}
             <div class="header__github">
                 <a href="https://phalcon.io/github" aria-label="github">
