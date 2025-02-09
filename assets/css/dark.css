@@ -121,7 +121,7 @@
 }
 
 [color-scheme="dark"] .phalcon-blog a,
-[color-scheme="dark"] a {
+[color-scheme="dark"] main a {
     color: #00bda4;
 }
 
@@ -221,7 +221,7 @@
 }
 
 [color-scheme="dark"] .header-dropdown--lang {
-    background-color: #273646;
+    background-color: #1e2129;
     border-color: #1e2129;
 }
 
