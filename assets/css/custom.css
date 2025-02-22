@@ -9,3 +9,18 @@
 .info-block__img img {
     padding: 5px;
 }
+
+.modes {
+    margin-right: 1rem;
+}
+
+[data-mode] {
+    display: inline-block;
+    cursor: pointer;
+    border-radius: calc(.5rem / 2);
+    padding: .2rem .4rem;
+}
+[data-mode].active {
+    color: #ffffff;
+    background-color: #8fc19a;
+}
