@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'jekyll', '>= 3.10.0'
-gem 'github-pages', '~> 232'
+gem 'jekyll', '~>4.3.4'
 
 group :jekyll_plugins do
     gem 'jekyll-sitemap'
+    gem 'algolia'
     gem 'kramdown-parser-gfm'
 end

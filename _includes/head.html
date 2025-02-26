@@ -11,35 +11,80 @@
     <meta name="viewport min-width=320px" content="min-width=320, initial-scale=1.0"/>
 
     <script>
-        class LightDark {
+        (() => {
+            'use strict'
 
-            constructor() {
-                const html = document.documentElement, mode = localStorage.getItem('mode') || 'auto'
-                const getPreferredMode = () => matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+            const getStoredTheme = () => localStorage.getItem('theme')
+            const setStoredTheme = theme => localStorage.setItem('theme', theme)
 
-                const switchMode = mode => {
-                    const newMode = mode === 'auto' ? getPreferredMode() : mode
-                    html.style.colorScheme = mode === 'auto' ? 'light dark' : newMode
-
-                    html.classList.remove('light', 'dark')
-                    html.classList.add(`${newMode}`)
-                    localStorage.setItem('mode', mode)
-
-                    document.querySelectorAll('[data-mode]').forEach(el => el.classList.toggle('active', el.dataset.mode === mode))
+            const getPreferredTheme = () => {
+                const storedTheme = getStoredTheme()
+                if (storedTheme) {
+                    return storedTheme
                 }
 
-                matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-                    if (localStorage.getItem('mode') === 'auto') switchMode('auto')
-                })
-
-                document.addEventListener('click', e => e.target.dataset.mode && switchMode(e.target.dataset.mode))
-
-                switchMode(mode)
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
             }
 
-        }
+            const setTheme = theme => {
+                if (theme === 'auto') {
+                    document.documentElement.setAttribute('data-theme', (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'))
+                } else {
+                    document.documentElement.setAttribute('data-theme', theme)
+                }
+            }
 
-        new LightDark()
+            setTheme(getPreferredTheme())
+
+            const showActiveTheme = (theme, focus = false) => {
+                const themeSwitcher = document.querySelector('#bd-theme')
+
+                if (!themeSwitcher) {
+                    return
+                }
+
+                const themeSwitcherText = document.querySelector('#bd-theme-text')
+                const activeThemeIcon = document.querySelector('.theme-icon-active use')
+                const btnToActive = document.querySelector(`[data-theme-value="${theme}"]`)
+                const svgOfActiveBtn = btnToActive.querySelector('svg use').getAttribute('href')
+
+                document.querySelectorAll('[data-theme-value]').forEach(element => {
+                    element.classList.remove('active')
+                    element.setAttribute('aria-pressed', 'false')
+                })
+
+                btnToActive.classList.add('active')
+                btnToActive.setAttribute('aria-pressed', 'true')
+                activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+                const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`
+                themeSwitcher.setAttribute('aria-label', themeSwitcherLabel)
+
+                if (focus) {
+                    themeSwitcher.focus()
+                }
+            }
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                const storedTheme = getStoredTheme()
+                if (storedTheme !== 'light' && storedTheme !== 'dark') {
+                    setTheme(getPreferredTheme())
+                }
+            })
+
+            window.addEventListener('DOMContentLoaded', () => {
+                showActiveTheme(getPreferredTheme())
+
+                document.querySelectorAll('[data-theme-value]')
+                    .forEach(toggle => {
+                        toggle.addEventListener('click', () => {
+                            const theme = toggle.getAttribute('data-theme-value')
+                            setStoredTheme(theme)
+                            setTheme(theme)
+                            showActiveTheme(theme, true)
+                        })
+                    })
+            })
+        })()
     </script>
 
     <meta name="generator" content="Jekyll">
