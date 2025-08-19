@@ -35,7 +35,7 @@ A big thank you to [our Backers](https://github.com/phalcon/cphalcon/blob/master
 * [Gab](https://phalcon.io/gab)
 * [MeWe](https://phalcon.io/mewe)
 * [Facebook](https://phalcon.io/fb)
-* [Twitter](https://phalcon.io/t)
+* [X (twitter)](https://phalcon.io/t)
 
 
 ## Sponsors
