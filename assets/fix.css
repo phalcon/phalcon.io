@@ -1,3 +1,8 @@
 html.dark .green-button {
     background-color: #273646;
+    color: #00bda4;
+}
+
+html.dark .green-button:hover {
+    background-color: #000000;
 }
