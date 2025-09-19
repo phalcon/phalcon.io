@@ -9,3 +9,7 @@ html.dark .black-button:hover,
 html.dark .green-button-light:hover {
     background-color: #000000;
 }
+
+html.dark .green-button-light:hover {
+    color: #ffffff !important;
+}
