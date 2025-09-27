@@ -74,14 +74,14 @@
 /download/windows/latest/x64-56-nts      https://github.com/phalcon/cphalcon/releases/latest                            301
 /download/windows/latest/x64-55          https://github.com/phalcon/cphalcon/releases/latest                            301
 /download/windows/latest/x64-55-nts      https://github.com/phalcon/cphalcon/releases/latest                            301
-/download/windows/previous/x86-56        https://github.com/phalcon/cphalcon/releases/tag/v3.4.4                        301
-/download/windows/previous/x86-56-nts    https://github.com/phalcon/cphalcon/releases/tag/v3.4.4                        301
-/download/windows/previous/x86-55        https://github.com/phalcon/cphalcon/releases/tag/v3.4.4                        301
-/download/windows/previous/x86-55-nts    https://github.com/phalcon/cphalcon/releases/tag/v3.4.4                        301
-/download/windows/previous/x64-56        https://github.com/phalcon/cphalcon/releases/tag/v3.4.4                        301
-/download/windows/previous/x64-56-nts    https://github.com/phalcon/cphalcon/releases/tag/v3.4.4                        301
-/download/windows/previous/x64-55        https://github.com/phalcon/cphalcon/releases/tag/v3.4.4                        301
-/download/windows/previous/x64-55-nts    https://github.com/phalcon/cphalcon/releases/tag/v3.4.4                        301
+/download/windows/previous/x86-56        https://github.com/phalcon/cphalcon/releases/tag/v3.4.5                        301
+/download/windows/previous/x86-56-nts    https://github.com/phalcon/cphalcon/releases/tag/v3.4.5                        301
+/download/windows/previous/x86-55        https://github.com/phalcon/cphalcon/releases/tag/v3.4.5                        301
+/download/windows/previous/x86-55-nts    https://github.com/phalcon/cphalcon/releases/tag/v3.4.5                        301
+/download/windows/previous/x64-56        https://github.com/phalcon/cphalcon/releases/tag/v3.4.5                        301
+/download/windows/previous/x64-56-nts    https://github.com/phalcon/cphalcon/releases/tag/v3.4.5                        301
+/download/windows/previous/x64-55        https://github.com/phalcon/cphalcon/releases/tag/v3.4.5                        301
+/download/windows/previous/x64-55-nts    https://github.com/phalcon/cphalcon/releases/tag/v3.4.5                        301
 
 # Language specific
 /                                        /en-us                                                                         301
