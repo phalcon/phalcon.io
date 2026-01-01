@@ -1,0 +1,5 @@
+.sponsors__list {
+    flex-wrap: wrap;
+    margin-bottom: -15px;
+    justify-content: center;
+}
