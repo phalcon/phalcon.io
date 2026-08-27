@@ -17,6 +17,7 @@ kramdown:
 include:
   - _pages
   - _redirects
+  - _headers
   
 # Exclude these files from your production _site
 exclude:

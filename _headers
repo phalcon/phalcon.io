@@ -1,0 +1,6 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' https://assets.phalcon.io https://*.googletagmanager.com 'sha256-klaTEd1CcoFGb7t+yAJIYEWnMNMt/mrEnFwBHZiQMTY=' 'sha256-mL/PeTb3Q4GRUq/jhlATB8ljEgM9eVN5gNNheZDtv5E='; style-src 'self' https://assets.phalcon.io https://fonts.googleapis.com 'sha256-nmlo2+rNCIvRmTkwxUhnWU/sBuNg68gveKxX2WCxwWg='; font-src 'self' https://assets.phalcon.io https://fonts.gstatic.com; img-src 'self' https://assets.phalcon.io https://opencollective.com https://*.google-analytics.com https://*.googletagmanager.com data:; frame-src https://player.vimeo.com https://www.youtube.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
