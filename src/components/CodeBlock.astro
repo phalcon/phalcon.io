@@ -1,0 +1,36 @@
+---
+import { Code } from 'astro:components';
+import type { BundledLanguage } from 'shiki';
+
+interface Props {
+  code: string;
+  lang?: BundledLanguage;
+  filename?: string;
+  copyable?: boolean;
+  class?: string;
+}
+
+const { code, lang = 'php', filename, copyable = true, class: className = '' } = Astro.props;
+---
+
+<div class:list={['overflow-hidden rounded-lg border border-line-900 bg-surface-900', className]}>
+  {
+    (filename || copyable) && (
+      <div class="flex items-center justify-between border-b border-line-900 px-[15px] py-[10px]">
+        <span class="font-mono text-xs font-medium text-faint-500">{filename ?? lang}</span>
+        {copyable && (
+          <button
+            type="button"
+            data-copy={code}
+            class="cursor-pointer rounded-sm border border-line-700 bg-transparent px-[9px] py-[5px] font-mono text-[11px] font-semibold text-sage-400 hover:text-mist-100"
+          >
+            copy
+          </button>
+        )}
+      </div>
+    )
+  }
+  {/* GitHub.com's standard dark syntax colors; the panel background stays
+      on the design surface via the .astro-code override in global.css. */}
+  <Code code={code} lang={lang} theme="github-dark-default" />
+</div>

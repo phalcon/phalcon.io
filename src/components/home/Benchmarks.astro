@@ -1,0 +1,301 @@
+---
+import Section from '../Section.astro';
+import Kicker from '../Kicker.astro';
+import SectionHeading from '../SectionHeading.astro';
+import { BENCH, BENCH_REPO } from '../../data/benchmarks';
+import { buildView, chartRowsHtml, tableBodyHtml, envRowsHtml, type Tone } from '../../lib/bench-view';
+
+interface Props {
+  id?: string;
+  tone?: Tone;
+  kicker?: string;
+}
+
+const { id = 'benchmarks', tone = 'dark', kicker = 'Benchmarks' } = Astro.props;
+
+const latest = BENCH.runs[0];
+const defaults = { run: latest.id, metric: BENCH.metrics[0].id, workload: BENCH.workloads[0].id };
+const selected: Record<string, string> = defaults;
+const view = buildView(BENCH, defaults.run, defaults.metric, defaults.workload);
+
+// Chrome that cannot come from the --tone-* vars, because these panels sit on
+// their own surfaces rather than the section background.
+const skin = {
+  dark: {
+    tabActive: 'border-[#3d6558] bg-[#14231f] text-[#a8d9c6]',
+    tabIdle: 'border-[#232e2b] bg-transparent text-[#7d918a]',
+    panel: 'border-line-700 bg-surface-950',
+    frame: 'border-line-700',
+    hairline: 'border-line-900',
+    label: 'text-faint-500',
+    title: 'text-[#cfdcd6]',
+    note: 'text-[#75887f]',
+    tableHead: 'border-line-900 bg-surface-950 text-[#93a49d]',
+    reproBar: '#4f9d86',
+    reproLabel: 'text-[#8fbfae]',
+    reproCode: 'text-[#cbd8d2]',
+    reproNote: 'text-[#7d918a]',
+    link: 'text-accent-400 hover:text-accent-300',
+    linkRule: 'border-line-600',
+  },
+  light: {
+    tabActive: 'border-teal-600 bg-paper-100 text-ink-900',
+    tabIdle: 'border-lightline-200 bg-transparent text-ink-500',
+    panel: 'border-lightline-200 bg-white',
+    frame: 'border-lightline-200',
+    hairline: 'border-lightline-100',
+    label: 'text-ink-400',
+    title: 'text-ink-900',
+    note: 'text-ink-500',
+    tableHead: 'border-lightline-100 bg-paper-50 text-ink-600',
+    reproBar: '#0f9e86',
+    reproLabel: 'text-teal-700',
+    reproCode: 'text-ink-900',
+    reproNote: 'text-ink-600',
+    link: 'text-teal-700 hover:text-teal-600',
+    linkRule: 'border-lightline-400',
+  },
+}[tone];
+
+const tabBase =
+  'cursor-pointer rounded-xs border px-3 py-2 font-mono text-[11px] font-semibold tracking-[0.03em]';
+
+const groups = [
+  { group: 'run', label: 'Published run', items: BENCH.runs.map((r) => ({ id: r.id, label: r.label })) },
+  { group: 'metric', label: 'Metric', items: BENCH.metrics.map((m) => ({ id: m.id, label: m.label })) },
+  { group: 'workload', label: 'Workload', items: BENCH.workloads.map((w) => ({ id: w.id, label: w.label })) },
+] as const;
+
+const [runGroup, metricGroup, workloadGroup] = groups;
+---
+
+<Section id={id} tone={tone}>
+  <div class="mx-auto max-w-[940px]" data-bench-root data-tone-skin={tone} data-tab-active={skin.tabActive} data-tab-idle={skin.tabIdle}>
+    <Kicker>{kicker}</Kicker>
+    <SectionHeading size="md">Measured, not claimed.</SectionHeading>
+    <p class="mt-3 text-base leading-relaxed text-(--tone-muted)">
+      Six TechEmpower workloads, three metrics, six frameworks, one command to reproduce. Numbers come straight from the
+      last published run.
+    </p>
+    <a
+      href={BENCH_REPO}
+      class:list={['mb-[26px] mt-[18px] inline-flex items-center gap-2 border-b pb-1 text-[15px] font-semibold', skin.link, skin.linkRule]}
+      >Benchmarks repository on GitHub →</a
+    >
+
+    <div class="flex flex-col gap-[18px] font-mono">
+      <div class="flex flex-wrap items-end justify-between gap-3">
+        {
+          [runGroup, metricGroup].map((g) => (
+            <div class="flex flex-col gap-[7px]">
+              <span class:list={['font-mono text-[10px] font-semibold uppercase tracking-[0.16em]', skin.label]}>
+                {g.label}
+              </span>
+              <div class="flex flex-wrap gap-[6px]" role="tablist" aria-label={g.label}>
+                {g.items.map((item) => (
+                  <button
+                    type="button"
+                    role="tab"
+                    data-bench-tab={g.group}
+                    data-value={item.id}
+                    aria-selected={String(item.id === selected[g.group])}
+                    class:list={[tabBase, item.id === selected[g.group] ? skin.tabActive : skin.tabIdle]}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="flex flex-col gap-[7px]">
+        <span class:list={['font-mono text-[10px] font-semibold uppercase tracking-[0.16em]', skin.label]}>
+          {workloadGroup.label}
+        </span>
+        <div class="flex flex-wrap gap-[6px]" role="tablist" aria-label={workloadGroup.label}>
+          {
+            workloadGroup.items.map((item) => (
+              <button
+                type="button"
+                role="tab"
+                data-bench-tab="workload"
+                data-value={item.id}
+                aria-selected={String(item.id === selected.workload)}
+                class:list={[tabBase, item.id === selected.workload ? skin.tabActive : skin.tabIdle]}
+              >
+                {item.label}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <figure class:list={['m-0 rounded-md border px-6 py-[22px]', skin.panel]}>
+        <figcaption class="mb-[18px] flex flex-wrap items-baseline justify-between gap-[10px]">
+          <span data-bench-el="chart-title" class:list={['text-[13px] font-semibold leading-[1.3]', skin.title]}
+            >{view.chartTitle}</span
+          >
+          <span data-bench-el="better-note" class:list={['text-[11px] font-medium leading-[1.3]', skin.note]}
+            >{view.betterNote}</span
+          >
+        </figcaption>
+
+        <div class="overflow-x-auto">
+          <div class="min-w-[620px]">
+            <div
+              class:list={['tnum mb-2 text-[9.5px] font-semibold uppercase tracking-[0.12em]', skin.label]}
+              style="display:grid;grid-template-columns:210px minmax(0,1fr) 96px 72px;align-items:center;gap:14px;"
+            >
+              <span></span>
+              <span></span>
+              <span data-bench-el="metric-unit" class="text-right">{view.metricUnit}</span>
+              <span class="text-right">vs <span data-bench-el="base-name">{view.baseName}</span></span>
+            </div>
+            <div
+              data-bench-el="rows"
+              class="tnum flex flex-col gap-[9px]"
+              set:html={chartRowsHtml(view, tone)}
+            />
+            <div
+              class:list={['tnum mt-[14px] flex justify-between border-t pt-[10px] text-[10px] font-medium', skin.hairline, skin.label]}
+            >
+              <span>0</span>
+              <span data-bench-el="mid">{view.midTick}</span>
+              <span data-bench-el="max">{view.maxTick}</span>
+            </div>
+          </div>
+        </div>
+      </figure>
+
+      <div class:list={['overflow-x-auto rounded-md border', skin.panel]}>
+        <table class="tnum w-full border-collapse text-[11.5px] font-medium leading-[1.4]">
+          <caption
+            data-bench-el="table-caption"
+            class:list={[
+              'px-4 pb-[10px] pt-[14px] text-left font-mono text-[11px] font-semibold uppercase tracking-[0.14em]',
+              skin.label,
+            ]}
+            style="caption-side: top;">{view.tableTitle}</caption
+          >
+          <thead>
+            <tr>
+              <th class:list={['whitespace-nowrap border-y px-4 py-[9px] text-left font-semibold', skin.tableHead]}
+                >Framework</th
+              >
+              {
+                BENCH.workloads.map((w) => (
+                  <th
+                    class:list={[
+                      'whitespace-nowrap border-y px-3 py-[9px] text-right font-semibold',
+                      skin.tableHead,
+                    ]}
+                  >
+                    {w.label}
+                  </th>
+                ))
+              }
+            </tr>
+          </thead>
+          <tbody data-bench-el="table-body" set:html={tableBodyHtml(view, tone)} />
+        </table>
+      </div>
+
+      <div class="grid grid-cols-1 gap-[14px] md:grid-cols-2">
+        <div class:list={['flex flex-col gap-2 rounded-md border px-[18px] py-4', skin.panel]}>
+          <span class:list={['text-[10px] font-semibold uppercase tracking-[0.16em]', skin.label]}>Run environment</span
+          >
+          <div data-bench-el="env" set:html={envRowsHtml(view, tone)} />
+        </div>
+        <div
+          class:list={['flex flex-col gap-[10px] rounded-r-md border border-l-[3px] px-[18px] py-4', skin.panel]}
+          style={`border-left-color: ${skin.reproBar};`}
+        >
+          <span class:list={['text-[10px] font-semibold uppercase tracking-[0.16em]', skin.reproLabel]}
+            >Reproduce it</span
+          >
+          <pre
+            class:list={['m-0 overflow-x-auto text-[12.5px] font-medium leading-[1.9]', skin.reproCode]}>git clone {BENCH_REPO}
+cd benchmarks &amp;&amp; docker compose up</pre>
+          <p class:list={['m-0 text-[11.5px] font-medium leading-[1.7]', skin.reproNote]}>
+            Every number here is generated by <a href={BENCH_REPO} class:list={['underline', skin.link]}>that repo</a> and
+            committed as JSON with the run. Fork it, pin your own versions, send a PR if we are wrong.
+          </p>
+        </div>
+      </div>
+
+      <p class:list={['m-0 max-w-[86ch] text-[10.5px] font-medium leading-[1.7]', skin.label]}>
+        Workload definitions follow the TechEmpower Framework Benchmarks test specs. Peak memory per request is not a
+        TechEmpower metric; it is sampled with memory_get_peak_usage(true) on every request and reported separately.
+      </p>
+    </div>
+
+    <p class:list={['mt-[14px] font-mono text-[11px] font-medium leading-[1.6]', skin.label]}>
+      Fig. 1: latest published run, {latest.id}, commit {latest.commit}; dataset last updated {BENCH.updated}. Each run
+      ships as a JSON dataset in the <a href={BENCH_REPO} class:list={['underline', skin.link]}>benchmarks repo</a>, so
+      every new framework version is a data upload, not a redesign.
+    </p>
+  </div>
+</Section>
+
+<script>
+  import { BENCH } from '../../data/benchmarks';
+  import { buildView, chartRowsHtml, tableBodyHtml, envRowsHtml, type Tone } from '../../lib/bench-view';
+
+  // Every instance on the page drives itself; state and DOM lookups are scoped
+  // to the instance root so the dark and light copies stay independent.
+  for (const root of document.querySelectorAll<HTMLElement>('[data-bench-root]')) {
+    const tone = (root.dataset.toneSkin ?? 'dark') as Tone;
+    const active = (root.dataset.tabActive ?? '').split(' ').filter(Boolean);
+    const idle = (root.dataset.tabIdle ?? '').split(' ').filter(Boolean);
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-bench-tab]'));
+    if (!tabs.length) continue;
+
+    const state = {
+      run: BENCH.runs[0].id,
+      metric: BENCH.metrics[0].id,
+      workload: BENCH.workloads[0].id,
+    };
+
+    const el = (name: string) => root.querySelector<HTMLElement>(`[data-bench-el="${name}"]`);
+    const text = (name: string, value: string) => {
+      const node = el(name);
+      if (node) node.textContent = value;
+    };
+    const html = (name: string, value: string) => {
+      const node = el(name);
+      if (node) node.innerHTML = value;
+    };
+
+    const render = () => {
+      const view = buildView(BENCH, state.run, state.metric, state.workload);
+      text('chart-title', view.chartTitle);
+      text('better-note', view.betterNote);
+      text('metric-unit', view.metricUnit);
+      text('base-name', view.baseName);
+      text('mid', view.midTick);
+      text('max', view.maxTick);
+      text('table-caption', view.tableTitle);
+      html('rows', chartRowsHtml(view, tone));
+      html('table-body', tableBodyHtml(view, tone));
+      html('env', envRowsHtml(view, tone));
+
+      for (const tab of tabs) {
+        const group = tab.dataset.benchTab as keyof typeof state;
+        const on = state[group] === tab.dataset.value;
+        tab.setAttribute('aria-selected', String(on));
+        tab.classList.remove(...(on ? idle : active));
+        tab.classList.add(...(on ? active : idle));
+      }
+    };
+
+    for (const tab of tabs) {
+      tab.addEventListener('click', () => {
+        const group = tab.dataset.benchTab as keyof typeof state;
+        state[group] = tab.dataset.value ?? state[group];
+        render();
+      });
+    }
+  }
+</script>

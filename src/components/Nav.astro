@@ -1,0 +1,94 @@
+---
+import { NAV_LINKS, NAV_SITE_MENU, GITHUB_V6, GITHUB_STARS_V6, DOCS_URL } from '../data/site';
+---
+
+<nav class="sticky top-0 z-50 border-b border-line-900 bg-[rgba(7,13,12,0.92)] backdrop-blur-sm">
+  <div class="flex items-center justify-between px-5 py-[15px] md:px-10">
+    <a href="/" class="flex items-center gap-[11px] text-mist-100">
+      <img src="/images/falcon.svg" alt="" class="block h-[26px] w-[26px]" />
+      <span class="font-display text-[19px] font-bold tracking-[-0.01em]">Phalcon</span>
+      <span
+        class="whitespace-nowrap rounded-xs border border-line-600 px-[7px] py-1 font-mono text-[10px] font-semibold tracking-[0.06em] text-accent-400"
+        >v6 · beta</span
+      >
+    </a>
+
+    <div class="hidden items-center gap-6 text-sm text-sage-400 lg:flex">
+      {NAV_LINKS.map((link) => (
+        <a href={link.href} class="whitespace-nowrap text-sage-400 hover:text-mist-100">{link.label}</a>
+      ))}
+      <div class="group relative">
+        <button class="flex items-center gap-1 text-sage-400 group-hover:text-mist-100" aria-haspopup="true">
+          Site <span aria-hidden="true" class="text-[10px]">▾</span>
+        </button>
+        <div class="invisible absolute right-0 top-full pt-3 opacity-0 transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+          <ul class="w-52 rounded-md border border-line-700 bg-surface-900 p-[5px] shadow-[0_12px_34px_rgba(0,0,0,0.5)]">
+            {NAV_SITE_MENU.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="block rounded-xs px-[11px] py-[9px] font-mono text-xs font-semibold text-mist-300 hover:bg-surface-800 hover:text-mist-100"
+                  >{item.label}</a
+                >
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <a href={GITHUB_V6} class="flex items-center gap-[7px] whitespace-nowrap text-sage-400 hover:text-mist-100">
+        GitHub
+        <span class="rounded-xs border border-line-700 px-[6px] py-[3px] font-mono text-[11px] font-semibold text-mist-300"
+          >★ {GITHUB_STARS_V6}</span
+        >
+      </a>
+      <a
+        href={DOCS_URL}
+        class="whitespace-nowrap rounded-sm bg-accent-400 px-4 py-[9px] text-sm font-semibold text-[#06120e] hover:bg-accent-500"
+        >Get Started</a
+      >
+    </div>
+
+    <button
+      id="nav-burger"
+      class="flex h-9 w-9 flex-col items-center justify-center gap-[5px] rounded-sm border border-line-700 lg:hidden"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="nav-mobile"
+    >
+      <span class="block h-[2px] w-4 bg-mist-100"></span>
+      <span class="block h-[2px] w-4 bg-mist-100"></span>
+      <span class="block h-[2px] w-4 bg-mist-100"></span>
+    </button>
+  </div>
+
+  <div id="nav-mobile" hidden class="border-t border-line-900 bg-night-950 px-5 pb-6 pt-3 lg:hidden">
+    <ul class="flex flex-col gap-1">
+      {NAV_LINKS.map((link) => (
+        <li><a href={link.href} class="block py-2 text-[15px] text-sage-400 hover:text-mist-100">{link.label}</a></li>
+      ))}
+      {NAV_SITE_MENU.map((item) => (
+        <li><a href={item.href} class="block py-2 text-[15px] text-sage-400 hover:text-mist-100">{item.label}</a></li>
+      ))}
+      <li>
+        <a href={GITHUB_V6} class="block py-2 text-[15px] text-sage-400 hover:text-mist-100">GitHub ★ {GITHUB_STARS_V6}</a>
+      </li>
+      <li class="pt-2">
+        <a
+          href={DOCS_URL}
+          class="inline-block rounded-sm bg-accent-400 px-4 py-[9px] text-sm font-semibold text-[#06120e]"
+          >Get Started</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const burger = document.getElementById('nav-burger');
+  const menu = document.getElementById('nav-mobile');
+  burger?.addEventListener('click', () => {
+    const open = menu!.hidden;
+    menu!.hidden = !open;
+    burger.setAttribute('aria-expanded', String(open));
+  });
+</script>

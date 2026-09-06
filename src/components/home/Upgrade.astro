@@ -1,0 +1,44 @@
+---
+import Section from '../Section.astro';
+import Kicker from '../Kicker.astro';
+import Card from '../Card.astro';
+import { DOCS_URL } from '../../data/site';
+---
+
+<Section id="upgrade" tone="light">
+  <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+    <div>
+      <Kicker>Continuity</Kicker>
+      <h2 class="mt-[14px] font-display text-[clamp(28px,3.4vw,40px)] font-bold leading-[1.06] tracking-[-0.02em]">
+        Coming from v5?
+      </h2>
+      <p class="mt-[18px] text-base leading-[1.7] text-(--tone-muted)">
+        v6 is backward compatible with v5: the same <code class="font-mono text-sm font-medium text-teal-600"
+          >Phalcon\</code
+        > namespaces, DI container, ORM, PHQL and Volt, so your application code carries over. What changed is delivery.
+        v6 installs with Composer; v5 installs as a C extension through PIE or PECL.
+      </p>
+      <a
+        href={`${DOCS_URL}/learn/how-to/upgrade`}
+        class="mt-[22px] inline-flex items-center gap-2 border-b border-lightline-400 pb-1 text-[15px] font-semibold text-teal-700 hover:text-teal-600"
+        >Read the migration guide →</a
+      >
+    </div>
+    <div class="grid grid-cols-1 gap-[14px] sm:grid-cols-2">
+      <Card variant="fact" label="Backward compatible" labelColor="#2f8f5b">
+        v6 keeps the v5 API surface: namespaces, DI, ORM, PHQL, Volt, routing, ACL, events.
+      </Card>
+      <Card variant="fact" label="Installing v6" labelColor="#5c7a6e">
+        <code class="font-mono text-xs font-medium text-teal-700">composer require phalcon/phalcon</code>. Pure PHP, no
+        extension, no compile step.
+      </Card>
+      <Card variant="fact" label="Still beta" labelColor="#9a6b12">
+        v5 remains the stable/LTS default until v6 reaches its stable release.
+      </Card>
+      <Card variant="fact" label="Installing v5" labelColor="#4b6157">
+        C extension via <code class="font-mono text-xs font-medium text-teal-700">pie install</code> or PECL. PECL is
+        deprecated but still builds against current PHP releases.
+      </Card>
+    </div>
+  </div>
+</Section>

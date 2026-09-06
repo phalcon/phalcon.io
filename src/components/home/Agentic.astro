@@ -1,0 +1,50 @@
+---
+import Section from '../Section.astro';
+import Kicker from '../Kicker.astro';
+import SectionHeading from '../SectionHeading.astro';
+import { DOCS_URL } from '../../data/site';
+
+const mcpRows = [
+  "Read Phalcon docs into your assistant's context",
+  'Scaffold controllers, models & services',
+  'Introspect the DI container',
+  'Follow framework conventions automatically',
+];
+---
+
+<Section id="agentic" tone="dark">
+  <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+    <div>
+      <Kicker>Forward-looking · in progress</Kicker>
+      <SectionHeading>Built for how you build now.</SectionHeading>
+      <p class="mt-5 max-w-[520px] text-[17px] leading-[1.7] text-(--tone-muted)">
+        PHP is a credible home for agentic features when the agent lives next to your app's auth, data, and deploy
+        pipeline. Phalcon's lean architecture and the new
+        <strong class="font-semibold text-mist-200">MCP server</strong> make it AI-native — your coding assistant can read
+        the docs, scaffold components, and follow conventions directly.
+      </p>
+      <a
+        href={`${DOCS_URL}/ai/mcp-server`}
+        class="mt-[26px] inline-flex items-center gap-[9px] border-b border-line-600 pb-1 text-[15px] font-semibold text-accent-400 hover:text-accent-300"
+        >Set up the MCP server →</a
+      >
+    </div>
+    <div class="rounded-lg border border-line-700 bg-surface-950 p-2">
+      <div class="flex items-center gap-2 px-3 py-[10px]">
+        <span class="h-[9px] w-[9px] rotate-45 bg-sage-500" aria-hidden="true"></span>
+        <span class="font-mono text-[11px] font-semibold tracking-[0.1em] text-faint-600">phalcon-mcp · what it does today</span>
+      </div>
+      {
+        mcpRows.map((text) => (
+          <div class="flex items-start gap-[10px] border-t border-surface-800 px-3 py-[9px]">
+            <span class="shrink-0 font-mono text-[13px] font-semibold leading-[1.4] text-sage-500">›</span>
+            <span class="font-mono text-[13px] font-medium leading-normal text-mist-300">{text}</span>
+          </div>
+        ))
+      }
+      <p class="mx-2 mb-2 mt-[6px] font-mono text-[11px] font-medium leading-normal text-faint-500">
+        Status: beta, alongside v6. No shipped agent features are claimed beyond the above.
+      </p>
+    </div>
+  </div>
+</Section>

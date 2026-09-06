@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import SubNav from '../components/SubNav.astro';
+import contributors from '../../_data/contributors.json';
+
+const TEAM_NAV = [
+  { label: 'Team', href: '/team' },
+  { label: 'Testimonials', href: '/testimonials' },
+  { label: 'About', href: '/about' },
+];
+
+const members = [
+  {
+    name: 'Anton Vasiliev',
+    github: 'https://github.com/jeckerson',
+    image: '/images/team/anton.jpg',
+    paragraphs: [
+      'Anton discovered Phalcon in 2013 and immediately fell in love with it. He started building personal projects and applications using v1.2 and has continued using it until now, upgrading when necessary. His vision is to make Phalcon a fast, competitive, fully featured and robust framework that can help developers in this dynamic web world.',
+      'He started contributing to the project with small contributions initially but he is now the lead developer for Zephir. He is also maintaining the incubator and devtools repositories.',
+      'Anton currently focuses on DevTools, Migrations, Documentation as well as Docker images for Phalcon.',
+    ],
+  },
+  {
+    name: 'Nikolaos (Nikos) Dimopoulos',
+    github: 'https://github.com/niden',
+    image: '/images/team/nikos.jpg',
+    paragraphs: [
+      'Nikos has been in the IT industry for over 20 years. He was introduced to the PHP world in 2000 and has been using it ever since in personal projects as well as projects for his employers.',
+      'He loves discovering new technologies and ways to integrate them with existing applications and thus reap the benefits they offer.',
+      'He is an avid supporter of Test Driven Development (TDD) and always tries to get full coverage in his code.',
+      "Nikos' continuing interest in new and innovative technologies breaking out of the norm introduced him to Phalcon. He joined the core team and took over as lead developer. His tasks also involve coordination of NFRs and bug fixes, tests and documentation.",
+    ],
+  },
+];
+
+const specialMention = {
+  name: 'Andres Gutierrez',
+  image: '/images/team/andres.jpg',
+  paragraphs: [
+    'Andres is no stranger to open source projects. In the last nine years, he has designed and released frameworks for PHP and has been involved in web development - his main passion.',
+    "A TR35 winner, Andres' main drive is to always choose and implement or use the right tool for the job, mostly focused on performance. Therefore in 2011 a new idea was in the works; to create a new kind of framework for PHP developers, one that focuses on usability, features and mostly performance.",
+    'Through this new innovative approach Phalcon was born. A PHP framework written in C that can offer a wealth of features to developers while maximizing performance and keeping resource utilization low.',
+    'Andres is was the inspiration behind Phalcon and although he is no longer with the project, are always thankful for his vision.',
+  ],
+};
+---
+
+<BaseLayout title="Team" description="The Phalcon core team and the community contributors who improve the framework every day.">
+  <PageHero kicker="The people" title="Phalcon Team.">
+    <p>Phalcon is and has always been an effort of many volunteers.</p>
+  </PageHero>
+
+  <Section tone="light">
+    <SubNav items={TEAM_NAV} current="/team" />
+    <div class="flex flex-col gap-6">
+      {
+        members.map((member) => (
+          <div class="grid grid-cols-1 gap-6 rounded-md border border-(--tone-border-strong) bg-(--tone-surface) p-6 sm:grid-cols-[140px_1fr]">
+            <img src={member.image} alt={member.name} class="h-[140px] w-[140px] rounded-md object-cover" />
+            <div>
+              <h2 class="font-display text-xl font-bold text-(--tone-text)">{member.name}</h2>
+              <a href={member.github} class="font-mono text-xs font-semibold text-(--tone-accent) hover:underline">
+                GitHub ↗
+              </a>
+              {member.paragraphs.map((p) => (
+                <p class="mt-3 max-w-[760px] text-[15px] leading-[1.65] text-(--tone-muted)">{p}</p>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+
+      <div class="grid grid-cols-1 gap-6 rounded-md border border-(--tone-border-strong) bg-(--tone-surface) p-6 sm:grid-cols-[140px_1fr]">
+        <img src={specialMention.image} alt={specialMention.name} class="h-[140px] w-[140px] rounded-md object-cover" />
+        <div>
+          <h2 class="font-display text-xl font-bold text-(--tone-text)">
+            {specialMention.name}
+            <span class="ml-2 rounded-xs border border-(--tone-border-strong) px-[7px] py-1 align-middle font-mono text-[10px] font-semibold uppercase tracking-[0.06em] text-(--tone-muted)"
+              >special mention</span
+            >
+          </h2>
+          {
+            specialMention.paragraphs.map((p) => (
+              <p class="mt-3 max-w-[760px] text-[15px] leading-[1.65] text-(--tone-muted)">{p}</p>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="light-alt">
+    <p class="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-(--tone-muted)">Phalcon contributors</p>
+    <h2 class="mt-3 font-display text-[clamp(24px,2.8vw,32px)] font-bold tracking-[-0.02em] text-(--tone-text)">
+      Phalcon is improved everyday by our amazing community.
+    </h2>
+    <div class="mt-8 flex flex-wrap gap-2">
+      {
+        contributors.map((username: string) => (
+          <a href={`https://github.com/${username}`} title={username} class="block">
+            <img
+              src={`/images/contributors/${username}.jpg`}
+              alt={username}
+              loading="lazy"
+              class="h-10 w-10 rounded-sm border border-(--tone-border-strong) object-cover"
+            />
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+</BaseLayout>

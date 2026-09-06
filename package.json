@@ -1,0 +1,17 @@
+{
+  "name": "phalcon-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check:benchmarks": "node scripts/check-benchmarks.mjs",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "serve": "astro build && astro preview"
+  },
+  "dependencies": {
+    "astro": "^5",
+    "tailwindcss": "^4",
+    "@tailwindcss/vite": "^4"
+  }
+}

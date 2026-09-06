@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Section from '../../components/Section.astro';
+import SubNav from '../../components/SubNav.astro';
+
+const DOWNLOAD_NAV = [
+  { label: 'Linux/Unix/Mac', href: '/download/linux' },
+  { label: 'Windows DLLs', href: '/download/windows' },
+  { label: 'Developer Tools', href: '/download/tools' },
+  { label: 'IDE Stubs', href: '/download/stubs' },
+];
+---
+
+<BaseLayout title="IDE Stubs" description="Enable Phalcon IDE stubs for PhpStorm and other IDEs to get autocompletion for the framework's classes.">
+  <PageHero kicker="Get Phalcon" title="IDE Stubs.">
+    <p>The video below outlines how to enable IDE stubs for PhpStorm.</p>
+  </PageHero>
+
+  <Section tone="light">
+    <SubNav items={DOWNLOAD_NAV} current="/download/stubs" />
+
+    <div class="max-w-[820px]">
+      <div class="overflow-hidden rounded-lg border border-(--tone-border-strong) bg-surface-900">
+        <div class="aspect-video">
+          <iframe
+            title="Installation of IDE Stubs in PhpStorm"
+            class="h-full w-full"
+            src="https://www.youtube.com/embed/UbUx_6Cs6r4"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+      <p class="content-links mt-4 text-sm text-(--tone-muted)">
+        Can't see the embed? Watch it on
+        <a href="https://www.youtube.com/watch?v=UbUx_6Cs6r4">YouTube</a>, or get the stubs from
+        <a href="https://github.com/phalcon/ide-stubs">phalcon/ide-stubs</a>.
+      </p>
+    </div>
+  </Section>
+</BaseLayout>

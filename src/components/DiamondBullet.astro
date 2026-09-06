@@ -1,0 +1,12 @@
+---
+interface Props {
+  color?: string;
+  class?: string;
+}
+const { color = 'var(--tone-faint)', class: className = '' } = Astro.props;
+---
+
+<span
+  aria-hidden="true"
+  class:list={['inline-block h-[9px] w-[9px] shrink-0 rotate-45', className]}
+  style={`background: ${color}`}></span>

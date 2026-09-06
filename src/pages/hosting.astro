@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+
+// Providers transcribed from _layouts/hosting.html + en-us.json hosting_* keys.
+const providers = [
+  {
+    name: 'Amazon EC2',
+    href: 'https://aws.amazon.com/',
+    logo: '/images/hosting/amazon-gray.png',
+    paragraphs: [
+      'Amazon Elastic Compute Cloud delivers scalable, pay-as-you-go compute capacity in the cloud.',
+      'Select a pre-configured, templated Amazon Machine Image (AMI) to get up and running immediately. Or create an AMI containing your applications, libraries, data, and associated configuration settings. <a href="https://aws.amazon.com/ec2/">See more</a>',
+      'Install Phalcon using the standard instructions of installation.',
+    ],
+  },
+  {
+    name: 'ASPnix',
+    href: 'https://www.aspnix.com/',
+    logo: '/images/hosting/aspnix-logo.png',
+    paragraphs: [
+      'ASPnix provides superior Linux cPanel and Windows web hosting services. Our customers have rated our service as outstanding. We offer economical plans for shared Windows and Linux cPanel web hosting, Virtual private servers and dedicated servers! <a href="https://www.aspnix.com/">See more</a>',
+      'Phalcon is supported on all Windows and Linux cPanel shared web hosting packages and plans, no configuration or installation required! ASPnix offers a variety of PHP versions as well as many <a href="https://www.aspnix.com/kb/sales-kb/what-php-extensions-are-supported-on-windows-shared-hosting" target="_blank">additional extensions</a>!',
+    ],
+  },
+  {
+    name: 'Digital Ocean',
+    href: 'https://www.digitalocean.com/',
+    logo: '/images/hosting/digital-ocean-gray.png',
+    paragraphs: [
+      'Blazing Fast Cloud Technology. Built for developers. Deploy an SSD cloud server in 55 seconds. <a href="https://www.digitalocean.com/">See more</a>',
+      'Install Phalcon using the standard instructions of installation.',
+      'Follow this <a href="https://www.digitalocean.com/community/articles/how-to-install-and-get-started-with-phalcon-on-an-ubuntu-12-04-vps">tutorial</a> to get started',
+    ],
+  },
+  {
+    name: 'Fortrabbit',
+    href: 'https://fortrabbit.com/',
+    logo: '/images/hosting/fortrabbit-gray.png',
+    paragraphs: [
+      'Fortrabbit offers many hosting plans (there is one for developers and is free - with some limitations) that would satisfy the needs of most of the developers that wish to either try Phalcon or deploy their applications using it.',
+      'They offer a variety of <a href="https://fortrabbit.com/docs/how-to/php/available-php-extensions">extensions</a> that would satisfy even the most demanding project.',
+      'Stable versions of Phalcon are pre-installed, you can activate them from the administration dashboard.',
+    ],
+  },
+  {
+    name: 'KingHost',
+    href: 'https://kingho.st/phalcon-kinghost',
+    logo: '/images/hosting/kinghost-gray.png',
+    paragraphs: [
+      'Since 2006, KingHost is one of the largest hosting company sites in Brazil and already has over 300,000 sites hosted with approximately 60,000 customers. Headquartered in Porto Alegre (RS), with data centers in Brazil, the company offers the hosting service of shared servers, specific plans for custom developers and projects in the area of enterprise solutions, including cloud computing and dedicated servers. It also offers digital marketing solutions such as email marketing and security solutions.',
+    ],
+  },
+  {
+    name: 'Layershift',
+    href: 'https://www.layershift.com',
+    logo: '/images/hosting/layershift-gray.png',
+    paragraphs: [
+      'Next generation, auto-sizing PaaS for Java, PHP, Ruby, Python, and Node.js apps. Fully isolated self-scaling role-based containers for each customer, including choice of Apache or Nginx, and full range of SQL and NoSQL servers. Pay for resource usage, not server instance size. SSD-powered. UK hosted.',
+      'Follow this <a href="https://kb.layershift.com/jelastic-install-phalcon-php-framework">tutorial</a> to get started',
+    ],
+  },
+  {
+    name: 'Linode',
+    href: 'https://www.linode.com/',
+    logo: '/images/hosting/linode-gray.png',
+    paragraphs: [
+      'Deploy and Manage Linux Virtual Servers in the Linode Cloud. Get a server running in seconds with your choice of Linux distro, resources, and node location. <a href="https://www.linode.com/">See more</a>',
+      'Install Phalcon using the standard instructions of installation.',
+    ],
+  },
+  {
+    name: 'Mediasecure',
+    href: 'https://www.mediasecure.org/',
+    logo: '/images/hosting/mediasecure-gray.png',
+    paragraphs: [
+      'High performance Dedicated Servers with protection against threats including Distributed Denial of Service (DDoS) attacks. Our high-capacity DDoS-Protected network can automatically protect your dedicated server from DDoS attacks up to 4.2 Tbps. <a href="https://www.mediasecure.org/">See more</a>',
+    ],
+  },
+  {
+    name: 'Rackspace',
+    href: 'https://www.rackspace.com/cloud/servers/',
+    logo: '/images/hosting/rackspace-gray.png',
+    paragraphs: [
+      'Cloud Servers are virtual machines running Linux or Windows® Server in the Rackspace Cloud. You can scale resources like CPU, memory, and storage up or down, depending on your needs. Best of all, you can pay as you go. <a href="https://www.rackspace.com/cloud/servers/">See more</a>',
+      'Install Phalcon using the standard instructions of installation.',
+    ],
+  },
+  {
+    name: 'WebFaction',
+    href: 'https://webfaction.com/',
+    logo: '/images/hosting/webfaction-gray.png',
+    paragraphs: [
+      'WebFaction Hosting for developers. Full shell access to fast servers with all your favorite tools pre-installed and maintained for the user.',
+      'To install Phalcon in WebFaction, follow the instructions outlined <a href="https://community.webfaction.com/questions/13689/phalcon-php">here</a>',
+    ],
+  },
+  {
+    name: 'Windows Azure',
+    href: 'https://www.windowsazure.com',
+    logo: '/images/hosting/azure-gray.jpg',
+    paragraphs: [
+      'The <a href="https://www.windowsazure.com">Windows Azure cloud</a> provides you with highly scalable and manageable Windows hosting for your web apps. Use Phalcon to reduce your instance costs.',
+      'To install Phalcon, follow the step by step procedure in <a href="https://www.sitepoint.com/phalcon-windows-azure/">this SitePoint article</a>.',
+    ],
+  },
+];
+---
+
+<BaseLayout title="Hosting" description="Hosting providers where the Phalcon framework can be installed or comes pre-installed.">
+  <PageHero kicker="Deploy" title="Hosting.">
+    <p>
+      Phalcon can be installed on any machine on which the hosting provider offers SSH root access (or sudo). Below is a
+      list of reputable companies that offer such services:
+    </p>
+  </PageHero>
+
+  <Section tone="light">
+    <div class="flex flex-col gap-4">
+      {
+        providers.map((provider) => (
+          <div class="grid grid-cols-1 items-start gap-6 rounded-md border border-(--tone-border-strong) bg-(--tone-surface) p-6 sm:grid-cols-[180px_1fr]">
+            <img src={provider.logo} alt={provider.name} class="max-h-[64px] w-auto max-w-[160px] object-contain" />
+            <div>
+              <h2 class="font-display text-lg font-bold text-(--tone-text)">
+                <a href={provider.href} target="_blank" class="hover:text-(--tone-accent)">
+                  {provider.name} ↗
+                </a>
+              </h2>
+              {provider.paragraphs.map((p) => (
+                <p class="content-links mt-3 max-w-[760px] text-[15px] leading-[1.65] text-(--tone-muted)" set:html={p} />
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+</BaseLayout>

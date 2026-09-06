@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import Performance from '../components/home/Performance.astro';
+import Benchmarks from '../components/home/Benchmarks.astro';
+import Features from '../components/home/Features.astro';
+import Ecosystem from '../components/home/Ecosystem.astro';
+import Agentic from '../components/home/Agentic.astro';
+import Upgrade from '../components/home/Upgrade.astro';
+import Community from '../components/home/Community.astro';
+import { GITHUB_V6 } from '../data/site';
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Phalcon',
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Linux, macOS, Windows',
+    softwareVersion: '6.0.0beta9',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    license: 'https://opensource.org/licenses/MIT',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareSourceCode',
+    name: 'Phalcon',
+    codeRepository: GITHUB_V6,
+    programmingLanguage: 'PHP',
+    runtimePlatform: 'PHP 8.1+',
+    license: 'https://opensource.org/licenses/MIT',
+  },
+];
+---
+
+<BaseLayout structuredData={structuredData}>
+  <Hero />
+  <Performance />
+  {/* Dark variant, kept for reference — the light surface won on legibility.
+      Swap back by commenting out the line below and uncommenting this one:
+      <Benchmarks tone="dark" /> */}
+  <Benchmarks tone="light" />
+  <Features />
+  <Ecosystem />
+  <Agentic />
+  <Upgrade />
+  <Community />
+</BaseLayout>

@@ -1,0 +1,74 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  // Emitted as one <script type="application/ld+json"> block per entry.
+  structuredData?: Record<string, unknown>[];
+}
+
+const { title, description = SITE_DESCRIPTION, structuredData = [] } = Astro.props;
+const pageTitle = title ? `${title} - ${SITE_TITLE}` : `${SITE_TITLE} - High Performance PHP Framework`;
+const canonical = new URL(Astro.url.pathname, 'https://phalcon.io');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_TITLE} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@phalconphp" />
+    {
+      structuredData.map((data) => (
+        <script type="application/ld+json" set:html={JSON.stringify(data)} />
+      ))
+    }
+  </head>
+  <body>
+    <Nav />
+    <slot />
+    <Footer />
+    <script>
+      // Copy-to-clipboard with insecure-context fallback: this site is browsed
+      // over plain HTTP on the LAN, where navigator.clipboard is undefined.
+      async function copyText(text: string) {
+        if (window.isSecureContext && navigator.clipboard) {
+          await navigator.clipboard.writeText(text);
+          return;
+        }
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;opacity:0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+      }
+      document.addEventListener('click', async (event) => {
+        const btn = (event.target as HTMLElement).closest<HTMLElement>('[data-copy]');
+        if (!btn) return;
+        try {
+          await copyText(btn.dataset.copy ?? '');
+          const original = btn.textContent;
+          btn.textContent = 'copied ✓';
+          setTimeout(() => (btn.textContent = original), 1500);
+        } catch {
+          /* clipboard unavailable — leave the button as-is */
+        }
+      });
+    </script>
+  </body>
+</html>

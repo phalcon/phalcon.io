@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Section from '../../components/Section.astro';
+import SubNav from '../../components/SubNav.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import CopyCommand from '../../components/CopyCommand.astro';
+
+const DOWNLOAD_NAV = [
+  { label: 'Linux/Unix/Mac', href: '/download/linux' },
+  { label: 'Windows DLLs', href: '/download/windows' },
+  { label: 'Developer Tools', href: '/download/tools' },
+  { label: 'IDE Stubs', href: '/download/stubs' },
+];
+
+const requirementsCode = `# Ubuntu
+sudo apt-get install php8.1-dev php8.1-mysql gcc libpcre3-dev
+
+# Fedora
+sudo dnf install php-devel php-mysqlnd gcc libtool pcre-devel re2c
+
+# RHEL
+sudo yum install php-devel php-mysql gcc libtool pcre-devel
+
+# Suse
+yast2 -i php8-pear php8-devel php8-mysql gcc libtool pcre-devel
+
+# macOS (Homebrew)
+brew install pcre
+brew tap phalcon/extension https://github.com/phalcon/homebrew-tap
+brew install phalcon
+
+# macOS (MacPorts)
+sudo port install php81-phalcon`;
+---
+
+<BaseLayout title="Download for Linux" description="Install the Phalcon framework on Linux, Unix and macOS: Composer for v6, PECL or compile from source for v5.">
+  <PageHero kicker="Get Phalcon" title="Download — Linux, Unix & macOS.">
+    <p>
+      Phalcon v5 is a C extension, so you need to download a binary for your platform or compile it from source code.
+      Phalcon v6 is pure PHP — nothing to compile.
+    </p>
+  </PageHero>
+
+  <Section tone="light">
+    <SubNav items={DOWNLOAD_NAV} current="/download/linux" />
+
+    <div data-tone="dark" class="rounded-r-sm border border-line-700 border-l-[3px] border-l-accent-400 bg-surface-900 px-[22px] py-5 text-mist-100">
+      <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-400">Phalcon v6 · beta — no extension needed</p>
+      <p class="mt-[10px] text-[15px] leading-[1.65] text-mist-300">
+        v6 is pure PHP and installs with Composer on any platform. Everything below applies to the v5 C extension.
+      </p>
+      <div class="mt-4">
+        <CopyCommand command="composer require phalcon/phalcon" />
+      </div>
+    </div>
+
+    <div class="content-links mt-10 max-w-[820px]">
+      <h2 class="font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">PECL</h2>
+      <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">
+        Using Pecl this extension will be automatically installed in your system. The Pecl installation method is
+        available for Windows, Linux and MacOS. Under windows pre-compiled dll files will be used. Under Linux and MacOS
+        it will compile phalcon locally so it could be faster to use a different installation method on these platforms.
+        To install using Pecl make sure you have
+        <a href="https://pear.php.net/manual/en/installation.getting.php">pecl/pear</a> installed.
+      </p>
+      <p class="mt-2 text-[13px] leading-[1.6] text-(--tone-faint)">
+        The commands below are for v5.0.0 — adjust them to install the latest version. For v4, the
+        <a href="https://pecl.php.net/package/psr">PSR</a> extension is required to be loaded before Phalcon.
+      </p>
+      <div class="mt-4">
+        <CodeBlock lang="bash" filename="shell" code={`pecl channel-update pecl.php.net\npecl install phalcon-5.0.0`} />
+      </div>
+
+      <h2 class="mt-10 font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">Compilation</h2>
+      <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">
+        On Linux you can easily compile and install the extension from source code. We need some packages already
+        installed: PHP 8.x development resources (or 7.x if you are still using PHP 7.4) and the GCC compiler.
+      </p>
+      <div class="mt-4">
+        <CodeBlock lang="bash" filename="requirements" code={requirementsCode} />
+      </div>
+      <p class="mt-5 text-[15px] leading-[1.7] text-(--tone-muted)">1. To create the extension from C source follow these steps:</p>
+      <div class="mt-3">
+        <CodeBlock
+          lang="bash"
+          filename="build"
+          code={`git clone --depth=1 "https://github.com/phalcon/cphalcon.git"\ncd cphalcon/build\nsudo ./install`}
+        />
+      </div>
+      <p class="mt-5 text-[15px] leading-[1.7] text-(--tone-muted)">2. Add the extension to your php.ini:</p>
+      <div class="mt-3">
+        <CodeBlock lang="ini" filename="php.ini" code={`extension=phalcon.so`} />
+      </div>
+      <p class="mt-5 text-[15px] leading-[1.7] text-(--tone-muted)">3. Finally, restart the webserver.</p>
+
+      <h2 class="mt-10 font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">Arch Linux</h2>
+      <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">
+        There is a PKGBUILD for ArchLinux, available <a href="https://aur.archlinux.org/packages/php-phalcon/">here</a>.
+      </p>
+
+      <h2 class="mt-10 font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">OpenSUSE</h2>
+      <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">
+        There is a package available <a href="https://software.opensuse.org/package/php7-phalcon">here</a> (thanks to
+        <a href="https://github.com/mruz">Mariusz Łączak</a>).
+      </p>
+
+      <h2 class="mt-10 font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">FreeBSD/GhostBSD</h2>
+      <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">
+        A port is available for FreeBSD. You only need these few commands to install it:
+      </p>
+      <div class="mt-3">
+        <CodeBlock lang="bash" filename="shell" code={`pkg install -r phalcon`} />
+      </div>
+      <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">or</p>
+      <div class="mt-3">
+        <CodeBlock lang="bash" filename="shell" code={`cd /usr/ports/www/phalcon && make install clean`} />
+      </div>
+
+      <h2 class="mt-10 font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">Amazon Linux</h2>
+      <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">
+        Using PECL should work right out of the box. However, if it does not, there is a Stack Overflow answer
+        <a href="https://archive.is/M7aU9">here</a> that might help.
+      </p>
+
+      <h2 class="mt-10 font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">cPanel</h2>
+      <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">
+        After requests from the community, the cPanel developers released a custom module that allows for installation
+        of Phalcon in cPanel hosted sites. Information can be found
+        <a href="https://documentation.cpanel.net/display/EA/Custom+Modules">here</a>. The module is maintained in
+        <a href="https://github.com/thecpaneladmin/EA-PhalconPHP">Github</a>.
+      </p>
+
+      <h2 class="mt-10 font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">Dependencies</h2>
+      <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">
+        Although Phalcon does not binary link to other extensions it does use some of them to offer functionality. The
+        extensions used are: mbstring, mcrypt, openssl, PDO, PDO/Mysql, PDO/Postgresql, PDO/Sqlite, Mongo.
+      </p>
+      <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">
+        It is not necessary for all the above extensions to be present in the system that has Phalcon installed. You can
+        only install the ones that meet your needs. For instance if you use a MySQL database, then you can only load PDO
+        and PDO/MySQL ignoring the Oracle, SQlite, Postgresql and Mongo.
+      </p>
+
+      <h2 class="mt-10 font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">Need help?</h2>
+      <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">
+        Have a look at our <a href="/support">support page</a> for ways to get support. We will do our best to help you.
+      </p>
+    </div>
+  </Section>
+</BaseLayout>

@@ -1,0 +1,64 @@
+---
+import Section from '../Section.astro';
+import Kicker from '../Kicker.astro';
+import { GITHUB_V6, GITHUB_STARS_V5, SPONSORS } from '../../data/site';
+
+const stats = [
+  {
+    value: GITHUB_STARS_V5,
+    label: 'v5 stars',
+    note: 'cphalcon, the C-extension line still in production use.',
+  },
+  { value: '15', label: 'contributors', note: '2,571 commits behind the pure-PHP rewrite.' },
+  { value: '2012', label: 'shipping since', note: 'Fourteen years of releases, run as a non-profit.' },
+];
+---
+
+<Section id="community" tone="light-alt">
+  <div>
+    <Kicker>Non-profit · community-built</Kicker>
+    <h2
+      class="mt-[14px] max-w-[20ch] font-display text-[clamp(28px,3.2vw,38px)] font-bold leading-[1.06] tracking-[-0.02em]"
+    >
+      A trusted framework, entering a new chapter.
+    </h2>
+  </div>
+
+  <div class="mt-[34px] grid grid-cols-1 gap-[14px] sm:grid-cols-3">
+    {
+      stats.map((stat) => (
+        <div class="rounded-md border border-lightline-200 bg-white px-6 py-[22px]">
+          <div class="font-display text-[34px] font-bold leading-none text-ink-900">{stat.value}</div>
+          <div class="mt-[9px] font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-ink-600">
+            {stat.label}
+          </div>
+          <p class="mt-[10px] text-[13.5px] leading-[1.5] text-ink-600">{stat.note}</p>
+        </div>
+      ))
+    }
+  </div>
+  <p class="mb-[14px] mt-[38px] font-mono text-xs font-semibold uppercase tracking-[0.16em] text-(--tone-muted)">
+    Backed by
+  </p>
+  <div class="flex flex-wrap gap-3">
+    {
+      SPONSORS.map((name) => (
+        <span class="rounded-sm border border-lightline-300 bg-white px-[18px] py-[11px] font-display text-sm font-semibold text-ink-900">
+          {name}
+        </span>
+      ))
+    }
+  </div>
+  <div class="mt-9 flex flex-wrap gap-3">
+    <a
+      href={GITHUB_V6}
+      class="rounded-sm bg-ink-900 px-[22px] py-[13px] text-[15px] font-semibold text-paper-100 hover:opacity-90"
+      >Contribute on GitHub</a
+    >
+    <a
+      href="/sponsors"
+      class="rounded-sm border border-lightline-300 px-[22px] py-[13px] text-[15px] font-semibold text-ink-900 hover:border-teal-600"
+      >Fund the project</a
+    >
+  </div>
+</Section>

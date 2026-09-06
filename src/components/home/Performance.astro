@@ -1,0 +1,70 @@
+---
+import Section from '../Section.astro';
+import Kicker from '../Kicker.astro';
+import SectionHeading from '../SectionHeading.astro';
+import Card from '../Card.astro';
+
+const flowNodes = [
+  ['REQUEST', 'incoming HTTP'],
+  ['ROUTER', 'match route'],
+  ['DI', 'resolve services'],
+  ['CONTROLLER', 'your code'],
+  ['RESPONSE', 'emit output'],
+];
+---
+
+<Section id="why" tone="dark">
+  <Kicker>The honest performance story</Kicker>
+  <SectionHeading class="max-w-[760px]">Low overhead, by design.</SectionHeading>
+  <p class="mt-5 max-w-[720px] text-[17px] leading-[1.7] text-(--tone-muted)">
+    Phalcon keeps a small, loosely-coupled object graph and a lean request lifecycle. Under a worker-mode runtime —
+    <strong class="font-semibold text-mist-200">FrankenPHP</strong>,
+    <strong class="font-semibold text-mist-200">RoadRunner</strong>,
+    <strong class="font-semibold text-mist-200">Swoole</strong> — the framework boots once and stays resident, so
+    bootstrap cost is paid at startup instead of per request.
+  </p>
+
+  <div class="mt-11 overflow-x-auto rounded-lg border border-line-700 bg-surface-950 px-[26px] py-[30px]">
+    <div class="mb-[22px] flex min-w-[720px] items-center justify-between">
+      <span class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-faint-500"
+        >Request lifecycle, where overhead is saved</span
+      >
+      <span class="font-mono text-[11px] font-semibold text-faint-600">worker mode: boot once ↻ stay resident</span>
+    </div>
+    <div class="flex min-w-[720px] items-stretch">
+      {
+        flowNodes.map((node, i) => (
+          <>
+            <div
+              class="flex-1 border border-line-700 bg-surface-900 px-2 py-4 text-center"
+              style="clip-path: polygon(0 0, 100% 0, 100% 78%, 92% 100%, 0 100%);"
+            >
+              <div class="font-mono text-[13px] font-bold tracking-[0.06em] text-accent-400">{node[0]}</div>
+              <div class="mt-[7px] font-mono text-[11px] font-medium leading-[1.3] text-faint-600">{node[1]}</div>
+            </div>
+            {i < flowNodes.length - 1 && (
+              <div class="flex items-center px-[6px]" aria-hidden="true">
+                <svg width="30" height="12" viewBox="0 0 30 12">
+                  <line x1="0" y1="6" x2="22" y2="6" stroke="#3f5950" stroke-width="1.5" stroke-dasharray="3 3" />
+                  <path d="M22 2 L29 6 L22 10" fill="none" stroke="#74ccb2" stroke-width="1.5" />
+                </svg>
+              </div>
+            )}
+          </>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="mt-[34px] grid grid-cols-1 gap-4 md:grid-cols-2">
+    <Card variant="accent" label="The tradeoff, stated plainly" labelColor="#8fc19a" barColor="#8fc19a">
+      Pure PHP gives up the raw micro-benchmark edge of the compiled extension. What it buys: zero install friction, it
+      runs on any host that runs PHP, static analysis works, and every method is readable and patchable in your own
+      vendor directory.
+    </Card>
+    <Card variant="accent" label="On benchmarks" labelColor="#e2c37a" barColor="#e2c37a">
+      v6 benchmarks are in progress. We publish reproducible methodology rather than reprinting 2012-era numbers — PHP
+      8.x JIT helps CPU-bound work (+61–95%) but little on the I/O-bound requests most apps serve.
+    </Card>
+  </div>
+</Section>
