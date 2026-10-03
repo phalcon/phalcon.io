@@ -105,7 +105,12 @@ jobs:
           git push
 
       - name: Publish to the deploy branch
-        if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+        # new-design also publishes during the trial of the redesign, so that
+        # Cloudflare Pages can show it before the merge. Remove it after the
+        # merge to master.
+        if: >-
+          (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/new-design')
+          && github.event_name != 'pull_request'
         # dist/_redirects and dist/_headers (copied from public/) carry the
         # redirects and the security headers, so the deployment is complete.
         run: |
