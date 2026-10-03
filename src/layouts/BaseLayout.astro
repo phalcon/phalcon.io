@@ -1,74 +1,69 @@
 ---
 import '../styles/global.css';
-import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../data/site';
+import Nav from '../components/Nav.astro';
+import fanart from '../fanart.html?raw';
+import { ANALYTICS_ID, ASSETS_URL, FLAVORS, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../data/site.mjs';
 
 interface Props {
   title?: string;
   description?: string;
-  // Emitted as one <script type="application/ld+json"> block per entry.
-  structuredData?: Record<string, unknown>[];
 }
 
-const { title, description = SITE_DESCRIPTION, structuredData = [] } = Astro.props;
+const { title, description = SITE_DESCRIPTION } = Astro.props;
 const pageTitle = title ? `${title} - ${SITE_TITLE}` : `${SITE_TITLE} - High Performance PHP Framework`;
-const canonical = new URL(Astro.url.pathname, 'https://phalcon.io');
+
+// build.format is "file": during the build, a path can end in ".html" or "/index".
+const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '') || '/';
+const canonical = new URL(path, SITE_URL).href;
+const favicons = `${ASSETS_URL}/favicons`;
+const socialImage = `${ASSETS_URL}/social/github.phalcon.main-site.png`;
+
+// One entry for each flavor. Both are maintained in parallel.
+const structuredData = [FLAVORS.v5, FLAVORS.v6].map((flavor) => ({
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareSourceCode',
+  name: flavor.title,
+  codeRepository: flavor.repo,
+  programmingLanguage: flavor.key === 'v5' ? ['Zephir', 'C'] : 'PHP',
+  runtimePlatform: `PHP ${flavor.php}`,
+  version: flavor.version,
+  license: `https://spdx.org/licenses/${flavor.license}.html`,
+}));
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    {/* The Phalcon fan art, an HTML comment. Content before <html> makes the
+        compiler drop the <html> and <head> tags, so it goes here, as in the docs. */}
+    <Fragment set:html={fanart} />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical.href} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={`${favicons}/favicon.svg`} />
+    <link rel="icon" type="image/png" sizes="32x32" href={`${favicons}/favicon-32x32.png`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`${favicons}/apple-touch-icon.png`} />
+    <meta name="theme-color" content="#070d0c" />
+    <meta property="og:url" content={canonical} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE_TITLE} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@phalconphp" />
-    {
-      structuredData.map((data) => (
-        <script type="application/ld+json" set:html={JSON.stringify(data)} />
-      ))
-    }
+    {structuredData.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_ID}`}></script>
+    <script is:inline src="/js/analytics.js" data-ga-id={ANALYTICS_ID}></script>
   </head>
   <body>
     <Nav />
     <slot />
     <Footer />
-    <script>
-      // Copy-to-clipboard with insecure-context fallback: this site is browsed
-      // over plain HTTP on the LAN, where navigator.clipboard is undefined.
-      async function copyText(text: string) {
-        if (window.isSecureContext && navigator.clipboard) {
-          await navigator.clipboard.writeText(text);
-          return;
-        }
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        ta.style.cssText = 'position:fixed;opacity:0';
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        ta.remove();
-      }
-      document.addEventListener('click', async (event) => {
-        const btn = (event.target as HTMLElement).closest<HTMLElement>('[data-copy]');
-        if (!btn) return;
-        try {
-          await copyText(btn.dataset.copy ?? '');
-          const original = btn.textContent;
-          btn.textContent = 'copied ✓';
-          setTimeout(() => (btn.textContent = original), 1500);
-        } catch {
-          /* clipboard unavailable — leave the button as-is */
-        }
-      });
-    </script>
+    <script is:inline src="/js/copy.js" defer></script>
+    <script is:inline src="/js/tabs.js" defer></script>
   </body>
 </html>

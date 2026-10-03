@@ -1,24 +1,25 @@
 ---
-import Section from '../Section.astro';
-import Kicker from '../Kicker.astro';
-import SectionHeading from '../SectionHeading.astro';
 import CodeBlock from '../CodeBlock.astro';
-import { FEATURE_CATEGORIES } from '../../data/snippets';
+import Kicker from '../Kicker.astro';
+import Section from '../Section.astro';
+import SectionHeading from '../SectionHeading.astro';
+import { FEATURE_CATEGORIES } from '../../data/snippets.mjs';
+import { docs } from '../../data/site.mjs';
 ---
 
 <Section id="features" tone="light">
   <Kicker>Real code, not a fake terminal</Kicker>
   <SectionHeading>The same framework, top to bottom.</SectionHeading>
   <p class="mb-10 mt-3 max-w-[680px] text-[17px] leading-relaxed text-(--tone-muted)">
-    Everything a full-stack app needs, organised exactly like the docs. Pick a layer.
+    Everything a full-stack app needs, organized the same way as the docs. Pick a layer. This code runs on v5 and v6.
   </p>
 
   <div class="grid grid-cols-1 items-start gap-[34px] lg:grid-cols-[220px_1fr]">
     <div
-      id="features-rail"
-      class="flex gap-[2px] overflow-x-auto lg:sticky lg:top-[78px] lg:flex-col lg:overflow-visible"
       role="tablist"
       aria-label="Framework layers"
+      data-tabs
+      class="flex gap-[2px] overflow-x-auto lg:sticky lg:top-[78px] lg:flex-col lg:overflow-visible"
     >
       {
         FEATURE_CATEGORIES.map((cat, i) => (
@@ -28,21 +29,10 @@ import { FEATURE_CATEGORIES } from '../../data/snippets';
             id={`tab-${cat.key}`}
             aria-controls={`panel-${cat.key}`}
             aria-selected={i === 0 ? 'true' : 'false'}
-            data-tab={cat.key}
-            class:list={[
-              'shrink-0 cursor-pointer border-0 border-l-[3px] px-[15px] py-[13px] text-left font-display text-[15px] font-semibold leading-[1.2]',
-              i === 0
-                ? 'border-teal-600 bg-paper-100 text-ink-900'
-                : 'border-transparent bg-transparent text-ink-600',
-            ]}
+            class="group shrink-0 cursor-pointer border-0 border-l-[3px] border-transparent bg-transparent px-[15px] py-[13px] text-left font-display text-[15px] font-semibold leading-[1.2] text-ink-600 aria-selected:border-teal-600 aria-selected:bg-paper-100 aria-selected:text-ink-900"
           >
             {cat.title}
-            <span
-              class:list={[
-                'mt-[3px] block font-mono text-[11px] font-medium',
-                i === 0 ? 'text-teal-600' : 'text-sage-400',
-              ]}
-            >
+            <span class="mt-[3px] block font-mono text-[11px] font-medium text-sage-400 group-aria-selected:text-teal-600">
               {cat.tagline}
             </span>
           </button>
@@ -52,36 +42,24 @@ import { FEATURE_CATEGORIES } from '../../data/snippets';
 
     <div>
       {
-        FEATURE_CATEGORIES.map((cat, i) => (
-          <div id={`panel-${cat.key}`} role="tabpanel" aria-labelledby={`tab-${cat.key}`} hidden={i !== 0}>
+        FEATURE_CATEGORIES.map((cat) => (
+          <div id={`panel-${cat.key}`} role="tabpanel" aria-labelledby={`tab-${cat.key}`} class="mb-10 last:mb-0">
             <p class="mb-4 max-w-[640px] text-base leading-relaxed text-(--tone-muted)">{cat.description}</p>
             <CodeBlock code={cat.code} lang={cat.lang} filename={cat.filename} />
+            <ul class="mt-4 flex flex-wrap gap-2">
+              {cat.components.map((component) => (
+                <li>
+                  <a
+                    href={docs(component.slug)}
+                    class="inline-block rounded-xs border border-(--tone-border-strong) bg-(--tone-surface) px-[11px] py-[6px] font-mono text-xs font-semibold text-(--tone-text) hover:border-(--tone-accent)"
+                    >{component.label}</a
+                  >
+                </li>
+              ))}
+            </ul>
           </div>
         ))
       }
     </div>
   </div>
 </Section>
-
-<script>
-  const rail = document.getElementById('features-rail');
-  const tabs = rail ? Array.from(rail.querySelectorAll<HTMLButtonElement>('[data-tab]')) : [];
-  const activeTab = ['border-teal-600', 'bg-paper-100', 'text-ink-900'];
-  const idleTab = ['border-transparent', 'bg-transparent', 'text-ink-600'];
-
-  for (const tab of tabs) {
-    tab.addEventListener('click', () => {
-      for (const t of tabs) {
-        const active = t === tab;
-        t.setAttribute('aria-selected', String(active));
-        t.classList.remove(...(active ? idleTab : activeTab));
-        t.classList.add(...(active ? activeTab : idleTab));
-        const tagline = t.querySelector('span');
-        tagline?.classList.toggle('text-teal-600', active);
-        tagline?.classList.toggle('text-sage-400', !active);
-        const panel = document.getElementById(`panel-${t.dataset.tab}`);
-        if (panel) panel.hidden = !active;
-      }
-    });
-  }
-</script>

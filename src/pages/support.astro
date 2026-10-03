@@ -1,48 +1,47 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import DiamondBullet from '../components/DiamondBullet.astro';
 import PageHero from '../components/PageHero.astro';
 import Section from '../components/Section.astro';
-import DiamondBullet from '../components/DiamondBullet.astro';
+import { DOCS_URL, FLAVORS, shortLink } from '../data/site.mjs';
 
 const helpCards = [
   {
     title: 'Documentation',
-    html: `Please use the <a href="https://docs.phalcon.io/">documentation</a> before anything else. You can also use the search feature in our documents to find what you are looking for.`,
+    html: `Please use the <a href="${DOCS_URL}">documentation</a> before anything else. You can also use its search to find what you are looking for.`,
   },
   {
     title: 'GitHub Discussions',
-    html: `Questions should go to <a href="https://phalcon.io/discussions">GitHub Discussions</a> — for v6, use <a href="https://github.com/phalcon/phalcon/discussions">phalcon/phalcon discussions</a>.`,
-  },
-  {
-    title: 'Stack Overflow',
-    html: `Another way is to ask a question on <a href="https://stackoverflow.com">Stack Overflow</a> and tag it with <a href="https://stackoverflow.com/questions/tagged/phalcon"><code>phalcon</code></a>.`,
+    html: `Questions should go to GitHub Discussions: <a href="${FLAVORS.v5.discussions}">v5 (cphalcon)</a> or <a href="${FLAVORS.v6.discussions}">v6 (phalcon)</a>.`,
   },
   {
     title: 'Discord',
-    html: `Come join the Phalcon <a href="https://phalcon.io/discord">Discord</a>.`,
+    html: `Come join the Phalcon <a href="${shortLink('discord')}">Discord</a>.`,
   },
   {
-    title: 'Social networks',
-    html: `Our social network accounts are: <a href="https://phalcon.io/telegram" target="_blank">Telegram</a>, <a href="https://phalcon.io/gab" target="_blank">Gab</a>, <a href="https://phalcon.io/mewe" target="_blank">MeWe</a>, <a href="https://phalcon.io/fb" target="_blank">Facebook</a>, <a href="https://phalcon.io/t" target="_blank">X (twitter)</a>.`,
+    title: 'Stack Overflow',
+    html: `Ask a question on <a href="${shortLink('so')}">Stack Overflow</a> and tag it with <code>phalcon</code>.`,
   },
   {
     title: 'Found a bug?',
-    html: `If you still believe that what you found is a bug, please <a href="https://github.com/phalcon/cphalcon/issues/new">open an issue</a> (v5) or use the <a href="https://github.com/phalcon/phalcon/issues">v6 issue tracker</a>.`,
+    html: `If you still believe that what you found is a bug, open an issue: <a href="${FLAVORS.v5.issues}">v5 issues</a> or <a href="${FLAVORS.v6.issues}">v6 issues</a>.`,
   },
 ];
 
 const stackOverflowNotes = [
-  'Stack Overflow is not dedicated to support Phalcon',
-  'Please do not raise new bugs there. Please use the <a href="https://github.com/phalcon/cphalcon/issues">issue tracker</a> in Github for that',
-  'Please do not ask for feature requests there. Please use the <a href="https://github.com/phalcon/cphalcon/issues">issue tracker</a> in Github for that',
-  "Make sure you include the 'phalcon' tag with your question",
-  "Make sure you mention 'Phalcon' in the question",
+  'Stack Overflow is not dedicated to supporting Phalcon.',
+  'Please do not report bugs or ask for new features there. Use the issue tracker on GitHub for that.',
+  "Make sure that you include the 'phalcon' tag with your question.",
+  "Make sure that you mention 'Phalcon' in the question.",
 ];
 ---
 
-<BaseLayout title="Support" description="Where to get help with the Phalcon framework: documentation, GitHub discussions, Stack Overflow, Discord, and how to report bugs.">
+<BaseLayout
+  title="Support"
+  description="Where to get help with the Phalcon framework: documentation, GitHub Discussions, Discord, Stack Overflow, and how to report bugs."
+>
   <PageHero kicker="Get help" title="Support.">
-    <p>Our great community and contributors are happy to help you though! Please use these community resources for obtaining help.</p>
+    <p>Our great community and contributors are happy to help you! Please use these community resources to get help.</p>
   </PageHero>
 
   <Section tone="light">
@@ -58,15 +57,13 @@ const stackOverflowNotes = [
     </div>
 
     <div class="mt-10 rounded-r-sm border border-(--tone-border-strong) border-l-[3px] border-l-warn-300 bg-(--tone-surface) px-[22px] py-5">
-      <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-warntext-700">
-        Before you post — please note
-      </p>
+      <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-warntext-700">Before you post on Stack Overflow</p>
       <ul class="mt-4 flex list-none flex-col gap-[10px] p-0">
         {
           stackOverflowNotes.map((note) => (
             <li class="flex items-start gap-3">
               <DiamondBullet color="#e2c37a" class="mt-[6px]" />
-              <span class="content-links text-[15px] leading-[1.65] text-(--tone-text)" set:html={note} />
+              <span class="text-[15px] leading-[1.65] text-(--tone-text)">{note}</span>
             </li>
           ))
         }
@@ -77,12 +74,11 @@ const stackOverflowNotes = [
       <h2 class="font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">Reporting a bug</h2>
       <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">
         Many bugs are raised because users are not running the latest version. Please visit the
-        <a href="/download/linux">download page</a>, download the latest available version (or compile it) and confirm
-        if the issue you are experiencing is indeed a bug.
+        <a href="/download">download page</a>, install the latest version, and confirm that the issue is a bug.
       </p>
       <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">
-        Please report bugs when you've exhausted all of the above options, using the
-        <a href="https://github.com/phalcon/cphalcon/issues/new">issue tracker</a> in Github.
+        Please report bugs when you have tried all of the above, using the issue tracker on GitHub:
+        <a href={FLAVORS.v5.issues}>v5</a> or <a href={FLAVORS.v6.issues}>v6</a>.
       </p>
     </div>
   </Section>

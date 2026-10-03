@@ -1,85 +1,66 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Card from '../../components/Card.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
 import PageHero from '../../components/PageHero.astro';
 import Section from '../../components/Section.astro';
 import SubNav from '../../components/SubNav.astro';
-import CodeBlock from '../../components/CodeBlock.astro';
-import CopyCommand from '../../components/CopyCommand.astro';
+import V6Callout from '../../components/V6Callout.astro';
+import { docs, DOWNLOAD_NAV, FLAVORS } from '../../data/site.mjs';
 
-const DOWNLOAD_NAV = [
-  { label: 'Linux/Unix/Mac', href: '/download/linux' },
-  { label: 'Windows DLLs', href: '/download/windows' },
-  { label: 'Developer Tools', href: '/download/tools' },
-  { label: 'IDE Stubs', href: '/download/stubs' },
+const h2 = 'mt-12 font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)';
+const p = 'mt-3 text-[15px] leading-[1.7] text-(--tone-muted)';
+const guides = [
+  { label: 'Installation on XAMPP', href: `${docs('webserver-setup')}#xampp` },
+  { label: 'Installation on WAMP', href: `${docs('webserver-setup')}#wamp` },
 ];
 ---
 
-<BaseLayout title="Download for Windows" description="Install the Phalcon framework on Windows: Composer for v6, PECL or pre-compiled DLLs for v5.">
-  <PageHero kicker="Get Phalcon" title="Download — Windows.">
-    <p>Pre-compiled DLLs and PECL cover the v5 C extension; Phalcon v6 installs with Composer.</p>
+<BaseLayout title="Download for Windows" description="Install the Phalcon v5 C extension on Windows with a pre-compiled DLL or PECL.">
+  <PageHero kicker="Get Phalcon · v5" title="Windows.">
+    <p>{FLAVORS.v5.title} on Windows is a DLL. Pick the DLL for your PHP, add one line to php.ini, and restart the web server.</p>
   </PageHero>
 
   <Section tone="light">
     <SubNav items={DOWNLOAD_NAV} current="/download/windows" />
+    <V6Callout />
 
-    <div data-tone="dark" class="rounded-r-sm border border-line-700 border-l-[3px] border-l-accent-400 bg-surface-900 px-[22px] py-5 text-mist-100">
-      <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-400">Phalcon v6 · beta — no DLL needed</p>
-      <p class="mt-[10px] text-[15px] leading-[1.65] text-mist-300">
-        v6 is pure PHP and installs with Composer on Windows too. The DLLs below are for the v5 C extension only.
+    <div class="content-links max-w-[820px]">
+      <h2 class="font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">Download</h2>
+      <p class={p}>
+        Get the DLLs from the <a href="https://github.com/phalcon/cphalcon/releases/latest">latest GitHub release</a>.
       </p>
-      <div class="mt-4">
-        <CopyCommand command="composer require phalcon/phalcon" />
+      <div class="mt-6">
+        <Card variant="accent" label="Pick the right DLL" labelColor="#9a6b12" barColor="#e2c37a">
+          The DLL must match your PHP version, the architecture (x64 or x86) and the thread safety (TS or NTS).
+          <code>phpinfo()</code> shows these values. A wrong DLL does not load.
+        </Card>
       </div>
-    </div>
 
-    <div class="content-links mt-10 max-w-[820px]">
-      <h2 class="font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">PECL</h2>
-      <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">
-        Using Pecl this extension will be automatically installed in your system. Under windows pre-compiled dll files
-        will be used. To install using Pecl make sure you have
+      <h2 class={h2}>Install</h2>
+      <p class={p}>Add this line at the end of your php.ini file, then restart the web server:</p>
+      <div class="mt-4"><CodeBlock lang="ini" filename="php.ini" code={`extension=php_phalcon.dll`} /></div>
+      <p class={p}>More details are in the <a href={`${docs('installation')}#windows`}>installation guide</a>.</p>
+
+      <h2 class={h2}>PECL</h2>
+      <p class={p}>
+        PECL is deprecated, but it still works. Under Windows it uses the pre-compiled DLLs. Make sure that you have
         <a href="https://pear.php.net/manual/en/installation.getting.php">pecl/pear</a> installed.
-      </p>
-      <p class="mt-2 text-[13px] leading-[1.6] text-(--tone-faint)">
-        For v4, the <a href="https://pecl.php.net/package/psr">PSR</a> extension is required to be loaded before Phalcon.
       </p>
       <div class="mt-4">
         <CodeBlock lang="bash" filename="shell" code={`pecl channel-update pecl.php.net\npecl install phalcon`} />
       </div>
 
-      <div class="mt-6 rounded-r-sm border border-(--tone-border-strong) border-l-[3px] border-l-warn-300 bg-(--tone-surface) px-[22px] py-5">
-        <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-warntext-700">Note</p>
-        <p class="mt-[10px] text-[15px] leading-[1.65] text-(--tone-text)">
-          We highly recommend you use the latest version of PHP corresponding to our DLLs, so as to take advantage of the
-          full feature set of Phalcon.
-        </p>
-      </div>
-
-      <h2 class="mt-10 font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">Download</h2>
-      <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">
-        Windows DLLs can be downloaded from our Github release page
-        <a href="https://github.com/phalcon/cphalcon/releases/latest">here</a>.
-      </p>
-
-      <h2 class="mt-10 font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">Installation</h2>
-      <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">
-        To use phalcon on Windows you can download a DLL library. Edit your php.ini, append at the end, and restart your
-        webserver to load the extension.
-        <a href="https://docs.phalcon.io/latest/installation/#windows">More</a>.
-      </p>
-      <div class="mt-4">
-        <CodeBlock lang="ini" filename="php.ini" code={`extension=php_phalcon.dll`} />
-      </div>
-
-      <h2 class="mt-10 font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">Related Guides</h2>
+      <h2 class={h2}>Related guides</h2>
       <ul class="mt-3 flex list-none flex-col gap-2 p-0">
-        <li class="flex items-center gap-3">
-          <span class="h-[9px] w-[9px] rotate-45 bg-(--tone-accent)" aria-hidden="true"></span>
-          <a href="https://docs.phalcon.io/5.6/webserver-setup/#xampp" class="text-[15px]">Installation on XAMPP</a>
-        </li>
-        <li class="flex items-center gap-3">
-          <span class="h-[9px] w-[9px] rotate-45 bg-(--tone-accent)" aria-hidden="true"></span>
-          <a href="https://docs.phalcon.io/5.6/webserver-setup/#wamp" class="text-[15px]">Installation on WAMP</a>
-        </li>
+        {
+          guides.map((guide) => (
+            <li class="flex items-center gap-3">
+              <span class="h-[9px] w-[9px] rotate-45 bg-(--tone-accent)" aria-hidden="true" />
+              <a href={guide.href} class="text-[15px]">{guide.label}</a>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </Section>

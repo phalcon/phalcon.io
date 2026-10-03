@@ -3,13 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import Section from '../components/Section.astro';
 import SubNav from '../components/SubNav.astro';
-import contributors from '../../_data/contributors.json';
-
-const TEAM_NAV = [
-  { label: 'Team', href: '/team' },
-  { label: 'Testimonials', href: '/testimonials' },
-  { label: 'About', href: '/about' },
-];
+import ContributorWall from '../components/ContributorWall.astro';
+import { PROJECT_NAV } from '../data/site.mjs';
 
 const members = [
   {
@@ -42,7 +37,7 @@ const specialMention = {
     'Andres is no stranger to open source projects. In the last nine years, he has designed and released frameworks for PHP and has been involved in web development - his main passion.',
     "A TR35 winner, Andres' main drive is to always choose and implement or use the right tool for the job, mostly focused on performance. Therefore in 2011 a new idea was in the works; to create a new kind of framework for PHP developers, one that focuses on usability, features and mostly performance.",
     'Through this new innovative approach Phalcon was born. A PHP framework written in C that can offer a wealth of features to developers while maximizing performance and keeping resource utilization low.',
-    'Andres is was the inspiration behind Phalcon and although he is no longer with the project, are always thankful for his vision.',
+    'Andres was the inspiration behind Phalcon. Although he is no longer with the project, we are always thankful for his vision.',
   ],
 };
 ---
@@ -53,7 +48,7 @@ const specialMention = {
   </PageHero>
 
   <Section tone="light">
-    <SubNav items={TEAM_NAV} current="/team" />
+    <SubNav items={PROJECT_NAV} current="/team" />
     <div class="flex flex-col gap-6">
       {
         members.map((member) => (
@@ -96,19 +91,8 @@ const specialMention = {
     <h2 class="mt-3 font-display text-[clamp(24px,2.8vw,32px)] font-bold tracking-[-0.02em] text-(--tone-text)">
       Phalcon is improved everyday by our amazing community.
     </h2>
-    <div class="mt-8 flex flex-wrap gap-2">
-      {
-        contributors.map((username: string) => (
-          <a href={`https://github.com/${username}`} title={username} class="block">
-            <img
-              src={`/images/contributors/${username}.jpg`}
-              alt={username}
-              loading="lazy"
-              class="h-10 w-10 rounded-sm border border-(--tone-border-strong) object-cover"
-            />
-          </a>
-        ))
-      }
+    <div class="mt-8">
+      <ContributorWall />
     </div>
   </Section>
 </BaseLayout>

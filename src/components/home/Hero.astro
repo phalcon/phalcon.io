@@ -1,6 +1,6 @@
 ---
-import CopyCommand from '../CopyCommand.astro';
-import { DOCS_URL } from '../../data/site';
+import InstallTabs from './InstallTabs.astro';
+import { DOCS_URL, SINCE } from '../../data/site.mjs';
 ---
 
 <section
@@ -12,33 +12,35 @@ import { DOCS_URL } from '../../data/site';
   <div class="mx-auto grid max-w-[1240px] grid-cols-1 items-center gap-8 px-5 pb-[88px] pt-[70px] md:px-10 lg:grid-cols-[1.08fr_0.92fr]">
     <div>
       <p class="mb-[22px] font-mono text-xs font-semibold uppercase tracking-[0.26em] text-sage-500">
-        Phalcon v6 — pure PHP
+        High performance PHP framework
       </p>
       <h1 class="font-display text-[clamp(40px,5vw,64px)] font-bold leading-[1.02] tracking-[-0.03em]">
-        A full-stack PHP framework,<br />
-        <span class="text-[#b7c9bd]">now pure PHP.</span>
+        A full-stack PHP framework<br />
+        <span class="text-[#b7c9bd]">delivered as a C extension.</span>
       </h1>
-      <p class="mt-[22px] max-w-[520px] text-lg leading-relaxed text-sage-400" style="text-wrap: pretty;">
-        The framework you know — <code class="font-mono text-[15px] font-medium text-mist-200">Phalcon\</code> namespaces,
-        DI, ORM, Volt — with nothing to compile. Install it with Composer and start building.
+      <p class="mt-[22px] max-w-[540px] text-lg leading-relaxed text-sage-400" style="text-wrap: pretty;">
+        Its innovative architecture makes Phalcon the fastest PHP framework ever built. You do not need to know C to use
+        it: the API is plain PHP classes in the
+        <code class="font-mono text-[15px] font-medium text-mist-200">Phalcon\</code> namespace. Prefer no extension at all?
+        The same API ships as pure PHP.
       </p>
-      <div id="install" class="mt-[30px]">
-        <CopyCommand command="composer require phalcon/phalcon" />
+      <div id="install" class="mt-[30px] max-w-[480px]">
+        <InstallTabs />
       </div>
       <div class="mt-6 flex flex-wrap items-center gap-[14px]">
         <a
-          href={DOCS_URL}
+          href="/download"
           class="rounded-sm bg-accent-400 px-6 py-[13px] text-[15px] font-semibold text-[#06120e] hover:bg-accent-500"
-          >Read the docs →</a
+          >Get Phalcon →</a
         >
         <a
-          href="#why"
+          href={DOCS_URL}
           class="rounded-sm border border-line-600 px-[22px] py-[13px] text-[15px] font-medium text-mist-200 hover:border-accent-500"
-          >Why v6?</a
+          >Read the docs</a
         >
       </div>
       <p class="mt-7 font-mono text-xs font-medium leading-relaxed tracking-[0.04em] text-faint-500">
-        open-source · BSD / MIT · non-profit · in development since 2012
+        open source · BSD-3 / MIT · since {SINCE}
       </p>
     </div>
     <div class="relative flex min-h-[320px] items-center justify-center lg:min-h-[440px]">

@@ -1,0 +1,29 @@
+---
+// The logo sponsors on the home page. Renders nothing when the roster is empty.
+import data from '../sponsors.json';
+import { logoSections } from '../lib/sponsors.mjs';
+
+const entries = logoSections(data.sponsors).flatMap((section) => section.entries);
+---
+
+{
+  entries.length > 0 && (
+    <section data-tone="light" class="border-t border-(--tone-border) bg-(--tone-bg) text-(--tone-text)">
+      <div class="mx-auto flex max-w-[1240px] flex-col gap-5 px-5 py-10 md:px-10">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-(--tone-muted)">Backed by</p>
+        <ul class="flex flex-wrap items-center gap-x-10 gap-y-6">
+          {entries.map((sponsor) => (
+            <li>
+              <a href={sponsor.url} rel="noopener sponsored" target="_blank" data-sponsor>
+                <img src={sponsor.logo} alt={sponsor.name} loading="lazy" class="h-8 w-auto max-w-[160px] object-contain" />
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a href="/sponsors" class="self-start text-sm font-semibold text-(--tone-accent) hover:text-(--tone-accent-hover)"
+          >Become a sponsor →</a
+        >
+      </div>
+    </section>
+  )
+}
