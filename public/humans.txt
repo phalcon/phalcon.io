@@ -1,0 +1,14 @@
+/* TEAM */
+
+Chef: Nikolaos (Nikos) Dimopoulos
+Contact: domains [at] niden.net
+GitHub: @niden
+From: Charles Town, WV, USA
+
+/* SITE */
+
+Last update: 2026/10/03
+Doctype: HTML5
+Standards: HTML5, CSS3
+Components: Astro, Tailwind CSS
+

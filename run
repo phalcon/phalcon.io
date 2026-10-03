@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# Runs a command in the Node container. There is no Node on the host.
+#
+#   ./run npm ci
+#   ./run npm test
+#   ./run npm run build
+#   ./run npm run verify
+#
+set -e
+
+cd "$(dirname "$0")"
+
+docker run --rm \
+    --volume="$PWD:/app" \
+    --workdir=/app \
+    --user="$(id -u):$(id -g)" \
+    --env=HOME=/app \
+    --env=npm_config_cache=/app/node_modules/.npm-cache \
+    --env=ASTRO_TELEMETRY_DISABLED=1 \
+    node:22-alpine "$@"

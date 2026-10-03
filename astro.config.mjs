@@ -1,29 +1,21 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
-// Old Jekyll URLs were /{locale}/{page}; the redesign is English-only with
-// clean URLs. Emit meta-refresh stubs so old links keep working locally.
-const locales = ['en-us', 'de-de', 'el-gr', 'es-es', 'fa-ir', 'ko-kr'];
-const slugs = [
-  '', 'about', 'consulting', 'download/linux', 'download/windows',
-  'download/tools', 'download/stubs', 'hosting', 'sponsors', 'support',
-  'team', 'testimonials',
-];
-const redirects = {};
-for (const locale of locales) {
-  for (const slug of slugs) {
-    redirects[`/${locale}${slug ? '/' + slug : ''}`] = slug ? `/${slug}` : '/';
-  }
-}
-
 export default defineConfig({
+  site: 'https://phalcon.io',
   output: 'static',
+  // One file per page (dist/team.html) and no trailing slash, as on the
+  // docs and blog sites. Cloudflare Pages then serves /team with no redirect.
+  trailingSlash: 'never',
+  build: { format: 'file' },
   server: { host: true, port: 8080 },
-  redirects,
+  // The Jekyll site had /sitemap.xml; public/_redirects sends it to sitemap-index.xml.
+  integrations: [sitemap({ filter: (page) => !page.endsWith('/404') })],
   vite: {
     plugins: [tailwindcss()],
     server: {
-      watch: { ignored: ['**/debug/**', '**/_site/**', '**/vendor/**'] },
+      watch: { ignored: ['**/public/debug/**', '**/_site/**', '**/vendor/**'] },
     },
   },
 });
