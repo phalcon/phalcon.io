@@ -43,7 +43,8 @@ import { DOCS_URL, SINCE } from '../../data/site.mjs';
         open source · BSD-3 / MIT · since {SINCE}
       </p>
     </div>
-    <div class="relative flex min-h-[320px] items-center justify-center lg:min-h-[440px]">
+    {/* The falcon art shows from lg up. On a phone the nav bar shows the falcon, and the hero keeps the install command. */}
+    <div class="relative hidden items-center justify-center lg:flex lg:min-h-[440px]">
       <div
         class="absolute h-[440px] w-[440px]"
         style="background: radial-gradient(circle, rgba(116,204,178,.08), transparent 62%); filter: blur(8px);"
