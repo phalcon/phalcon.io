@@ -10,6 +10,7 @@ import { CONTENT, SITE_LACKS } from './expectations.mjs';
 import { allowedBy, attrValues, elements, inlineScripts, parseCsp, textOf } from './lib.mjs';
 import { logoSections, nameSections } from '../src/lib/sponsors.mjs';
 import { parseRedirects, resolve } from '../src/lib/redirects.mjs';
+import { missingTokens, resolveToken, usedTokens } from '../src/lib/tokens.mjs';
 
 const checks = [];
 
@@ -222,6 +223,22 @@ if (existsSync('dist/_headers')) {
     report('dist/sitemap-index.xml exists', existsSync('dist/sitemap-index.xml'));
     report('the sitemap lists every page', sitemap !== '' && missing.length === 0, missing.join(', '));
     report('the sitemap has no 404 page', !sitemap.includes('/404'));
+}
+
+/* Design tokens: the built CSS defines every token that it uses, and the browser bar takes the dark background. */
+{
+    const css = existsSync('dist/_astro')
+        ? listFiles('dist/_astro')
+              .filter((file) => file.endsWith('.css'))
+              .map((file) => readFileSync(file, 'utf8'))
+              .join('\n')
+        : '';
+    const missing = missingTokens(css, usedTokens(css));
+    const meta = existsSync(distFile('/')) ? elements(html('/'), 'meta').find((element) => element.name === 'theme-color') : null;
+    const expected = resolveToken(readFileSync('src/styles/tokens.css', 'utf8'), '--ph-dark-bg');
+
+    report('the built CSS defines every token that it uses', css !== '' && missing.length === 0, missing.join(', '));
+    report('the theme color is the dark background token', expected !== null && meta?.content === expected, meta?.content ?? 'none');
 }
 
 /* Task checks go above this line. */

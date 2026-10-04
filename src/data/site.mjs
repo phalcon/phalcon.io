@@ -37,7 +37,7 @@ export const FLAVORS = {
         delivery: 'C extension, written in Zephir',
         version: project.v5.version,
         status: statusOf(project.v5.version),
-        php: '8.1 – 8.5',
+        php: '8.1 - 8.5',
         install: 'pie install phalcon/cphalcon',
         installPage: '/download/linux',
         license: 'BSD-3-Clause',

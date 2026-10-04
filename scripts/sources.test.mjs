@@ -3,6 +3,8 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { test } from 'node:test';
 
 import { FLAVORS } from '../src/data/site.mjs';
+import { missingTokens } from '../src/lib/tokens.mjs';
+import { sourceFiles, usedBySite } from './token-sources.mjs';
 
 const root = new URL('../src/', import.meta.url);
 const astroFiles = readdirSync(root, { recursive: true }).filter((file) => file.endsWith('.astro'));
@@ -33,4 +35,48 @@ test('expectations.mjs types no current version', () => {
     const typed = [...text.matchAll(/['"`]([^'"`]*\b[56]\.\d+\.\d+[^'"`]*)['"`]/g)].map((match) => match[1]);
 
     assert.deepEqual(typed.filter((value) => !allowed.has(value)), []);
+});
+
+test('the source scan covers pages, components, layouts and styles, not tests or the tokens file', () => {
+    // A token that only a component prop uses must count as used.
+    const files = sourceFiles();
+
+    for (const file of ['components/DiamondBullet.astro', 'layouts/BaseLayout.astro', 'pages/support.astro', 'styles/global.css']) {
+        assert.ok(files.includes(file), file);
+    }
+
+    assert.ok(!files.includes('styles/tokens.css'));
+    assert.ok(!files.includes('lib/tokens.test.mjs'));
+});
+
+test('no source types a color', () => {
+    // Colors come from src/styles/tokens.css (phalcon/assets), so a palette change is made once.
+    const typed = sourceFiles().flatMap((file) =>
+        readFileSync(new URL(file, root), 'utf8')
+            .split('\n')
+            .flatMap((line, index) => [...line.matchAll(/#[0-9a-fA-F]{3,8}\b|rgba?\(/g)].map((match) => `${file}:${index + 1} ${match[0]}`))
+    );
+
+    assert.deepEqual(typed, []);
+});
+
+test('the Tailwind white takes its value from the tokens', () => {
+    // Tailwind has its own white (#fff). bg-white and the other white classes must follow --ph-white.
+    const css = readFileSync(new URL('styles/global.css', root), 'utf8');
+
+    assert.match(css, /--color-white:\s*var\(--ph-white\);/);
+});
+
+test('the tokens file defines every token that the site uses', () => {
+    const tokens = readFileSync(new URL('styles/tokens.css', root), 'utf8');
+
+    assert.deepEqual(missingTokens(tokens, usedBySite()), []);
+});
+
+test('the deploy workflow refreshes the tokens and restores them before the data push', () => {
+    // The scheduled run rebases before it pushes, so the downloaded files must not stay changed.
+    const workflow = readFileSync(new URL('../.github/workflows/deploy.yml', import.meta.url), 'utf8');
+
+    assert.match(workflow, /run: node scripts\/update-tokens\.mjs/);
+    assert.match(workflow, /git checkout -- src\/fanart\.html src\/styles\/tokens\.css/);
 });

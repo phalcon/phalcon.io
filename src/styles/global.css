@@ -1,51 +1,57 @@
 @import "tailwindcss";
+@import "./tokens.css";
 
+/* The colors and the fonts come from tokens.css, a copy of
+   phalcon/css/tokens.css in phalcon/assets. The deploy workflow refreshes it. */
 @theme {
   /* Helvetica everywhere — no webfonts, nothing to download. */
-  --font-display: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --font-display: var(--ph-font-sans);
+  --font-sans: var(--ph-font-sans);
+  --font-mono: var(--ph-font-mono);
 
   /* dark palette */
-  --color-night-950: #070d0c;
-  --color-night-900: #0a0c0f;
-  --color-surface-950: #0b1210;
-  --color-surface-900: #0d1614;
-  --color-surface-800: #12201d;
-  --color-line-900: #17221f;
-  --color-line-700: #2f3a3c;
-  --color-line-600: #2f4a42;
-  --color-mist-100: #e6f2ec;
-  --color-mist-200: #cce2d2;
-  --color-mist-300: #c7d8d0;
-  --color-sage-400: #9db3aa;
-  --color-sage-500: #8fa39b;
-  --color-faint-500: #5e7269;
-  --color-faint-600: #678a6f;
-  --color-faint-700: #3f5950;
-  --color-accent-400: #74ccb2;
-  --color-accent-500: #57b49b;
-  --color-accent-300: #8ed3bd;
-  --color-brand-400: #8fc19a;
-  --color-warn-300: #e2c37a;
-  --color-danger-300: #e08f8f;
-  --color-slate-900: #273646;
+  --color-night-950: var(--ph-night-950);
+  --color-night-900: var(--ph-night-900);
+  --color-surface-950: var(--ph-surface-950);
+  --color-surface-900: var(--ph-surface-900);
+  --color-surface-800: var(--ph-surface-800);
+  --color-line-900: var(--ph-line-900);
+  --color-line-700: var(--ph-line-700);
+  --color-line-600: var(--ph-line-600);
+  --color-mist-100: var(--ph-mist-100);
+  --color-mist-200: var(--ph-mist-200);
+  --color-mist-300: var(--ph-mist-300);
+  --color-mist-400: var(--ph-mist-400);
+  --color-sage-400: var(--ph-sage-400);
+  --color-sage-500: var(--ph-sage-500);
+  --color-faint-500: var(--ph-faint-500);
+  --color-faint-600: var(--ph-faint-600);
+  --color-faint-700: var(--ph-faint-700);
+  --color-accent-400: var(--ph-accent-400);
+  --color-accent-500: var(--ph-accent-500);
+  --color-accent-300: var(--ph-accent-300);
+  --color-brand-400: var(--ph-brand-400);
+  --color-warn-300: var(--ph-warn-300);
+  --color-danger-300: var(--ph-danger-300);
+  --color-slate-900: var(--ph-slate-900);
 
   /* light palette */
-  --color-paper-50: #f7faf8;
-  --color-paper-100: #eef4f0;
-  --color-ink-900: #0f1a17;
-  --color-ink-600: #4b6157;
-  --color-ink-500: #5c7a6e;
-  --color-ink-400: #7d938a;
-  --color-lightline-100: #e4ede8;
-  --color-lightline-200: #d3e2d9;
-  --color-lightline-300: #c3d5ca;
-  --color-lightline-400: #bfe0d5;
-  --color-teal-600: #0f9e86;
-  --color-teal-700: #0b7d6a;
-  --color-success-600: #2f8f5b;
-  --color-warntext-700: #9a6b12;
+  --color-paper-50: var(--ph-paper-50);
+  --color-paper-100: var(--ph-paper-100);
+  --color-ink-950: var(--ph-ink-950);
+  --color-ink-900: var(--ph-ink-900);
+  --color-ink-600: var(--ph-ink-600);
+  --color-ink-500: var(--ph-ink-500);
+  --color-ink-400: var(--ph-ink-400);
+  --color-lightline-100: var(--ph-lightline-100);
+  --color-lightline-200: var(--ph-lightline-200);
+  --color-lightline-300: var(--ph-lightline-300);
+  --color-lightline-400: var(--ph-lightline-400);
+  --color-teal-600: var(--ph-teal-600);
+  --color-teal-700: var(--ph-teal-700);
+  --color-success-600: var(--ph-success-600);
+  --color-warntext-700: var(--ph-warntext-700);
+  --color-white: var(--ph-white);
 
   --radius-xs: 3px;
   --radius-sm: 4px;
@@ -56,48 +62,49 @@
 /* Fixed-palette section tones. Landing sections alternate dark/light by design —
    this is NOT a theme toggle, so no dark: variants anywhere. */
 [data-tone="dark"] {
-  --tone-bg: var(--color-night-950);
-  --tone-surface: var(--color-surface-900);
-  --tone-panel: var(--color-surface-950);
-  --tone-text: var(--color-mist-100);
-  --tone-heading: var(--color-mist-100);
-  --tone-muted: var(--color-sage-400);
-  --tone-faint: var(--color-faint-500);
-  --tone-kicker: var(--color-sage-500);
-  --tone-border: var(--color-line-900);
-  --tone-border-strong: var(--color-line-700);
-  --tone-accent: var(--color-accent-400);
-  --tone-accent-hover: var(--color-accent-500);
+  --tone-bg: var(--ph-dark-bg);
+  --tone-surface: var(--ph-dark-surface);
+  --tone-panel: var(--ph-dark-panel);
+  --tone-text: var(--ph-dark-text);
+  --tone-heading: var(--ph-dark-heading);
+  --tone-muted: var(--ph-dark-muted);
+  --tone-faint: var(--ph-dark-faint);
+  --tone-kicker: var(--ph-dark-kicker);
+  --tone-border: var(--ph-dark-border);
+  --tone-border-strong: var(--ph-dark-border-strong);
+  --tone-accent: var(--ph-dark-accent);
+  --tone-accent-hover: var(--ph-dark-accent-hover);
 }
 
 [data-tone="light"] {
-  --tone-bg: var(--color-paper-50);
-  --tone-surface: #ffffff;
-  --tone-panel: #ffffff;
-  --tone-text: var(--color-ink-900);
-  --tone-heading: var(--color-ink-900);
-  --tone-muted: var(--color-ink-600);
-  --tone-faint: var(--color-ink-400);
-  --tone-kicker: var(--color-ink-500);
-  --tone-border: var(--color-lightline-100);
-  --tone-border-strong: var(--color-lightline-200);
-  --tone-accent: var(--color-teal-600);
-  --tone-accent-hover: var(--color-teal-700);
+  --tone-bg: var(--ph-light-bg);
+  --tone-surface: var(--ph-light-surface);
+  --tone-panel: var(--ph-light-panel);
+  --tone-text: var(--ph-light-text);
+  --tone-heading: var(--ph-light-heading);
+  --tone-muted: var(--ph-light-muted);
+  --tone-faint: var(--ph-light-faint);
+  --tone-kicker: var(--ph-light-kicker);
+  --tone-border: var(--ph-light-border);
+  --tone-border-strong: var(--ph-light-border-strong);
+  --tone-accent: var(--ph-light-accent);
+  --tone-accent-hover: var(--ph-light-accent-hover);
 }
 
+/* The light tone with the second background and a stronger card border. */
 [data-tone="light-alt"] {
-  --tone-bg: var(--color-paper-100);
-  --tone-surface: #ffffff;
-  --tone-panel: #ffffff;
-  --tone-text: var(--color-ink-900);
-  --tone-heading: var(--color-ink-900);
-  --tone-muted: var(--color-ink-600);
-  --tone-faint: var(--color-ink-400);
-  --tone-kicker: var(--color-ink-500);
-  --tone-border: var(--color-lightline-100);
-  --tone-border-strong: var(--color-lightline-300);
-  --tone-accent: var(--color-teal-600);
-  --tone-accent-hover: var(--color-teal-700);
+  --tone-bg: var(--ph-light-bg-alt);
+  --tone-surface: var(--ph-light-surface);
+  --tone-panel: var(--ph-light-panel);
+  --tone-text: var(--ph-light-text);
+  --tone-heading: var(--ph-light-heading);
+  --tone-muted: var(--ph-light-muted);
+  --tone-faint: var(--ph-light-faint);
+  --tone-kicker: var(--ph-light-kicker);
+  --tone-border: var(--ph-light-border);
+  --tone-border-strong: var(--ph-lightline-300);
+  --tone-accent: var(--ph-light-accent);
+  --tone-accent-hover: var(--ph-light-accent-hover);
 }
 
 html {
@@ -106,14 +113,14 @@ html {
 }
 
 body {
-  background: var(--color-night-950);
-  color: var(--color-mist-100);
+  background: var(--ph-dark-bg);
+  color: var(--ph-dark-text);
   font-family: var(--font-sans);
 }
 
 ::selection {
-  background: rgba(116, 204, 178, 0.28);
-  color: #fff;
+  background: color-mix(in srgb, var(--ph-accent-400) 28%, transparent);
+  color: var(--ph-white);
 }
 
 @keyframes pf-float {
@@ -136,9 +143,23 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* Shiki code blocks — github-dark-default tokens on the design's code
-   surface (overrides the theme's inline #0d1117 background). */
+/* Shiki code blocks. CodeBlock uses src/lib/code-theme.mjs: GitHub's dark
+   rules with --code-<role> variables. The code blocks are always dark, so the
+   variables take the dark syntax tokens. */
 .astro-code {
+  --code-bg: var(--ph-dark-code-bg);
+  --code-changed: var(--ph-dark-syntax-changed);
+  --code-comment: var(--ph-dark-syntax-comment);
+  --code-constant: var(--ph-dark-syntax-constant);
+  --code-deleted: var(--ph-dark-syntax-deleted);
+  --code-function: var(--ph-dark-syntax-function);
+  --code-inserted: var(--ph-dark-syntax-inserted);
+  --code-keyword: var(--ph-dark-syntax-keyword);
+  --code-parameter: var(--ph-dark-syntax-parameter);
+  --code-string: var(--ph-dark-syntax-string);
+  --code-string-expression: var(--ph-dark-syntax-string-expression);
+  --code-text: var(--ph-dark-syntax-text);
+
   margin: 0;
   padding: 20px 22px;
   font-family: var(--font-mono);
@@ -146,5 +167,4 @@ body {
   line-height: 1.85;
   font-weight: 500;
   overflow-x: auto;
-  background-color: var(--color-surface-900) !important;
 }

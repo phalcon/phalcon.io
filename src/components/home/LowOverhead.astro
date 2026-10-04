@@ -52,8 +52,8 @@ const points = [
             {i < flowNodes.length - 1 && (
               <div class="flex items-center px-[6px]" aria-hidden="true">
                 <svg width="30" height="12" viewBox="0 0 30 12">
-                  <line x1="0" y1="6" x2="22" y2="6" stroke="#3f5950" stroke-width="1.5" stroke-dasharray="3 3" />
-                  <path d="M22 2 L29 6 L22 10" fill="none" stroke="#74ccb2" stroke-width="1.5" />
+                  <line x1="0" y1="6" x2="22" y2="6" class="stroke-faint-700" stroke-width="1.5" stroke-dasharray="3 3" />
+                  <path d="M22 2 L29 6 L22 10" fill="none" class="stroke-accent-400" stroke-width="1.5" />
                 </svg>
               </div>
             )}
@@ -67,7 +67,7 @@ const points = [
     {
       points.map((point) => (
         <li class="flex items-start gap-3 text-[15px] leading-[1.65] text-mist-300">
-          <DiamondBullet color="#74ccb2" class="mt-[7px]" />
+          <DiamondBullet color="var(--ph-accent-400)" class="mt-[7px]" />
           {point}
         </li>
       ))
@@ -75,7 +75,7 @@ const points = [
   </ul>
 
   <div class="mt-[34px]">
-    <Card variant="accent" label="The tradeoff, stated plainly" labelColor="#8fc19a" barColor="#8fc19a">
+    <Card variant="accent" label="The tradeoff, stated plainly" labelColor="var(--ph-brand-400)" barColor="var(--ph-brand-400)">
       Phalcon v6 gives up the raw speed of the compiled extension. In return, there is nothing to install or compile: it
       runs on any host with PHP {FLAVORS.v6.php}, and every method is readable in your vendor directory.
     </Card>

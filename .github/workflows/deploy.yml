@@ -69,6 +69,13 @@ jobs:
           git commit -m "Updating the site data"
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
+      - name: Get the design tokens
+        # src/styles/tokens.css is a copy of phalcon/css/tokens.css in
+        # phalcon/assets. The script keeps the committed copy, with a warning,
+        # when the download fails or the file is not correct (for example, a
+        # token that the site uses is missing). It does not commit.
+        run: node scripts/update-tokens.mjs
+
       - name: Install dependencies
         run: npm ci
 
@@ -98,9 +105,9 @@ jobs:
         # run publishes the new data in the next step.
         if: steps.update.outputs.changed == 'true'
         run: |
-          # "Get the fan art" rewrote the tracked src/fanart.html. Drop that
-          # change, so the rebase has a clean tree.
-          git checkout -- src/fanart.html
+          # "Get the fan art" and "Get the design tokens" can change tracked
+          # files. Drop those changes, so the rebase has a clean tree.
+          git checkout -- src/fanart.html src/styles/tokens.css
           git pull --rebase
           git push
 

@@ -7,7 +7,7 @@ const menus = [
 ];
 ---
 
-<nav class="sticky top-0 z-50 border-b border-line-900 bg-[rgba(7,13,12,0.92)] backdrop-blur-sm">
+<nav class="sticky top-0 z-50 border-b border-line-900 bg-night-950/92 backdrop-blur-sm">
   <div class="flex items-center justify-between px-5 py-[15px] md:px-10">
     <a href="/" class="flex items-center gap-[11px] text-mist-100">
       <img src="/images/falcon.svg" alt="" class="block h-[26px] w-[26px]" />
@@ -24,7 +24,7 @@ const menus = [
             {menu.label} <span aria-hidden="true" class="text-[10px]">▾</span>
           </button>
           <div class="invisible absolute right-0 top-full pt-3 opacity-0 transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-            <ul class="w-52 rounded-md border border-line-700 bg-surface-900 p-[5px] shadow-[0_12px_34px_rgba(0,0,0,0.5)]">
+            <ul class="w-52 rounded-md border border-line-700 bg-surface-900 p-[5px] shadow-[0_12px_34px_color-mix(in_srgb,var(--ph-night-950)_50%,transparent)]">
               {menu.items.map((item) => (
                 <li>
                   <a
@@ -46,7 +46,7 @@ const menus = [
       </a>
       <a
         href="/download"
-        class="whitespace-nowrap rounded-sm bg-accent-400 px-4 py-[9px] text-sm font-semibold text-[#06120e] hover:bg-accent-500"
+        class="whitespace-nowrap rounded-sm bg-accent-400 px-4 py-[9px] text-sm font-semibold text-ink-950 hover:bg-accent-500"
         >Get Phalcon</a
       >
     </div>
@@ -81,7 +81,7 @@ const menus = [
         <a href={FLAVORS.v5.repo} class="block py-2 text-[15px] text-sage-400 hover:text-mist-100">GitHub ★ {FLAVORS.v5.stars}</a>
       </li>
       <li class="pt-2">
-        <a href="/download" class="inline-block rounded-sm bg-accent-400 px-4 py-[9px] text-sm font-semibold text-[#06120e]"
+        <a href="/download" class="inline-block rounded-sm bg-accent-400 px-4 py-[9px] text-sm font-semibold text-ink-950"
           >Get Phalcon</a
         >
       </li>

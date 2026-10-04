@@ -29,6 +29,8 @@ export const SITE_LACKS = [
     /docs\.phalcon\.io\/[345]\.\d+\//,
     // Developer Tools is hidden until a release works with v5 or v6.
     'href="/download/tools"',
+    // Code blocks take their colors from the tokens, not from GitHub's theme (#e6edf3 is its text color).
+    '#e6edf3',
 ];
 
 /** @type {Array<{page: string, has?: string[], lacks?: Array<string|RegExp>, html?: Array<string|RegExp>, htmlLacks?: Array<string|RegExp>, links?: string[], copies?: string[]}>} */
@@ -54,6 +56,11 @@ export const CONTENT = [
             'href="https://assets.phalcon.io/phalcon/favicons/favicon.svg"',
             /^<!DOCTYPE html>\s*<html lang="en">\s*<head>/i,
         ],
+    },
+    // Design tokens: code blocks use the code theme (src/lib/code-theme.mjs)
+    {
+        page: '/',
+        html: ['color:var(--code-keyword)'],
     },
     {
         page: '/team',

@@ -1,6 +1,7 @@
 ---
 import { Code } from 'astro:components';
 import type { BundledLanguage } from 'shiki';
+import { CODE_THEME } from '../lib/code-theme.mjs';
 
 interface Props {
   code: string;
@@ -30,7 +31,6 @@ const { code, lang = 'php', filename, copyable = true, class: className = '' } =
       </div>
     )
   }
-  {/* GitHub.com's standard dark syntax colors; the panel background stays
-      on the design surface via the .astro-code override in global.css. */}
-  <Code code={code} lang={lang} theme="github-dark-default" />
+  {/* GitHub's dark rules with the syntax colors of the design tokens (src/lib/code-theme.mjs). */}
+  <Code code={code} lang={lang} theme={CODE_THEME} />
 </div>
