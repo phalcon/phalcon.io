@@ -1,296 +1,80 @@
 /**
- * The code theme of the Phalcon sites. The rules are a copy of the rules of
- * GitHub's dark theme (Shiki's github-dark-default): they decide which part
- * of the code gets which role. The colors are not here: each rule uses a
- * --code-<role> variable, and a site maps these variables to the syntax
- * tokens (--ph-dark-syntax-<role> or --ph-light-syntax-<role>).
+ * The code theme of the Phalcon sites: src/styles/code-theme.json, a copy of
+ * phalcon/css/code-theme.json in phalcon/assets. Its rules are the rules of
+ * GitHub's dark theme (Shiki's github-dark-default): they decide which part of
+ * the code gets which role. Each color is a --code-<role> variable, and
+ * .astro-code in src/styles/global.css maps the variables to the syntax tokens.
  *
- * GitHub's theme also gives a background to five rules (diff lines, the
- * carriage-return mark and ignored markup). The tokens have no such colors,
- * so this copy keeps the text color and the font style only.
- *
- * Roles: changed, comment, constant, deleted, function, inserted, keyword,
- * parameter, string, string-expression, text, and bg for the background.
- *
- * @type {import('shiki').ThemeRegistration}
+ * The checks of the rules are in phalcon/assets (tests/tokens.php). This site
+ * checks only that it can use a file: see codeThemeProblems().
  */
-export const CODE_THEME = {
-    colors: {
-        'editor.background': 'var(--code-bg)',
-        'editor.foreground': 'var(--code-text)',
-    },
-    name: 'phalcon',
-    tokenColors: [
-        {
-            scope: [
-                'comment',
-                'punctuation.definition.comment',
-                'string.comment',
-            ],
-            settings: { foreground: 'var(--code-comment)' },
-        },
-        {
-            scope: [
-                'constant.other.placeholder',
-                'constant.character',
-            ],
-            settings: { foreground: 'var(--code-keyword)' },
-        },
-        {
-            scope: [
-                'constant',
-                'entity.name.constant',
-                'variable.other.constant',
-                'variable.other.enummember',
-                'variable.language',
-                'entity',
-            ],
-            settings: { foreground: 'var(--code-constant)' },
-        },
-        {
-            scope: [
-                'entity.name',
-                'meta.export.default',
-                'meta.definition.variable',
-            ],
-            settings: { foreground: 'var(--code-parameter)' },
-        },
-        {
-            scope: [
-                'variable.parameter.function',
-                'meta.jsx.children',
-                'meta.block',
-                'meta.tag.attributes',
-                'entity.name.constant',
-                'meta.object.member',
-                'meta.embedded.expression',
-            ],
-            settings: { foreground: 'var(--code-text)' },
-        },
-        {
-            scope: 'entity.name.function',
-            settings: { foreground: 'var(--code-function)' },
-        },
-        {
-            scope: [
-                'entity.name.tag',
-                'support.class.component',
-            ],
-            settings: { foreground: 'var(--code-string-expression)' },
-        },
-        {
-            scope: 'keyword',
-            settings: { foreground: 'var(--code-keyword)' },
-        },
-        {
-            scope: [
-                'storage',
-                'storage.type',
-            ],
-            settings: { foreground: 'var(--code-keyword)' },
-        },
-        {
-            scope: [
-                'storage.modifier.package',
-                'storage.modifier.import',
-                'storage.type.java',
-            ],
-            settings: { foreground: 'var(--code-text)' },
-        },
-        {
-            scope: [
-                'string',
-                'string punctuation.section.embedded source',
-            ],
-            settings: { foreground: 'var(--code-string)' },
-        },
-        {
-            scope: 'support',
-            settings: { foreground: 'var(--code-constant)' },
-        },
-        {
-            scope: 'meta.property-name',
-            settings: { foreground: 'var(--code-constant)' },
-        },
-        {
-            scope: 'variable',
-            settings: { foreground: 'var(--code-parameter)' },
-        },
-        {
-            scope: 'variable.other',
-            settings: { foreground: 'var(--code-text)' },
-        },
-        {
-            scope: 'invalid.broken',
-            settings: { fontStyle: 'italic', foreground: 'var(--code-deleted)' },
-        },
-        {
-            scope: 'invalid.deprecated',
-            settings: { fontStyle: 'italic', foreground: 'var(--code-deleted)' },
-        },
-        {
-            scope: 'invalid.illegal',
-            settings: { fontStyle: 'italic', foreground: 'var(--code-deleted)' },
-        },
-        {
-            scope: 'invalid.unimplemented',
-            settings: { fontStyle: 'italic', foreground: 'var(--code-deleted)' },
-        },
-        {
-            scope: 'carriage-return',
-            settings: { fontStyle: 'italic underline', foreground: 'var(--code-text)' },
-        },
-        {
-            scope: 'message.error',
-            settings: { foreground: 'var(--code-deleted)' },
-        },
-        {
-            scope: 'string variable',
-            settings: { foreground: 'var(--code-constant)' },
-        },
-        {
-            scope: [
-                'source.regexp',
-                'string.regexp',
-            ],
-            settings: { foreground: 'var(--code-string)' },
-        },
-        {
-            scope: [
-                'string.regexp.character-class',
-                'string.regexp constant.character.escape',
-                'string.regexp source.ruby.embedded',
-                'string.regexp string.regexp.arbitrary-repitition',
-            ],
-            settings: { foreground: 'var(--code-string)' },
-        },
-        {
-            scope: 'string.regexp constant.character.escape',
-            settings: { fontStyle: 'bold', foreground: 'var(--code-string-expression)' },
-        },
-        {
-            scope: 'support.constant',
-            settings: { foreground: 'var(--code-constant)' },
-        },
-        {
-            scope: 'support.variable',
-            settings: { foreground: 'var(--code-constant)' },
-        },
-        {
-            scope: 'support.type.property-name.json',
-            settings: { foreground: 'var(--code-string-expression)' },
-        },
-        {
-            scope: 'meta.module-reference',
-            settings: { foreground: 'var(--code-constant)' },
-        },
-        {
-            scope: 'punctuation.definition.list.begin.markdown',
-            settings: { foreground: 'var(--code-parameter)' },
-        },
-        {
-            scope: [
-                'markup.heading',
-                'markup.heading entity.name',
-            ],
-            settings: { fontStyle: 'bold', foreground: 'var(--code-constant)' },
-        },
-        {
-            scope: 'markup.quote',
-            settings: { foreground: 'var(--code-string-expression)' },
-        },
-        {
-            scope: 'markup.italic',
-            settings: { fontStyle: 'italic', foreground: 'var(--code-text)' },
-        },
-        {
-            scope: 'markup.bold',
-            settings: { fontStyle: 'bold', foreground: 'var(--code-text)' },
-        },
-        {
-            scope: 'markup.underline',
-            settings: { fontStyle: 'underline' },
-        },
-        {
-            scope: 'markup.strikethrough',
-            settings: { fontStyle: 'strikethrough' },
-        },
-        {
-            scope: 'markup.inline.raw',
-            settings: { foreground: 'var(--code-constant)' },
-        },
-        {
-            scope: [
-                'markup.deleted',
-                'meta.diff.header.from-file',
-                'punctuation.definition.deleted',
-            ],
-            settings: { foreground: 'var(--code-deleted)' },
-        },
-        {
-            scope: 'punctuation.section.embedded',
-            settings: { foreground: 'var(--code-keyword)' },
-        },
-        {
-            scope: [
-                'markup.inserted',
-                'meta.diff.header.to-file',
-                'punctuation.definition.inserted',
-            ],
-            settings: { foreground: 'var(--code-inserted)' },
-        },
-        {
-            scope: [
-                'markup.changed',
-                'punctuation.definition.changed',
-            ],
-            settings: { foreground: 'var(--code-changed)' },
-        },
-        {
-            scope: [
-                'markup.ignored',
-                'markup.untracked',
-            ],
-            settings: { foreground: 'var(--code-text)' },
-        },
-        {
-            scope: 'meta.diff.range',
-            settings: { fontStyle: 'bold', foreground: 'var(--code-function)' },
-        },
-        {
-            scope: 'meta.diff.header',
-            settings: { foreground: 'var(--code-constant)' },
-        },
-        {
-            scope: 'meta.separator',
-            settings: { fontStyle: 'bold', foreground: 'var(--code-constant)' },
-        },
-        {
-            scope: 'meta.output',
-            settings: { foreground: 'var(--code-constant)' },
-        },
-        {
-            scope: [
-                'brackethighlighter.tag',
-                'brackethighlighter.curly',
-                'brackethighlighter.round',
-                'brackethighlighter.square',
-                'brackethighlighter.angle',
-                'brackethighlighter.quote',
-            ],
-            settings: { foreground: 'var(--code-comment)' },
-        },
-        {
-            scope: 'brackethighlighter.unmatched',
-            settings: { foreground: 'var(--code-deleted)' },
-        },
-        {
-            scope: [
-                'constant.other.reference.link',
-                'string.other.link',
-            ],
-            settings: { foreground: 'var(--code-string)' },
-        },
-    ],
-    type: 'dark',
-};
+import theme from '../styles/code-theme.json' with { type: 'json' };
+
+/** @type {import('shiki').ThemeRegistration} */
+export const CODE_THEME = /** @type {import('shiki').ThemeRegistration} */ (theme);
+
+/** The top-level keys of a code theme. Shiki also reads bg, fg and settings, in place of colors and tokenColors. */
+const THEME_KEYS = ['colors', 'name', 'tokenColors', 'type'];
+
+/**
+ * The problems of a code theme file for this site: it must be a JSON object
+ * with a list of rules, the two editor colors and no other top-level key; its
+ * colors must be --code-<role> variables of the roles that the site maps, and
+ * it can type no color anywhere. An empty list means that the file can replace
+ * the committed copy.
+ *
+ * @param {string} json
+ * @param {Iterable<string>} roles the roles that the site maps (see definedCodeRoles)
+ * @returns {string[]}
+ */
+export function codeThemeProblems(json, roles) {
+    let parsed;
+
+    try {
+        parsed = JSON.parse(json);
+    } catch {
+        return ['the file is not JSON'];
+    }
+
+    if (parsed === null || typeof parsed !== 'object' || Array.isArray(parsed)) {
+        return ['the file is not a JSON object'];
+    }
+
+    if (!Array.isArray(parsed.tokenColors) || parsed.tokenColors.length === 0) {
+        return ['the file has no list of rules'];
+    }
+
+    // A typed color anywhere in the file (also in a key that Shiki reads, such as colorReplacements) does not come
+    // from the tokens.
+    const typed = json.match(/#[0-9a-f]{3,8}\b|rgba?\([^)]*\)/gi) ?? [];
+    const mapped = new Set(roles);
+    const keys = Object.keys(parsed).filter((key) => !THEME_KEYS.includes(key)).map((key) => `${key} is not allowed`);
+    // Without the editor colors, Shiki takes typed colors for the block.
+    const editor = ['editor.background', 'editor.foreground']
+        .filter((key) => parsed.colors?.[key] === undefined)
+        .map((key) => `colors.${key} is missing`);
+    const colors = [
+        ...Object.values(parsed.colors ?? {}),
+        ...parsed.tokenColors.map((rule) => rule?.settings?.foreground).filter((color) => color !== undefined),
+    ];
+    const plain = colors
+        .filter((color) => !/^var\(--code-[a-z0-9-]+\)$/.test(String(color)) && !typed.includes(String(color)))
+        .map((color) => `${color} is not a --code- variable`);
+    // Every --code- role must have a value on this site, wherever the file uses it.
+    const unmapped = [...json.matchAll(/var\(--code-([a-z0-9-]+)\)/g)]
+        .filter((match) => !mapped.has(match[1]))
+        .map((match) => `--code-${match[1]} has no value on this site`);
+    const named = typed.map((color) => `${color} is a typed color`);
+
+    return [...new Set([...keys, ...editor, ...named, ...plain, ...unmapped])].sort();
+}
+
+/**
+ * The --code- roles that a stylesheet gives a value to. Comments do not count.
+ *
+ * @param {string} css
+ * @returns {Set<string>}
+ */
+export function definedCodeRoles(css) {
+    return new Set([...css.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/--code-([a-z0-9-]+)\s*:/g)].map((match) => match[1]));
+}
