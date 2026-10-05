@@ -78,5 +78,5 @@ test('the deploy workflow refreshes the tokens and restores them before the data
     const workflow = readFileSync(new URL('../.github/workflows/deploy.yml', import.meta.url), 'utf8');
 
     assert.match(workflow, /run: node scripts\/update-tokens\.mjs/);
-    assert.match(workflow, /git checkout -- src\/fanart\.html src\/styles\/tokens\.css/);
+    assert.match(workflow, /git checkout -- src\/fanart\.html src\/styles\/tokens\.css src\/styles\/code-theme\.json/);
 });
