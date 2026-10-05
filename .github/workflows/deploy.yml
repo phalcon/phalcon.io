@@ -70,9 +70,10 @@ jobs:
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
       - name: Get the design tokens
-        # src/styles/tokens.css is a copy of phalcon/css/tokens.css in
-        # phalcon/assets. The script keeps the committed copy, with a warning,
-        # when the download fails or the file is not correct (for example, a
+        # src/styles/tokens.css and src/styles/code-theme.json are copies of
+        # phalcon/css/tokens.css and phalcon/css/code-theme.json in
+        # phalcon/assets. The script keeps a committed copy, with a warning,
+        # when its download fails or the file is not correct (for example, a
         # token that the site uses is missing). It does not commit.
         run: node scripts/update-tokens.mjs
 
@@ -107,7 +108,7 @@ jobs:
         run: |
           # "Get the fan art" and "Get the design tokens" can change tracked
           # files. Drop those changes, so the rebase has a clean tree.
-          git checkout -- src/fanart.html src/styles/tokens.css
+          git checkout -- src/fanart.html src/styles/tokens.css src/styles/code-theme.json
           git pull --rebase
           git push
 

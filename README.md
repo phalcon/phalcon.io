@@ -67,12 +67,12 @@ The run updates the data, and it pushes the data commit and publishes the site o
 
 ### Colors and fonts
 
-The colors and the fonts come from `phalcon/css/tokens.css` in [phalcon/assets](https://github.com/phalcon/assets): the design tokens that every Phalcon site uses. `src/styles/tokens.css` is a copy. Every deploy run downloads the file again before the build. When the download fails, or when the file is not correct (for example, a token that the site uses is missing or has no value), the run keeps the committed copy and shows a warning.
+The colors and the fonts come from `phalcon/css/tokens.css` in [phalcon/assets](https://github.com/phalcon/assets): the design tokens that every Phalcon site uses. The code theme comes from `phalcon/css/code-theme.json` there. `src/styles/tokens.css` and `src/styles/code-theme.json` are copies. Every deploy run downloads the two files again before the build. When a download fails, or when a file is not correct (for example, a token that the site uses is missing or has no value, or the theme uses a code role that `global.css` does not map), the run keeps that committed copy and shows a warning.
 
 - To change a color, change `tokens.css` in phalcon/assets. The site gets it on its next deploy.
-- To get the new file now, for a local preview or to commit it: `./run node scripts/update-tokens.mjs`.
+- To get the new files now, for a local preview or to commit them: `./run node scripts/update-tokens.mjs`.
 - Use a color through the tokens: a Tailwind class such as `bg-accent-400`, or `var(--ph-…)` in CSS and in props. `npm test` fails on a typed color (`#…` or `rgb(…)`) in `src/`.
-- Code blocks use `src/lib/code-theme.mjs`: the rules of GitHub's dark theme with `--code-<role>` variables. `.astro-code` in `src/styles/global.css` maps them to the dark syntax tokens.
+- Code blocks use the code theme (`src/styles/code-theme.json`, read by `src/lib/code-theme.mjs`): the rules of GitHub's dark theme with `--code-<role>` variables. `.astro-code` in `src/styles/global.css` maps them to the dark syntax tokens. phalcon/assets checks the rules.
 
 ### Pages and content
 
@@ -102,7 +102,8 @@ A push to `master`, and the daily run, test, build and verify the site, then pub
 | `src/data/contributors.json`, `src/sponsors.json` | From the [phalcon/assets](https://github.com/phalcon/assets) feeds, kept current by the daily run |
 | `src/fanart.html` | Empty on purpose. The deploy workflow downloads it from phalcon/assets |
 | `src/styles/tokens.css` | Copy of the design tokens from phalcon/assets. Every deploy run refreshes it |
-| `src/lib/code-theme.mjs` | The code theme: GitHub's dark rules, with the colors from the tokens |
+| `src/styles/code-theme.json` | Copy of the code theme from phalcon/assets: GitHub's dark rules, with the colors from the tokens. Every deploy run refreshes it |
+| `src/lib/code-theme.mjs` | Reads the code theme, and checks that this site can use a new one |
 | `public/_redirects`, `public/_headers` | Cloudflare Pages redirects (short links such as `/fund`) and security headers |
 | `public/js/` | The client scripts. The CSP allows no inline scripts |
 | `public/debug/` | Debug assets of Phalcon 1.x to 3.x |
