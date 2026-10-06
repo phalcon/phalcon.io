@@ -92,7 +92,7 @@ jobs:
         # this step ran.
         run: |
           curl -fsSL -o src/fanart.html \
-            https://raw.githubusercontent.com/phalcon/assets/master/phalcon/fanart-fragment.html \
+            https://assets.phalcon.io/phalcon/fanart-fragment.html \
             || echo "Download failed, no fan art is rendered"
 
       - name: Build

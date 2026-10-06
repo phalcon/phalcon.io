@@ -80,3 +80,19 @@ test('the deploy workflow refreshes the tokens and restores them before the data
     assert.match(workflow, /run: node scripts\/update-tokens\.mjs/);
     assert.match(workflow, /git checkout -- src\/fanart\.html src\/styles\/tokens\.css src\/styles\/code-theme\.json/);
 });
+
+test('the deploy workflow and the scripts read phalcon/assets from assets.phalcon.io', () => {
+    // assets.phalcon.io is the CDN of the Phalcon sites. Cloudflare answers a
+    // .html URL with a 308 to the URL without .html, so curl must follow it (-L).
+    const read = (file) => readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
+    const workflow = read('.github/workflows/deploy.yml');
+    const tokens = read('scripts/update-tokens.mjs');
+    const data = read('scripts/update-data.mjs');
+
+    assert.doesNotMatch(workflow, /raw\.githubusercontent\.com/, 'deploy.yml');
+    assert.doesNotMatch(tokens, /raw\.githubusercontent\.com/, 'update-tokens.mjs');
+    assert.doesNotMatch(data, /raw\.githubusercontent\.com/, 'update-data.mjs');
+    assert.match(tokens, /const SOURCE = 'https:\/\/assets\.phalcon\.io\/phalcon\/css';/);
+    assert.match(data, /const FEEDS = 'https:\/\/assets\.phalcon\.io\/phalcon';/);
+    assert.match(workflow, /curl -fsSL -o src\/fanart\.html \\\n\s+https:\/\/assets\.phalcon\.io\/phalcon\/fanart-fragment\.html/);
+});

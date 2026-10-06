@@ -4,7 +4,7 @@
  * src/sponsors.json. The deploy workflow runs it on its schedule and commits
  * what changed. It needs the network unless --from is given.
  *
- *   ./run node scripts/update-data.mjs              read the feeds from GitHub
+ *   ./run node scripts/update-data.mjs              read the feeds from assets.phalcon.io
  *   ./run node scripts/update-data.mjs --from DIR   read DIR/repositories.json, DIR/contributors.json, DIR/sponsors.json
  *   ./run node scripts/update-data.mjs --dry-run    print what would change, write nothing
  *
@@ -23,7 +23,7 @@ import {
     visibleContributors,
 } from '../src/lib/data-update.mjs';
 
-const FEEDS = 'https://raw.githubusercontent.com/phalcon/assets/master/phalcon';
+const FEEDS = 'https://assets.phalcon.io/phalcon';
 const FILES = {
     contributors: 'src/data/contributors.json',
     project: 'src/data/project.json',
