@@ -3,7 +3,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { test } from 'node:test';
 
 import { FLAVORS } from '../src/data/site.mjs';
-import { missingTokens } from '../src/lib/tokens.mjs';
+import { missingTokens } from '../src/lib/design-checks.mjs';
 import { sourceFiles, usedBySite } from './token-sources.mjs';
 
 const root = new URL('../src/', import.meta.url);
@@ -78,7 +78,10 @@ test('the deploy workflow refreshes the tokens and restores them before the data
     const workflow = readFileSync(new URL('../.github/workflows/deploy.yml', import.meta.url), 'utf8');
 
     assert.match(workflow, /run: node scripts\/update-tokens\.mjs/);
-    assert.match(workflow, /git checkout -- src\/fanart\.html src\/styles\/tokens\.css src\/styles\/code-theme\.json/);
+    assert.match(
+        workflow,
+        /git checkout -- src\/fanart\.html src\/styles\/tokens\.css src\/styles\/code-theme\.json src\/lib\/design-checks\.mjs src\/lib\/design-refresh\.mjs/,
+    );
 });
 
 test('the deploy workflow and the scripts read phalcon/assets from assets.phalcon.io', () => {
@@ -95,4 +98,16 @@ test('the deploy workflow and the scripts read phalcon/assets from assets.phalco
     assert.match(tokens, /const SOURCE = 'https:\/\/assets\.phalcon\.io\/phalcon\/css';/);
     assert.match(data, /const FEEDS = 'https:\/\/assets\.phalcon\.io\/phalcon';/);
     assert.match(workflow, /curl -fsSL -o src\/fanart\.html \\\n\s+https:\/\/assets\.phalcon\.io\/phalcon\/fanart-fragment\.html/);
+});
+
+test('the deploy workflow gets the design tools first, and keeps the committed copy when a file is not valid', () => {
+    // The tools come from assets.phalcon.io. The design files and the tests must use the tools that the build uses.
+    const workflow = readFileSync(new URL('../.github/workflows/deploy.yml', import.meta.url), 'utf8');
+    const step = workflow.indexOf('https://assets.phalcon.io/phalcon/tools/$file');
+
+    assert.ok(step > 0, 'the step is missing');
+    assert.ok(step < workflow.indexOf('run: node scripts/update-tokens.mjs'), 'the step must come before the design files');
+    assert.match(workflow, /for file in design-checks\.mjs design-refresh\.mjs; do/);
+    assert.match(workflow, /new="src\/lib\/\$\{file%\.mjs\}\.new\.mjs"/);
+    assert.match(workflow, /curl -fsSL -o "\$new" "https:\/\/assets\.phalcon\.io\/phalcon\/tools\/\$file" && node --check "\$new"; then/);
 });

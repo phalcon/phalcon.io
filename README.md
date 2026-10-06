@@ -103,7 +103,8 @@ A push to `master`, and the daily run, test, build and verify the site, then pub
 | `src/fanart.html` | Empty on purpose. The deploy workflow downloads it from phalcon/assets |
 | `src/styles/tokens.css` | Copy of the design tokens from phalcon/assets. Every deploy run refreshes it |
 | `src/styles/code-theme.json` | Copy of the code theme from phalcon/assets: GitHub's dark rules, with the colors from the tokens. Every deploy run refreshes it |
-| `src/lib/code-theme.mjs` | Reads the code theme, and checks that this site can use a new one |
+| `src/lib/code-theme.mjs` | Reads the code theme |
+| `src/lib/design-checks.mjs`, `src/lib/design-refresh.mjs` | Copies of the shared design tools in phalcon/assets (`phalcon/tools/`): the checks and the refresh of the design files. Every deploy run gets them again first. Change them in phalcon/assets |
 | `public/_redirects`, `public/_headers` | Cloudflare Pages redirects (short links such as `/fund`) and security headers |
 | `public/js/` | The client scripts. The CSP allows no inline scripts |
 | `public/debug/` | Debug assets of Phalcon 1.x to 3.x |

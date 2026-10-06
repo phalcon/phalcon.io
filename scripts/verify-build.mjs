@@ -10,7 +10,7 @@ import { CONTENT, SITE_LACKS } from './expectations.mjs';
 import { allowedBy, attrValues, elements, inlineScripts, parseCsp, textOf } from './lib.mjs';
 import { logoSections, nameSections } from '../src/lib/sponsors.mjs';
 import { parseRedirects, resolve } from '../src/lib/redirects.mjs';
-import { missingTokens, resolveToken, usedTokens } from '../src/lib/tokens.mjs';
+import { missingTokens, resolveToken, usedTokens } from '../src/lib/design-checks.mjs';
 
 const checks = [];
 
