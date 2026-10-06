@@ -8,9 +8,9 @@ import { distFile, PAGES } from '../src/data/routes.mjs';
 import { FLAVORS } from '../src/data/site.mjs';
 import { CONTENT, SITE_LACKS } from './expectations.mjs';
 import { allowedBy, attrValues, elements, inlineScripts, parseCsp, textOf } from './lib.mjs';
-import { logoSections, nameSections } from '../src/lib/sponsors.mjs';
-import { parseRedirects, resolve } from '../src/lib/redirects.mjs';
 import { missingTokens, resolveToken, usedTokens } from '../src/lib/design-checks.mjs';
+import { parseRedirects, resolve } from '../src/lib/redirects.mjs';
+import { logoSections, nameSections } from '../src/lib/sponsors.mjs';
 
 const checks = [];
 
