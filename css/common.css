@@ -2,7 +2,15 @@
  * The shared header and footer of the Phalcon sites: the nav and the footer of
  * phalcon.io, which is the source of the design. Each site copies this file
  * and tokens.css from https://assets.phalcon.io/phalcon/css/ at deploy time,
- * and loads tokens.css first. The colors and the fonts come from the tokens.
+ * and loads tokens.css too. The colors and the fonts come from the tokens.
+ *
+ * The last line of this file must be the end comment: a site that gets a file
+ * without it takes the file as cut, and keeps its copy.
+ *
+ * To rename a token that this file uses: first add the new token to
+ * tokens.css and keep the old one, then change this file. Remove the old token
+ * only when every site has the new common.css. A site keeps its old copies of
+ * both files while one of them needs a token that the other does not have.
  *
  * Each selector starts with .ph-nav or .ph-footer, so the file changes nothing
  * else on a page. The first rules reset the elements in the nav and in the
@@ -551,3 +559,5 @@
         grid-template-columns: 1.4fr 1fr 1fr 1fr;
     }
 }
+
+/* The end of common.css. */
