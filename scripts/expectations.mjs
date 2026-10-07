@@ -40,7 +40,9 @@ export const CONTENT = [
         page: '/',
         has: ['cphalcon (v5) BSD-3-Clause · phalcon (v6) MIT', 'Get Phalcon'],
         links: [FLAVORS.v5.repo, '/download', '/contribute', '/sponsors', 'https://phalcon.io/t'],
-        html: ['src="/js/nav.js"'],
+        // The nav and the footer use the classes of common.css (phalcon/assets), not Tailwind classes.
+        html: ['src="/js/nav.js"', '<link rel="stylesheet" href="/css/common.css">', '<nav class="ph-nav">', 'class="ph-footer"', 'class="ph-nav__dropdown-link"'],
+        htmlLacks: ['bg-night-950/92', 'group-hover:text-mist-100', 'lg:grid-cols-[1.4fr_1fr_1fr_1fr]'],
     },
     // Task 3: head tags
     {

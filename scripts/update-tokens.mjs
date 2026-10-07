@@ -1,11 +1,14 @@
 /**
  * Updates the design files from phalcon/assets: src/styles/tokens.css (from
- * phalcon/css/tokens.css) and src/styles/code-theme.json (from
- * phalcon/css/code-theme.json). The deploy workflow runs it before the build.
+ * phalcon/css/tokens.css), src/styles/code-theme.json (from
+ * phalcon/css/code-theme.json) and public/css/common.css (from
+ * phalcon/css/common.css, the shared header and footer). The tokens come
+ * first: the check of common.css reads the new copy. The deploy workflow runs
+ * it before the build.
  * It does not commit: the committed copies are the default.
  *
  *   ./run node scripts/update-tokens.mjs             download the files from assets.phalcon.io
- *   ./run node scripts/update-tokens.mjs --from DIR  read DIR/tokens.css and DIR/code-theme.json instead
+ *   ./run node scripts/update-tokens.mjs --from DIR  read DIR/tokens.css, DIR/code-theme.json and DIR/common.css instead
  *
  * The checks and the refresh are the shared design tools of phalcon/assets:
  * src/lib/design-checks.mjs and src/lib/design-refresh.mjs are copies that the
@@ -14,7 +17,7 @@
  */
 import { readFileSync } from 'node:fs';
 
-import { codeThemeProblems, definedCodeRoles, tokensProblems } from '../src/lib/design-checks.mjs';
+import { codeThemeProblems, commonCssProblems, definedCodeRoles, tokensProblems } from '../src/lib/design-checks.mjs';
 import { fromArgument, refresh } from '../src/lib/design-refresh.mjs';
 import { usedBySite } from './token-sources.mjs';
 
@@ -31,6 +34,11 @@ await refresh({
             copy: 'src/styles/code-theme.json',
             name: 'code-theme.json',
             problems: (text) => codeThemeProblems(text, definedCodeRoles(readFileSync('src/styles/global.css', 'utf8'))),
+        },
+        {
+            copy: 'public/css/common.css',
+            name: 'common.css',
+            problems: (text) => commonCssProblems(text, readFileSync('src/styles/tokens.css', 'utf8')),
         },
     ],
     from: fromArgument(process.argv.slice(2)),

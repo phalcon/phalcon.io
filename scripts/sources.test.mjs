@@ -45,13 +45,15 @@ test('the source scan covers pages, components, layouts and styles, not tests or
         assert.ok(files.includes(file), file);
     }
 
+    assert.ok(files.includes('../public/css/common.css'), 'the shared header and footer');
     assert.ok(!files.includes('styles/tokens.css'));
     assert.ok(!files.includes('lib/tokens.test.mjs'));
 });
 
 test('no source types a color', () => {
-    // Colors come from src/styles/tokens.css (phalcon/assets), so a palette change is made once.
-    const typed = sourceFiles().flatMap((file) =>
+    // Colors come from src/styles/tokens.css (phalcon/assets), so a palette change is made once. The copy of
+    // common.css is not this site's source: phalcon/assets checks its colors, and its comments can name colors.
+    const typed = sourceFiles().filter((file) => !file.startsWith('../public/')).flatMap((file) =>
         readFileSync(new URL(file, root), 'utf8')
             .split('\n')
             .flatMap((line, index) => [...line.matchAll(/#[0-9a-fA-F]{3,8}\b|rgba?\(/g)].map((match) => `${file}:${index + 1} ${match[0]}`))
@@ -85,7 +87,7 @@ test('the deploy workflow refreshes the tokens and restores them before the data
     );
     assert.match(
         workflow,
-        /git checkout -- src\/fanart\.html src\/styles\/tokens\.css src\/styles\/code-theme\.json src\/lib\/design-checks\.mjs src\/lib\/design-refresh\.mjs/,
+        /git checkout -- src\/fanart\.html src\/styles\/tokens\.css src\/styles\/code-theme\.json public\/css\/common\.css src\/lib\/design-checks\.mjs src\/lib\/design-refresh\.mjs/,
     );
 });
 
@@ -115,4 +117,34 @@ test('the deploy workflow gets the design tools first, and keeps the committed c
     assert.match(workflow, /for file in design-checks\.mjs design-refresh\.mjs; do/);
     assert.match(workflow, /new="src\/lib\/\$\{file%\.mjs\}\.new\.mjs"/);
     assert.match(workflow, /curl -fsSL --max-time 30 -o "\$new" "https:\/\/assets\.phalcon\.io\/phalcon\/tools\/\$file" && node --check "\$new"; then/);
+});
+
+test('the base layout links common.css, the shared header and footer, outside the Tailwind build', () => {
+    // The build would round its calc() line heights; a linked file reaches the browser as it is, in no layer.
+    const layout = readFileSync(new URL('layouts/BaseLayout.astro', root), 'utf8');
+    const css = readFileSync(new URL('styles/global.css', root), 'utf8');
+
+    assert.match(layout, /<link rel="stylesheet" href="\/css\/common\.css" \/>/);
+    assert.doesNotMatch(css, /@import "\.\/common\.css"/);
+});
+
+test('the refresh script copies common.css and checks it against the tokens copy', () => {
+    const script = readFileSync(new URL('../scripts/update-tokens.mjs', import.meta.url), 'utf8');
+
+    assert.match(script, /copy: 'public\/css\/common\.css',\n\s+name: 'common\.css',/);
+    assert.match(script, /problems: \(text\) => commonCssProblems\(text, readFileSync\('src\/styles\/tokens\.css', 'utf8'\)\),/);
+});
+
+test('common.css has a rule for every class that the nav and the footer use', () => {
+    // A class that phalcon/assets renames would leave an element with no style. The tests run after the refresh,
+    // so the deploy stops before it publishes.
+    const css = readFileSync(new URL('../public/css/common.css', import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+    const used = ['components/Nav.astro', 'components/Footer.astro']
+        .flatMap((file) => [...readFileSync(new URL(file, root), 'utf8').matchAll(/class="([^"]*)"/g)])
+        .flatMap((match) => match[1].split(/\s+/))
+        .filter((name) => name.startsWith('ph-'));
+    const missing = [...new Set(used)].filter((name) => !new RegExp(`\\.${name}(?![\\w-])`).test(css));
+
+    assert.ok(used.length > 30, 'the nav and the footer use the shared classes');
+    assert.deepEqual(missing, []);
 });

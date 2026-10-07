@@ -10,14 +10,19 @@ const root = new URL('../src/', import.meta.url);
 
 /**
  * The source files that can use a token or type a color: pages, components,
- * layouts, styles and modules. Tests and the tokens file are not sources.
+ * layouts, styles and modules, and public/css/common.css (the shared header
+ * and footer, linked outside the build). Tests and the tokens file are not
+ * sources.
  *
  * @returns {string[]} paths relative to src/
  */
 export function sourceFiles() {
-    return readdirSync(root, { recursive: true })
-        .filter((file) => /\.(astro|css|mjs|ts)$/.test(file))
-        .filter((file) => !file.endsWith('.test.mjs') && file !== 'styles/tokens.css');
+    return [
+        ...readdirSync(root, { recursive: true })
+            .filter((file) => /\.(astro|css|mjs|ts)$/.test(file))
+            .filter((file) => !file.endsWith('.test.mjs') && file !== 'styles/tokens.css'),
+        '../public/css/common.css',
+    ];
 }
 
 /**
