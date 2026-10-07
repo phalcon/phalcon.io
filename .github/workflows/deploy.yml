@@ -1,0 +1,167 @@
+name: Deploy phalcon.io
+
+on:
+  push:
+    # Every branch runs the checks. `production` holds the built site only,
+    # with no package.json, so the deploy push must not start a run.
+    branches-ignore:
+      - production
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    # Daily, after the phalcon/assets feeds (sponsors 04:17, GitHub data 04:47).
+    # GitHub runs a schedule on the default branch (master) only.
+    - cron: "17 6 * * *"
+
+# The deploy step pushes the built site to another branch.
+permissions:
+  contents: write
+
+# A push run and a scheduled run must not publish at the same time.
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+env:
+  # The branch that Cloudflare Pages serves. It holds the built site only.
+  DEPLOY_BRANCH: production
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: true
+
+      - name: Set up Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Update the data from phalcon/assets
+        id: update
+        # Scheduled and manual runs on master only. A feed that fails its
+        # checks keeps its committed file, and the script prints a warning.
+        # The commit stays local here: "Push the data commit" pushes it only
+        # after the tests, the build and the build checks passed, so data
+        # that fails a check never reaches master.
+        if: >-
+          github.ref == 'refs/heads/master'
+          && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+        run: |
+          node scripts/update-data.mjs
+
+          git add src/data/project.json src/data/contributors.json src/sponsors.json
+
+          if git diff --cached --quiet; then
+            echo "No change to the site data"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git config user.name niden
+          git config user.email nikos@niden.net
+          git commit -m "Updating the site data"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Get the design tools
+        # src/lib/design-checks.mjs and src/lib/design-refresh.mjs are copies of
+        # phalcon/tools/ in phalcon/assets: the checks and the refresh of the
+        # design files, the same on every Phalcon site. A download that fails,
+        # or a file that is not valid JavaScript, keeps the committed copy. The
+        # design files and the tests that come next use the new tools.
+        run: |
+          for file in design-checks.mjs design-refresh.mjs; do
+            new="src/lib/${file%.mjs}.new.mjs"
+
+            if curl -fsSL --max-time 30 -o "$new" "https://assets.phalcon.io/phalcon/tools/$file" && node --check "$new"; then
+              mv "$new" "src/lib/$file"
+            else
+              rm -f "$new"
+              echo "::warning title=Design tools::$file: the committed copy is used"
+            fi
+          done
+
+      - name: Get the design tokens
+        # src/styles/tokens.css, src/styles/code-theme.json and
+        # public/css/common.css are copies of phalcon/css/tokens.css,
+        # phalcon/css/code-theme.json and phalcon/css/common.css in
+        # phalcon/assets. The script keeps a committed copy, with a warning,
+        # when its download fails or the file is not correct (for example, a
+        # token that the site uses is missing). It does not commit.
+        run: node scripts/update-tokens.mjs
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Check types
+        run: npx astro check
+
+      - name: Get the fan art
+        # The committed src/fanart.html is EMPTY on purpose: a failed download
+        # then renders no fan art, so the art in the page source proves that
+        # this step ran.
+        run: |
+          curl -fsSL -o src/fanart.html \
+            https://assets.phalcon.io/phalcon/fanart-fragment.html \
+            || echo "Download failed, no fan art is rendered"
+
+      - name: Build
+        run: npm run build
+
+      - name: Verify the build
+        run: npm run verify
+
+      - name: Push the data commit
+        # The commit uses GITHUB_TOKEN, so it starts no other run: this same
+        # run publishes the new data in the next step.
+        if: steps.update.outputs.changed == 'true'
+        run: |
+          # "Get the fan art", "Get the design tools" and "Get the design
+          # tokens" can change tracked files. Drop those changes, so the rebase
+          # has a clean tree.
+          git checkout -- src/fanart.html src/styles/tokens.css src/styles/code-theme.json public/css/common.css src/lib/design-checks.mjs src/lib/design-refresh.mjs
+          git pull --rebase
+          git push
+
+      - name: Publish to the deploy branch
+        # new-design also publishes during the trial of the redesign, so that
+        # Cloudflare Pages can show it before the merge. Remove it after the
+        # merge to master.
+        if: >-
+          (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/new-design')
+          && github.event_name != 'pull_request'
+        # dist/_redirects and dist/_headers (copied from public/) carry the
+        # redirects and the security headers, so the deployment is complete.
+        run: |
+          git config user.name niden
+          git config user.email nikos@niden.net
+
+          # Absolute, and outside the checkout: a relative ../deploy would land
+          # inside the repository, and rsync --delete would work in the checkout.
+          DEPLOY_DIR="${{ runner.temp }}/deploy"
+
+          if git ls-remote --exit-code --heads origin "${DEPLOY_BRANCH}" > /dev/null 2>&1; then
+              git fetch --no-tags --prune --depth=1 \
+                  origin "+refs/heads/${DEPLOY_BRANCH}:refs/remotes/origin/${DEPLOY_BRANCH}"
+              git worktree add "${DEPLOY_DIR}" "origin/${DEPLOY_BRANCH}"
+          else
+              echo "${DEPLOY_BRANCH} does not exist yet; starting it"
+              git worktree add --detach "${DEPLOY_DIR}"
+              git -C "${DEPLOY_DIR}" checkout --orphan "${DEPLOY_BRANCH}"
+              git -C "${DEPLOY_DIR}" rm -rf --quiet . || true
+          fi
+
+          rsync -a --delete --exclude .git dist/ "${DEPLOY_DIR}/"
+          touch "${DEPLOY_DIR}/.nojekyll"
+          git -C "${DEPLOY_DIR}" add -A
+          git -C "${DEPLOY_DIR}" commit -m "Deployed ${GITHUB_SHA::7}" || echo "No changes to deploy"
+          git -C "${DEPLOY_DIR}" push origin "HEAD:${DEPLOY_BRANCH}"

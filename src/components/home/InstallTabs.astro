@@ -1,0 +1,33 @@
+---
+// The install switcher in the hero. v5 is the default tab.
+import CopyCommand from '../CopyCommand.astro';
+import { FLAVORS } from '../../data/site.mjs';
+
+const flavors = [FLAVORS.v5, FLAVORS.v6];
+---
+
+<div>
+  <div role="tablist" aria-label="Choose a flavor" data-tabs class="flex gap-1">
+    {
+      flavors.map((flavor, i) => (
+        <button
+          type="button"
+          role="tab"
+          id={`install-tab-${flavor.key}`}
+          aria-controls={`install-panel-${flavor.key}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          class="cursor-pointer rounded-t-sm border border-b-0 border-transparent px-[14px] py-[9px] font-mono text-xs font-semibold text-faint-500 hover:text-mist-200 aria-selected:border-line-700 aria-selected:bg-surface-900 aria-selected:text-accent-400"
+        >
+          {flavor.tab}
+        </button>
+      ))
+    }
+  </div>
+  {
+    flavors.map((flavor) => (
+      <div role="tabpanel" id={`install-panel-${flavor.key}`} aria-labelledby={`install-tab-${flavor.key}`} class="mb-2">
+        <CopyCommand command={flavor.install} />
+      </div>
+    ))
+  }
+</div>

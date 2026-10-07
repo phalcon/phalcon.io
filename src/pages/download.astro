@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FlavorCards from '../components/FlavorCards.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import SubNav from '../components/SubNav.astro';
+import { DOWNLOAD_NAV, FLAVORS } from '../data/site.mjs';
+
+const platforms = [
+  { title: 'Linux, macOS & BSD', note: 'v5 · PIE, PECL, packages or source', href: '/download/linux' },
+  { title: 'Windows', note: 'v5 · DLLs or PECL', href: '/download/windows' },
+  { title: 'Composer', note: `v6 · any platform with PHP ${FLAVORS.v6.php}`, href: '/download/composer' },
+];
+const tools = [
+  { title: 'IDE Stubs', note: 'Autocompletion for v5', href: '/download/stubs' },
+];
+const heading = 'font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)';
+const card = 'block rounded-md border border-(--tone-border-strong) bg-(--tone-surface) px-[22px] py-5 hover:border-(--tone-accent)';
+---
+
+<BaseLayout title="Download" description="Install the Phalcon framework: the v5 C extension or the v6 pure PHP package.">
+  <PageHero kicker="Get Phalcon" title="Download.">
+    <p>Phalcon comes in two flavors with the same API. Choose one, then choose your platform.</p>
+  </PageHero>
+
+  <Section tone="light">
+    <SubNav items={DOWNLOAD_NAV} current="/download" />
+
+    <h2 class={heading}>1. Choose a flavor</h2>
+    <div class="mt-5">
+      <FlavorCards compact />
+    </div>
+
+    <h2 class:list={[heading, 'mt-12']}>2. Choose a platform</h2>
+    <div class="mt-5 grid grid-cols-1 gap-4 md:grid-cols-3">
+      {
+        platforms.map((platform) => (
+          <a href={platform.href} class={card}>
+            <span class="font-display text-lg font-bold text-(--tone-text)">{platform.title} →</span>
+            <span class="mt-2 block font-mono text-xs text-(--tone-muted)">{platform.note}</span>
+          </a>
+        ))
+      }
+    </div>
+
+    <h2 class:list={[heading, 'mt-12']}>Tools</h2>
+    <div class="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+      {
+        tools.map((tool) => (
+          <a href={tool.href} class={card}>
+            <span class="font-display text-lg font-bold text-(--tone-text)">{tool.title} →</span>
+            <span class="mt-2 block font-mono text-xs text-(--tone-muted)">{tool.note}</span>
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+</BaseLayout>

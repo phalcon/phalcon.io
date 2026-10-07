@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import PageHero from '../../components/PageHero.astro';
+import Section from '../../components/Section.astro';
+import SubNav from '../../components/SubNav.astro';
+import V6Callout from '../../components/V6Callout.astro';
+import { docs, DOWNLOAD_NAV } from '../../data/site.mjs';
+
+const p = 'mt-3 text-[15px] leading-[1.7] text-(--tone-muted)';
+---
+
+<BaseLayout
+  title="IDE Stubs"
+  description="Phalcon IDE stubs give PhpStorm and other IDEs autocompletion for the classes of the v5 C extension."
+>
+  <PageHero kicker="Get Phalcon · v5" title="IDE Stubs.">
+    <p>The stubs give your IDE and static analysis tools the classes and methods of the C extension.</p>
+  </PageHero>
+
+  <Section tone="light">
+    <SubNav items={DOWNLOAD_NAV} current="/download/stubs" />
+    <V6Callout />
+
+    <div class="content-links max-w-[820px]">
+      <p class="text-[15px] leading-[1.7] text-(--tone-muted)">
+        IDE stubs are for v5 only. v6 ships PHP source, so your IDE reads it directly.
+      </p>
+      <div class="mt-4">
+        <CodeBlock lang="bash" filename="shell" code={`composer require --dev phalcon/ide-stubs:^v5.0`} />
+      </div>
+      <p class={p}>
+        To use the stubs with static analysis tools, see <a href={docs('static-analysis')}>static analysis</a> in the docs.
+        The source is in <a href="https://github.com/phalcon/ide-stubs">phalcon/ide-stubs</a>.
+      </p>
+
+      <p class={p}>The video below shows how to enable the stubs in PhpStorm.</p>
+      <div class="mt-4 overflow-hidden rounded-lg border border-(--tone-border-strong) bg-surface-900">
+        <div class="aspect-video">
+          <iframe
+            title="Installation of IDE Stubs in PhpStorm"
+            class="h-full w-full"
+            src="https://www.youtube.com/embed/UbUx_6Cs6r4"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+      <p class="mt-4 text-sm text-(--tone-muted)">
+        Can't see the video? Watch it on <a href="https://www.youtube.com/watch?v=UbUx_6Cs6r4">YouTube</a>.
+      </p>
+    </div>
+  </Section>
+</BaseLayout>

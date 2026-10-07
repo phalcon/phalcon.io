@@ -1,0 +1,36 @@
+---
+import { Code } from 'astro:components';
+import type { BundledLanguage } from 'shiki';
+import { CODE_THEME } from '../lib/code-theme.mjs';
+
+interface Props {
+  code: string;
+  lang?: BundledLanguage;
+  filename?: string;
+  copyable?: boolean;
+  class?: string;
+}
+
+const { code, lang = 'php', filename, copyable = true, class: className = '' } = Astro.props;
+---
+
+<div class:list={['overflow-hidden rounded-lg border border-line-900 bg-surface-900', className]}>
+  {
+    (filename || copyable) && (
+      <div class="flex items-center justify-between border-b border-line-900 px-[15px] py-[10px]">
+        <span class="font-mono text-xs font-medium text-faint-500">{filename ?? lang}</span>
+        {copyable && (
+          <button
+            type="button"
+            data-copy={code}
+            class="cursor-pointer rounded-sm border border-line-700 bg-transparent px-[9px] py-[5px] font-mono text-[11px] font-semibold text-sage-400 hover:text-mist-100"
+          >
+            copy
+          </button>
+        )}
+      </div>
+    )
+  }
+  {/* GitHub's dark rules with the syntax colors of the design tokens (src/lib/code-theme.mjs). */}
+  <Code code={code} lang={lang} theme={CODE_THEME} />
+</div>

@@ -1,0 +1,25 @@
+---
+// The top contributors, from the phalcon/assets feed. scripts/update-data.mjs keeps the list current.
+import contributors from '../data/contributors.json';
+import { sizedAvatar } from '../lib/data-update.mjs';
+---
+
+<ul class="flex flex-wrap gap-2" aria-label="Phalcon contributors">
+  {
+    contributors.map((person) => (
+      <li>
+        <a href={person.url} title={person.login} class="block">
+          <img
+            src={sizedAvatar(person.avatar, 80)}
+            alt={person.login}
+            loading="lazy"
+            width="40"
+            height="40"
+            data-contributor
+            class="h-10 w-10 rounded-sm border border-(--tone-border-strong) object-cover"
+          />
+        </a>
+      </li>
+    ))
+  }
+</ul>

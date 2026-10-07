@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import SubNav from '../components/SubNav.astro';
+import { CONTACT_EMAIL, PROJECT_NAV } from '../data/site.mjs';
+import { TESTIMONIALS } from '../data/testimonials.mjs';
+---
+
+<BaseLayout title="Testimonials" description="Testimonials and success stories from the developers and users of the Phalcon PHP framework.">
+  <PageHero kicker="Success stories" title="Testimonials.">
+    <p>
+      Below is a collection of testimonials and success stories, from you, the developers and users of Phalcon PHP. We
+      always welcome emails with success stories and will be posting those in our blog. If you wish to send us your
+      success story or get in touch with us, feel free to mail us at
+      <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+    </p>
+  </PageHero>
+
+  <Section tone="light">
+    <SubNav items={PROJECT_NAV} current="/testimonials" />
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+      {
+        TESTIMONIALS.map((q) => (
+          <blockquote class="rounded-r-sm border border-(--tone-border-strong) border-l-[3px] border-l-(--tone-accent) bg-(--tone-surface) px-[22px] py-5">
+            <p class="content-links text-[15px] leading-[1.7] text-(--tone-text)" set:html={q.html} />
+            {q.cite && (
+              <cite class="mt-3 block font-mono text-xs font-semibold not-italic text-(--tone-muted)">— {q.cite}</cite>
+            )}
+          </blockquote>
+        ))
+      }
+    </div>
+  </Section>
+</BaseLayout>

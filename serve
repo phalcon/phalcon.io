@@ -1,8 +1,24 @@
 #!/bin/bash
 
+# Serves the Astro redesign at http://localhost:8080
+# There is no Node on the host, so the dev server runs in a container.
+
+cd "$(dirname "$0")"
+
+# A container stopped with Ctrl+C leaves the Astro dev-server lock on the
+# bind mount. Remove it so the next start does not see a "running" server
+# and the content refreshes.
+rm -f .astro/dev.json
+
 docker run --rm \
-  --volume="$PWD:/srv/jekyll" \
-  --name phalcon-io \
+  --volume="$PWD:/app" \
+  --workdir=/app \
+  --user="$(id -u):$(id -g)" \
+  --env=HOME=/app \
+  --env=npm_config_cache=/app/node_modules/.npm-cache \
+  --env=ASTRO_TELEMETRY_DISABLED=1 \
+  --publish=8080:8080 \
+  --name phalcon-io-astro \
   -it \
-  jekyll/jekyll:latest \
-  jekyll serve --verbose
+  node:22-alpine \
+  sh -c '[ -d node_modules ] || npm ci; npm run dev -- --host'

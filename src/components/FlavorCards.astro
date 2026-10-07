@@ -1,0 +1,62 @@
+---
+// The v5 and v6 cards. With `compact`, a card shows only its title, status,
+// delivery and install link (used on /download).
+import DiamondBullet from './DiamondBullet.astro';
+import { FLAVORS } from '../data/site.mjs';
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+const flavors = [FLAVORS.v5, FLAVORS.v6];
+const term = 'font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-(--tone-faint)';
+---
+
+<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+  {
+    flavors.map((flavor) => (
+      <article
+        data-flavor={flavor.key}
+        class="flex flex-col rounded-md border border-(--tone-border-strong) bg-(--tone-surface) px-6 py-[22px]"
+      >
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h3 class="font-display text-xl font-bold text-(--tone-heading)">{flavor.title}</h3>
+          <span class="rounded-xs border border-(--tone-border-strong) px-[7px] py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.06em] text-(--tone-muted)">
+            {flavor.status} · {flavor.version}
+          </span>
+        </div>
+        <p class="mt-1 text-sm text-(--tone-muted)">{flavor.delivery}</p>
+        {!compact && (
+          <>
+            <dl class="mt-5 grid grid-cols-[auto_1fr] items-baseline gap-x-4 gap-y-2 text-sm">
+              <dt class={term}>PHP</dt>
+              <dd class="text-(--tone-text)">{flavor.php}</dd>
+              <dt class={term}>Install</dt>
+              <dd>
+                <code class="font-mono text-[13px] text-(--tone-accent)">{flavor.install}</code>
+              </dd>
+              <dt class={term}>License</dt>
+              <dd class="text-(--tone-text)">{flavor.license}</dd>
+            </dl>
+            <p class="mt-5 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-(--tone-kicker)">Pick this when</p>
+            <ul class="mt-2 flex flex-col gap-2">
+              {flavor.pickWhen.map((point) => (
+                <li class="flex items-start gap-3 text-[15px] leading-[1.6] text-(--tone-text)">
+                  <DiamondBullet color="var(--ph-success-600)" class="mt-[7px]" />
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+        <div class="mt-auto flex flex-wrap gap-5 pt-6 text-sm font-semibold">
+          <a href={flavor.installPage} class="text-(--tone-accent) hover:text-(--tone-accent-hover)">Install guide →</a>
+          {!compact && (
+            <a href={flavor.repo} class="text-(--tone-muted) hover:text-(--tone-text)">GitHub ★ {flavor.stars}</a>
+          )}
+        </div>
+      </article>
+    ))
+  }
+</div>

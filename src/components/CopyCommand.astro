@@ -1,0 +1,25 @@
+---
+// The hero-style one-line command chip with a copy button.
+interface Props {
+  command: string;
+  class?: string;
+}
+const { command, class: className = '' } = Astro.props;
+---
+
+<div
+  class:list={[
+    'flex max-w-[480px] items-center overflow-hidden rounded-sm border border-line-700 bg-surface-900',
+    className,
+  ]}
+>
+  <span class="pl-[15px] pr-3 font-mono text-[15px] font-medium text-faint-500">$</span>
+  <code class="flex-1 overflow-x-auto whitespace-nowrap py-[14px] font-mono text-[15px] font-medium text-mist-100">{command}</code>
+  <button
+    type="button"
+    data-copy={command}
+    class="cursor-pointer self-stretch border-0 border-l border-line-700 bg-surface-800 px-[15px] font-mono text-xs font-semibold text-accent-400 hover:text-accent-300"
+  >
+    copy
+  </button>
+</div>

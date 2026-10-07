@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import SponsorRoster from '../components/SponsorRoster.astro';
+import { FUND_URL, OPENCOLLECTIVE_URL } from '../data/site.mjs';
+---
+
+<BaseLayout title="Sponsors" description="Sponsors and supporters who fund the development of the Phalcon framework.">
+  <PageHero kicker="Non-profit · sponsor-funded" title="Sponsors.">
+    <p>
+      For those that wish to sponsor our work and further the development of Phalcon, we offer various sponsorship
+      options that will fit any budget. Sponsoring our work allows us to devote more time to the project, offer faster
+      responses to bugs and features and ensure the project's stability.
+    </p>
+  </PageHero>
+
+  <Section tone="light">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div class="rounded-md border border-(--tone-border-strong) bg-(--tone-surface) px-[22px] py-5">
+        <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-teal-600">GitHub Sponsors</p>
+        <p class="mt-[10px] text-[15px] leading-[1.65] text-(--tone-text)">
+          Sponsor the core team directly through GitHub Sponsors.
+        </p>
+        <a
+          href={FUND_URL}
+          class="mt-4 inline-block rounded-sm bg-ink-900 px-5 py-[11px] text-sm font-semibold text-paper-100 hover:opacity-90"
+          >Fund the project →</a
+        >
+      </div>
+      <div class="rounded-md border border-(--tone-border-strong) bg-(--tone-surface) px-[22px] py-5">
+        <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-teal-600">OpenCollective</p>
+        <p class="mt-[10px] text-[15px] leading-[1.65] text-(--tone-text)">
+          Become a backer or sponsor on our OpenCollective page and appear among our public supporters.
+        </p>
+        <a
+          href={OPENCOLLECTIVE_URL}
+          class="mt-4 inline-block rounded-sm border border-lightline-300 px-5 py-[11px] text-sm font-semibold text-ink-900 hover:border-teal-600"
+          >Become a backer →</a
+        >
+      </div>
+    </div>
+
+    <div class="mt-14">
+      <SponsorRoster />
+    </div>
+
+    <p class="content-links mt-14 text-[15px] leading-[1.65] text-(--tone-muted)">
+      Do you need help with a Phalcon project? See <a href="/consulting">professional services</a>.
+    </p>
+  </Section>
+</BaseLayout>

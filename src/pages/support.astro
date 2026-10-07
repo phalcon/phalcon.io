@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DiamondBullet from '../components/DiamondBullet.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import { DOCS_URL, FLAVORS, shortLink } from '../data/site.mjs';
+
+const helpCards = [
+  {
+    title: 'Documentation',
+    html: `Please use the <a href="${DOCS_URL}">documentation</a> before anything else. You can also use its search to find what you are looking for.`,
+  },
+  {
+    title: 'GitHub Discussions',
+    html: `Questions should go to GitHub Discussions: <a href="${FLAVORS.v5.discussions}">v5 (cphalcon)</a> or <a href="${FLAVORS.v6.discussions}">v6 (phalcon)</a>.`,
+  },
+  {
+    title: 'Discord',
+    html: `Come join the Phalcon <a href="${shortLink('discord')}">Discord</a>.`,
+  },
+  {
+    title: 'Stack Overflow',
+    html: `Ask a question on <a href="${shortLink('so')}">Stack Overflow</a> and tag it with <code>phalcon</code>.`,
+  },
+  {
+    title: 'Found a bug?',
+    html: `If you still believe that what you found is a bug, open an issue: <a href="${FLAVORS.v5.issues}">v5 issues</a> or <a href="${FLAVORS.v6.issues}">v6 issues</a>.`,
+  },
+];
+
+const stackOverflowNotes = [
+  'Stack Overflow is not dedicated to supporting Phalcon.',
+  'Please do not report bugs or ask for new features there. Use the issue tracker on GitHub for that.',
+  "Make sure that you include the 'phalcon' tag with your question.",
+  "Make sure that you mention 'Phalcon' in the question.",
+];
+---
+
+<BaseLayout
+  title="Support"
+  description="Where to get help with the Phalcon framework: documentation, GitHub Discussions, Discord, Stack Overflow, and how to report bugs."
+>
+  <PageHero kicker="Get help" title="Support.">
+    <p>Our great community and contributors are happy to help you! Please use these community resources to get help.</p>
+  </PageHero>
+
+  <Section tone="light">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {
+        helpCards.map((card) => (
+          <div class="rounded-md border border-(--tone-border-strong) bg-(--tone-surface) px-[22px] py-5">
+            <h2 class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-(--tone-accent)">{card.title}</h2>
+            <p class="content-links mt-[10px] text-[15px] leading-[1.65] text-(--tone-text)" set:html={card.html} />
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-10 rounded-r-sm border border-(--tone-border-strong) border-l-[3px] border-l-warn-300 bg-(--tone-surface) px-[22px] py-5">
+      <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-warntext-700">Before you post on Stack Overflow</p>
+      <ul class="mt-4 flex list-none flex-col gap-[10px] p-0">
+        {
+          stackOverflowNotes.map((note) => (
+            <li class="flex items-start gap-3">
+              <DiamondBullet color="var(--ph-warn-300)" class="mt-[6px]" />
+              <span class="text-[15px] leading-[1.65] text-(--tone-text)">{note}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="content-links mt-10 max-w-[820px]">
+      <h2 class="font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">Reporting a bug</h2>
+      <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">
+        Many bugs are raised because users are not running the latest version. Please visit the
+        <a href="/download">download page</a>, install the latest version, and confirm that the issue is a bug.
+      </p>
+      <p class="mt-3 text-[15px] leading-[1.7] text-(--tone-muted)">
+        Please report bugs when you have tried all of the above, using the issue tracker on GitHub:
+        <a href={FLAVORS.v5.issues}>v5</a> or <a href={FLAVORS.v6.issues}>v6</a>.
+      </p>
+    </div>
+  </Section>
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+interface Props {
+  items: { label: string; href: string }[];
+  current: string;
+}
+const { items, current } = Astro.props;
+---
+
+<div class="mb-8 flex flex-wrap gap-2">
+  {
+    items.map((item) => (
+      <a
+        href={item.href}
+        aria-current={item.href === current ? 'page' : undefined}
+        class:list={[
+          'rounded-xs border px-[13px] py-[8px] font-mono text-[12px] font-semibold tracking-[0.04em]',
+          item.href === current
+            ? 'border-(--tone-accent) text-(--tone-accent)'
+            : 'border-(--tone-border-strong) text-(--tone-muted) hover:text-(--tone-text)',
+        ]}
+      >
+        {item.label}
+      </a>
+    ))
+  }
+</div>

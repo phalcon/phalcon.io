@@ -1,0 +1,52 @@
+---
+// variant "accent": left color bar + mono uppercase label (design's admonition-style card)
+// variant "fact":   small labeled fact card (upgrade grid)
+// variant "default": plain bordered surface card
+interface Props {
+  variant?: 'default' | 'accent' | 'fact';
+  label?: string;
+  labelColor?: string;
+  barColor?: string;
+  class?: string;
+}
+const {
+  variant = 'default',
+  label,
+  labelColor = 'var(--tone-muted)',
+  barColor = 'var(--tone-border-strong)',
+  class: className = '',
+} = Astro.props;
+---
+
+{
+  variant === 'accent' ? (
+    <div
+      class:list={['rounded-r-sm border border-(--tone-border-strong) border-l-[3px] bg-(--tone-surface) px-[22px] py-5', className]}
+      style={`border-left-color: ${barColor}`}
+    >
+      {label && (
+        <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em]" style={`color: ${labelColor}`}>
+          {label}
+        </p>
+      )}
+      <div class="mt-[10px] text-[15px] leading-[1.65] text-(--tone-text)">
+        <slot />
+      </div>
+    </div>
+  ) : variant === 'fact' ? (
+    <div class:list={['rounded-md border border-(--tone-border-strong) bg-(--tone-surface) px-5 py-[18px]', className]}>
+      {label && (
+        <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.1em]" style={`color: ${labelColor}`}>
+          {label}
+        </p>
+      )}
+      <div class="mt-[9px] text-sm leading-[1.55] text-(--tone-text)">
+        <slot />
+      </div>
+    </div>
+  ) : (
+    <div class:list={['rounded-md border border-(--tone-border-strong) bg-(--tone-surface) p-5', className]}>
+      <slot />
+    </div>
+  )
+}

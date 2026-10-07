@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Card from '../../components/Card.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import CopyCommand from '../../components/CopyCommand.astro';
+import PageHero from '../../components/PageHero.astro';
+import Section from '../../components/Section.astro';
+import SubNav from '../../components/SubNav.astro';
+import V6Callout from '../../components/V6Callout.astro';
+import { docs, DOWNLOAD_NAV, FLAVORS } from '../../data/site.mjs';
+
+const v5 = FLAVORS.v5;
+const install = docs('installation');
+const h2 = 'mt-12 font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)';
+const h3 = 'mt-8 font-display text-lg font-semibold text-(--tone-text)';
+const p = 'mt-3 text-[15px] leading-[1.7] text-(--tone-muted)';
+
+const sourceCode = `git clone https://github.com/phalcon/cphalcon
+cd cphalcon
+git checkout tags/v${v5.version} ./
+cd ext
+./install`;
+---
+
+<BaseLayout
+  title="Download for Linux, macOS and BSD"
+  description="Install the Phalcon v5 C extension on Linux, macOS and BSD with PIE, PECL, a package manager, or from source."
+>
+  <PageHero kicker="Get Phalcon · v5" title="Linux, macOS & BSD.">
+    <p>
+      {v5.title} is a C extension. Install a package for your platform or compile it from source. You do not need to
+      know C to use it.
+    </p>
+  </PageHero>
+
+  <Section tone="light">
+    <SubNav items={DOWNLOAD_NAV} current="/download/linux" />
+    <V6Callout />
+
+    <div class="content-links max-w-[820px]">
+      <h2 class="font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">PIE (recommended)</h2>
+      <p class={p}>
+        <a href="https://github.com/php/pie">PIE</a> (PHP Installer for Extensions) is the recommended way to install
+        Phalcon. If you do not have PIE, install it first. Then run:
+      </p>
+      <div class="mt-4"><CopyCommand command={v5.install} /></div>
+      <div class="mt-6">
+        <Card variant="accent" label="Before you start" labelColor="var(--ph-warntext-700)" barColor="var(--ph-warn-300)">
+          PIE compiles the extension on your machine. The build needs at least 4 GB of RAM. On newer distributions (for
+          example Debian 13), the build can fail. Then run:
+        </Card>
+      </div>
+      <div class="mt-3">
+        <CodeBlock
+          lang="bash"
+          filename="shell"
+          code={`export CFLAGS="-Wno-incompatible-pointer-types"\nsudo -E pie install phalcon/cphalcon`}
+        />
+      </div>
+
+      <h2 class={h2}>PECL</h2>
+      <p class={p}>
+        PECL is deprecated, but it still works. Under Linux and macOS it compiles Phalcon on your machine. Make sure that
+        you have <a href="https://pear.php.net/manual/en/installation.getting.php">pecl/pear</a> installed.
+      </p>
+      <div class="mt-4">
+        <CodeBlock lang="bash" filename="shell" code={`pecl channel-update pecl.php.net\npecl install phalcon`} />
+      </div>
+
+      <h2 class={h2}>Packages</h2>
+
+      <h3 class={h3}>Ubuntu and Debian</h3>
+      <p class={p}>Use the repository of <a href="https://launchpad.net/~ondrej/+archive/ubuntu/php">Ondřej Surý</a>:</p>
+      <div class="mt-3">
+        <CodeBlock
+          lang="bash"
+          filename="shell"
+          code={`sudo add-apt-repository ppa:ondrej/php\nsudo apt-get update\nsudo apt-get install php-phalcon5`}
+        />
+      </div>
+
+      <h3 class={h3}>RHEL, Fedora and CentOS</h3>
+      <p class={p}>
+        <a href="https://rpms.remirepo.net/">Remi Collet's repository</a> has Phalcon packages for each PHP version. Enable
+        it with the <a href="https://rpms.remirepo.net/wizard/">configuration wizard</a>, then install the phalcon5 package
+        for your PHP version.
+      </p>
+
+      <h3 class={h3}>macOS</h3>
+      <p class={p}>Homebrew has binary packages, so you do not compile Phalcon yourself:</p>
+      <div class="mt-3">
+        <CodeBlock
+          lang="bash"
+          filename="shell"
+          code={`brew tap phalcon/extension https://github.com/phalcon/homebrew-tap\nbrew install phalcon`}
+        />
+      </div>
+      <p class={p}>MacPorts has one port for each PHP version. For example, for PHP 8.3:</p>
+      <div class="mt-3"><CodeBlock lang="bash" filename="shell" code={`sudo port install php83-phalcon`} /></div>
+
+      <h3 class={h3}>Arch Linux</h3>
+      <p class={p}>Use the <a href="https://aur.archlinux.org/packages/php-phalcon">php-phalcon package</a> from the AUR.</p>
+
+      <h3 class={h3}>FreeBSD and GhostBSD</h3>
+      <p class={p}>Use a binary package (one for each PHP version, for example PHP 8.3) or the ports tree:</p>
+      <div class="mt-3">
+        <CodeBlock
+          lang="bash"
+          filename="shell"
+          code={`pkg install php83-phalcon5\n\n# or\ncd /usr/ports/www/phalcon5 && make install clean`}
+        />
+      </div>
+
+      <h3 class={h3}>cPanel and WHM</h3>
+      <p class={p}>
+        cPanel and WHM support Phalcon through EasyApache 4. Enable the Phalcon module in EasyApache 4. See
+        <a href={`${install}#shared-hosting`}>shared hosting</a> in the docs.
+      </p>
+
+      <h2 class={h2}>Compile from source</h2>
+      <p class={p}>
+        You need the PHP development files for your PHP version, GCC (or Xcode on macOS), re2c and the libpcre development
+        files. Each release ships the generated C sources, so you do not need Zephir.
+      </p>
+      <div class="mt-4"><CodeBlock lang="bash" filename="shell" code={sourceCode} /></div>
+      <p class={p}>
+        Then enable the extension: add <code>extension=phalcon.so</code> to the PHP configuration of the CLI and of the web
+        server, and restart the web server. Check it with <code>php -m | grep phalcon</code>. The docs have the
+        <a href={`${install}#compile-from-sources`}>full steps</a>.
+      </p>
+
+      <h2 class={h2}>PHP extensions</h2>
+      <p class={p}>
+        Phalcon needs these PHP extensions when it loads: {v5.extensions.join(', ')}. Some components use more, for example
+        mbstring, openssl, or the PDO driver of your database.
+      </p>
+
+      <h2 class={h2}>More platforms</h2>
+      <p class={p}>
+        Gentoo, Raspberry Pi and PHPBrew are in the <a href={`${install}#installation-platforms`}>installation guide</a>.
+      </p>
+
+      <h2 class={h2}>Need help?</h2>
+      <p class={p}>Have a look at our <a href="/support">support page</a>. We will do our best to help you.</p>
+    </div>
+  </Section>
+</BaseLayout>

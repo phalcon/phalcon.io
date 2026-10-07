@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import { docs, FLAVORS } from '../data/site.mjs';
+
+// Hosts that install Phalcon for you. Keep an entry only while its Phalcon
+// page passes `scripts/check-links.mjs --contains phalcon`.
+const hosts = [
+  { name: 'KingHost', href: 'https://kingho.st/phalcon-kinghost', note: 'A large host in Brazil with Phalcon on its plans.' },
+];
+
+// Examples only: any server where you can install PHP extensions works.
+const clouds = [
+  { name: 'AWS EC2', href: 'https://aws.amazon.com/ec2/' },
+  { name: 'DigitalOcean', href: 'https://www.digitalocean.com/' },
+  { name: 'Linode', href: 'https://www.linode.com/' },
+  { name: 'Microsoft Azure', href: 'https://azure.microsoft.com/' },
+];
+
+const h2 = 'font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)';
+const p = 'mt-3 text-[15px] leading-[1.7] text-(--tone-muted)';
+---
+
+<BaseLayout title="Hosting" description={`Where the Phalcon framework runs: servers you control for v5, any PHP ${FLAVORS.v6.php} host for v6.`}>
+  <PageHero kicker="Deploy" title="Where Phalcon runs.">
+    <p>The C extension needs a server where you can install PHP extensions. The pure PHP edition runs anywhere PHP runs.</p>
+  </PageHero>
+
+  <Section tone="light">
+    <div class="content-links grid max-w-[1000px] grid-cols-1 gap-12">
+      <div>
+        <h2 class={h2}>{FLAVORS.v5.title}: servers you control</h2>
+        <p class={p}>
+          Install the C extension on any VPS, cloud or dedicated server where you can install PHP extensions (root or sudo
+          access). For example:
+          {clouds.map((cloud, i) => (
+            <>
+              <a href={cloud.href}>{cloud.name}</a>{i < clouds.length - 1 ? ', ' : '.'}
+            </>
+          ))}
+        </p>
+        <p class={p}>Follow the <a href="/download/linux">installation steps</a>.</p>
+      </div>
+
+      <div>
+        <h2 class={h2}>Hosts that install Phalcon for you</h2>
+        <ul class="mt-4 flex flex-col gap-3">
+          {
+            hosts.map((host) => (
+              <li class="rounded-md border border-(--tone-border-strong) bg-(--tone-surface) px-[22px] py-4">
+                <a href={host.href} class="font-display text-lg font-bold">{host.name} ↗</a>
+                <p class="mt-1 text-[15px] leading-[1.6] text-(--tone-muted)">{host.note}</p>
+              </li>
+            ))
+          }
+        </ul>
+        <p class={p}>
+          Control panels can install it too: cPanel and WHM support Phalcon through EasyApache 4. See
+          <a href={`${docs('installation')}#shared-hosting`}>shared hosting</a> in the docs.
+        </p>
+      </div>
+
+      <div>
+        <h2 class={h2}>{FLAVORS.v6.title}: any PHP host</h2>
+        <p class={p}>
+          Phalcon v6 runs on any host with PHP {FLAVORS.v6.php} and Composer, shared hosting included. There is no extension, and you
+          do not need root access. See <a href="/download/composer">installing v6</a>.
+        </p>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

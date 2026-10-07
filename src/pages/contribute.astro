@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import SubNav from '../components/SubNav.astro';
+import { CONTACT_EMAIL, FLAVORS, PROJECT_NAV, shortLink } from '../data/site.mjs';
+
+// Text from the old About page (about_* strings), shortened.
+const cards = [
+  {
+    title: 'Code and tests',
+    paragraphs: [
+      `Phalcon has three main repositories: <a href="${FLAVORS.v5.repo}">cphalcon</a> (v5, written in Zephir), <a href="${FLAVORS.v6.repo}">phalcon</a> (v6, pure PHP) and <a href="https://github.com/zephir-lang/zephir">Zephir</a>, the language of v5.`,
+      `No software is free of bugs. If you find one, please tell us. Unit tests are never enough: help us improve the test suite by adding tests or improving the current ones. Every added test makes the framework more stable.`,
+    ],
+  },
+  {
+    title: 'Documentation',
+    paragraphs: [
+      `The source of the documentation is on <a href="https://github.com/phalcon/documentation">GitHub</a>. We always appreciate corrections, additions and enhancements: clone the repository and open a pull request!`,
+    ],
+  },
+  {
+    title: 'Spread the word',
+    paragraphs: [
+      `Many developers still do not know that Phalcon exists or how it can help them. If you give a talk about Phalcon at a PHP event, you have our full support.`,
+      `Our <a href="${shortLink('blog')}">blog</a> is open to tutorials that you write, and we share posts from your own blog on our social networks. Screencasts are welcome too: see our <a href="${shortLink('youtube')}">YouTube channel</a>.`,
+    ],
+  },
+  {
+    title: 'Share your story',
+    paragraphs: [
+      `Tell the community how Phalcon helps you: what worked, what needed extra work, and what you want next. Your input on new features helps us shape the future of the project.`,
+      `Sample applications help others to learn. Share your repositories, and send success stories to <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.`,
+    ],
+  },
+  {
+    title: 'Sponsor',
+    paragraphs: [
+      `We are a tiny but effective core team of volunteers. Donations and sponsorships give the project more time: more improvements, better support and more features. <a href="/sponsors">Become a sponsor →</a>`,
+    ],
+  },
+];
+---
+
+<BaseLayout title="Contribute" description="How to contribute to the Phalcon framework: code, tests, documentation, spreading the word and sponsoring.">
+  <PageHero kicker="Contribute" title="Help build Phalcon.">
+    <p>
+      Amazing projects need amazing hands. We might not know you just yet, but we think you'd be a great fit for
+      building a better web. Here at Phalcon, we want to give you an amazing performance while helping you develop in an
+      easy and fun way.
+    </p>
+    <p class="mt-4">
+      We always welcome your collaboration and help!
+      <strong class="text-mist-100">You do not need to know C to help.</strong> v6 is pure PHP, and the docs and tests
+      need hands too. Here is where you can start:
+    </p>
+  </PageHero>
+
+  <Section tone="light">
+    <SubNav items={PROJECT_NAV} current="/contribute" />
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+      {
+        cards.map((card) => (
+          <div class="rounded-md border border-(--tone-border-strong) bg-(--tone-surface) px-[22px] py-5">
+            <h2 class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-(--tone-accent)">{card.title}</h2>
+            {card.paragraphs.map((paragraph) => (
+              <p class="content-links mt-[10px] text-[15px] leading-[1.65] text-(--tone-text)" set:html={paragraph} />
+            ))}
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-12 rounded-r-sm border border-(--tone-border-strong) border-l-[3px] border-l-success-600 bg-(--tone-surface) px-[22px] py-5">
+      <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-success-600">Thank you!</p>
+      <p class="mt-[10px] max-w-[760px] text-[15px] leading-[1.65] text-(--tone-text)">
+        We would like to thank all of our contributors and members of the community for pushing us to make Phalcon the
+        best framework of its kind. Your kind words and engagement is what drives us to do better. We hope to meet and
+        exceed the trust you put in Phalcon.
+      </p>
+      <p class="mt-3 font-display text-[15px] font-semibold text-(--tone-text)">Thanks for flying with Phalcon! &lt;3</p>
+    </div>
+  </Section>
+</BaseLayout>

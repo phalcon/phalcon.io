@@ -1,0 +1,24 @@
+{
+  "name": "phalcon-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "astro build",
+    "check": "astro check",
+    "dev": "astro dev",
+    "preview": "astro preview",
+    "serve": "astro build && astro preview",
+    "test": "node --test \"scripts/*.test.mjs\" \"src/lib/*.test.mjs\"",
+    "verify": "node scripts/verify-build.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4",
+    "astro": "^5",
+    "tailwindcss": "^4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^5.9.3"
+  }
+}

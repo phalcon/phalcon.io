@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Card from '../../components/Card.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import PageHero from '../../components/PageHero.astro';
+import Section from '../../components/Section.astro';
+import SubNav from '../../components/SubNav.astro';
+import V6Callout from '../../components/V6Callout.astro';
+import { docs, DOWNLOAD_NAV, FLAVORS } from '../../data/site.mjs';
+
+const h2 = 'mt-12 font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)';
+const p = 'mt-3 text-[15px] leading-[1.7] text-(--tone-muted)';
+const guides = [
+  { label: 'Installation on XAMPP', href: `${docs('webserver-setup')}#xampp` },
+  { label: 'Installation on WAMP', href: `${docs('webserver-setup')}#wamp` },
+];
+---
+
+<BaseLayout title="Download for Windows" description="Install the Phalcon v5 C extension on Windows with a pre-compiled DLL or PECL.">
+  <PageHero kicker="Get Phalcon · v5" title="Windows.">
+    <p>{FLAVORS.v5.title} on Windows is a DLL. Pick the DLL for your PHP, add one line to php.ini, and restart the web server.</p>
+  </PageHero>
+
+  <Section tone="light">
+    <SubNav items={DOWNLOAD_NAV} current="/download/windows" />
+    <V6Callout />
+
+    <div class="content-links max-w-[820px]">
+      <h2 class="font-display text-2xl font-semibold tracking-[-0.01em] text-(--tone-text)">Download</h2>
+      <p class={p}>
+        Get the DLLs from the <a href="https://github.com/phalcon/cphalcon/releases/latest">latest GitHub release</a>.
+      </p>
+      <div class="mt-6">
+        <Card variant="accent" label="Pick the right DLL" labelColor="var(--ph-warntext-700)" barColor="var(--ph-warn-300)">
+          The DLL must match your PHP version, the architecture (x64 or x86) and the thread safety (TS or NTS).
+          <code>phpinfo()</code> shows these values. A wrong DLL does not load.
+        </Card>
+      </div>
+
+      <h2 class={h2}>Install</h2>
+      <p class={p}>Add this line at the end of your php.ini file, then restart the web server:</p>
+      <div class="mt-4"><CodeBlock lang="ini" filename="php.ini" code={`extension=php_phalcon.dll`} /></div>
+      <p class={p}>More details are in the <a href={`${docs('installation')}#windows`}>installation guide</a>.</p>
+
+      <h2 class={h2}>PECL</h2>
+      <p class={p}>
+        PECL is deprecated, but it still works. Under Windows it uses the pre-compiled DLLs. Make sure that you have
+        <a href="https://pear.php.net/manual/en/installation.getting.php">pecl/pear</a> installed.
+      </p>
+      <div class="mt-4">
+        <CodeBlock lang="bash" filename="shell" code={`pecl channel-update pecl.php.net\npecl install phalcon`} />
+      </div>
+
+      <h2 class={h2}>Related guides</h2>
+      <ul class="mt-3 flex list-none flex-col gap-2 p-0">
+        {
+          guides.map((guide) => (
+            <li class="flex items-center gap-3">
+              <span class="h-[9px] w-[9px] rotate-45 bg-(--tone-accent)" aria-hidden="true" />
+              <a href={guide.href} class="text-[15px]">{guide.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Section>
+</BaseLayout>

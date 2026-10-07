@@ -1,0 +1,41 @@
+---
+import { FOOTER_COLUMNS, SOCIALS } from '../data/site.mjs';
+
+const year = new Date().getFullYear();
+---
+
+<footer data-tone="dark" class="ph-footer">
+  <div class="ph-footer__grid">
+    <div>
+      <div class="ph-footer__brand">
+        <img src="/images/falcon.svg" alt="" class="ph-footer__logo" />
+        <span class="ph-footer__name">Phalcon</span>
+      </div>
+      <p class="ph-footer__tagline">
+        A full-stack PHP framework, delivered as a C extension or as pure PHP.
+      </p>
+    </div>
+    {FOOTER_COLUMNS.map((col) => (
+      <div>
+        <p class="ph-footer__title">{col.title}</p>
+        <div class="ph-footer__links">
+          {col.links.map((link) => (
+            <a href={link.href} class="ph-footer__link">{link.label}</a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+  <div class="ph-footer__socials">
+    {SOCIALS.map((social) => (
+      <a href={social.href} class="ph-footer__social">{social.label}</a>
+    ))}
+  </div>
+  <div class="ph-footer__bottom">
+    <div class="ph-footer__bottom-inner">
+      <span class="ph-footer__copyright"
+        >© {year} Phalcon Team · cphalcon (v5) BSD-3-Clause · phalcon (v6) MIT</span
+      >
+    </div>
+  </div>
+</footer>

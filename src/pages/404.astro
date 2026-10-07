@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404">
+  <section data-tone="dark" class="bg-night-950 text-mist-100">
+    <div class="mx-auto flex max-w-[1240px] flex-col items-center px-5 py-32 text-center md:px-10">
+      <p class="font-mono text-xs font-semibold uppercase tracking-[0.26em] text-sage-500">404</p>
+      <h1 class="mt-4 font-display text-[clamp(40px,6vw,72px)] font-bold leading-[1.02] tracking-[-0.03em]">
+        Ooops! Something went wrong.
+      </h1>
+      <a
+        href="/"
+        class="mt-8 rounded-sm bg-accent-400 px-6 py-[13px] text-[15px] font-semibold text-ink-950 hover:bg-accent-500"
+        >Back To Home</a
+      >
+      <p class="mt-10 font-mono text-xs font-medium text-faint-500">&lt;3 Phalcon Team</p>
+    </div>
+  </section>
+</BaseLayout>

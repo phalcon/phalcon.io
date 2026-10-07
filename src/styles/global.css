@@ -1,0 +1,175 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+/* The colors and the fonts come from tokens.css, a copy of
+   phalcon/css/tokens.css in phalcon/assets. The nav and the footer use
+   public/css/common.css, a copy of phalcon/css/common.css there (the shared
+   header and footer of the Phalcon sites). BaseLayout.astro links it outside
+   this build: the build would round its calc() line heights, and a linked
+   file is in no layer, so the Tailwind layers do not change it. The deploy
+   workflow refreshes both. */
+@theme {
+  /* Helvetica everywhere — no webfonts, nothing to download. */
+  --font-display: var(--ph-font-sans);
+  --font-sans: var(--ph-font-sans);
+  --font-mono: var(--ph-font-mono);
+
+  /* dark palette */
+  --color-night-950: var(--ph-night-950);
+  --color-night-900: var(--ph-night-900);
+  --color-surface-950: var(--ph-surface-950);
+  --color-surface-900: var(--ph-surface-900);
+  --color-surface-800: var(--ph-surface-800);
+  --color-line-900: var(--ph-line-900);
+  --color-line-700: var(--ph-line-700);
+  --color-line-600: var(--ph-line-600);
+  --color-mist-100: var(--ph-mist-100);
+  --color-mist-200: var(--ph-mist-200);
+  --color-mist-300: var(--ph-mist-300);
+  --color-mist-400: var(--ph-mist-400);
+  --color-sage-400: var(--ph-sage-400);
+  --color-sage-500: var(--ph-sage-500);
+  --color-faint-500: var(--ph-faint-500);
+  --color-faint-600: var(--ph-faint-600);
+  --color-faint-700: var(--ph-faint-700);
+  --color-accent-400: var(--ph-accent-400);
+  --color-accent-500: var(--ph-accent-500);
+  --color-accent-300: var(--ph-accent-300);
+  --color-brand-400: var(--ph-brand-400);
+  --color-warn-300: var(--ph-warn-300);
+  --color-danger-300: var(--ph-danger-300);
+  --color-slate-900: var(--ph-slate-900);
+
+  /* light palette */
+  --color-paper-50: var(--ph-paper-50);
+  --color-paper-100: var(--ph-paper-100);
+  --color-ink-950: var(--ph-ink-950);
+  --color-ink-900: var(--ph-ink-900);
+  --color-ink-600: var(--ph-ink-600);
+  --color-ink-500: var(--ph-ink-500);
+  --color-ink-400: var(--ph-ink-400);
+  --color-lightline-100: var(--ph-lightline-100);
+  --color-lightline-200: var(--ph-lightline-200);
+  --color-lightline-300: var(--ph-lightline-300);
+  --color-lightline-400: var(--ph-lightline-400);
+  --color-teal-600: var(--ph-teal-600);
+  --color-teal-700: var(--ph-teal-700);
+  --color-success-600: var(--ph-success-600);
+  --color-warntext-700: var(--ph-warntext-700);
+  --color-white: var(--ph-white);
+
+  --radius-xs: 3px;
+  --radius-sm: 4px;
+  --radius-md: 5px;
+  --radius-lg: 6px;
+}
+
+/* Fixed-palette section tones. Landing sections alternate dark/light by design —
+   this is NOT a theme toggle, so no dark: variants anywhere. */
+[data-tone="dark"] {
+  --tone-bg: var(--ph-dark-bg);
+  --tone-surface: var(--ph-dark-surface);
+  --tone-panel: var(--ph-dark-panel);
+  --tone-text: var(--ph-dark-text);
+  --tone-heading: var(--ph-dark-heading);
+  --tone-muted: var(--ph-dark-muted);
+  --tone-faint: var(--ph-dark-faint);
+  --tone-kicker: var(--ph-dark-kicker);
+  --tone-border: var(--ph-dark-border);
+  --tone-border-strong: var(--ph-dark-border-strong);
+  --tone-accent: var(--ph-dark-accent);
+  --tone-accent-hover: var(--ph-dark-accent-hover);
+}
+
+[data-tone="light"] {
+  --tone-bg: var(--ph-light-bg);
+  --tone-surface: var(--ph-light-surface);
+  --tone-panel: var(--ph-light-panel);
+  --tone-text: var(--ph-light-text);
+  --tone-heading: var(--ph-light-heading);
+  --tone-muted: var(--ph-light-muted);
+  --tone-faint: var(--ph-light-faint);
+  --tone-kicker: var(--ph-light-kicker);
+  --tone-border: var(--ph-light-border);
+  --tone-border-strong: var(--ph-light-border-strong);
+  --tone-accent: var(--ph-light-accent);
+  --tone-accent-hover: var(--ph-light-accent-hover);
+}
+
+/* The light tone with the second background and a stronger card border. */
+[data-tone="light-alt"] {
+  --tone-bg: var(--ph-light-bg-alt);
+  --tone-surface: var(--ph-light-surface);
+  --tone-panel: var(--ph-light-panel);
+  --tone-text: var(--ph-light-text);
+  --tone-heading: var(--ph-light-heading);
+  --tone-muted: var(--ph-light-muted);
+  --tone-faint: var(--ph-light-faint);
+  --tone-kicker: var(--ph-light-kicker);
+  --tone-border: var(--ph-light-border);
+  --tone-border-strong: var(--ph-lightline-300);
+  --tone-accent: var(--ph-light-accent);
+  --tone-accent-hover: var(--ph-light-accent-hover);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--ph-dark-bg);
+  color: var(--ph-dark-text);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--ph-accent-400) 28%, transparent);
+  color: var(--ph-white);
+}
+
+@keyframes pf-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-2.2%) rotate(-1deg); }
+}
+
+/* Prose links inside tone sections (page content transcribed from the old site) */
+.content-links a {
+  color: var(--tone-accent);
+  text-decoration: none;
+}
+.content-links a:hover {
+  color: var(--tone-accent-hover);
+  text-decoration: underline;
+}
+
+/* Tabular figures keep benchmark columns from jittering as values change. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Shiki code blocks. CodeBlock uses src/lib/code-theme.mjs: GitHub's dark
+   rules with --code-<role> variables. The code blocks are always dark, so the
+   variables take the dark syntax tokens. */
+.astro-code {
+  --code-bg: var(--ph-dark-code-bg);
+  --code-changed: var(--ph-dark-syntax-changed);
+  --code-comment: var(--ph-dark-syntax-comment);
+  --code-constant: var(--ph-dark-syntax-constant);
+  --code-deleted: var(--ph-dark-syntax-deleted);
+  --code-function: var(--ph-dark-syntax-function);
+  --code-inserted: var(--ph-dark-syntax-inserted);
+  --code-keyword: var(--ph-dark-syntax-keyword);
+  --code-parameter: var(--ph-dark-syntax-parameter);
+  --code-string: var(--ph-dark-syntax-string);
+  --code-string-expression: var(--ph-dark-syntax-string-expression);
+  --code-text: var(--ph-dark-syntax-text);
+
+  margin: 0;
+  padding: 20px 22px;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  line-height: 1.85;
+  font-weight: 500;
+  overflow-x: auto;
+}

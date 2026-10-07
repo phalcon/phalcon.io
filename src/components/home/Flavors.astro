@@ -1,0 +1,28 @@
+---
+import DiamondBullet from '../DiamondBullet.astro';
+import FlavorCards from '../FlavorCards.astro';
+import Kicker from '../Kicker.astro';
+import Section from '../Section.astro';
+import SectionHeading from '../SectionHeading.astro';
+
+const shared = ['Same Phalcon\\ namespaces', 'Same documentation', 'Same test suite', 'Maintained in parallel'];
+---
+
+<Section id="flavors" tone="light">
+  <Kicker>Two flavors, one API</Kicker>
+  <SectionHeading>Pick the delivery. Keep the code.</SectionHeading>
+  <p class="mb-10 mt-4 max-w-[680px] text-[17px] leading-relaxed text-(--tone-muted)">
+    Phalcon comes as a compiled C extension (v5) and as a pure PHP package (v6). Both have the same classes and methods, and the team maintains both.
+  </p>
+  <FlavorCards />
+  <ul class="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs font-semibold text-(--tone-muted)">
+    {
+      shared.map((item) => (
+        <li class="flex items-center gap-2">
+          <DiamondBullet color="var(--ph-success-600)" />
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+</Section>

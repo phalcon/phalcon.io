@@ -1,0 +1,14 @@
+---
+// The note at the top of each v5 download page.
+import { FLAVORS } from '../data/site.mjs';
+---
+
+<div
+  data-tone="dark"
+  class="mb-10 flex flex-wrap items-center justify-between gap-4 rounded-r-sm border border-line-700 border-l-[3px] border-l-accent-400 bg-surface-900 px-[22px] py-4 text-mist-100"
+>
+  <p class="text-[15px] leading-[1.6] text-mist-300">Want pure PHP, with no extension? {FLAVORS.v6.title} has the same API.</p>
+  <a href={FLAVORS.v6.installPage} class="font-mono text-xs font-semibold text-accent-400 hover:text-accent-300"
+    >Install v6 with Composer →</a
+  >
+</div>

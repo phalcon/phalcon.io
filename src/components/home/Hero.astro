@@ -1,0 +1,58 @@
+---
+import InstallTabs from './InstallTabs.astro';
+import { DOCS_URL, SINCE } from '../../data/site.mjs';
+---
+
+<section
+  id="top"
+  data-tone="dark"
+  class="relative overflow-hidden bg-night-950 text-mist-100"
+  style="background: radial-gradient(880px 560px at 78% 42%, color-mix(in srgb, var(--ph-accent-400) 5.5%, transparent), transparent 66%), var(--ph-night-950);"
+>
+  <div class="mx-auto grid max-w-[1240px] grid-cols-1 items-center gap-8 px-5 pb-[88px] pt-[70px] md:px-10 lg:grid-cols-[1.08fr_0.92fr]">
+    <div>
+      <p class="mb-[22px] font-mono text-xs font-semibold uppercase tracking-[0.26em] text-sage-500">
+        High performance PHP framework
+      </p>
+      <h1 class="font-display text-[clamp(40px,5vw,64px)] font-bold leading-[1.02] tracking-[-0.03em]">
+        A full-stack PHP framework<br />
+        <span class="text-mist-400">delivered as a C extension.</span>
+      </h1>
+      <p class="mt-[22px] max-w-[540px] text-lg leading-relaxed text-sage-400" style="text-wrap: pretty;">
+        Its innovative architecture makes Phalcon the fastest PHP framework ever built. You do not need to know C to use
+        it: the API is plain PHP classes in the
+        <code class="font-mono text-[15px] font-medium text-mist-200">Phalcon\</code> namespace. Prefer no extension at all?
+        The same API ships as pure PHP.
+      </p>
+      <div id="install" class="mt-[30px] max-w-[480px]">
+        <InstallTabs />
+      </div>
+      <div class="mt-6 flex flex-wrap items-center gap-[14px]">
+        <a
+          href="/download"
+          class="rounded-sm bg-accent-400 px-6 py-[13px] text-[15px] font-semibold text-ink-950 hover:bg-accent-500"
+          >Get Phalcon →</a
+        >
+        <a
+          href={DOCS_URL}
+          class="rounded-sm border border-line-600 px-[22px] py-[13px] text-[15px] font-medium text-mist-200 hover:border-accent-500"
+          >Read the docs</a
+        >
+      </div>
+      <p class="mt-7 font-mono text-xs font-medium leading-relaxed tracking-[0.04em] text-faint-500">
+        open source · BSD-3 / MIT · since {SINCE}
+      </p>
+    </div>
+    {/* The falcon art shows from lg up. On a phone the nav bar shows the falcon, and the hero keeps the install command. */}
+    <div class="relative hidden items-center justify-center lg:flex lg:min-h-[440px]">
+      <div
+        class="absolute h-[440px] w-[440px]"
+        style="background: radial-gradient(circle, color-mix(in srgb, var(--ph-accent-400) 8%, transparent), transparent 62%); filter: blur(8px);"
+      >
+      </div>
+      <div class="relative aspect-square w-[min(340px,80vw)] lg:w-[min(460px,46vw)]" style="animation: pf-float 7s ease-in-out infinite;">
+        <img src="/images/falcon.svg" alt="The Phalcon falcon" class="h-full w-full" />
+      </div>
+    </div>
+  </div>
+</section>

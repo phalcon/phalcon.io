@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+---
+
+<BaseLayout title="Consulting" description="Companies with deep Phalcon experience offering consulting services.">
+  <PageHero kicker="Professional services" title="Consulting.">
+    <p>
+      MCTekK has already delivered various high end Phalcon projects, with their main strengths being web and mobile
+      development.
+    </p>
+  </PageHero>
+
+  <Section tone="light">
+    <div class="grid max-w-[900px] grid-cols-1 items-start gap-6 rounded-md border border-(--tone-border-strong) bg-(--tone-surface) p-6 sm:grid-cols-[200px_1fr]">
+      <img src="/images/consulting/mctekk.png" alt="MCTekK" class="w-full max-w-[180px] object-contain" />
+      <div class="content-links">
+        <p class="text-[15px] leading-[1.65] text-(--tone-muted)">
+          MCTekK jumped on the Phalcon wagon since day one. From its conception we saw the great advantages that Phalcon
+          was offering and could offer in the future.
+        </p>
+        <p class="mt-3 text-[15px] leading-[1.65] text-(--tone-muted)">
+          We have ample experience with Phalcon and have developed a myriad of project with it as the core. We are here
+          to advise you on anything you need concerning Phalcon to help you improve your readiness, quickness and
+          quality.
+        </p>
+        <p class="mt-3 text-[15px] leading-[1.65] text-(--tone-muted)">
+          Contact us through our <a href="https://mctekk.com">website</a>, where you can take a look at the
+          projects we have been involved in.
+        </p>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

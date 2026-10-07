@@ -1,0 +1,25 @@
+---
+interface Props {
+  tone?: 'dark' | 'light' | 'light-alt';
+  id?: string;
+  bordered?: boolean;
+  class?: string;
+  padded?: boolean;
+}
+
+const { tone = 'dark', id, bordered = true, padded = true, class: className = '' } = Astro.props;
+---
+
+<section
+  id={id}
+  data-tone={tone}
+  class:list={[
+    'bg-(--tone-bg) text-(--tone-text)',
+    bordered && 'border-t border-(--tone-border)',
+    className,
+  ]}
+>
+  <div class:list={['mx-auto max-w-[1240px] px-5 md:px-10', padded && 'py-16 md:py-20']}>
+    <slot />
+  </div>
+</section>

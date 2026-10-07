@@ -1,0 +1,92 @@
+---
+import { COMMUNITY_LINKS, FLAVORS, NAV_LINKS, PROJECT_LINKS } from '../data/site.mjs';
+
+const menus = [
+  { label: 'Community', items: COMMUNITY_LINKS },
+  { label: 'Project', items: PROJECT_LINKS },
+];
+---
+
+<nav class="ph-nav">
+  <div class="ph-nav__bar">
+    <a href="/" class="ph-nav__brand">
+      <img src="/images/falcon.svg" alt="" class="ph-nav__logo" />
+      <span class="ph-nav__name">Phalcon</span>
+    </a>
+
+    <div class="ph-nav__links">
+      {NAV_LINKS.map((link) => (
+        <a href={link.href} class="ph-nav__link">{link.label}</a>
+      ))}
+      {menus.map((menu) => (
+        <div class="ph-nav__menu">
+          <button class="ph-nav__menu-button" aria-haspopup="true">
+            {menu.label} <span aria-hidden="true" class="ph-nav__caret">▾</span>
+          </button>
+          <div class="ph-nav__dropdown">
+            <ul class="ph-nav__dropdown-list">
+              {menu.items.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class="ph-nav__dropdown-link"
+                    >{item.label}</a
+                  >
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+      <a href={FLAVORS.v5.repo} class="ph-nav__github">
+        GitHub
+        <span class="ph-nav__stars"
+          >★ {FLAVORS.v5.stars}</span
+        >
+      </a>
+      <a
+        href="/download"
+        class="ph-nav__cta"
+        >Get Phalcon</a
+      >
+    </div>
+
+    <button
+      id="nav-burger"
+      class="ph-nav__burger"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="nav-mobile"
+    >
+      <span class="ph-nav__burger-line"></span>
+      <span class="ph-nav__burger-line"></span>
+      <span class="ph-nav__burger-line"></span>
+    </button>
+  </div>
+
+  <div id="nav-mobile" hidden class="ph-nav__mobile">
+    <ul class="ph-nav__mobile-list">
+      {NAV_LINKS.map((link) => (
+        <li><a href={link.href} class="ph-nav__mobile-link">{link.label}</a></li>
+      ))}
+      {menus.map((menu) => (
+        <>
+          <li class="ph-nav__mobile-heading">{menu.label}</li>
+          {menu.items.map((item) => (
+            <li><a href={item.href} class="ph-nav__mobile-link">{item.label}</a></li>
+          ))}
+        </>
+      ))}
+      <li class="ph-nav__mobile-github">
+        <a href={FLAVORS.v5.repo} class="ph-nav__mobile-link">GitHub ★ {FLAVORS.v5.stars}</a>
+      </li>
+      <li class="ph-nav__mobile-action">
+        <a href="/download" class="ph-nav__mobile-cta"
+          >Get Phalcon</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script is:inline src="/js/nav.js" defer></script>
