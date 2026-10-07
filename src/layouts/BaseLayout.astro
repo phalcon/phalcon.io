@@ -48,6 +48,8 @@ const structuredData = [FLAVORS.v5, FLAVORS.v6].map((flavor) => ({
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {/* The shared header and footer (a copy of phalcon/css/common.css), outside the Tailwind build: see global.css. */}
+    <link rel="stylesheet" href="/css/common.css" />
     <link rel="icon" type="image/svg+xml" href={`${favicons}/favicon.svg`} />
     <link rel="icon" type="image/png" sizes="32x32" href={`${favicons}/favicon-32x32.png`} />
     <link rel="apple-touch-icon" sizes="180x180" href={`${favicons}/apple-touch-icon.png`} />

@@ -2,7 +2,12 @@
 @import "./tokens.css";
 
 /* The colors and the fonts come from tokens.css, a copy of
-   phalcon/css/tokens.css in phalcon/assets. The deploy workflow refreshes it. */
+   phalcon/css/tokens.css in phalcon/assets. The nav and the footer use
+   public/css/common.css, a copy of phalcon/css/common.css there (the shared
+   header and footer of the Phalcon sites). BaseLayout.astro links it outside
+   this build: the build would round its calc() line heights, and a linked
+   file is in no layer, so the Tailwind layers do not change it. The deploy
+   workflow refreshes both. */
 @theme {
   /* Helvetica everywhere — no webfonts, nothing to download. */
   --font-display: var(--ph-font-sans);
