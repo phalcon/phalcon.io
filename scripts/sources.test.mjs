@@ -133,6 +133,11 @@ test('the refresh script copies common.css and checks it against the tokens copy
 
     assert.match(script, /copy: 'public\/css\/common\.css',\n\s+name: 'common\.css',/);
     assert.match(script, /problems: \(text\) => commonCssProblems\(text, readFileSync\('src\/styles\/tokens\.css', 'utf8'\)\),/);
+    // The tokens come first: the check of common.css must read the new tokens copy.
+    assert.ok(
+        script.indexOf("copy: 'src/styles/tokens.css'") < script.indexOf("copy: 'public/css/common.css'"),
+        'the tokens must come before common.css',
+    );
 });
 
 test('common.css has a rule for every class that the nav and the footer use', () => {
