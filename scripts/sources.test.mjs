@@ -2,7 +2,7 @@ import { strict as assert } from 'node:assert';
 import { readdirSync, readFileSync } from 'node:fs';
 import { test } from 'node:test';
 
-import { FLAVORS } from '../src/data/site.mjs';
+import { FLAVORS, FOOTER_COLUMNS } from '../src/data/site.mjs';
 import { missingTokens } from '../src/lib/design-checks.mjs';
 import { sourceFiles, usedBySite } from './token-sources.mjs';
 
@@ -152,4 +152,11 @@ test('common.css has a rule for every class that the nav and the footer use', ()
 
     assert.ok(used.length > 30, 'the nav and the footer use the shared classes');
     assert.deepEqual(missing, []);
+});
+
+test('the footer links to the license site, last in the Framework column', () => {
+    // The same link as phalcon/footer.json in phalcon/assets, which the other sites read.
+    const framework = FOOTER_COLUMNS.find((column) => column.title === 'Framework');
+
+    assert.deepEqual(framework.links.at(-1), { href: 'https://license.phalcon.io', label: 'License' });
 });

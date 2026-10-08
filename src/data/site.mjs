@@ -135,6 +135,7 @@ export const FOOTER_COLUMNS = [
             { label: 'Download', href: '/download' },
             { label: 'IDE Stubs', href: '/download/stubs' },
             { label: 'Hosting', href: '/hosting' },
+            { label: 'License', href: 'https://license.phalcon.io' },
         ],
     },
     {
