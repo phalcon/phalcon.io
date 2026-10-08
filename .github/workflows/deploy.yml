@@ -18,8 +18,10 @@ permissions:
   contents: write
 
 # A push run and a scheduled run must not publish at the same time.
+# Each branch has its own group, because a group keeps only one waiting run: a
+# pull request run must not cancel a waiting master run.
 concurrency:
-  group: deploy
+  group: deploy-${{ github.ref }}
   cancel-in-progress: false
 
 env:
@@ -141,11 +143,8 @@ jobs:
           git push
 
       - name: Publish to the deploy branch
-        # new-design also publishes during the trial of the redesign, so that
-        # Cloudflare Pages can show it before the merge. Remove it after the
-        # merge to master.
         if: >-
-          (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/new-design')
+          github.ref == 'refs/heads/master'
           && github.event_name != 'pull_request'
         # dist/_redirects and dist/_headers (copied from public/) carry the
         # redirects and the security headers, so the deployment is complete.

@@ -168,3 +168,18 @@ test('the deploy workflow keeps the committed design tools when a new file lacks
     assert.match(workflow, /node --check "\$new" \\\n\s+&& node --input-type=module -e "\$EXPORTS" "\$new" "src\/lib\/\$file"; then/);
     assert.match(workflow, /Object\.keys\(last\)\.every\(\(name\) => name in next\)/);
 });
+
+test('the deploy workflow runs one deploy at a time on each branch', () => {
+    // A push run and a scheduled run must not publish at the same time.
+    // A group keeps only one waiting run, so a pull request run must not cancel a waiting master run.
+    const workflow = readFileSync(new URL('../.github/workflows/deploy.yml', import.meta.url), 'utf8');
+
+    assert.match(workflow, /\nconcurrency:\n {2}group: deploy-\$\{\{ github\.ref \}\}\n {2}cancel-in-progress: false\n/);
+});
+
+test('only master publishes', () => {
+    // The trial of the redesign is over: new-design is merged to master.
+    const workflow = readFileSync(new URL('../.github/workflows/deploy.yml', import.meta.url), 'utf8');
+
+    assert.doesNotMatch(workflow, /new-design/);
+});
