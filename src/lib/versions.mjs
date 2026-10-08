@@ -57,12 +57,3 @@ export function statusOf(version) {
 
     return null === stage ? 'Stable' : STATUS[stage];
 }
-
-/** A star count as the site shows it: 249, 1k, 10.8k. Thousands keep one decimal, truncated, never rounded up. */
-export function formatStars(count) {
-    if (!Number.isInteger(count) || count < 0) {
-        throw new Error(`${count} is not a star count`);
-    }
-
-    return count < 1000 ? String(count) : `${Math.floor(count / 100) / 10}k`;
-}

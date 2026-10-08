@@ -3,7 +3,8 @@
  * them into the committed site data. There is no network and no file access
  * here, so every rule has unit tests (data-update.test.mjs).
  */
-import { compareVersions, formatStars, majorOf, parseVersion } from './versions.mjs';
+import { formatStars } from './stars.mjs';
+import { compareVersions, majorOf, parseVersion } from './versions.mjs';
 
 export const AVATAR_HOST = 'https://avatars.githubusercontent.com/';
 export const CONTRIBUTORS_SHOWN = 60;

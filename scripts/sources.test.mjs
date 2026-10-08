@@ -87,7 +87,7 @@ test('the deploy workflow refreshes the tokens and restores them before the data
     );
     assert.match(
         workflow,
-        /git checkout -- src\/fanart\.html src\/styles\/tokens\.css src\/styles\/code-theme\.json public\/css\/common\.css src\/lib\/design-checks\.mjs src\/lib\/design-refresh\.mjs/,
+        /git checkout -- src\/fanart\.html src\/styles\/tokens\.css src\/styles\/code-theme\.json public\/css\/common\.css src\/lib\/design-checks\.mjs src\/lib\/design-refresh\.mjs src\/lib\/stars\.mjs/,
     );
 });
 
@@ -114,7 +114,7 @@ test('the deploy workflow gets the design tools first, and keeps the committed c
 
     assert.ok(step > 0, 'the step is missing');
     assert.ok(step < workflow.indexOf('run: node scripts/update-tokens.mjs'), 'the step must come before the design files');
-    assert.match(workflow, /for file in design-checks\.mjs design-refresh\.mjs; do/);
+    assert.match(workflow, /for file in design-checks\.mjs design-refresh\.mjs stars\.mjs; do/);
     assert.match(workflow, /new="src\/lib\/\$\{file%\.mjs\}\.new\.mjs"/);
     assert.match(workflow, /curl -fsSL --max-time 30 -o "\$new" "https:\/\/assets\.phalcon\.io\/phalcon\/tools\/\$file" && node --check "\$new"/);
 });

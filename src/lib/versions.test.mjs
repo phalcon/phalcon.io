@@ -1,7 +1,7 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
 
-import { compareVersions, formatStars, majorOf, parseVersion, statusOf } from './versions.mjs';
+import { compareVersions, majorOf, parseVersion, statusOf } from './versions.mjs';
 
 const older = (a, b) => assert.ok(compareVersions(a, b) < 0, `${a} < ${b}`);
 
@@ -51,24 +51,4 @@ test('statusOf names the release stage', () => {
 
 test('statusOf rejects a value that is not a version', () => {
     assert.throws(() => statusOf('5.22'), /is not a version/);
-});
-
-test('formatStars shows a count below 1,000 as it is', () => {
-    assert.equal(formatStars(0), '0');
-    assert.equal(formatStars(249), '249');
-    assert.equal(formatStars(999), '999');
-});
-
-test('formatStars shows thousands with one decimal, truncated', () => {
-    assert.equal(formatStars(1000), '1k');
-    assert.equal(formatStars(1099), '1k');
-    assert.equal(formatStars(10812), '10.8k');
-    assert.equal(formatStars(10890), '10.8k');
-    assert.equal(formatStars(12000), '12k');
-});
-
-test('formatStars rejects a value that is not a count', () => {
-    for (const value of [-1, 1.5, '10812', null]) {
-        assert.throws(() => formatStars(value), /is not a star count/, String(value));
-    }
 });
