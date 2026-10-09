@@ -53,7 +53,7 @@ export const CONTENT = [
             'src="/js/copy.js"',
             `"codeRepository":"${FLAVORS.v5.repo}"`,
             `"codeRepository":"${FLAVORS.v6.repo}"`,
-            'property="og:image" content="https://assets.phalcon.io/phalcon/social/github.phalcon.main-site.png"',
+            'property="og:image" content="https://assets.phalcon.io/phalcon/social/github.phalcon.main-site.png?v=2"',
             'rel="canonical" href="https://phalcon.io/"',
             'href="https://assets.phalcon.io/phalcon/favicons/favicon.svg"',
             /^<!DOCTYPE html>\s*<html lang="en">\s*<head>/i,

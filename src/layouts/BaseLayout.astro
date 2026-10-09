@@ -22,7 +22,8 @@ const themeColor = resolveToken(tokens, '--ph-dark-bg');
 const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '') || '/';
 const canonical = new URL(path, SITE_URL).href;
 const favicons = `${ASSETS_URL}/favicons`;
-const socialImage = `${ASSETS_URL}/social/github.phalcon.main-site.png`;
+// A platform (Discord, X, LinkedIn) keeps a preview image by its address: change the version when the card changes.
+const socialImage = `${ASSETS_URL}/social/github.phalcon.main-site.png?v=2`;
 
 // One entry for each flavor. Both are maintained in parallel.
 const structuredData = [FLAVORS.v5, FLAVORS.v6].map((flavor) => ({
