@@ -1,4 +1,5 @@
 import { strict as assert } from 'node:assert';
+import { createHash } from 'node:crypto';
 import { readdirSync, readFileSync } from 'node:fs';
 import { test } from 'node:test';
 
@@ -182,4 +183,32 @@ test('only master publishes', () => {
     const workflow = readFileSync(new URL('../.github/workflows/deploy.yml', import.meta.url), 'utf8');
 
     assert.doesNotMatch(workflow, /new-design/);
+});
+
+test('the nav has the Discord icon in the end group of common.css, after the links', () => {
+    // Discord is one click away at all widths (roadmap Phase 9). The link has a name for screen readers; the SVG
+    // has none. The order of the end group: the links, the icon, the burger.
+    const nav = readFileSync(new URL('components/Nav.astro', root), 'utf8');
+    const order = ['class="ph-nav__end"', 'class="ph-nav__links"', 'class="ph-nav__discord"', 'class="ph-nav__burger"']
+        .map((part) => nav.indexOf(part));
+    const glyph = /class="ph-nav__discord"[^>]*>\s*<svg[^>]*>\s*<path fill="currentColor" d="([^"]+)"\/>/.exec(nav)?.[1] ?? '';
+
+    assert.ok(order.every((at, index) => at > (order[index - 1] ?? -1)), `the places: ${order.join(', ')}`);
+    // The burger is the last item of the end group, and the end group is the last item of the bar.
+    assert.match(nav, /<span class="ph-nav__burger-line"><\/span>\s*<\/button>\s*<\/div>\s*<\/div>\s*<div id="nav-mobile"/);
+    assert.match(nav, /<a href="\/discord" class="ph-nav__discord" aria-label="Discord">\s*<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">/);
+    // The Discord glyph of Simple Icons 16.32.0 (CC0-1.0), the same on every site.
+    assert.equal(createHash('sha256').update(glyph).digest('hex'), '6806ec0e2319eb7f7d9f5d02636a197d42903ff8f8e9bab0c267c8fabc1b03fe');
+});
+
+test('the nav has the GitHub icon and the star count as the last item of the links, left of the Discord icon', () => {
+    // The end of the bar: the links (the GitHub icon and the star count last), then the Discord icon (roadmap
+    // Phase 9). The link has a name for screen readers; the SVG has none.
+    const nav = readFileSync(new URL('components/Nav.astro', root), 'utf8');
+    const github = /<a href=\{FLAVORS\.v5\.repo\} class="ph-nav__github" aria-label=\{`GitHub, \$\{FLAVORS\.v5\.stars\} stars`\}>\s*<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">\s*<path fill="currentColor" d="([^"]+)"\/>\s*<\/svg>\s*<span class="ph-nav__stars"\s*>★ \{FLAVORS\.v5\.stars\}<\/span\s*>\s*<\/a>\s*<\/div>\s*<a href="\/discord"/.exec(nav);
+
+    assert.ok(github, 'the GitHub link, with its icon and the star count, is the last item of the links');
+    assert.ok(nav.indexOf('class="ph-nav__cta"') < nav.indexOf('class="ph-nav__github"'), 'the GitHub link comes after "Get Phalcon"');
+    // The GitHub glyph of Simple Icons 16.32.0 (CC0-1.0), the same on every site.
+    assert.equal(createHash('sha256').update(github?.[1] ?? '').digest('hex'), 'd82e21f6c9bfbfd889fed4b8d8604121be1d364ef75b7fe42cc9c0b8737ae529');
 });
