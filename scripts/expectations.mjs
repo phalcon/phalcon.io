@@ -268,6 +268,9 @@ export const CONTENT = [
             'https://phalcon.io/discord',
             'https://phalcon.io/so',
         ],
+        // Astro 7 (compressHTML in astro.config.mjs): a word and the link on
+        // the next line of the source keep the space between them.
+        html: [/visit the\s+<a href="\/download">/, /on GitHub:\s+<a /],
         has: ['v5 (cphalcon)', 'v6 (phalcon)', 'Before you post on Stack Overflow'],
         lacks: ['Telegram, Gab'],
     },
