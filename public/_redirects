@@ -8,11 +8,12 @@
 /http://phalcon.io/setting-up-phalconphp-with-environment-variables   https://blog.phalcon.io/post/setting-up-phalconphp-with-environment-variables                        301
 
 # URL shortener. Never remove a short link: give a dead one a new target.
-/api                                     https://docs.phalcon.io/latest/api/                                         301
+/api                                     https://docs.phalcon.io/latest/api/                                            301
 /bitchute                                https://www.bitchute.com/channel/phalcon/                                      301
 /blog                                    https://blog.phalcon.io                                                        301
 /brighteon                               https://www.brighteon.com/channel/phalcon                                      301
 /builtwith                               https://builtwith.phalcon.io                                                   301
+/crest-setup                             https://github.com/phalcon/crest/releases/latest/download/setup.sh             301
 /discord                                 https://discord.gg/kRc2N2M                                                     301
 /discussions                             https://github.com/phalcon/cphalcon/discussions                                301
 /devto                                   https://dev.to/phalcon/                                                        301
@@ -46,7 +47,7 @@
 /team/nikos                              https://github.com/niden                                                       301
 /team/serghei                            https://github.com/sergeyklay                                                  301
 /team/ruud                               https://github.com/ruudboon                                                    301
-/tutorial                                https://docs.phalcon.io/latest/tutorial-basic/                             301
+/tutorial                                https://docs.phalcon.io/latest/tutorial-basic/                                 301
 /yt                                      https://www.youtube.com/c/PhalconPHP                                           301
 /youtube                                 https://www.youtube.com/c/PhalconPHP                                           301
 
