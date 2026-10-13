@@ -46,8 +46,8 @@ They come from [phalcon/assets](https://github.com/phalcon/assets), which refres
 
 | Data | Where to change it |
 |---|---|
-| Sponsors | Read from GitHub Sponsors and Open Collective. In-kind partners are in `_sponsors/partners.json` in phalcon/assets |
-| Contributors | The repositories are listed in `_github/repositories.json` in phalcon/assets. The site shows the top 60 |
+| Sponsors | Read from GitHub Sponsors and Open Collective. In-kind partners are in `scripts/sponsors/partners.json` in phalcon/assets |
+| Contributors | The repositories are listed in `scripts/github/repositories.json` in phalcon/assets. The site shows the top 60 |
 | Stars | Read from GitHub |
 
 The daily run copies them into `src/sponsors.json`, `src/data/contributors.json` and `src/data/project.json`, and commits what changed ("Updating the site data"). A feed that fails its checks keeps the committed file, and the run shows a warning. To see what the next run would change:
