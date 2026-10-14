@@ -167,9 +167,29 @@ body {
 
   margin: 0;
   padding: 20px 22px;
+  background-color: var(--code-bg);
+  color: var(--code-text);
   font-family: var(--font-mono);
   font-size: 13.5px;
   line-height: 1.85;
   font-weight: 500;
   overflow-x: auto;
 }
+
+/* CodeBlock changes the token styles of Shiki into these classes, because
+   the CSP blocks style attributes. Each --code- role needs a class here. */
+.astro-code .code-changed { color: var(--code-changed); }
+.astro-code .code-comment { color: var(--code-comment); }
+.astro-code .code-constant { color: var(--code-constant); }
+.astro-code .code-deleted { color: var(--code-deleted); }
+.astro-code .code-function { color: var(--code-function); }
+.astro-code .code-inserted { color: var(--code-inserted); }
+.astro-code .code-keyword { color: var(--code-keyword); }
+.astro-code .code-parameter { color: var(--code-parameter); }
+.astro-code .code-string { color: var(--code-string); }
+.astro-code .code-string-expression { color: var(--code-string-expression); }
+.astro-code .code-text { color: var(--code-text); }
+.astro-code .code-bold { font-weight: bold; }
+.astro-code .code-italic { font-style: italic; }
+.astro-code .code-strikethrough { text-decoration: line-through; }
+.astro-code .code-underline { text-decoration: underline; }

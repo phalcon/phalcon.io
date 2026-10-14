@@ -5,15 +5,15 @@
 interface Props {
   variant?: 'default' | 'accent' | 'fact';
   label?: string;
-  labelColor?: string;
-  barColor?: string;
+  labelClass?: string;
+  barClass?: string;
   class?: string;
 }
 const {
   variant = 'default',
   label,
-  labelColor = 'var(--tone-muted)',
-  barColor = 'var(--tone-border-strong)',
+  labelClass = 'text-(--tone-muted)',
+  barClass = 'border-l-(--tone-border-strong)',
   class: className = '',
 } = Astro.props;
 ---
@@ -21,11 +21,10 @@ const {
 {
   variant === 'accent' ? (
     <div
-      class:list={['rounded-r-sm border border-(--tone-border-strong) border-l-[3px] bg-(--tone-surface) px-[22px] py-5', className]}
-      style={`border-left-color: ${barColor}`}
+      class:list={['rounded-r-sm border border-(--tone-border-strong) border-l-[3px] bg-(--tone-surface) px-[22px] py-5', barClass, className]}
     >
       {label && (
-        <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em]" style={`color: ${labelColor}`}>
+        <p class:list={['font-mono text-[11px] font-semibold uppercase tracking-[0.14em]', labelClass]}>
           {label}
         </p>
       )}
@@ -36,7 +35,7 @@ const {
   ) : variant === 'fact' ? (
     <div class:list={['rounded-md border border-(--tone-border-strong) bg-(--tone-surface) px-5 py-[18px]', className]}>
       {label && (
-        <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.1em]" style={`color: ${labelColor}`}>
+        <p class:list={['font-mono text-[11px] font-semibold uppercase tracking-[0.1em]', labelClass]}>
           {label}
         </p>
       )}

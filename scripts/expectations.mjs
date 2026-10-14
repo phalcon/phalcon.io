@@ -62,7 +62,7 @@ export const CONTENT = [
     // Design tokens: code blocks use the code theme (src/lib/code-theme.mjs)
     {
         page: '/',
-        html: ['color:var(--code-keyword)'],
+        html: ['class="code-keyword"'],
     },
     {
         page: '/team',

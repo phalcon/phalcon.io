@@ -1,6 +1,6 @@
 ---
 import { Code } from 'astro:components';
-import type { BundledLanguage } from 'shiki';
+import type { BundledLanguage, ShikiTransformer } from 'shiki';
 import { CODE_THEME } from '../lib/code-theme.mjs';
 
 interface Props {
@@ -12,6 +12,47 @@ interface Props {
 }
 
 const { code, lang = 'php', filename, copyable = true, class: className = '' } = Astro.props;
+
+/*
+ * Shiki writes the colors and the font styles of the code as style
+ * attributes. The CSP in public/_headers blocks style attributes, so each
+ * style becomes a class of src/styles/global.css. An unknown style stops
+ * the build.
+ */
+const FONT_CLASSES: Record<string, string> = {
+  'font-style:italic': 'code-italic',
+  'font-weight:bold': 'code-bold',
+  'text-decoration:line-through': 'code-strikethrough',
+  'text-decoration:underline': 'code-underline',
+};
+
+const styleToClass: ShikiTransformer = {
+  name: 'phalcon:style-to-class',
+  pre(node) {
+    // .astro-code in global.css sets the background, the color and the overflow.
+    delete node.properties.style;
+  },
+  span(node) {
+    const style = node.properties.style;
+
+    if (typeof style !== 'string') {
+      return;
+    }
+
+    for (const declaration of style.split(';')) {
+      const role = /^color:var\(--code-([a-z0-9-]+)\)$/.exec(declaration)?.[1];
+      const name = role ? `code-${role}` : FONT_CLASSES[declaration];
+
+      if (!name) {
+        throw new Error(`CodeBlock: no class for the code style "${declaration}"`);
+      }
+
+      this.addClassToHast(node, name);
+    }
+
+    delete node.properties.style;
+  },
+};
 ---
 
 <div class:list={['overflow-hidden rounded-lg border border-line-900 bg-surface-900', className]}>
@@ -32,5 +73,5 @@ const { code, lang = 'php', filename, copyable = true, class: className = '' } =
     )
   }
   {/* GitHub's dark rules with the syntax colors of the design tokens (src/lib/code-theme.mjs). */}
-  <Code code={code} lang={lang} theme={CODE_THEME} />
+  <Code code={code} lang={lang} theme={CODE_THEME} transformers={[styleToClass]} />
 </div>

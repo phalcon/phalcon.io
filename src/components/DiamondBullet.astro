@@ -1,12 +1,9 @@
 ---
 interface Props {
-  color?: string;
+  colorClass?: string;
   class?: string;
 }
-const { color = 'var(--tone-faint)', class: className = '' } = Astro.props;
+const { colorClass = 'bg-(--tone-faint)', class: className = '' } = Astro.props;
 ---
 
-<span
-  aria-hidden="true"
-  class:list={['inline-block h-[9px] w-[9px] shrink-0 rotate-45', className]}
-  style={`background: ${color}`}></span>
+<span aria-hidden="true" class:list={['inline-block h-[9px] w-[9px] shrink-0 rotate-45', colorClass, className]}></span>
