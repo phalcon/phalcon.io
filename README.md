@@ -8,6 +8,39 @@ Source of [phalcon.io](https://phalcon.io). It is an [Astro](https://astro.build
 
 All tooling runs in Docker; nothing needs to be installed on the host.
 
+## Add your project to Built with Phalcon
+
+[Built with Phalcon](https://phalcon.io/built-with) shows projects that run on Phalcon. To add your project, open a pull request to `master` with two changes:
+
+1. **A screenshot** of your project: `public/images/built-with/<slug>.webp`. It must be WebP, 1280 × 800 pixels, and 300 KB or less. `<slug>` is a short name for your project, in lowercase letters, digits and hyphens (for example `acme-shop`).
+2. **An entry** at the top of `BUILT_WITH` in `src/data/built-with.mjs` (the list is newest first):
+
+```js
+{
+    slug: 'acme-shop',
+    name: 'Acme Shop',
+    href: 'https://www.example.com',
+    description: 'An online store for rockets and anvils.',
+    source: null,
+    author: 'Jane Doe',
+    authorHref: 'https://github.com/janedoe',
+    alt: 'Acme Shop: the home page',
+},
+```
+
+| Key | Value |
+|---|---|
+| `slug` | The file name of the screenshot, without `.webp` |
+| `name` | The name of the project |
+| `href` | The link to the project (`https://`) |
+| `description` | What the project is, in one or two short sentences |
+| `source` | The link to the public source code, or `null`. Use `null` when `href` is the repository |
+| `author` | Your name, or `null` |
+| `authorHref` | The link to your profile (for example on GitHub), or `null`. It needs an `author` |
+| `alt` | A short text that tells what the screenshot shows |
+
+Then run `./run npm test`: it checks the entry and the screenshot. `./serve` shows the page at `http://localhost:8080/built-with`. Each pull request runs the same tests and the build.
+
 ## Local preview
 
 ```bash
