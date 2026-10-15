@@ -173,7 +173,7 @@ export const DOWNLOAD_NAV = [
     { label: 'IDE Stubs', href: '/download/stubs' },
 ];
 
-/** Sub-navigation of the Contribute, Team and Testimonials pages. */
+/** Sub-navigation of the Contribute, Team, Testimonials and Built with Phalcon pages. */
 export const PROJECT_NAV = [
     { label: 'Contribute', href: '/contribute' },
     { label: 'Team', href: '/team' },

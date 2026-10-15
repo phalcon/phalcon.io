@@ -278,9 +278,9 @@ export const CONTENT = [
     {
         page: '/built-with',
         has: [
-            'WuWei Lite',
-            'Outsmart',
-            'Robinson',
+            'WuWei Lite ↗',
+            'Outsmart ↗',
+            'Robinson ↗',
             'A community edition of WuWei LMS, with the core e-learning features for courses, students, and instructors. It is easy to set up and use.',
             'Social media, SEO, and marketing analytics for you and your competitors.',
             'The website of a popular Serbian travel agency. It has a frontend module and a backend module, both made with Phalcon.',
