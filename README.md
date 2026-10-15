@@ -8,7 +8,7 @@ Source of [phalcon.io](https://phalcon.io). It is an [Astro](https://astro.build
 
 All tooling runs in Docker; nothing needs to be installed on the host.
 
-## Add your project to Built with Phalcon
+## Built with Phalcon: add your project
 
 [Built with Phalcon](https://phalcon.io/built-with) shows projects that run on Phalcon. To add your project, open a pull request to `master` with two changes:
 

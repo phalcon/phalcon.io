@@ -284,6 +284,7 @@ export const CONTENT = [
             'A community edition of WuWei LMS, with the core e-learning features for courses, students, and instructors. It is easy to set up and use.',
             'Social media, SEO, and marketing analytics for you and your competitors.',
             'The website of a popular Serbian travel agency. It has a frontend module and a backend module, both made with Phalcon.',
+            'or open a pull request',
         ],
         links: [
             'https://github.com/xiaochong0302/wuwei-lite',
@@ -292,6 +293,7 @@ export const CONTENT = [
             'https://www.robinson.rs',
             'https://github.com/digitronac/robinson',
             'mailto:team@phalcon.io',
+            'https://github.com/phalcon/phalcon.io#built-with-phalcon-add-your-project',
             ...PROJECT_NAV.map((item) => item.href),
         ],
         html: [
