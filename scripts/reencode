@@ -1,0 +1,44 @@
+#!/bin/sh
+# Re-encodes one screenshot of Built with Phalcon: scripts/reencode <slug>
+#
+# It decodes public/images/built-with/<slug>.webp to raw pixels (a PAM file)
+# and encodes a new WebP from them (quality 80, no metadata). The new file has
+# only the pixels of the old file. The decoder reads a file from a contributor,
+# so each step runs in a container with no network, no capabilities, a
+# read-only system and only the image folder. See "A Built with Phalcon pull
+# request" in README.md.
+set -eu
+
+slug="${1:-}"
+
+case "$slug" in
+    '' | -* | *[!a-z0-9-]*)
+        echo 'usage: scripts/reencode <slug> (lowercase letters, digits and hyphens)' >&2
+        exit 2
+        ;;
+esac
+
+dir="$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)/public/images/built-with"
+
+if [ ! -f "$dir/$slug.webp" ]; then
+    echo "scripts/reencode: $dir/$slug.webp does not exist" >&2
+    exit 1
+fi
+
+# libwebp-tools of Alpine 3.24 (1.6.0 on 2026-10-15). Use 1.3.2 or later: it has the fix of CVE-2023-4863.
+printf 'FROM alpine:3.24\nRUN apk add --no-cache libwebp-tools\n' | docker build --quiet --tag phalcon-io-webp - > /dev/null
+
+trap 'rm -f "$dir/$slug.pam" "$dir/$slug.new.webp"' EXIT
+# Some shells (dash) do not run the EXIT trap on a signal: exit, so that the trap runs.
+trap 'exit 130' INT TERM HUP
+
+run() {
+    docker run --rm --network none --cap-drop ALL --security-opt no-new-privileges --read-only \
+        --user "$(id -u):$(id -g)" --volume "$dir:/img" --workdir /img phalcon-io-webp "$@"
+}
+
+run dwebp -quiet "$slug.webp" -pam -o "$slug.pam"
+run cwebp -quiet -q 80 -metadata none "$slug.pam" -o "$slug.new.webp"
+mv -f "$dir/$slug.new.webp" "$dir/$slug.webp"
+
+echo "$slug.webp: $(wc -c < "$dir/$slug.webp") bytes"

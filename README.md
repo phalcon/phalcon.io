@@ -12,7 +12,7 @@ All tooling runs in Docker; nothing needs to be installed on the host.
 
 [Built with Phalcon](https://phalcon.io/built-with) shows projects that run on Phalcon. To add your project, open a pull request to `master` with two changes:
 
-1. **A screenshot** of your project: `public/images/built-with/<slug>.webp`. It must be WebP, 1280 × 800 pixels, and 300 KB or less. `<slug>` is a short name for your project, in lowercase letters, digits and hyphens (for example `acme-shop`).
+1. **A screenshot** of your project: `public/images/built-with/<slug>.webp`. It must be WebP, 1280 × 800 pixels, 300 KB or less, with no metadata and no color profile (for example `cwebp -q 80 screenshot.png -o acme-shop.webp`). `<slug>` is a short name for your project, in lowercase letters, digits and hyphens (for example `acme-shop`).
 2. **An entry** at the top of `BUILT_WITH` in `src/data/built-with.mjs` (the list is newest first):
 
 ```js
@@ -21,6 +21,7 @@ All tooling runs in Docker; nothing needs to be installed on the host.
     name: 'Acme Shop',
     href: 'https://www.example.com',
     description: 'An online store for rockets and anvils.',
+    tags: ['E-commerce', 'Multi module', 'ORM', 'Volt', 'MySQL', 'Redis'],
     source: null,
     author: 'Jane Doe',
     authorHref: 'https://github.com/janedoe',
@@ -34,10 +35,13 @@ All tooling runs in Docker; nothing needs to be installed on the host.
 | `name` | The name of the project |
 | `href` | The link to the project (`https://`) |
 | `description` | What the project is, in one or two short sentences |
+| `tags` | 1 to 10 tags of `BUILT_WITH_TAGS` (in the same file), in any order. The page shows the project type first, then how the project uses Phalcon, then the stack |
 | `source` | The link to the public source code, or `null`. Use `null` when `href` is the repository |
 | `author` | Your name, or `null` |
 | `authorHref` | The link to your profile (for example on GitHub), or `null`. It needs an `author` |
 | `alt` | A short text that tells what the screenshot shows |
+
+Use only the tags of `BUILT_WITH_TAGS`. To propose a new tag, add it to the right group (A to Z) in the same pull request.
 
 Then run `./run npm test`: it checks the entry and the screenshot. `./serve` shows the page at `http://localhost:8080/built-with`. Each pull request runs the same tests and the build.
 
@@ -120,6 +124,28 @@ The colors and the fonts come from `phalcon/css/tokens.css` in [phalcon/assets](
 | Security headers (CSP) | `public/_headers` | `npm run verify`: a new external image, script or frame host must be added here |
 
 After a change, run `./run npm test`, `./run npm run build` and `./run npm run verify`. When a page changes on purpose, update its entry in `scripts/expectations.mjs`.
+
+### A Built with Phalcon pull request
+
+A pull request that adds a project has a screenshot from a person outside the team. The CI only reads the bytes of the image (`npm test`); it does not decode it. Before the merge, decode the screenshot and encode it again, so that the published file has only the pixels:
+
+```bash
+gh pr diff <number> --name-only   # only src/data/built-with.mjs and public/images/built-with/<slug>.webp
+gh pr checkout <number>
+scripts/reencode <slug>      # public/images/built-with/<slug>.webp: quality 80, no metadata
+./run npm test
+./serve                      # look at http://localhost:8080/built-with
+```
+
+If the pull request changes any other file, read those changes before you run a command: after the checkout, `scripts/reencode`, `./run` and `./serve` run the files of the pull request on your computer.
+
+Then commit the re-encoded file and push it (`git push`). This works when the pull request allows edits by maintainers. If it does not, merge on your computer: `git checkout master`, `git merge <branch>`, `scripts/reencode <slug>`, commit, and push `master` once, so the site never serves the original file.
+
+`scripts/reencode` runs `dwebp` and `cwebp` (`libwebp-tools` on Alpine) in containers with no network, no capabilities, a read-only system and only `public/images/built-with/`. Its first run builds the local image `phalcon-io-webp`. Docker keeps that image, so it does not get libwebp updates by itself. After a libwebp security fix, or every few months, build it again:
+
+```bash
+printf 'FROM alpine:3.24\nRUN apk add --no-cache libwebp-tools\n' | docker build --pull --no-cache --tag phalcon-io-webp -
+```
 
 ### Deployment
 

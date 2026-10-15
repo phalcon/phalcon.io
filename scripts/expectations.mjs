@@ -285,6 +285,10 @@ export const CONTENT = [
             'Social media, SEO, and marketing analytics for you and your competitors.',
             'The website of a popular Serbian travel agency. It has a frontend module and a backend module, both made with Phalcon.',
             'or open a pull request',
+            // The tags of each card, in the order of the groups (the build check joins the page text with spaces).
+            'Education Cache CLI Multi module ORM Volt Docker MySQL Phinx Redis',
+            'Analytics Marketing SaaS',
+            'Travel ACL CLI Incubator Multi module ORM Memcached MySQL Phinx PHPUnit',
         ],
         links: [
             'https://github.com/xiaochong0302/wuwei-lite',
