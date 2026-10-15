@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { readdirSync, readFileSync } from 'node:fs';
 import { test } from 'node:test';
 
-import { FLAVORS, FOOTER_COLUMNS } from '../src/data/site.mjs';
+import { FLAVORS, FOOTER_COLUMNS, PROJECT_LINKS, PROJECT_NAV } from '../src/data/site.mjs';
 import { missingTokens } from '../src/lib/design-checks.mjs';
 import { sourceFiles, usedBySite } from './token-sources.mjs';
 
@@ -218,4 +218,15 @@ test('the social card address has a version, so that platforms fetch a new card'
     const layout = readFileSync(new URL('layouts/BaseLayout.astro', root), 'utf8');
 
     assert.match(layout, /\nconst socialImage = `\$\{ASSETS_URL\}\/social\/github\.phalcon\.main-site\.png\?v=2`;\n/);
+});
+
+test('Built with Phalcon links to the page on phalcon.io', () => {
+    // The page replaces builtwith.phalcon.io (2026-10-14): the header menu, the footer and the Project sub-nav.
+    const item = { href: '/built-with', label: 'Built with Phalcon' };
+    const project = FOOTER_COLUMNS.find((column) => column.title === 'Project');
+
+    assert.deepEqual(PROJECT_LINKS.at(-1), item);
+    assert.deepEqual(project.links.at(-1), item);
+    assert.deepEqual(PROJECT_NAV.at(-1), item);
+    assert.doesNotMatch(readFileSync(new URL('data/site.mjs', root), 'utf8'), /builtwith\.phalcon\.io/);
 });

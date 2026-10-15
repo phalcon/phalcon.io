@@ -274,4 +274,32 @@ export const CONTENT = [
         has: ['v5 (cphalcon)', 'v6 (phalcon)', 'Before you post on Stack Overflow'],
         lacks: ['Telegram, Gab'],
     },
+    // Built with Phalcon (2026-10-14)
+    {
+        page: '/built-with',
+        has: [
+            'WuWei Lite',
+            'Outsmart',
+            'Robinson',
+            'A community edition of WuWei LMS, with the core e-learning features for courses, students, and instructors. It is easy to set up and use.',
+            'Social media, SEO, and marketing analytics for you and your competitors.',
+            'The website of a popular Serbian travel agency. It has a frontend module and a backend module, both made with Phalcon.',
+        ],
+        links: [
+            'https://github.com/xiaochong0302/wuwei-lite',
+            'https://github.com/xiaochong0302',
+            'https://outsmart.io',
+            'https://www.robinson.rs',
+            'https://github.com/digitronac/robinson',
+            'mailto:team@phalcon.io',
+            ...PROJECT_NAV.map((item) => item.href),
+        ],
+        html: [
+            'src="/images/built-with/wuwei-lite.webp"',
+            'src="/images/built-with/outsmart.webp"',
+            'src="/images/built-with/robinson.webp"',
+            'loading="lazy"',
+            'rel="canonical" href="https://phalcon.io/built-with"',
+        ],
+    },
 ];
