@@ -99,9 +99,9 @@ export const PROJECT_LINKS = [
     { label: 'Contribute', href: '/contribute' },
     { label: 'Team', href: '/team' },
     { label: 'Testimonials', href: '/testimonials' },
+    { label: 'Built with Phalcon', href: '/built-with' },
     { label: 'Sponsors', href: '/sponsors' },
     { label: 'Hosting', href: '/hosting' },
-    { label: 'Built with Phalcon', href: '/built-with' },
 ];
 
 /** The "join" links of the Community section on the home page. */
