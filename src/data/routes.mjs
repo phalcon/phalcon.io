@@ -7,6 +7,7 @@
  */
 export const PAGES = [
     '/',
+    '/built-with',
     '/consulting',
     '/contribute',
     '/download',

@@ -86,6 +86,10 @@ test('/github-docs points to the documentation repository', () => {
     assert.equal(resolve(rules, '/github-docs')?.target, 'https://github.com/phalcon/documentation');
 });
 
+test('/builtwith points to the Built with Phalcon page', () => {
+    assert.equal(resolve(rules, '/builtwith')?.target, 'https://phalcon.io/built-with');
+});
+
 test('the old Jekyll sitemap URL reaches the Astro sitemap', () => {
     assert.equal(resolve(rules, '/sitemap.xml')?.target, '/sitemap-index.xml');
 });

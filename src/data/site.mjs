@@ -101,7 +101,7 @@ export const PROJECT_LINKS = [
     { label: 'Testimonials', href: '/testimonials' },
     { label: 'Sponsors', href: '/sponsors' },
     { label: 'Hosting', href: '/hosting' },
-    { label: 'Built with Phalcon', href: 'https://builtwith.phalcon.io' },
+    { label: 'Built with Phalcon', href: '/built-with' },
 ];
 
 /** The "join" links of the Community section on the home page. */
@@ -146,7 +146,7 @@ export const FOOTER_COLUMNS = [
             { label: 'Testimonials', href: '/testimonials' },
             { label: 'Sponsors', href: '/sponsors' },
             { label: 'Consulting', href: '/consulting' },
-            { label: 'Built with Phalcon', href: 'https://builtwith.phalcon.io' },
+            { label: 'Built with Phalcon', href: '/built-with' },
         ],
     },
     {
@@ -178,4 +178,5 @@ export const PROJECT_NAV = [
     { label: 'Contribute', href: '/contribute' },
     { label: 'Team', href: '/team' },
     { label: 'Testimonials', href: '/testimonials' },
+    { label: 'Built with Phalcon', href: '/built-with' },
 ];
