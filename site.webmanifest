@@ -1,0 +1,21 @@
+{
+    "name": "Phalcon Framework",
+    "short_name": "Phalcon",
+    "description": "Phalcon is an open-source, full-stack PHP framework delivered as a C extension, with a pure PHP edition that has the same API.",
+    "start_url": "/",
+    "display": "browser",
+    "background_color": "#070d0c",
+    "theme_color": "#070d0c",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
