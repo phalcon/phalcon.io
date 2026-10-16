@@ -48,6 +48,14 @@ for (const page of [...PAGES, '/404']) {
     report(`page ${page}`, existsSync(distFile(page)));
 }
 
+/* Every HTML file of dist/ is a page of PAGES (or the 404 page), so that each check below reads every page. */
+{
+    const known = [...PAGES, '/404'].map(distFile);
+    const extra = existsSync('dist') ? listFiles('dist').filter((file) => file.endsWith('.html') && !known.includes(file)) : [];
+
+    report('every HTML file of dist/ is a page of PAGES or /404', extra.length === 0, extra.join(', '));
+}
+
 const built = [...PAGES, '/404'].filter((page) => existsSync(distFile(page)));
 const html = (page) => readFileSync(distFile(page), 'utf8');
 
@@ -246,27 +254,40 @@ if (existsSync('dist/_headers')) {
 
 /*
  * The icons, the same set as on the other Phalcon sites. Every page links the
- * copies in public/ of phalcon/favicons/ (phalcon/assets) and the manifest, and
- * no tag of the old set. The manifest has the name of the site, a short name of
- * the site part only (the icon shows the brand), the description of the site,
- * the color of the browser bar, and the two icons of a home screen. A home
- * screen icon opens the home page in the browser.
+ * copies in public/ of phalcon/favicons/ (phalcon/assets) and the manifest,
+ * has the browser bar color of the tokens, and has no tag of the old set. The
+ * manifest is JSON, with the name of the site, a short name of the site part
+ * only (the icon shows the brand), the description of the site, the color of
+ * the browser bar, and the two icons of a home screen. A home screen icon opens
+ * the home page in the browser.
  */
 {
+    const color = resolveToken(readFileSync('src/styles/tokens.css', 'utf8'), '--ph-dark-bg');
     const tags = [
         '<link rel="icon" href="/favicon.ico" sizes="32x32">',
         '<link rel="icon" href="/favicon.svg" type="image/svg+xml">',
         '<link rel="apple-touch-icon" href="/apple-touch-icon.png">',
         '<link rel="manifest" href="/site.webmanifest">',
+        `<meta name="theme-color" content="${color}">`,
     ].join(' ');
     const iconTags = (source) =>
-        [...source.matchAll(/<link[^>]*rel="(?:apple-touch-icon|icon|manifest|mask-icon|shortcut icon)"[^>]*>/g)].map((match) => match[0]).join(' ');
+        [...source.matchAll(/<link[^>]*rel="(?:apple-touch-icon|icon|manifest|mask-icon|shortcut icon)"[^>]*>|<meta[^>]*name="theme-color"[^>]*>/g)]
+            .map((match) => match[0])
+            .join(' ');
     const wrong = built.filter((page) => iconTags(html(page)) !== tags);
-    const manifest = existsSync('dist/site.webmanifest') ? JSON.parse(readFileSync('dist/site.webmanifest', 'utf8')) : {};
-    const color = resolveToken(readFileSync('src/styles/tokens.css', 'utf8'), '--ph-dark-bg');
+    // A manifest that is missing or is not JSON fails one check here, and the checks of its fields; the script goes on.
+    const parsed = (() => {
+        try {
+            return JSON.parse(readFileSync('dist/site.webmanifest', 'utf8'));
+        } catch {
+            return null;
+        }
+    })();
+    const manifest = parsed ?? {};
     const icons = manifest.icons ?? [];
 
     report('every page has exactly the icon tags', wrong.length === 0, wrong.join(', '));
+    report('dist/site.webmanifest is a JSON file', parsed !== null);
     report('no page has a tag of the Windows tiles', built.every((page) => !/name="msapplication-/.test(html(page))));
     report(
         'the manifest has the name and the short name of the site',
@@ -286,8 +307,10 @@ if (existsSync('dist/_headers')) {
     );
     report(
         'the manifest has the two icons of a home screen, and they are in dist',
-        icons.map((icon) => icon.sizes).join(' ') === '192x192 512x512' && icons.every((icon) => existsSync(`dist${icon.src}`)),
-        icons.map((icon) => icon.src).join(', ')
+        icons.map((icon) => `${icon.src} ${icon.sizes} ${icon.type}`).join(', ') ===
+            '/android-chrome-192x192.png 192x192 image/png, /android-chrome-512x512.png 512x512 image/png' &&
+            icons.every((icon) => existsSync(`dist${icon.src}`)),
+        icons.map((icon) => `${icon.src} ${icon.sizes} ${icon.type}`).join(', ')
     );
 }
 
