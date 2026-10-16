@@ -88,7 +88,7 @@ test('the deploy workflow refreshes the tokens and restores them before the data
     );
     assert.match(
         workflow,
-        /git checkout -- src\/fanart\.html src\/styles\/tokens\.css src\/styles\/code-theme\.json public\/css\/common\.css src\/lib\/design-checks\.mjs src\/lib\/design-refresh\.mjs src\/lib\/stars\.mjs/,
+        /git checkout -- src\/fanart\.html src\/styles\/tokens\.css src\/styles\/code-theme\.json public\/css\/common\.css public\/favicon\.ico public\/favicon\.svg public\/apple-touch-icon\.png public\/android-chrome-192x192\.png public\/android-chrome-512x512\.png src\/lib\/design-checks\.mjs src\/lib\/design-refresh\.mjs src\/lib\/stars\.mjs/,
     );
 });
 
@@ -103,7 +103,7 @@ test('the deploy workflow and the scripts read phalcon/assets from assets.phalco
     assert.doesNotMatch(workflow, /raw\.githubusercontent\.com/, 'deploy.yml');
     assert.doesNotMatch(tokens, /raw\.githubusercontent\.com/, 'update-tokens.mjs');
     assert.doesNotMatch(data, /raw\.githubusercontent\.com/, 'update-data.mjs');
-    assert.match(tokens, /const SOURCE = 'https:\/\/assets\.phalcon\.io\/phalcon\/css';/);
+    assert.match(tokens, /const SOURCE = 'https:\/\/assets\.phalcon\.io\/phalcon';/);
     assert.match(data, /const FEEDS = 'https:\/\/assets\.phalcon\.io\/phalcon';/);
     assert.match(workflow, /curl -fsSL -o src\/fanart\.html \\\n\s+https:\/\/assets\.phalcon\.io\/phalcon\/fanart-fragment\.html/);
 });
@@ -132,13 +132,30 @@ test('the base layout links common.css, the shared header and footer, outside th
 test('the refresh script copies common.css and checks it against the tokens copy', () => {
     const script = readFileSync(new URL('../scripts/update-tokens.mjs', import.meta.url), 'utf8');
 
-    assert.match(script, /copy: 'public\/css\/common\.css',\n\s+name: 'common\.css',/);
+    assert.match(script, /copy: 'public\/css\/common\.css',\n\s+name: 'css\/common\.css',/);
     assert.match(script, /problems: \(text\) => commonCssProblems\(text, readFileSync\('src\/styles\/tokens\.css', 'utf8'\)\),/);
     // The tokens come first: the check of common.css must read the new tokens copy.
     assert.ok(
         script.indexOf("copy: 'src/styles/tokens.css'") < script.indexOf("copy: 'public/css/common.css'"),
         'the tokens must come before common.css',
     );
+});
+
+test('the refresh script copies the icons of phalcon/assets as bytes, and checks each one', () => {
+    // An icon is an image: refresh() must read, compare and write its bytes (binary: true). The copies are at the root
+    // of the site, where browsers and other clients ask for /favicon.ico.
+    const script = readFileSync(new URL('../scripts/update-tokens.mjs', import.meta.url), 'utf8');
+    const entries = [
+        ['public/favicon.ico', 'favicons/favicon.ico', 'icoProblems'],
+        ['public/favicon.svg', 'favicons/favicon.svg', 'svgProblems'],
+        ['public/apple-touch-icon.png', 'favicons/apple-touch-icon.png', '(bytes) => pngProblems(bytes, 180)'],
+        ['public/android-chrome-192x192.png', 'favicons/android-chrome-192x192.png', '(bytes) => pngProblems(bytes, 192)'],
+        ['public/android-chrome-512x512.png', 'favicons/android-chrome-512x512.png', '(bytes) => pngProblems(bytes, 512)'],
+    ];
+
+    for (const [copy, name, check] of entries) {
+        assert.ok(script.includes(`binary: true,\n            copy: '${copy}',\n            name: '${name}',\n            problems: ${check},`), copy);
+    }
 });
 
 test('common.css has a rule for every class that the nav and the footer use', () => {

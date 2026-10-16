@@ -109,6 +109,7 @@ The colors and the fonts come from `phalcon/css/tokens.css` in [phalcon/assets](
 - To change a color, change `tokens.css` in phalcon/assets. The site gets it on its next deploy.
 - To get the new files now, for a local preview or to commit them: `./run node scripts/update-tokens.mjs`.
 - The nav and the footer use `public/css/common.css`, a copy of `phalcon/css/common.css` in phalcon/assets: the shared header and footer of the Phalcon sites. Every deploy run downloads it again, after the tokens. Change it in phalcon/assets, not here.
+- The icons (`public/favicon.ico`, `public/favicon.svg`, `public/apple-touch-icon.png`, `public/android-chrome-192x192.png` and `public/android-chrome-512x512.png`) are copies of `phalcon/favicons/` in phalcon/assets, the icons of every Phalcon site. Every deploy run downloads them again. Change them in phalcon/assets, not here.
 - Use a color through the tokens: a Tailwind class such as `bg-accent-400`, or `var(--ph-…)` in CSS and in props. `npm test` fails on a typed color (`#…` or `rgb(…)`) in `src/`.
 - Code blocks use the code theme (`src/styles/code-theme.json`, read by `src/lib/code-theme.mjs`): the rules of GitHub's dark theme with `--code-<role>` variables. `.astro-code` in `src/styles/global.css` maps them to the dark syntax tokens. phalcon/assets checks the rules.
 

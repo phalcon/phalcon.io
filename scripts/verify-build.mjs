@@ -5,7 +5,7 @@
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 
 import { distFile, PAGES } from '../src/data/routes.mjs';
-import { FLAVORS } from '../src/data/site.mjs';
+import { FLAVORS, SITE_DESCRIPTION, SITE_TITLE } from '../src/data/site.mjs';
 import { CONTENT, SITE_LACKS } from './expectations.mjs';
 import { allowedBy, attrValues, elements, inlineScripts, parseCsp, textOf } from './lib.mjs';
 import { missingTokens, resolveToken, usedTokens } from '../src/lib/design-checks.mjs';
@@ -129,7 +129,7 @@ for (const entry of CONTENT) {
 }
 
 /* Files that Cloudflare Pages and old installs need. */
-for (const file of ['_redirects', '_headers', 'robots.txt', 'humans.txt', 'debug/3.0.x/pretty.js']) {
+for (const file of ['_redirects', '_headers', 'robots.txt', 'humans.txt', 'debug/3.0.x/pretty.js', 'favicon.ico', 'favicon.svg', 'apple-touch-icon.png']) {
     report(`dist/${file} exists`, existsSync(`dist/${file}`));
 }
 
@@ -153,6 +153,9 @@ if (existsSync('dist/_headers')) {
             ...elements(source, 'link')
                 .filter((link) => link.rel === 'stylesheet')
                 .map((link) => ['style-src', link.href]),
+            ...elements(source, 'link')
+                .filter((link) => link.rel === 'manifest')
+                .map((link) => ['manifest-src', link.href]),
         ];
 
         for (const [directive, url] of uses) {
@@ -239,6 +242,53 @@ if (existsSync('dist/_headers')) {
 
     report('the built CSS defines every token that it uses', css !== '' && missing.length === 0, missing.join(', '));
     report('the theme color is the dark background token', expected !== null && meta?.content === expected, meta?.content ?? 'none');
+}
+
+/*
+ * The icons, the same set as on the other Phalcon sites. Every page links the
+ * copies in public/ of phalcon/favicons/ (phalcon/assets) and the manifest, and
+ * no tag of the old set. The manifest has the name of the site, a short name of
+ * the site part only (the icon shows the brand), the description of the site,
+ * the color of the browser bar, and the two icons of a home screen. A home
+ * screen icon opens the home page in the browser.
+ */
+{
+    const tags = [
+        '<link rel="icon" href="/favicon.ico" sizes="32x32">',
+        '<link rel="icon" href="/favicon.svg" type="image/svg+xml">',
+        '<link rel="apple-touch-icon" href="/apple-touch-icon.png">',
+        '<link rel="manifest" href="/site.webmanifest">',
+    ].join(' ');
+    const iconTags = (source) =>
+        [...source.matchAll(/<link[^>]*rel="(?:apple-touch-icon|icon|manifest|mask-icon|shortcut icon)"[^>]*>/g)].map((match) => match[0]).join(' ');
+    const wrong = built.filter((page) => iconTags(html(page)) !== tags);
+    const manifest = existsSync('dist/site.webmanifest') ? JSON.parse(readFileSync('dist/site.webmanifest', 'utf8')) : {};
+    const color = resolveToken(readFileSync('src/styles/tokens.css', 'utf8'), '--ph-dark-bg');
+    const icons = manifest.icons ?? [];
+
+    report('every page has exactly the icon tags', wrong.length === 0, wrong.join(', '));
+    report('no page has a tag of the Windows tiles', built.every((page) => !/name="msapplication-/.test(html(page))));
+    report(
+        'the manifest has the name and the short name of the site',
+        manifest.name === SITE_TITLE && manifest.short_name === 'Phalcon',
+        `${manifest.name} / ${manifest.short_name}`
+    );
+    report('the manifest has the description of the site', manifest.description === SITE_DESCRIPTION, manifest.description ?? 'none');
+    report(
+        'a home screen icon opens the home page in the browser',
+        manifest.display === 'browser' && manifest.start_url === '/',
+        `${manifest.display} ${manifest.start_url}`
+    );
+    report(
+        'the manifest colors are the dark background token',
+        color !== null && manifest.background_color === color && manifest.theme_color === color,
+        `${manifest.background_color} ${manifest.theme_color}`
+    );
+    report(
+        'the manifest has the two icons of a home screen, and they are in dist',
+        icons.map((icon) => icon.sizes).join(' ') === '192x192 512x512' && icons.every((icon) => existsSync(`dist${icon.src}`)),
+        icons.map((icon) => icon.src).join(', ')
+    );
 }
 
 /* Task checks go above this line. */
