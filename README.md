@@ -173,4 +173,4 @@ A push to `master`, and the daily run, test, build and verify the site, then pub
 
 ## License
 
-Phalcon is open source software. cphalcon (v5) is licensed under the BSD 3-Clause License, and phalcon (v6) under the MIT License. Copyright © 2011-present, Phalcon Team.
+Phalcon is open source software. cphalcon (v5) and phalcon (v6) are licensed under the BSD 3-Clause License. Copyright (c) 2011-present, Phalcon Team.

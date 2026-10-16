@@ -38,7 +38,7 @@ export const CONTENT = [
     // Task 2: header and footer (shared by every page; checked on the home page)
     {
         page: '/',
-        has: ['cphalcon (v5) BSD-3-Clause · phalcon (v6) MIT', 'Get Phalcon'],
+        has: ['Phalcon Team · BSD-3-Clause', 'Get Phalcon'],
         links: [FLAVORS.v5.repo, '/download', '/contribute', '/sponsors', 'https://phalcon.io/t'],
         // The nav and the footer use the classes of common.css (phalcon/assets), not Tailwind classes.
         html: ['src="/js/nav.js"', '<link rel="stylesheet" href="/css/common.css">', '<nav class="ph-nav">', 'class="ph-footer"', 'class="ph-nav__dropdown-link"'],
@@ -82,7 +82,7 @@ export const CONTENT = [
             'You do not need to know C to use it',
             FLAVORS.v5.tab,
             FLAVORS.v6.tab,
-            'open source · BSD-3 / MIT · since 2012',
+            'open source · BSD-3 · since 2012',
         ],
         copies: [FLAVORS.v5.install, FLAVORS.v6.install],
         lacks: ['now pure PHP', 'Why v6?'],

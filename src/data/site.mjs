@@ -63,7 +63,7 @@ export const FLAVORS = {
         php: '8.1+',
         install: 'composer require phalcon/phalcon',
         installPage: '/download/composer',
-        license: 'MIT',
+        license: 'BSD-3-Clause',
         repo: 'https://github.com/phalcon/phalcon',
         discussions: 'https://github.com/phalcon/phalcon/discussions',
         issues: 'https://github.com/phalcon/phalcon/issues',
