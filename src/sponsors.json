@@ -311,6 +311,17 @@
             ]
         },
         {
+            "id": "gh:sitchi",
+            "name": "Nikoloz Sitchinava",
+            "url": "https://github.com/sitchi",
+            "logo": "https://avatars.githubusercontent.com/u/11546683?u=ada2861fb6407b4fc1ea2257120512c27a0cb337&v=4",
+            "group": "supporter",
+            "kind": "financial",
+            "source": [
+                "github"
+            ]
+        },
+        {
             "id": "gh:rayanlevert",
             "name": "Rayan Levert",
             "url": "https://github.com/rayanlevert",
