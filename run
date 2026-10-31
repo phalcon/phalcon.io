@@ -18,4 +18,4 @@ docker run --rm \
     --env=HOME=/app \
     --env=npm_config_cache=/app/node_modules/.npm-cache \
     --env=ASTRO_TELEMETRY_DISABLED=1 \
-    node:22-alpine "$@"
+    node:26-alpine "$@"
